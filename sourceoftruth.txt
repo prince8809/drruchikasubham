@@ -23,6 +23,10 @@ Brand Concept & Unique Selling Proposition (USP):
   Providing unmatched comfort, clinical synergy, and comprehensive care for 
   female patients and their partners throughout their healthcare journey.
 
+Official Social Media Channels:
+  • Instagram: https://www.instagram.com/drruchikasubham (@drruchikasubham)
+  • Facebook:  https://www.facebook.com/drruchikasubham (@drruchikasubham)
+
 --------------------------------------------------------------------------------
 2. BRAND COLOR PALETTE & DESIGN SYSTEM (WARM & REASSURING)
 --------------------------------------------------------------------------------
@@ -65,6 +69,8 @@ E. FUNCTIONAL & ACTION TOKENS
    • WhatsApp Conversion Green:      #25D366  (Hover: #1EBE5D | Floating & booking buttons)
    • Emergency Obstetric Banner:     #DC2626  (Light Wash: #FEF2F2 | 24/7 emergency bar)
    • Verification & Insurance Badge: #10B981  (Light Wash: #ECFDF5 | Cashless/TPA badges)
+   • Instagram Brand Gradient:       #E1306C to #F77737 (Social icon & feed accents)
+   • Facebook Brand Blue:            #1877F2  (Social icon & badge)
 
 F. TAILWIND / CSS VARIABLE CONFIGURATION
    :root {
@@ -86,6 +92,8 @@ F. TAILWIND / CSS VARIABLE CONFIGURATION
      --color-border: #F1E5E8;
      --color-whatsapp: #25D366;
      --color-emergency: #DC2626;
+     --color-instagram: #E1306C;
+     --color-facebook: #1877F2;
    }
 
 --------------------------------------------------------------------------------
@@ -225,9 +233,121 @@ Combined Clinical Milestones:
    - Dedicated pathway for patients seeking expert evaluation for complex surgical or fertility diagnoses.
 10. Health Blog & Knowledge Base:
     - Clinically backed articles on women's reproductive health, fertility, and wellness.
+11. Live Social Hub (Instagram Reels & Facebook Educational Content):
+    - Real-time or regularly cached educational video feed keeping patients engaged.
 
 --------------------------------------------------------------------------------
-8. MEDIA & ASSETS INVENTORY (UPDATED)
+8. SOCIAL MEDIA CHANNELS & LIVE REELS/POSTS INTEGRATION GUIDANCE
+--------------------------------------------------------------------------------
+Official Accounts:
+  • Instagram: https://www.instagram.com/drruchikasubham  (@drruchikasubham)
+  • Facebook:  https://www.facebook.com/drruchikasubham   (@drruchikasubham)
+
+A. ARCHITECTURE & PERFORMANCE STRATEGY (CRITICAL)
+   Never fetch directly from Meta/Instagram APIs on the client-side (browser) 
+   per visitor request. Doing so exposes API access tokens, risks hitting strict 
+   rate limits, and causes slow page loading.
+   
+   Recommended Architecture:
+   • Next.js Server-Side / API Route with Incremental Static Regeneration (ISR).
+   • Cache responses for 1 to 6 hours (`revalidate: 3600`).
+   • Store access tokens in `.env.local` server-side variables only.
+   • Implement a graceful fallback UI displaying top educational reel cards 
+     linking directly to @drruchikasubham if the API is offline or refreshed.
+
+B. INSTAGRAM LIVE REELS & POSTS IMPLEMENTATION OPTIONS
+
+   [OPTION 1: Official Meta Graph API (Automated & Clean Native Grid) - RECOMMENDED]
+   • Prerequisites:
+     1. Switch Instagram account (@drruchikasubham) to Professional (Creator or Business).
+     2. Link Instagram profile to the Facebook Page (drruchikasubham).
+     3. Create an app on Meta for Developers (https://developers.facebook.com) 
+        and add the "Instagram Graph API" product.
+   • Token Management:
+     1. Generate a User Token with `instagram_basic` and `pages_show_list` permissions.
+     2. Exchange short-lived token for a 60-day Long-Lived Token:
+        GET https://graph.facebook.com/v18.0/oauth/access_token
+            ?grant_type=fb_exchange_token
+            &client_id={APP_ID}
+            &client_secret={APP_SECRET}
+            &fb_exchange_token={SHORT_LIVED_TOKEN}
+     3. Setup automated auto-refresh via a lightweight monthly cron or Next.js API route:
+        GET https://graph.instagram.com/refresh_access_token
+            ?grant_type=ig_refresh_token
+            &access_token={LONG_LIVED_TOKEN}
+   • Fetching Reels & Posts:
+     Endpoint:
+     GET https://graph.instagram.com/me/media?fields=id,caption,media_type,media_url,permalink,thumbnail_url,timestamp&access_token={TOKEN}
+     - For Reels / Videos: `media_type === "VIDEO"` -> Use `thumbnail_url` for poster image and `permalink` for one-click Instagram open.
+     - For Carousel / Images: `media_type === "IMAGE"` or `"CAROUSEL_ALBUM"` -> Use `media_url`.
+   • Next.js Implementation Snippet:
+     ```ts
+     // app/api/instagram/route.ts
+     export async function GET() {
+       const token = process.env.INSTAGRAM_ACCESS_TOKEN;
+       const res = await fetch(
+         `https://graph.instagram.com/me/media?fields=id,caption,media_type,media_url,permalink,thumbnail_url,timestamp&access_token=${token}&limit=6`,
+         { next: { revalidate: 3600 } } // Cached for 1 hour
+       );
+       const data = await res.json();
+       return Response.json(data.data || []);
+     }
+     ```
+
+   [OPTION 2: Headless Feed Engine / Zero-Maintenance Middleware (Fastest Setup)]
+   • Tools: Behold.so, Curator.io, or Elfsight.
+   • How it works:
+     - Connects directly to @drruchikasubham via OAuth.
+     - Provides a lightweight JSON endpoint or headless React hook.
+     - Automatically refreshes tokens every 50 days in the background.
+     - Provides CDN-cached video/image thumbnails without touching Meta developer portal.
+   • Ideal for launching quickly without ongoing Meta API maintenance.
+
+   [OPTION 3: Official Instagram oEmbed Cards (Curated Educational Highlights)]
+   • Use the official Instagram embed script:
+     `<script async src="//www.instagram.com/embed.js"></script>`
+   • Display 3-4 specific high-performing medical education Reels:
+     (e.g., "Normal Delivery vs C-Section Myths", "PCOS Diet Advice by Dr. Ruchika", "Partner Support Guide by Dr. Subham").
+   • Renders responsive native player cards with zero API token configuration.
+
+C. FACEBOOK PAGE FEED & REVIEWS IMPLEMENTATION OPTIONS
+
+   [OPTION 1: Official Meta Facebook Page Plugin (Instant & Direct)]
+   • Embed official Facebook Page timeline widget directly into the Community / About section:
+     ```html
+     <div id="fb-root"></div>
+     <script async defer crossorigin="anonymous" 
+             src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v18.0"></script>
+     
+     <div class="fb-page" 
+          data-href="https://www.facebook.com/drruchikasubham" 
+          data-tabs="timeline,events" 
+          data-width="500" 
+          data-small-header="false" 
+          data-adapt-container-width="true" 
+          data-hide-cover="false" 
+          data-show-facepile="true">
+     </div>
+     ```
+   • Displays latest Facebook posts, photos, patient reviews, and follower count with 100% real-time accuracy.
+
+   [OPTION 2: Facebook Graph API (Custom UI Feed)]
+   • Endpoint:
+     `GET https://graph.facebook.com/v18.0/{page-id}/feed?fields=message,created_time,full_picture,permalink_url&access_token={PAGE_TOKEN}`
+   • Requires `pages_read_engagement` and `pages_read_user_content` verified permissions.
+   • Better suited when custom branded card design matching the website palette (#FB5A7C & #2FB2EA) is required.
+
+D. FRONTEND UI DESIGN FOR SOCIAL SECTION
+   • Component: "Join Our Community & Watch Latest Patient Education Reels"
+   • Layout:
+     - Header with `@drruchikasubham` handles and direct "Follow on Instagram" & "Follow on Facebook" buttons.
+     - 4-column responsive grid on desktop / horizontal swipeable reel cards on mobile.
+     - Play button overlay with hover zoom effect.
+     - Caption preview with medical topic badges (#PCOS, #PregnancyCare, #NormalDelivery).
+     - Bottom CTA: "Ask a Question on WhatsApp" linked directly to the doctors.
+
+--------------------------------------------------------------------------------
+9. MEDIA & ASSETS INVENTORY (UPDATED)
 --------------------------------------------------------------------------------
 Verified Local Assets in Project Directory:
 
@@ -266,7 +386,7 @@ Verified Local Assets in Project Directory:
    • Usage: Central reference for copy, specs, contact info, and asset inventory.
 
 --------------------------------------------------------------------------------
-9. PENDING / DESIRED ASSETS (FOR FUTURE ENHANCEMENT)
+10. PENDING / DESIRED ASSETS (FOR FUTURE ENHANCEMENT)
 --------------------------------------------------------------------------------
 • Joint Professional Photos:
   - High-quality photo of Dr. Subham and Dr. Ruchika together for the homepage hero section.
