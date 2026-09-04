@@ -92,7 +92,7 @@ export default function SocialHub() {
     <section
       ref={sectionRef}
       id="social-hub"
-      className="py-20 bg-gradient-to-b from-[#F4FAFD] via-white to-[#F4FAFD] border-t border-[#F1E5E8] relative overflow-hidden"
+      className="py-20 bg-gradient-to-b from-[#F4FAFD] via-white to-[#F4FAFD] border-t border-[#F1E5E8] relative overflow-hidden scroll-mt-24 sm:scroll-mt-28"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         

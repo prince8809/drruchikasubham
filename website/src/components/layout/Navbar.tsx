@@ -25,6 +25,35 @@ export default function Navbar() {
     }, 200);
   };
 
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    setMobileMenuOpen(false);
+    if (href.startsWith("/#")) {
+      const targetId = href.replace("/#", "");
+      if (typeof window !== "undefined" && window.location.pathname === "/") {
+        e.preventDefault();
+        window.history.pushState(null, "", href);
+        setTimeout(() => {
+          const el = document.getElementById(targetId);
+          if (el) {
+            el.scrollIntoView({ behavior: "smooth" });
+          }
+        }, 120);
+      }
+    }
+  };
+
+  const handleDesktopNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (href.startsWith("/#") && typeof window !== "undefined" && window.location.pathname === "/") {
+      e.preventDefault();
+      const targetId = href.replace("/#", "");
+      window.history.pushState(null, "", href);
+      const el = document.getElementById(targetId);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  };
+
   const otherNavLinks = [
     { label: "Reviews", href: "/#reviews" },
     { label: "Specialties", href: "/#services" },
@@ -157,7 +186,10 @@ export default function Navbar() {
                 {/* View Both on Homepage Link */}
                 <Link
                   href="/#doctors"
-                  onClick={() => setDoctorsDropdownOpen(false)}
+                  onClick={(e) => {
+                    setDoctorsDropdownOpen(false);
+                    handleDesktopNavClick(e, "/#doctors");
+                  }}
                   className="block text-center text-xs font-semibold text-[#FB5A7C] hover:text-[#E54366] py-1.5 px-3 rounded-lg hover:bg-pink-50/50 transition-colors"
                 >
                   View Both Profiles &amp; Clinics &rarr;
@@ -171,6 +203,7 @@ export default function Navbar() {
             <Link
               key={link.label}
               href={link.href}
+              onClick={(e) => handleDesktopNavClick(e, link.href)}
               className="hover:text-[#FB5A7C] transition-colors py-1 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-[#FB5A7C] hover:after:w-full after:transition-all"
             >
               {link.label}
@@ -289,8 +322,8 @@ export default function Navbar() {
               <Link
                 key={link.label}
                 href={link.href}
-                onClick={() => setMobileMenuOpen(false)}
-                className="text-base font-semibold text-[#1A2229] hover:text-[#FB5A7C] py-2 border-b border-gray-50 flex items-center justify-between"
+                onClick={(e) => handleNavClick(e, link.href)}
+                className="text-base font-semibold text-[#1A2229] hover:text-[#FB5A7C] py-2 border-b border-gray-50 flex items-center justify-between cursor-pointer"
               >
                 <span>{link.label}</span>
                 <span className="text-gray-400 text-sm">&rarr;</span>
@@ -310,7 +343,7 @@ export default function Navbar() {
               </a>
               <Link
                 href="/#booking"
-                onClick={() => setMobileMenuOpen(false)}
+                onClick={(e) => handleNavClick(e, "/#booking")}
                 className="btn-primary text-center justify-center text-sm py-3"
               >
                 <Calendar className="w-4 h-4" />

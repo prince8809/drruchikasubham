@@ -81,7 +81,7 @@ export default function ServicesGrid() {
   };
 
   return (
-    <section id="services" className="py-14 sm:py-16 bg-[#FAFAF9] border-t border-[#F1E5E8] relative overflow-hidden">
+    <section id="services" className="py-14 sm:py-16 bg-[#FAFAF9] border-t border-[#F1E5E8] relative overflow-hidden scroll-mt-24 sm:scroll-mt-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header (Compact & High Impact) */}

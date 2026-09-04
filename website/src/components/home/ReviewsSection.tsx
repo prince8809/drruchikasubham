@@ -27,7 +27,7 @@ export default function ReviewsSection() {
   }, [selectedReview]);
 
   return (
-    <section id="reviews" className="py-6 sm:py-8 bg-[#FAFAF9] border-t border-[#F1E5E8] relative overflow-hidden">
+    <section id="reviews" className="py-6 sm:py-8 bg-[#FAFAF9] border-t border-[#F1E5E8] relative overflow-hidden scroll-mt-24 sm:scroll-mt-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-3 sm:mb-4">
         
         {/* Header with 4.9-Star Trust Badge */}

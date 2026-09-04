@@ -24,7 +24,7 @@ export default function BookingStrip() {
   };
 
   return (
-    <section id="booking" className="py-20 bg-gradient-to-br from-[#FB5A7C] via-[#E54366] to-[#C4274C] text-white relative overflow-hidden">
+    <section id="booking" className="py-20 bg-gradient-to-br from-[#FB5A7C] via-[#E54366] to-[#C4274C] text-white relative overflow-hidden scroll-mt-24 sm:scroll-mt-28">
       {/* Decorative ambient bubbles */}
       <div className="absolute -top-10 -right-10 w-80 h-80 bg-white/10 rounded-full blur-2xl pointer-events-none"></div>
       <div className="absolute -bottom-10 -left-10 w-80 h-80 bg-black/10 rounded-full blur-2xl pointer-events-none"></div>

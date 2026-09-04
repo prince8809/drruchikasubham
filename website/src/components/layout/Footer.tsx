@@ -15,8 +15,24 @@ import {
 
 export default function Footer() {
   return (
-    <footer className="bg-[#1A2229] text-white pt-16 pb-12 border-t border-gray-800">
+    <footer id="locations" className="bg-[#1A2229] text-white pt-14 pb-12 border-t border-gray-800 scroll-mt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Section Header for Timings & Clinics Anchor */}
+        <div className="mb-10 pb-6 border-b border-gray-800 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div>
+            <span className="text-[11px] font-bold uppercase tracking-wider text-[#FB5A7C] bg-pink-950/50 border border-pink-800/40 px-3 py-1 rounded-full inline-block mb-1.5">
+              Clinics &amp; Consultation Timings
+            </span>
+            <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
+              Hospital Locations &amp; Visiting Hours &bull; Siliguri
+            </h3>
+          </div>
+          <p className="text-xs text-gray-400 max-w-md leading-relaxed">
+            Consultations at Manipal Hospital and Zivah Wellness Centre. Prior appointments and walk-ins welcome with direct WhatsApp booking.
+          </p>
+        </div>
+
         {/* Main 4-column Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-gray-800">
           
