@@ -18,7 +18,6 @@ import {
   Building2,
 } from "lucide-react";
 import { doctors } from "@/data/doctors";
-import EmergencyBar from "@/components/layout/EmergencyBar";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import WhatsAppFAB from "@/components/layout/WhatsAppFAB";
@@ -134,10 +133,7 @@ export default async function DoctorProfilePage({ params }: { params: Promise<{ 
         dangerouslySetInnerHTML={{ __html: JSON.stringify(physicianSchema) }}
       />
 
-      {/* 1. Emergency Obstetric & Surgical Banner */}
-      <EmergencyBar />
-
-      {/* 2. Responsive Navigation Bar */}
+      {/* 1. Responsive Navigation Bar */}
       <Navbar />
 
       {/* 3. Breadcrumb Bar */}

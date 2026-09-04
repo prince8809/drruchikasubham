@@ -1,4 +1,3 @@
-import EmergencyBar from "@/components/layout/EmergencyBar";
 import Navbar from "@/components/layout/Navbar";
 import HeroSection from "@/components/home/HeroSection";
 import StatsCounter from "@/components/home/StatsCounter";
@@ -12,10 +11,7 @@ import WhatsAppFAB from "@/components/layout/WhatsAppFAB";
 export default function Home() {
   return (
     <main className="min-h-screen flex flex-col bg-[#FAFAF9] text-[#1A2229]">
-      {/* 1. Emergency Obstetric & Surgical Banner */}
-      <EmergencyBar />
-
-      {/* 2. Responsive Navigation Bar */}
+      {/* 1. Responsive Navigation Bar */}
       <Navbar />
 
       {/* 3. Hero Section with Dual Doctor Cutouts & Taglines */}
