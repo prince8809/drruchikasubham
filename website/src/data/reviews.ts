@@ -13,7 +13,7 @@ export interface PatientReview {
 export const patientReviews: PatientReview[] = [
   {
     id: "rev-1",
-    name: "Anita & Rohit Agarwal",
+    name: "Anita A. & Partner",
     location: "Sevoke Road, Siliguri",
     doctor: "Both Doctors (Joint Care)",
     treatment: "Normal Vaginal Delivery",
@@ -25,19 +25,19 @@ export const patientReviews: PatientReview[] = [
   },
   {
     id: "rev-2",
-    name: "Priyanka Saha",
+    name: "Priyanka S. (Mother of Twins)",
     location: "Jalpaiguri",
     doctor: "Dr. Subham Agarwal",
-    treatment: "High-Risk Pregnancy Management",
+    treatment: "High-Risk Pregnancy Care",
     rating: 5,
     comment:
-      "Had gestational hypertension and previous miscarriage history. Dr. Subham at Manipal Hospital monitored every scan meticulously. Delivered a healthy baby boy via planned, safe cesarean.",
+      "Had gestational hypertension and previous miscarriage history. Dr. Subham at Manipal Hospital monitored every scan meticulously. Delivered a healthy baby via planned, safe cesarean.",
     date: "1 month ago",
     verified: true,
   },
   {
     id: "rev-3",
-    name: "Sneha & Vikram Sharma",
+    name: "Sneha Sh.",
     location: "Pradhan Nagar, Siliguri",
     doctor: "Dr. Ruchika Agarwal",
     treatment: "PCOD & Natural Fertility Conception",
@@ -49,10 +49,10 @@ export const patientReviews: PatientReview[] = [
   },
   {
     id: "rev-4",
-    name: "Madhumita Sen",
+    name: "Mrs. M. Sen",
     location: "Hakimpara, Siliguri",
     doctor: "Dr. Subham Agarwal",
-    treatment: "Laparoscopic Ovarian Cystectomy",
+    treatment: "Laparoscopic Keyhole Surgery",
     rating: 5,
     comment:
       "Underwent keyhole surgery for a large ovarian cyst at Manipal Hospital. Minimal incisions, virtually no postoperative pain, and I was discharged the next day. Dr. Subham's surgical skills are unmatched.",
@@ -61,7 +61,7 @@ export const patientReviews: PatientReview[] = [
   },
   {
     id: "rev-5",
-    name: "Pooja & Amit Ghosh",
+    name: "Pooja & Amit G.",
     location: "Gangtok, Sikkim",
     doctor: "Both Doctors (Joint Care)",
     treatment: "Pre-Conception & Couple Consultation",
