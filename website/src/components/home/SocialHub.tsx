@@ -9,16 +9,15 @@ import {
   ExternalLink,
   MessageCircle,
   Sparkles,
-  RotateCcw,
-  RefreshCw
+  RotateCcw
 } from "lucide-react";
 import { InstagramIcon, FacebookIcon } from "@/components/shared/Icons";
 import { socialPosts, SocialPost } from "@/data/social-feed";
 import { INSTAGRAM_URL, FACEBOOK_URL, WHATSAPP_SUBHAM } from "@/lib/constants";
 
-// Helper to extract clean Reel ID from URL or ID string
+// Extract clean Reel ID from URL or ID string
 function getReelId(urlOrId: string): string {
-  if (!urlOrId) return "";
+  if (!urlOrId) return "Dc2l3etREc9";
   const match = urlOrId.match(/\/(?:reel|p)\/([A-Za-z0-9_-]+)/);
   if (match && match[1]) return match[1];
   return urlOrId.replace(/[^A-Za-z0-9_-]/g, "");
@@ -27,7 +26,7 @@ function getReelId(urlOrId: string): string {
 export default function SocialHub() {
   // Currently playing card ID
   const [activeCardId, setActiveCardId] = useState<string | null>(null);
-  // Theater modal video
+  // Theater modal post
   const [theaterPost, setTheaterPost] = useState<SocialPost | null>(null);
 
   const handlePlayCard = (postId: string) => {
@@ -48,18 +47,18 @@ export default function SocialHub() {
     <section id="social-hub" className="py-20 bg-gradient-to-b from-[#F4FAFD] via-white to-[#F4FAFD] border-t border-[#F1E5E8] relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Header */}
+        {/* Header */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-6 mb-12">
           <div className="text-center md:text-left">
             <div className="inline-flex items-center gap-1.5 bg-[#FFE9ED] text-[#C4274C] px-3 py-1 rounded-full text-xs font-semibold mb-2">
               <Sparkles className="w-3.5 h-3.5 text-[#FB5A7C]" />
-              <span>Patient Education &bull; Live Instagram Reels</span>
+              <span>Patient Education &bull; Official Instagram Reels</span>
             </div>
             <h2 className="text-2xl sm:text-4xl font-bold text-[#1A2229]">
               Watch Helpful Reels &amp; Medical Tips
             </h2>
             <p className="text-sm sm:text-base text-[#475569] mt-2 max-w-xl">
-              Play actual Instagram Reels directly on this page on demand, or follow along on Instagram and Facebook.
+              Play actual Instagram Reels from <strong>@drruchikasubham</strong> directly here on the page, or follow along on Instagram and Facebook.
             </p>
           </div>
 
@@ -86,8 +85,8 @@ export default function SocialHub() {
           </div>
         </div>
 
-        {/* 4 Instagram Reel Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* 4 Video Cards Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-start">
           {socialPosts.map((post) => {
             const isPlaying = activeCardId === post.id;
             const reelCode = getReelId(post.reelId || post.instagramUrl);
@@ -97,14 +96,17 @@ export default function SocialHub() {
                 key={post.id}
                 className="bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl hover:border-pink-200 transition-all duration-300 flex flex-col justify-between"
               >
-                {/* Media Container: Thumbnail vs Native Instagram Embed Player */}
-                <div className="relative aspect-[9/14] bg-neutral-900 overflow-hidden flex flex-col justify-between">
-                  
+                {/* Media Container */}
+                <div
+                  className={`relative overflow-hidden transition-all duration-300 ${
+                    isPlaying ? "h-[540px] bg-white" : "aspect-[9/13] bg-neutral-900"
+                  }`}
+                >
                   {isPlaying ? (
-                    /* NATIVE INSTAGRAM REEL EMBED PLAYER (Loads actual Reel from Instagram) */
+                    /* NATIVE INSTAGRAM REEL EMBED PLAYER */
                     <div className="relative w-full h-full bg-white flex flex-col">
                       
-                      {/* Top Action Bar */}
+                      {/* Top Control Bar */}
                       <div className="absolute top-0 inset-x-0 z-30 p-2.5 bg-gradient-to-b from-black/80 via-black/40 to-transparent flex items-center justify-between text-white">
                         <div className="flex items-center gap-1.5 text-[10px] font-bold text-emerald-400 bg-black/60 backdrop-blur-xs px-2.5 py-0.5 rounded-full border border-emerald-500/30">
                           <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
@@ -112,10 +114,10 @@ export default function SocialHub() {
                         </div>
 
                         <div className="flex items-center gap-1.5">
-                          {/* Theater Expand */}
+                          {/* Theater view */}
                           <button
                             onClick={(e) => handleOpenTheater(post, e)}
-                            className="p-1 rounded-full bg-white/20 hover:bg-white/40 text-white transition-colors"
+                            className="p-1.5 rounded-full bg-white/20 hover:bg-white/40 text-white transition-colors"
                             title="Expand to Theater View"
                             aria-label="Expand video"
                           >
@@ -125,7 +127,7 @@ export default function SocialHub() {
                           {/* Close Player */}
                           <button
                             onClick={handleStopCard}
-                            className="p-1 rounded-full bg-red-600/90 hover:bg-red-600 text-white transition-colors"
+                            className="p-1.5 rounded-full bg-red-600/90 hover:bg-red-600 text-white transition-colors"
                             title="Close Player"
                             aria-label="Stop video"
                           >
@@ -140,11 +142,11 @@ export default function SocialHub() {
                         className="w-full h-full border-0 bg-white"
                         allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
                         allowFullScreen
-                        scrolling="no"
+                        scrolling="yes"
                       />
                     </div>
                   ) : (
-                    /* FACADE CARD (0KB Instagram load until user clicks) */
+                    /* FACADE CARD (0KB load until user decides to play) */
                     <div
                       onClick={() => handlePlayCard(post.id)}
                       className="relative w-full h-full bg-gradient-to-tr from-[#FFF5F7] via-[#F2FAFE] to-[#FFE9ED] flex flex-col justify-between p-5 cursor-pointer group select-none"
@@ -159,7 +161,7 @@ export default function SocialHub() {
                         </div>
                       </div>
 
-                      {/* Center Instagram Play Button with Pulse */}
+                      {/* Center Play Button */}
                       <div className="flex flex-col items-center justify-center my-auto z-10 text-center">
                         <div className="relative">
                           <span className="absolute -inset-2.5 rounded-full bg-[#FB5A7C]/25 animate-ping"></span>
@@ -173,10 +175,10 @@ export default function SocialHub() {
                         </span>
                       </div>
 
-                      {/* Bottom Meta */}
+                      {/* Bottom Info Strip */}
                       <div className="flex justify-between items-center z-10 text-[11px] font-medium text-gray-600 bg-white/90 backdrop-blur-xs px-3 py-1 rounded-xl border border-gray-100">
-                        <span>{post.duration || "Reel"}</span>
-                        <span>{post.views || "10K+ views"}</span>
+                        <span>@drruchikasubham</span>
+                        <span>Watch on Page</span>
                       </div>
 
                       {/* Watermark Logo */}
@@ -194,34 +196,34 @@ export default function SocialHub() {
 
                 </div>
 
-                {/* Card Info & Links */}
+                {/* Card Title & Actions */}
                 <div className="p-4 space-y-3 bg-white">
                   <h4 className="font-bold text-sm text-[#1A2229] leading-snug line-clamp-2">
                     {post.title}
                   </h4>
 
                   <div className="flex items-center justify-between text-xs pt-2 border-t border-gray-100">
-                    {/* Play In-Page Toggle */}
+                    {/* Inline Play Toggle */}
                     <button
                       onClick={() => handlePlayCard(post.id)}
                       className="font-bold text-[#FB5A7C] hover:text-[#E54366] flex items-center gap-1 transition-colors"
                     >
                       {isPlaying ? (
                         <>
-                          <RefreshCw className="w-3.5 h-3.5" />
-                          <span>Playing</span>
+                          <RotateCcw className="w-3.5 h-3.5" />
+                          <span>Close Reel</span>
                         </>
                       ) : (
                         <>
                           <Play className="w-3.5 h-3.5 fill-current" />
-                          <span>Watch Reel</span>
+                          <span>Play on Page</span>
                         </>
                       )}
                     </button>
 
-                    {/* External Instagram App Link */}
+                    {/* Direct Instagram App Link */}
                     <a
-                      href={post.instagramUrl || INSTAGRAM_URL}
+                      href={post.instagramUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-gray-500 hover:text-[#0B75A1] font-semibold flex items-center gap-1 transition-colors"
@@ -238,7 +240,7 @@ export default function SocialHub() {
           })}
         </div>
 
-        {/* THEATER MODAL (Expanded View) */}
+        {/* THEATER MODAL (Expanded Full View) */}
         {theaterPost && (
           <div
             onClick={() => setTheaterPost(null)}
@@ -246,10 +248,10 @@ export default function SocialHub() {
           >
             <div
               onClick={(e) => e.stopPropagation()}
-              className="bg-[#1A2229] text-white rounded-3xl overflow-hidden max-w-lg w-full shadow-2xl border border-gray-700 flex flex-col max-h-[90vh]"
+              className="bg-[#1A2229] text-white rounded-3xl overflow-hidden max-w-md w-full shadow-2xl border border-gray-700 flex flex-col max-h-[92vh]"
             >
               {/* Modal Header */}
-              <div className="p-4 bg-gray-900 flex items-center justify-between border-b border-gray-800">
+              <div className="p-4 bg-gray-900 flex items-center justify-between border-b border-gray-800 shrink-0">
                 <div className="flex items-center gap-2">
                   <span className="text-xs font-bold uppercase tracking-wider bg-[#FB5A7C] text-white px-2.5 py-0.5 rounded-full">
                     {theaterPost.category}
@@ -266,19 +268,19 @@ export default function SocialHub() {
               </div>
 
               {/* Instagram Reel Player in Modal */}
-              <div className="relative aspect-[9/13] bg-white w-full flex items-center justify-center overflow-hidden">
+              <div className="relative h-[560px] bg-white w-full overflow-hidden shrink-0">
                 <iframe
                   src={`https://www.instagram.com/reel/${getReelId(theaterPost.reelId || theaterPost.instagramUrl)}/embed/`}
                   className="w-full h-full border-0 bg-white"
                   allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
                   allowFullScreen
-                  scrolling="no"
+                  scrolling="yes"
                 />
               </div>
 
               {/* Modal Footer */}
-              <div className="p-5 space-y-3 bg-[#1A2229]">
-                <h3 className="font-bold text-base text-white leading-snug">
+              <div className="p-4 space-y-3 bg-[#1A2229] shrink-0">
+                <h3 className="font-bold text-sm text-white leading-snug line-clamp-2">
                   {theaterPost.title}
                 </h3>
 
@@ -287,14 +289,14 @@ export default function SocialHub() {
                     href={`${WHATSAPP_SUBHAM}&text=Hey%20Dr%20I%20watched%20your%20reel%20on%20${encodeURIComponent(theaterPost.title)}%20and%20had%20a%20question.`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn-whatsapp text-xs py-2.5 px-4 shadow-sm"
+                    className="btn-whatsapp text-xs py-2 px-3.5 shadow-sm"
                   >
                     <MessageCircle className="w-4 h-4 fill-white" />
-                    <span>Ask Doctor About This Video</span>
+                    <span>Ask Doctor on WhatsApp</span>
                   </a>
 
                   <a
-                    href={theaterPost.instagramUrl || INSTAGRAM_URL}
+                    href={theaterPost.instagramUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-xs text-gray-400 hover:text-white flex items-center gap-1 underline underline-offset-2"
