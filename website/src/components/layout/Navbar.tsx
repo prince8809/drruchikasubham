@@ -1,21 +1,36 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { MessageCircle, Menu, X, Calendar } from "lucide-react";
+import { MessageCircle, Menu, X, Calendar, ChevronDown, Heart, ArrowRight } from "lucide-react";
 import { WHATSAPP_SUBHAM } from "@/lib/constants";
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [doctorsDropdownOpen, setDoctorsDropdownOpen] = useState(false);
+  const [mobileDoctorsOpen, setMobileDoctorsOpen] = useState(true);
+  const dropdownTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-  const navLinks = [
-    { label: "Our Doctors", href: "#doctors" },
-    { label: "Specialties", href: "#services" },
-    { label: "Experience", href: "#experience" },
-    { label: "Couple Advantage", href: "#couple-advantage" },
-    { label: "Videos & Reels", href: "#social-hub" },
-    { label: "Timings & Clinics", href: "#locations" },
+  const handleMouseEnter = () => {
+    if (dropdownTimeoutRef.current) {
+      clearTimeout(dropdownTimeoutRef.current);
+    }
+    setDoctorsDropdownOpen(true);
+  };
+
+  const handleMouseLeave = () => {
+    dropdownTimeoutRef.current = setTimeout(() => {
+      setDoctorsDropdownOpen(false);
+    }, 200);
+  };
+
+  const otherNavLinks = [
+    { label: "Specialties", href: "/#services" },
+    { label: "Experience", href: "/#experience" },
+    { label: "Couple Advantage", href: "/#couple-advantage" },
+    { label: "Videos & Reels", href: "/#social-hub" },
+    { label: "Timings & Clinics", href: "/#locations" },
   ];
 
   return (
@@ -44,15 +59,142 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop Nav Links */}
-        <nav className="hidden lg:flex items-center gap-7 text-sm font-medium text-[#475569]">
-          {navLinks.map((link) => (
-            <a
+        <nav className="hidden lg:flex items-center gap-6 text-sm font-medium text-[#475569]">
+          
+          {/* "Our Doctors" with Hover Dropdown */}
+          <div
+            className="relative py-4"
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+          >
+            <button
+              onClick={() => setDoctorsDropdownOpen(!doctorsDropdownOpen)}
+              className="flex items-center gap-1.5 hover:text-[#FB5A7C] transition-colors py-1 cursor-pointer select-none"
+              aria-expanded={doctorsDropdownOpen}
+              aria-haspopup="true"
+            >
+              <span>Our Doctors</span>
+              <ChevronDown
+                className={`w-3.5 h-3.5 transition-transform duration-200 ${
+                  doctorsDropdownOpen ? "rotate-180 text-[#FB5A7C]" : "text-gray-400"
+                }`}
+              />
+            </button>
+
+            {/* Hover Dropdown Panel */}
+            {doctorsDropdownOpen && (
+              <div
+                className="absolute top-full left-0 -ml-4 w-88 bg-white rounded-3xl shadow-xl border border-[#F1E5E8] p-3 z-50 animate-in fade-in zoom-in-95 duration-150"
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+              >
+                <div className="text-[10px] font-bold uppercase tracking-wider text-gray-400 px-3 pt-1 pb-2">
+                  Select Specialist Profile
+                </div>
+
+                {/* Dr. Subham Agarwal Item */}
+                <Link
+                  href="/doctors/dr-subham-agarwal"
+                  onClick={() => setDoctorsDropdownOpen(false)}
+                  className="flex items-center gap-3 p-2.5 rounded-2xl hover:bg-[#F2FAFE] transition-colors group/item"
+                >
+                  <div className="relative w-12 h-14 rounded-xl overflow-hidden bg-sky-50 border border-sky-200 shrink-0 shadow-2xs">
+                    <Image
+                      src="/images/doctors/dr-subham-headshot.png"
+                      alt="Dr. Subham Agarwal"
+                      fill
+                      sizes="60px"
+                      className="object-cover object-top group-hover/item:scale-105 transition-transform"
+                    />
+                  </div>
+                  <div className="min-w-0">
+                    <div className="font-bold text-sm text-[#1A2229] group-hover/item:text-[#0B75A1] transition-colors flex items-center gap-1">
+                      <span>Dr. Subham Agarwal</span>
+                    </div>
+                    <p className="text-[11px] text-gray-500 truncate">
+                      M.B.B.S, M.S, F.M.A.S, F.I.A.G
+                    </p>
+                    <div className="flex items-center gap-1.5 mt-0.5">
+                      <span className="text-[10px] font-semibold text-[#0B75A1] bg-sky-100/70 px-2 py-0.2 rounded-full">
+                        Manipal Hospital &bull; 10 AM – 6 PM
+                      </span>
+                    </div>
+                  </div>
+                </Link>
+
+                {/* Dr. Ruchika Agarwal Item */}
+                <Link
+                  href="/doctors/dr-ruchika-agarwal"
+                  onClick={() => setDoctorsDropdownOpen(false)}
+                  className="flex items-center gap-3 p-2.5 rounded-2xl hover:bg-[#FFF5F7] transition-colors group/item mt-1"
+                >
+                  <div className="relative w-12 h-14 rounded-xl overflow-hidden bg-pink-50 border border-pink-200 shrink-0 shadow-2xs">
+                    <Image
+                      src="/images/doctors/dr-ruchika-headshot.jpg"
+                      alt="Dr. Ruchika Agarwal"
+                      fill
+                      sizes="60px"
+                      className="object-cover object-top group-hover/item:scale-105 transition-transform"
+                    />
+                  </div>
+                  <div className="min-w-0">
+                    <div className="font-bold text-sm text-[#1A2229] group-hover/item:text-[#FB5A7C] transition-colors flex items-center gap-1">
+                      <span>Dr. Ruchika Agarwal</span>
+                    </div>
+                    <p className="text-[11px] text-gray-500 truncate">
+                      M.B.B.S, M.S
+                    </p>
+                    <div className="flex items-center gap-1.5 mt-0.5">
+                      <span className="text-[10px] font-semibold text-[#C4274C] bg-pink-100/70 px-2 py-0.2 rounded-full">
+                        Zivah Wellness &bull; 10 AM – 2 PM
+                      </span>
+                    </div>
+                  </div>
+                </Link>
+
+                {/* Divider */}
+                <div className="my-2 border-t border-gray-100" />
+
+                {/* Couple Doctor Advantage Link */}
+                <Link
+                  href="/#couple-advantage"
+                  onClick={() => setDoctorsDropdownOpen(false)}
+                  className="flex items-center gap-2.5 p-2 rounded-xl hover:bg-gray-50 text-xs text-gray-700 transition-colors"
+                >
+                  <div className="w-7 h-7 rounded-lg bg-[#FFE9ED] flex items-center justify-center shrink-0">
+                    <Heart className="w-3.5 h-3.5 text-[#FB5A7C]" />
+                  </div>
+                  <div className="min-w-0">
+                    <span className="font-bold text-[#1A2229] block leading-tight">
+                      The Couple Doctor Advantage
+                    </span>
+                    <span className="text-[10px] text-gray-500">
+                      Collaborative care &bull; Inquire Joint Consultation
+                    </span>
+                  </div>
+                </Link>
+
+                {/* View Both on Homepage Link */}
+                <Link
+                  href="/#doctors"
+                  onClick={() => setDoctorsDropdownOpen(false)}
+                  className="mt-1 block text-center text-[11px] font-bold text-[#FB5A7C] hover:text-[#E54366] py-1 transition-colors"
+                >
+                  View Both Profiles on Homepage &rarr;
+                </Link>
+              </div>
+            )}
+          </div>
+
+          {/* Standard Nav Links */}
+          {otherNavLinks.map((link) => (
+            <Link
               key={link.label}
               href={link.href}
               className="hover:text-[#FB5A7C] transition-colors py-1 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-[#FB5A7C] hover:after:w-full after:transition-all"
             >
               {link.label}
-            </a>
+            </Link>
           ))}
         </nav>
 
@@ -92,10 +234,79 @@ export default function Navbar() {
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-white border-b border-[#F1E5E8] px-6 py-5 shadow-lg animate-in slide-in-from-top duration-200">
-          <nav className="flex flex-col gap-3">
-            {navLinks.map((link) => (
-              <a
+        <div className="lg:hidden bg-white border-b border-[#F1E5E8] px-5 py-4 shadow-xl animate-in slide-in-from-top duration-200 max-h-[85vh] overflow-y-auto">
+          <nav className="flex flex-col gap-2">
+            
+            {/* Mobile Accordion for "Our Doctors" */}
+            <div className="border-b border-gray-100 pb-2">
+              <button
+                onClick={() => setMobileDoctorsOpen(!mobileDoctorsOpen)}
+                className="w-full flex items-center justify-between text-base font-bold text-[#1A2229] py-2"
+              >
+                <span>Our Doctors</span>
+                <ChevronDown
+                  className={`w-4 h-4 text-gray-500 transition-transform ${
+                    mobileDoctorsOpen ? "rotate-180 text-[#FB5A7C]" : ""
+                  }`}
+                />
+              </button>
+
+              {mobileDoctorsOpen && (
+                <div className="pl-2 pt-1 pb-2 space-y-2">
+                  <Link
+                    href="/doctors/dr-subham-agarwal"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="flex items-center gap-3 p-2 rounded-xl bg-[#F2FAFE] border border-sky-100 text-[#1A2229]"
+                  >
+                    <div className="relative w-9 h-11 rounded-lg overflow-hidden bg-white shrink-0 border border-sky-200">
+                      <Image
+                        src="/images/doctors/dr-subham-headshot.png"
+                        alt="Dr. Subham"
+                        fill
+                        sizes="40px"
+                        className="object-cover object-top"
+                      />
+                    </div>
+                    <div className="min-w-0">
+                      <div className="font-bold text-xs text-[#1A2229]">
+                        Dr. Subham Agarwal
+                      </div>
+                      <div className="text-[10px] text-gray-500">
+                        Manipal Hospital &bull; Laparoscopic Surgeon
+                      </div>
+                    </div>
+                  </Link>
+
+                  <Link
+                    href="/doctors/dr-ruchika-agarwal"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="flex items-center gap-3 p-2 rounded-xl bg-[#FFF5F7] border border-pink-100 text-[#1A2229]"
+                  >
+                    <div className="relative w-9 h-11 rounded-lg overflow-hidden bg-white shrink-0 border border-pink-200">
+                      <Image
+                        src="/images/doctors/dr-ruchika-headshot.jpg"
+                        alt="Dr. Ruchika"
+                        fill
+                        sizes="40px"
+                        className="object-cover object-top"
+                      />
+                    </div>
+                    <div className="min-w-0">
+                      <div className="font-bold text-xs text-[#1A2229]">
+                        Dr. Ruchika Agarwal
+                      </div>
+                      <div className="text-[10px] text-gray-500">
+                        Zivah Wellness &bull; Fertility Specialist
+                      </div>
+                    </div>
+                  </Link>
+                </div>
+              )}
+            </div>
+
+            {/* Other Mobile Nav Links */}
+            {otherNavLinks.map((link) => (
+              <Link
                 key={link.label}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
@@ -103,8 +314,10 @@ export default function Navbar() {
               >
                 <span>{link.label}</span>
                 <span className="text-gray-400 text-sm">&rarr;</span>
-              </a>
+              </Link>
             ))}
+
+            {/* Mobile CTAs */}
             <div className="pt-3 flex flex-col gap-2">
               <a
                 href={WHATSAPP_SUBHAM}
@@ -113,16 +326,16 @@ export default function Navbar() {
                 className="btn-whatsapp text-center justify-center text-sm py-3"
               >
                 <MessageCircle className="w-4 h-4 fill-white" />
-                <span>Book Appointment (Dr. Subham)</span>
+                <span>Book on WhatsApp</span>
               </a>
-              <a
-                href="#booking"
+              <Link
+                href="/#booking"
                 onClick={() => setMobileMenuOpen(false)}
                 className="btn-primary text-center justify-center text-sm py-3"
               >
                 <Calendar className="w-4 h-4" />
                 <span>Choose Doctor / View Fees</span>
-              </a>
+              </Link>
             </div>
           </nav>
         </div>

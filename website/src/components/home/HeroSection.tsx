@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { MessageCircle, ShieldCheck, Heart, Sparkles, Award } from "lucide-react";
 import { WHATSAPP_SUBHAM, WHATSAPP_RUCHIKA, CONSULTATION_FEE } from "@/lib/constants";
 
@@ -84,7 +85,10 @@ export default function HeroSection() {
             {/* Visual Frame */}
             <div className="relative w-full max-w-md">
               {/* Couple Advantage Floating Badge */}
-              <div className="absolute -top-4 -left-4 z-20 bg-white/95 backdrop-blur-sm rounded-2xl p-3 shadow-lg border border-[#FFCCD6] flex items-center gap-3">
+              <Link
+                href="/#couple-advantage"
+                className="absolute -top-4 -left-4 z-20 bg-white/95 backdrop-blur-sm rounded-2xl p-3 shadow-lg border border-[#FFCCD6] flex items-center gap-3 hover:scale-105 transition-transform"
+              >
                 <div className="w-10 h-10 rounded-xl bg-[#FFF5F7] p-1.5 flex items-center justify-center shrink-0">
                   <Image
                     src="/images/brand/couple-art.png"
@@ -98,25 +102,28 @@ export default function HeroSection() {
                   <p className="text-xs font-bold text-[#1A2229]">The Couple Advantage</p>
                   <p className="text-[11px] text-[#FB5A7C] font-semibold">&ldquo;Family caring for your family&rdquo;</p>
                 </div>
-              </div>
+              </Link>
 
               {/* Grid of Two Portraits */}
               <div className="grid grid-cols-2 gap-4">
                 
                 {/* Dr. Ruchika Card */}
-                <div className="bg-white rounded-3xl p-3 pb-4 shadow-md border-2 border-[#FFCCD6] hover:shadow-xl transition-all duration-300">
+                <Link
+                  href="/doctors/dr-ruchika-agarwal"
+                  className="group bg-white rounded-3xl p-3 pb-4 shadow-md border-2 border-[#FFCCD6] hover:border-[#FB5A7C] hover:shadow-xl transition-all duration-300 block"
+                >
                   <div className="relative w-full aspect-[4/5] rounded-2xl overflow-hidden mb-3 bg-[#FFF5F7]">
                     <Image
                       src="/images/doctors/dr-ruchika-headshot.jpg"
                       alt="Dr. Ruchika Agarwal"
                       fill
                       sizes="(max-width: 768px) 50vw, 250px"
-                      className="object-cover object-top hover:scale-105 transition-transform duration-500"
+                      className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
                       priority
                     />
                   </div>
                   <div className="text-center">
-                    <h2 className="font-bold text-[#1A2229] text-sm sm:text-base leading-tight">
+                    <h2 className="font-bold text-[#1A2229] group-hover:text-[#FB5A7C] transition-colors text-sm sm:text-base leading-tight">
                       Dr. Ruchika Agarwal
                     </h2>
                     <p className="text-[11px] font-semibold text-[#FB5A7C] mt-0.5">
@@ -125,23 +132,29 @@ export default function HeroSection() {
                     <p className="text-[10px] text-gray-500 mt-1">
                       Zivah Wellness Centre
                     </p>
+                    <span className="inline-block text-[10px] font-bold text-[#FB5A7C] mt-1.5 opacity-0 group-hover:opacity-100 transition-opacity">
+                      View Profile &rarr;
+                    </span>
                   </div>
-                </div>
+                </Link>
 
                 {/* Dr. Subham Card */}
-                <div className="bg-white rounded-3xl p-3 pb-4 shadow-md border-2 border-[#BCE6F9] hover:shadow-xl transition-all duration-300 translate-y-6">
+                <Link
+                  href="/doctors/dr-subham-agarwal"
+                  className="group bg-white rounded-3xl p-3 pb-4 shadow-md border-2 border-[#BCE6F9] hover:border-[#2FB2EA] hover:shadow-xl transition-all duration-300 translate-y-6 block"
+                >
                   <div className="relative w-full aspect-[4/5] rounded-2xl overflow-hidden mb-3 bg-[#F2FAFE]">
                     <Image
                       src="/images/doctors/dr-subham-headshot.png"
                       alt="Dr. Subham Agarwal"
                       fill
                       sizes="(max-width: 768px) 50vw, 250px"
-                      className="object-cover object-top hover:scale-105 transition-transform duration-500"
+                      className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
                       priority
                     />
                   </div>
                   <div className="text-center">
-                    <h2 className="font-bold text-[#1A2229] text-sm sm:text-base leading-tight">
+                    <h2 className="font-bold text-[#1A2229] group-hover:text-[#0B75A1] transition-colors text-sm sm:text-base leading-tight">
                       Dr. Subham Agarwal
                     </h2>
                     <p className="text-[11px] font-semibold text-[#0B75A1] mt-0.5">
@@ -150,8 +163,11 @@ export default function HeroSection() {
                     <p className="text-[10px] text-gray-500 mt-1">
                       Manipal Hospital Siliguri
                     </p>
+                    <span className="inline-block text-[10px] font-bold text-[#0B75A1] mt-1.5 opacity-0 group-hover:opacity-100 transition-opacity">
+                      View Profile &rarr;
+                    </span>
                   </div>
-                </div>
+                </Link>
 
               </div>
 

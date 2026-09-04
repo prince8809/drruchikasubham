@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { MapPin, Phone, Clock, ShieldCheck, Heart } from "lucide-react";
 import { InstagramIcon, FacebookIcon } from "@/components/shared/Icons";
 import {
@@ -70,9 +71,12 @@ export default function Footer() {
 
           {/* Column 2: Dr. Subham Agarwal Clinic */}
           <div className="space-y-3">
-            <span className="inline-block text-xs font-bold uppercase tracking-wider text-[#2FB2EA] bg-[#2FB2EA]/10 px-2.5 py-1 rounded">
-              Dr. Subham Agarwal
-            </span>
+            <Link
+              href="/doctors/dr-subham-agarwal"
+              className="inline-block text-xs font-bold uppercase tracking-wider text-[#2FB2EA] bg-[#2FB2EA]/10 hover:bg-[#2FB2EA]/20 px-2.5 py-1 rounded transition-colors"
+            >
+              Dr. Subham Agarwal &rarr;
+            </Link>
             <h4 className="font-semibold text-base text-white">Manipal Hospital, Siliguri</h4>
             <div className="space-y-2 text-xs text-gray-300">
               <p className="flex items-start gap-2">
@@ -90,21 +94,32 @@ export default function Footer() {
                 </a>
               </p>
             </div>
-            <a
-              href={WHATSAPP_SUBHAM}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#25D366] hover:underline pt-1"
-            >
-              &rarr; Book Dr. Subham on WhatsApp
-            </a>
+            <div className="pt-1 flex flex-col gap-1.5 text-xs">
+              <Link
+                href="/doctors/dr-subham-agarwal"
+                className="text-[#2FB2EA] hover:underline font-semibold"
+              >
+                &rarr; View Dr. Subham&apos;s Full Profile
+              </Link>
+              <a
+                href={WHATSAPP_SUBHAM}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 font-semibold text-[#25D366] hover:underline"
+              >
+                &rarr; Book Dr. Subham on WhatsApp
+              </a>
+            </div>
           </div>
 
           {/* Column 3: Dr. Ruchika Agarwal Clinic */}
           <div className="space-y-3">
-            <span className="inline-block text-xs font-bold uppercase tracking-wider text-[#FB5A7C] bg-[#FB5A7C]/10 px-2.5 py-1 rounded">
-              Dr. Ruchika Agarwal
-            </span>
+            <Link
+              href="/doctors/dr-ruchika-agarwal"
+              className="inline-block text-xs font-bold uppercase tracking-wider text-[#FB5A7C] bg-[#FB5A7C]/10 hover:bg-[#FB5A7C]/20 px-2.5 py-1 rounded transition-colors"
+            >
+              Dr. Ruchika Agarwal &rarr;
+            </Link>
             <h4 className="font-semibold text-base text-white">Zivah Wellness Centre</h4>
             <div className="space-y-2 text-xs text-gray-300">
               <p className="flex items-start gap-2">
@@ -122,14 +137,22 @@ export default function Footer() {
                 </a>
               </p>
             </div>
-            <a
-              href={WHATSAPP_RUCHIKA}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#25D366] hover:underline pt-1"
-            >
-              &rarr; Book Dr. Ruchika on WhatsApp
-            </a>
+            <div className="pt-1 flex flex-col gap-1.5 text-xs">
+              <Link
+                href="/doctors/dr-ruchika-agarwal"
+                className="text-[#FB5A7C] hover:underline font-semibold"
+              >
+                &rarr; View Dr. Ruchika&apos;s Full Profile
+              </Link>
+              <a
+                href={WHATSAPP_RUCHIKA}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 font-semibold text-[#25D366] hover:underline"
+              >
+                &rarr; Book Dr. Ruchika on WhatsApp
+              </a>
+            </div>
           </div>
 
           {/* Column 4: Consultation & Insurance */}

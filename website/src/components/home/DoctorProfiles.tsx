@@ -1,5 +1,6 @@
 import Image from "next/image";
-import { MessageCircle, MapPin, Clock, Languages, Stethoscope, Phone } from "lucide-react";
+import Link from "next/link";
+import { MessageCircle, MapPin, Clock, Languages, Stethoscope, Phone, ArrowRight } from "lucide-react";
 import { doctors } from "@/data/doctors";
 import { CONSULTATION_FEE } from "@/lib/constants";
 
@@ -35,23 +36,28 @@ export default function DoctorProfiles() {
                 <div>
                   {/* Doctor Top Details: Photo + Title */}
                   <div className="flex flex-col sm:flex-row gap-6 items-center sm:items-start mb-6 text-center sm:text-left">
-                    <div className="relative w-36 h-44 sm:w-40 sm:h-48 rounded-2xl overflow-hidden shadow-md shrink-0 border border-gray-100 bg-gray-50">
+                    <Link
+                      href={`/doctors/${doc.slug}`}
+                      className="group/img relative w-36 h-44 sm:w-40 sm:h-48 rounded-2xl overflow-hidden shadow-md shrink-0 border border-gray-100 bg-gray-50 block"
+                    >
                       <Image
                         src={doc.photo}
                         alt={doc.name}
                         fill
                         sizes="180px"
-                        className="object-cover object-top"
+                        className="object-cover object-top group-hover/img:scale-105 transition-transform duration-300"
                       />
-                    </div>
+                    </Link>
                     
                     <div className="space-y-2">
                       <span className={`inline-block text-xs font-bold px-3 py-1 rounded-full ${badgeBg}`}>
                         {doc.degrees}
                       </span>
-                      <h3 className="text-xl sm:text-2xl font-bold text-[#1A2229]">
-                        {doc.name}
-                      </h3>
+                      <Link href={`/doctors/${doc.slug}`} className="block group/name">
+                        <h3 className="text-xl sm:text-2xl font-bold text-[#1A2229] group-hover/name:text-[#FB5A7C] transition-colors">
+                          {doc.name}
+                        </h3>
+                      </Link>
                       <p className="text-xs sm:text-sm font-medium text-[#475569] leading-snug">
                         {doc.role}
                       </p>
@@ -115,17 +121,25 @@ export default function DoctorProfiles() {
                   </div>
                 </div>
 
-                {/* Direct Booking CTA */}
-                <div className="pt-2">
+                {/* Action CTAs */}
+                <div className="pt-2 space-y-2">
                   <a
                     href={doc.whatsapp}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn-whatsapp w-full justify-center text-sm py-3.5 shadow-md hover:shadow-lg transition-all"
+                    className="btn-whatsapp w-full justify-center text-sm py-3 shadow-md hover:shadow-lg transition-all"
                   >
                     <MessageCircle className="w-4 h-4 fill-white" />
-                    <span>Book with {doc.name.split(" ")[1]} on WhatsApp</span>
+                    <span>Book with {doc.shortName || doc.name.split(" ")[1]} on WhatsApp</span>
                   </a>
+
+                  <Link
+                    href={`/doctors/${doc.slug}`}
+                    className="w-full justify-center text-xs font-bold text-[#1A2229] hover:text-[#FB5A7C] py-2.5 px-4 rounded-xl bg-gray-50 hover:bg-gray-100/80 border border-gray-200 transition-all flex items-center gap-1.5"
+                  >
+                    <span>View Full Profile &amp; Clinical Biography</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
                 </div>
 
               </div>

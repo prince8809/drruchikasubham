@@ -17,6 +17,9 @@ build/
 # AGY / Agent workspace (plans, notes, scratch — never pushed)
 .agy/
 
+# Scraped data exports
+export_*.json
+
 # Environment variables
 .env
 .env.local
