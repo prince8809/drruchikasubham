@@ -38,43 +38,45 @@ export default function CoupleAdvantage() {
     },
   ];
 
+  const doubledAdvantages = [...advantages, ...advantages];
+
   return (
     <section
       id="couple-advantage"
-      className="py-8 sm:py-10 bg-white relative overflow-hidden"
+      className="py-4 sm:py-6 bg-white relative overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Compact, Unified Glass Card Banner */}
-        <div className="bg-gradient-to-br from-[#FFF5F7] via-white to-[#F4FAFD] rounded-3xl p-6 sm:p-8 border border-[#FFCCD6] shadow-sm relative overflow-hidden">
+        <div className="bg-gradient-to-br from-[#FFF5F7] via-white to-[#F4FAFD] rounded-2xl sm:rounded-3xl p-4 sm:p-5 border border-[#FFCCD6] shadow-xs relative overflow-hidden">
           
           {/* Subtle decorative background glow */}
           <div className="absolute top-0 right-0 w-72 h-72 bg-[#FFE9ED] rounded-full filter blur-3xl opacity-30 pointer-events-none" />
 
           {/* Top Row: Artwork + Title + Joint Booking CTA */}
-          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-6 border-b border-gray-100">
-            <div className="flex items-center gap-4">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3.5">
+            <div className="flex items-center gap-3">
               {/* Couple Emblem Art */}
-              <div className="w-14 h-14 rounded-2xl bg-white p-2 shadow-xs border border-pink-100 flex items-center justify-center shrink-0">
+              <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-white p-1.5 shadow-2xs border border-pink-100 flex items-center justify-center shrink-0">
                 <Image
                   src="/images/brand/couple-art.png"
                   alt="The Couple Doctor Advantage"
-                  width={42}
-                  height={56}
+                  width={32}
+                  height={32}
                   className="object-contain"
                 />
               </div>
 
-              <div>
+              <div className="min-w-0">
                 <div className="flex items-center gap-2">
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-[#FB5A7C] bg-white px-2.5 py-0.5 rounded-full border border-pink-100 shadow-2xs">
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-[#FB5A7C] bg-white px-2 py-0.5 rounded-full border border-pink-100 shadow-2xs">
                     The Couple Advantage
                   </span>
-                  <span className="text-xs text-gray-500 font-medium hidden sm:inline">
+                  <span className="text-xs text-gray-500 font-medium hidden md:inline">
                     &bull; &ldquo;A family caring for your family&rdquo;
                   </span>
                 </div>
-                <h2 className="text-xl sm:text-2xl font-bold text-[#1A2229] mt-1">
+                <h2 className="text-sm sm:text-lg font-bold text-[#1A2229] mt-0.5 leading-tight truncate">
                   Complete Care by Husband-Wife Specialist Duo
                 </h2>
               </div>
@@ -84,40 +86,47 @@ export default function CoupleAdvantage() {
             <button
               type="button"
               onClick={() => setModalOpen(true)}
-              className="btn-primary text-xs py-2.5 px-5 shadow-xs hover:shadow-md shrink-0 self-start lg:self-auto inline-flex items-center gap-2 cursor-pointer"
+              className="btn-primary text-xs py-2 px-4 shadow-xs hover:shadow-md shrink-0 self-start sm:self-auto inline-flex items-center gap-1.5 cursor-pointer"
             >
-              <Users className="w-4 h-4" />
+              <Users className="w-3.5 h-3.5" />
               <span>Inquire Joint Consultation</span>
             </button>
           </div>
 
-          {/* Bottom Row: 4 Ultra-Compact Micro-Points */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 pt-6">
-            {advantages.map((adv) => {
-              const IconComponent = adv.icon;
-              return (
-                <div
-                  key={adv.title}
-                  className="p-3.5 rounded-2xl bg-white/90 backdrop-blur-xs border border-gray-100 hover:border-[#FFCCD6] hover:shadow-sm transition-all flex items-start gap-3 group"
-                >
-                  <div
-                    className={`w-9 h-9 rounded-xl ${adv.bg} flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform`}
-                    style={{ color: adv.color }}
-                  >
-                    <IconComponent className="w-4 h-4" />
-                  </div>
+          {/* Bottom Row: Infinite Smooth Scrolling Marquee Ticker */}
+          <div className="relative w-full overflow-hidden group/marquee pt-3 border-t border-gray-100/90">
+            {/* Left & Right Subtle Fade */}
+            <div className="pointer-events-none absolute inset-y-0 left-0 w-8 sm:w-12 bg-gradient-to-r from-[#FFF8F9] via-[#FFF8F9]/80 to-transparent z-10" />
+            <div className="pointer-events-none absolute inset-y-0 right-0 w-8 sm:w-12 bg-gradient-to-l from-[#F4FAFD] via-[#F4FAFD]/80 to-transparent z-10" />
 
-                  <div className="min-w-0">
-                    <h3 className="font-bold text-xs sm:text-sm text-[#1A2229] leading-snug">
-                      {adv.title}
-                    </h3>
-                    <p className="text-[11px] text-[#64748B] leading-relaxed mt-0.5">
-                      {adv.desc}
-                    </p>
+            {/* Scrolling Ticker Track */}
+            <div className="animate-marquee gap-3 py-1 pl-2">
+              {doubledAdvantages.map((adv, i) => {
+                const IconComponent = adv.icon;
+                return (
+                  <div
+                    key={`${adv.title}-${i}`}
+                    className="w-[260px] sm:w-[285px] shrink-0 p-3 rounded-2xl bg-white/95 backdrop-blur-xs border border-gray-100 hover:border-[#FFCCD6] hover:shadow-md transition-all flex items-center gap-3 select-none"
+                  >
+                    <div
+                      className={`w-9 h-9 rounded-xl ${adv.bg} flex items-center justify-center shrink-0 shadow-2xs group-hover/marquee:scale-105 transition-transform`}
+                      style={{ color: adv.color }}
+                    >
+                      <IconComponent className="w-4 h-4" />
+                    </div>
+
+                    <div className="min-w-0">
+                      <h3 className="font-bold text-xs sm:text-[13px] text-[#1A2229] leading-tight truncate">
+                        {adv.title}
+                      </h3>
+                      <p className="text-[10.5px] text-[#64748B] leading-tight mt-0.5 line-clamp-1">
+                        {adv.desc}
+                      </p>
+                    </div>
                   </div>
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
           </div>
 
         </div>
