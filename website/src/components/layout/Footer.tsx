@@ -29,7 +29,7 @@ export default function Footer() {
                   alt="Dr. Subham & Dr. Ruchika Emblem"
                   width={44}
                   height={44}
-                  className="object-contain"
+                  className="w-auto h-auto object-contain"
                 />
               </div>
               <div>

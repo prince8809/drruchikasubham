@@ -29,7 +29,7 @@ export default function Navbar() {
               alt="Dr. Subham & Dr. Ruchika Emblem"
               width={40}
               height={40}
-              className="object-contain"
+              className="w-auto h-auto object-contain"
               priority
             />
           </div>
