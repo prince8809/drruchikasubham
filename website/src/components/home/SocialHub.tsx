@@ -197,12 +197,18 @@ export default function SocialHub() {
                 </div>
 
                 {/* Card Title & Actions */}
-                <div className="p-4 space-y-3 bg-white">
+                <div className="p-4 space-y-2 bg-white">
+                  <span className="text-[10px] font-bold text-[#FB5A7C] uppercase tracking-wider block">
+                    {post.tagline || post.category}
+                  </span>
                   <h4 className="font-bold text-sm text-[#1A2229] leading-snug line-clamp-2">
                     {post.title}
                   </h4>
+                  <p className="text-xs text-[#64748B] line-clamp-2 leading-relaxed">
+                    {post.caption}
+                  </p>
 
-                  <div className="flex items-center justify-between text-xs pt-2 border-t border-gray-100">
+                  <div className="flex items-center justify-between text-xs pt-3 border-t border-gray-100">
                     {/* Inline Play Toggle */}
                     <button
                       onClick={() => handlePlayCard(post.id)}
