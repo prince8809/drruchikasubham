@@ -1,5 +1,3 @@
-import { WHATSAPP_SUBHAM, WHATSAPP_RUCHIKA } from "@/lib/constants";
-
 export interface Service {
   slug: string;
   title: string;
@@ -7,8 +5,6 @@ export interface Service {
   icon: string;
   color: string;
   category: "Pregnancy & Delivery" | "Fertility & Hormones" | "Advanced Surgery" | "Well-Woman";
-  doctorLead: string;
-  whatsappUrl: string;
   details: string[];
 }
 
@@ -20,8 +16,6 @@ export const services: Service[] = [
     icon: "HeartPulse",
     color: "#FB5A7C",
     category: "Pregnancy & Delivery",
-    doctorLead: "Dr. Subham & Dr. Ruchika",
-    whatsappUrl: WHATSAPP_SUBHAM,
     details: ["Hypertension & Gestational Diabetes", "Twin Pregnancies & Advanced Age", "Recurrent Loss Monitoring"]
   },
   {
@@ -31,8 +25,6 @@ export const services: Service[] = [
     icon: "Baby",
     color: "#2FB2EA",
     category: "Pregnancy & Delivery",
-    doctorLead: "Dr. Subham Agarwal",
-    whatsappUrl: WHATSAPP_SUBHAM,
     details: ["Normal Vaginal Delivery Focus", "Gentle Cesarean Section (LUCS)", "Painless Epidural Labor Support"]
   },
   {
@@ -42,8 +34,6 @@ export const services: Service[] = [
     icon: "Sparkles",
     color: "#FB5A7C",
     category: "Fertility & Hormones",
-    doctorLead: "Dr. Ruchika Agarwal",
-    whatsappUrl: WHATSAPP_RUCHIKA,
     details: ["Preconception Counselling", "Follicular Monitoring & IUI", "Advanced IVF Pathways"]
   },
   {
@@ -53,8 +43,6 @@ export const services: Service[] = [
     icon: "Activity",
     color: "#FB5A7C",
     category: "Fertility & Hormones",
-    doctorLead: "Dr. Ruchika Agarwal",
-    whatsappUrl: WHATSAPP_RUCHIKA,
     details: ["Cycle Regularisation & Acne", "Metabolic & Weight Guidance", "Fertility Restoration"]
   },
   {
@@ -64,8 +52,6 @@ export const services: Service[] = [
     icon: "Microscope",
     color: "#2FB2EA",
     category: "Advanced Surgery",
-    doctorLead: "Dr. Subham Agarwal",
-    whatsappUrl: WHATSAPP_SUBHAM,
     details: ["Laparoscopic Hysterectomy", "Ovarian Cystectomy", "Myomectomy (Fibroid Removal)"]
   },
   {
@@ -75,8 +61,6 @@ export const services: Service[] = [
     icon: "ShieldAlert",
     color: "#2FB2EA",
     category: "Advanced Surgery",
-    doctorLead: "Dr. Subham Agarwal",
-    whatsappUrl: WHATSAPP_SUBHAM,
     details: ["Severe Dysmenorrhea Care", "Medical Pain Management", "Laparoscopic Excision"]
   },
   {
@@ -86,8 +70,6 @@ export const services: Service[] = [
     icon: "Heart",
     color: "#FB5A7C",
     category: "Well-Woman",
-    doctorLead: "Dr. Ruchika Agarwal",
-    whatsappUrl: WHATSAPP_RUCHIKA,
     details: ["Hot Flashes & Mood Balance", "Bone Density & Osteoporosis", "Preventive Health Screenings"]
   },
   {
@@ -97,8 +79,6 @@ export const services: Service[] = [
     icon: "Sparkles",
     color: "#0B75A1",
     category: "Advanced Surgery",
-    doctorLead: "Both Specialists",
-    whatsappUrl: WHATSAPP_SUBHAM,
     details: ["Review of Prior Scans & Reports", "Minimally Invasive Alternatives", "Personalized Treatment Plan"]
   },
 ];
