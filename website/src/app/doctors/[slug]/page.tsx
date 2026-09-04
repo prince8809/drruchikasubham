@@ -208,33 +208,16 @@ export default async function DoctorProfilePage({ params }: { params: Promise<{ 
                   </div>
                 </div>
 
-                {/* Primary Quick CTA buttons: Graphic WhatsApp & Call Clinic */}
-                <div className="mt-2.5 grid grid-cols-2 gap-2">
+                {/* Primary Quick CTA button: Direct WhatsApp Booking */}
+                <div className="mt-2.5">
                   <a
                     href={doctor.whatsapp}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn-whatsapp justify-center text-xs py-2.5 px-3 rounded-full shadow-sm hover:shadow-md hover:scale-[1.02] active:scale-[0.98] transition-all font-bold"
+                    className="btn-whatsapp w-full justify-center text-xs py-2.5 px-4 rounded-full shadow-sm hover:shadow-md hover:scale-[1.02] active:scale-[0.98] transition-all font-bold flex items-center gap-2"
                   >
                     <MessageCircle className="w-4 h-4 fill-white shrink-0" />
-                    <span>WhatsApp</span>
-                  </a>
-                  <a
-                    href={`tel:${doctor.phone}`}
-                    className={`inline-flex items-center justify-center gap-1.5 text-xs py-2.5 px-3 rounded-full font-bold transition-all shadow-sm hover:shadow-md hover:scale-[1.02] active:scale-[0.98] border ${
-                      isSubham
-                        ? "bg-[#F2FAFE] text-[#0B75A1] border-[#BCE6F9] hover:bg-[#E3F4FC]"
-                        : "bg-[#FFF5F7] text-[#C4274C] border-[#FFCCD6] hover:bg-[#FFE9ED]"
-                    }`}
-                  >
-                    <div
-                      className={`w-5 h-5 rounded-full flex items-center justify-center shrink-0 ${
-                        isSubham ? "bg-[#2FB2EA]/20 text-[#0B75A1]" : "bg-[#FB5A7C]/20 text-[#C4274C]"
-                      }`}
-                    >
-                      <Phone className="w-3 h-3" />
-                    </div>
-                    <span>Call Clinic</span>
+                    <span>Book on WhatsApp</span>
                   </a>
                 </div>
               </div>
@@ -499,7 +482,7 @@ export default async function DoctorProfilePage({ params }: { params: Promise<{ 
                       </div>
                       <div>
                         <span className="text-[10px] uppercase font-bold text-gray-400 block tracking-wider">
-                          Direct Clinic Phone
+                          Clinic Desk Phone (Inquiries &amp; Navigation)
                         </span>
                         <a
                           href={`tel:${doctor.phone}`}
@@ -509,17 +492,9 @@ export default async function DoctorProfilePage({ params }: { params: Promise<{ 
                         </a>
                       </div>
                     </div>
-                    <a
-                      href={`tel:${doctor.phone}`}
-                      className={`inline-flex items-center gap-1.5 text-xs font-bold py-1.5 px-3 rounded-full shadow-2xs hover:shadow-xs transition-all ${
-                        isSubham
-                          ? "bg-[#F2FAFE] text-[#0B75A1] border border-[#BCE6F9] hover:bg-[#E3F4FC]"
-                          : "bg-[#FFF5F7] text-[#C4274C] border-[#FFCCD6] hover:bg-[#FFE9ED]"
-                      }`}
-                    >
-                      <Phone className="w-3 h-3" />
-                      <span>Call Now</span>
-                    </a>
+                    <span className="text-[11px] font-semibold text-gray-500 bg-white px-2.5 py-1 rounded-full border border-gray-200">
+                      Reception Desk
+                    </span>
                   </div>
                 </div>
 
@@ -685,17 +660,6 @@ export default async function DoctorProfilePage({ params }: { params: Promise<{ 
             >
               <MessageCircle className="w-4 h-4 fill-white" />
               <span>Book on WhatsApp Now</span>
-            </a>
-            <a
-              href={`tel:${doctor.phone}`}
-              className={`inline-flex items-center gap-2 text-xs sm:text-sm py-2.5 px-6 rounded-full font-bold transition-all shadow-sm hover:shadow-md border ${
-                isSubham
-                  ? "bg-[#F2FAFE] text-[#0B75A1] border-[#BCE6F9] hover:bg-[#E3F4FC]"
-                  : "bg-[#FFF5F7] text-[#C4274C] border-[#FFCCD6] hover:bg-[#FFE9ED]"
-              }`}
-            >
-              <Phone className="w-4 h-4" />
-              <span>Call Clinic ({doctor.phone})</span>
             </a>
             <Link
               href="/"
