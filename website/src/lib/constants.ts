@@ -1,0 +1,10 @@
+export const WHATSAPP_SUBHAM = "https://wa.me/919883368764?text=Hey%20I%20want%20to%20Book%20an%20appointment";
+export const WHATSAPP_RUCHIKA = "https://wa.me/917872969660?text=Hey%20I%20want%20to%20Book%20an%20appointment";
+export const PHONE_SUBHAM = "+91-9883368764";
+export const PHONE_RUCHIKA = "+91-7872969660";
+export const INSTAGRAM_URL = "https://www.instagram.com/drruchikasubham";
+export const INSTAGRAM_HANDLE = "@drruchikasubham";
+export const FACEBOOK_URL = "https://www.facebook.com/drruchikasubham";
+export const ADDRESS_MANIPAL = "Manipal Hospital, Meghnad Saha Sarani, Ward 2, Pradhan Nagar, Siliguri, West Bengal 734003";
+export const ADDRESS_ZIVAH = "Zivah Fertility & Women's Wellness Centre, 2nd Floor, The Crest, Meghnad Saha Sarani, Opposite Deokta Sangha, Pradhan Nagar, Siliguri - 734003";
+export const CONSULTATION_FEE = "₹800";
