@@ -9,7 +9,6 @@ import {
   FACEBOOK_URL,
   ADDRESS_MANIPAL,
   ADDRESS_ZIVAH,
-  CONSULTATION_FEE,
   WHATSAPP_SUBHAM,
   WHATSAPP_RUCHIKA
 } from "@/lib/constants";
@@ -157,13 +156,9 @@ export default function Footer() {
 
           {/* Column 4: Consultation & Insurance */}
           <div className="space-y-4">
-            <h4 className="font-semibold text-base text-white">Consultation &amp; Insurance</h4>
-            <div className="bg-gray-800/80 rounded-xl p-4 border border-gray-700/60 space-y-2.5">
-              <div className="flex justify-between items-center text-xs">
-                <span className="text-gray-400">Standard OPD Fee</span>
-                <span className="font-bold text-[#FB5A7C] text-sm">{CONSULTATION_FEE}</span>
-              </div>
-              <div className="flex items-center gap-2 text-xs text-emerald-400 pt-1 border-t border-gray-700">
+            <h4 className="font-semibold text-base text-white">Insurance &amp; Coverage</h4>
+            <div className="bg-gray-800/80 rounded-xl p-4 border border-gray-700/60 space-y-2">
+              <div className="flex items-center gap-2 text-xs text-emerald-400 font-semibold">
                 <ShieldCheck className="w-4 h-4 shrink-0" />
                 <span>Cashless &amp; TPA Insurance Supported</span>
               </div>

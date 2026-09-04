@@ -7,4 +7,3 @@ export const INSTAGRAM_HANDLE = "@drruchikasubham";
 export const FACEBOOK_URL = "https://www.facebook.com/drruchikasubham";
 export const ADDRESS_MANIPAL = "Manipal Hospital, Meghnad Saha Sarani, Ward 2, Pradhan Nagar, Siliguri, West Bengal 734003";
 export const ADDRESS_ZIVAH = "Zivah Fertility & Women's Wellness Centre, 2nd Floor, The Crest, Meghnad Saha Sarani, Opposite Deokta Sangha, Pradhan Nagar, Siliguri - 734003";
-export const CONSULTATION_FEE = "₹800";

@@ -1,4 +1,4 @@
-import { WHATSAPP_SUBHAM, WHATSAPP_RUCHIKA, PHONE_SUBHAM, PHONE_RUCHIKA, CONSULTATION_FEE } from "@/lib/constants";
+import { WHATSAPP_SUBHAM, WHATSAPP_RUCHIKA, PHONE_SUBHAM, PHONE_RUCHIKA } from "@/lib/constants";
 
 export interface SpecialtyItem {
   title: string;
@@ -33,7 +33,6 @@ export interface Doctor {
   hospital: string;
   hospitalShort: string;
   timings: string;
-  consultationFee: string;
   experience: string;
   languages: string[];
   qualificationsList: string[];
@@ -72,7 +71,6 @@ export const doctors: Doctor[] = [
     hospital: "Manipal Hospital, Meghnad Saha Sarani, Ward 2, Pradhan Nagar, Siliguri, West Bengal 734003",
     hospitalShort: "Manipal Hospital, Siliguri",
     timings: "Monday – Friday: 10:00 AM – 6:00 PM",
-    consultationFee: CONSULTATION_FEE,
     experience: "6+ Years",
     languages: ["English", "Hindi", "Bengali", "Nepali"],
     qualificationsList: [
@@ -149,8 +147,8 @@ export const doctors: Doctor[] = [
         answer: "Dr. Subham consults OPD patients at Manipal Hospital, Siliguri from Monday to Friday between 10:00 AM and 6:00 PM. All deliveries and surgical procedures are conducted at Manipal Hospital with full ICU and NICU support."
       },
       {
-        question: "What is the consultation fee and is insurance accepted?",
-        answer: "The standard OPD consultation fee is ₹800. Cashless and TPA insurance claims are fully supported for all inpatient admissions, deliveries, and surgical procedures at Manipal Hospital."
+        question: "Is cashless health insurance accepted for procedures?",
+        answer: "Yes. Cashless and TPA insurance claims are fully supported for all inpatient admissions, deliveries (normal and cesarean), and laparoscopic surgeries at Manipal Hospital."
       },
       {
         question: "Can husbands and partners join the consultation and labor room?",
@@ -182,7 +180,6 @@ export const doctors: Doctor[] = [
     hospital: "Zivah Fertility & Women's Wellness Centre, 2nd Floor, The Crest, Meghnad Saha Sarani, Opposite Deokta Sangha, Pradhan Nagar, Siliguri - 734003",
     hospitalShort: "Zivah Fertility & Wellness Centre",
     timings: "Monday – Friday: 10:00 AM – 2:00 PM",
-    consultationFee: CONSULTATION_FEE,
     experience: "6+ Years",
     languages: ["English", "Hindi", "Bengali", "Nepali"],
     qualificationsList: [
@@ -256,8 +253,8 @@ export const doctors: Doctor[] = [
         answer: "Dr. Ruchika consults at Zivah Fertility & Women's Wellness Centre, 2nd Floor, The Crest, Meghnad Saha Sarani (opposite Deokta Sangha), Pradhan Nagar, Siliguri from Monday to Friday between 10:00 AM and 2:00 PM."
       },
       {
-        question: "What is the consultation fee and how do I book?",
-        answer: "The standard OPD consultation fee is ₹800. You can book an appointment instantly on WhatsApp by clicking the 'Book on WhatsApp' button on this page."
+        question: "How do I book an OPD consultation with Dr. Ruchika?",
+        answer: "You can book your consultation directly on WhatsApp by clicking the 'Book on WhatsApp' button on this page, or by contacting the clinic desk."
       },
       {
         question: "I have painful periods or PCOS. What happens during the first visit?",

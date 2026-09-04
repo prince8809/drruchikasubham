@@ -46,7 +46,7 @@ export async function generateMetadata({
   }
 
   const title = `${doctor.name} — ${doctor.role} | Siliguri`;
-  const description = `${doctor.tagline} ${doctor.bio} Consulting at ${doctor.hospitalShort}. Standard OPD Consultation: ${doctor.consultationFee}.`;
+  const description = `${doctor.tagline} ${doctor.bio} Consulting at ${doctor.hospitalShort}. Direct WhatsApp appointments & Cashless TPA insurance supported.`;
 
   return {
     title,
@@ -58,41 +58,34 @@ export async function generateMetadata({
       "gynaecologist siliguri",
       "obstetrician siliguri",
       doctor.hospitalShort,
-      "pregnancy care siliguri",
-      "PCOS doctor siliguri",
-      "laparoscopic surgery siliguri",
+      "laparoscopic surgeon siliguri",
+      "pregnancy doctor siliguri",
       "normal delivery siliguri",
-      "high-risk pregnancy siliguri",
-      "IVF clinic siliguri",
+      "c section siliguri",
+      "women doctor siliguri",
     ],
+    alternates: {
+      canonical: `https://drruchikasubham.com/doctors/${doctor.slug}`,
+    },
     openGraph: {
       title,
       description,
+      url: `https://drruchikasubham.com/doctors/${doctor.slug}`,
+      siteName: "Dr. Ruchika & Dr. Subham Agarwal",
       type: "profile",
-      locale: "en_IN",
       images: [
         {
           url: doctor.photo,
           width: 800,
-          height: 1000,
+          height: 800,
           alt: doctor.name,
         },
       ],
     },
-    twitter: {
-      card: "summary_large_image",
-      title,
-      description,
-      images: [doctor.photo],
-    },
   };
 }
 
-export default async function DoctorDetailPage({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}) {
+export default async function DoctorProfilePage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const doctor = doctors.find((d) => d.slug === slug);
 
@@ -111,7 +104,6 @@ export default async function DoctorDetailPage({
     jobTitle: doctor.role,
     description: doctor.fullBio,
     telephone: doctor.phone,
-    priceRange: doctor.consultationFee,
     knowsLanguage: doctor.languages,
     image: `https://drruchikasubham.com${doctor.photo}`,
     medicalSpecialty: [
@@ -207,8 +199,8 @@ export default async function DoctorDetailPage({
                 </div>
 
                 {/* Hospital Badge on Card */}
-                <div className="mt-2.5 p-2.5 rounded-xl bg-gray-50 border border-gray-100 flex items-center justify-between text-xs">
-                  <div className="flex items-center gap-2">
+                <div className="mt-2.5 p-2.5 rounded-xl bg-gray-50 border border-gray-100 flex items-center text-xs">
+                  <div className="flex items-center gap-2 min-w-0">
                     <Building2 className="w-4 h-4 text-gray-500 shrink-0" />
                     <div className="min-w-0">
                       <span className="font-bold text-[#1A2229] block truncate">
@@ -217,9 +209,6 @@ export default async function DoctorDetailPage({
                       <span className="text-gray-500 text-[11px]">{doctor.timings}</span>
                     </div>
                   </div>
-                  <span className="font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full text-[11px] shrink-0 ml-2">
-                    {doctor.consultationFee}
-                  </span>
                 </div>
 
                 {/* Primary Quick CTA buttons: Graphic WhatsApp & Call Clinic */}
@@ -304,7 +293,7 @@ export default async function DoctorDetailPage({
               </div>
 
               {/* Key Quick Stats Strip */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-1">
+              <div className="grid grid-cols-3 gap-2.5 pt-1">
                 <div className="p-2.5 rounded-2xl bg-white border border-gray-100 shadow-2xs text-center">
                   <span className="block text-lg sm:text-xl font-extrabold text-[#1A2229]">
                     {doctor.experience}
@@ -316,12 +305,6 @@ export default async function DoctorDetailPage({
                     1,000+
                   </span>
                   <span className="text-[10px] text-gray-500 font-medium">Normal Deliveries</span>
-                </div>
-                <div className="p-2.5 rounded-2xl bg-white border border-gray-100 shadow-2xs text-center">
-                  <span className="block text-lg sm:text-xl font-extrabold text-[#1A2229]">
-                    {doctor.consultationFee}
-                  </span>
-                  <span className="text-[10px] text-gray-500 font-medium">Standard OPD</span>
                 </div>
                 <div className="p-2.5 rounded-2xl bg-white border border-gray-100 shadow-2xs text-center">
                   <span className="block text-lg sm:text-xl font-extrabold text-emerald-600">
@@ -558,19 +541,10 @@ export default async function DoctorDetailPage({
                 </div>
               </div>
 
-              {/* Consultation Fee & Insurance Badge Box */}
-              <div className="bg-[#FAFAF9] rounded-2xl p-5 border border-gray-200 space-y-3">
-                <div className="flex justify-between items-center pb-2.5 border-b border-gray-200">
-                  <span className="text-xs font-bold uppercase tracking-wider text-gray-500">
-                    Standard OPD Fee
-                  </span>
-                  <span className="text-2xl font-black text-[#FB5A7C]">
-                    {doctor.consultationFee}
-                  </span>
-                </div>
-
+              {/* Insurance & Quick Appointment Booking Box */}
+              <div className="bg-[#FAFAF9] rounded-2xl p-4 sm:p-5 border border-gray-200 space-y-3">
                 <div className="space-y-1.5">
-                  <div className="flex items-center gap-2 text-xs font-semibold text-emerald-800 bg-emerald-50 border border-emerald-200 px-3 py-1.5 rounded-xl">
+                  <div className="flex items-center gap-2 text-xs font-semibold text-emerald-800 bg-emerald-50 border border-emerald-200 px-3 py-2 rounded-xl">
                     <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0" />
                     <span>Cashless &amp; TPA Insurance Supported</span>
                   </div>

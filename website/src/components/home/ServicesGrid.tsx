@@ -20,8 +20,7 @@ import {
 import { services, Service } from "@/data/services";
 import {
   WHATSAPP_SUBHAM,
-  WHATSAPP_RUCHIKA,
-  CONSULTATION_FEE
+  WHATSAPP_RUCHIKA
 } from "@/lib/constants";
 
 type CategoryFilter = "All" | "Pregnancy & Delivery" | "Fertility & Hormones" | "Advanced Surgery" | "Well-Woman";
@@ -237,7 +236,6 @@ export default function ServicesGrid() {
                     {bookingService.title}
                   </span>
                   <h4 className="font-bold text-[#1A2229] text-lg leading-tight">Quick WhatsApp Booking</h4>
-                  <p className="text-xs text-[#64748B] mt-0.5">Consultation Fee: {CONSULTATION_FEE}</p>
                 </div>
                 <button
                   onClick={() => setBookingService(null)}

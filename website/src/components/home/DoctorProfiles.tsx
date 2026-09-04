@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { MessageCircle, MapPin, Clock, ArrowRight } from "lucide-react";
 import { doctors } from "@/data/doctors";
-import { CONSULTATION_FEE } from "@/lib/constants";
 
 export default function DoctorProfiles() {
   return (
@@ -57,12 +56,9 @@ export default function DoctorProfiles() {
 
                   {/* Doctor Details */}
                   <div className="min-w-0 flex-1 space-y-1.5">
-                    <div className="flex items-center justify-between gap-1.5 flex-wrap sm:flex-nowrap">
+                    <div className="flex items-center gap-1.5">
                       <span className={`inline-block text-[10px] sm:text-xs font-bold px-2.5 py-0.5 rounded-full ${badgeBg}`}>
                         {doc.degrees}
-                      </span>
-                      <span className="text-[11px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full shrink-0">
-                        OPD: {CONSULTATION_FEE}
                       </span>
                     </div>
 

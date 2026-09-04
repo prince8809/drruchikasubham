@@ -5,7 +5,6 @@ import { MessageCircle, Calendar, ShieldCheck, MapPin, Clock } from "lucide-reac
 import {
   WHATSAPP_SUBHAM,
   WHATSAPP_RUCHIKA,
-  CONSULTATION_FEE,
   ADDRESS_MANIPAL,
   ADDRESS_ZIVAH
 } from "@/lib/constants";
@@ -67,13 +66,9 @@ export default function BookingStrip() {
               </div>
             </div>
 
-            <div className="flex items-center justify-center lg:justify-start gap-4 pt-2 text-xs text-white/90 font-medium">
-              <span className="flex items-center gap-1.5">
-                <ShieldCheck className="w-4 h-4 text-emerald-300" />
-                Standard OPD Fee: <strong>{CONSULTATION_FEE}</strong>
-              </span>
-              <span>&bull;</span>
-              <span>Cashless TPA Accepted</span>
+            <div className="flex items-center justify-center lg:justify-start gap-2 pt-2 text-xs text-white/90 font-medium">
+              <ShieldCheck className="w-4 h-4 text-emerald-300 shrink-0" />
+              <span>Cashless &amp; TPA Insurance Accepted for Deliveries &amp; Surgeries</span>
             </div>
           </div>
 

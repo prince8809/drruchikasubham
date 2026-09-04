@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { MessageCircle, X, ExternalLink } from "lucide-react";
-import { WHATSAPP_SUBHAM, WHATSAPP_RUCHIKA, CONSULTATION_FEE } from "@/lib/constants";
+import { WHATSAPP_SUBHAM, WHATSAPP_RUCHIKA } from "@/lib/constants";
 
 export default function WhatsAppFAB() {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,7 +15,6 @@ export default function WhatsAppFAB() {
           <div className="flex items-center justify-between pb-3 border-b border-gray-100">
             <div>
               <h4 className="font-bold text-[#1A2229] text-base">Quick WhatsApp Booking</h4>
-              <p className="text-xs text-[#64748B]">Consultation Fee: {CONSULTATION_FEE}</p>
             </div>
             <button
               onClick={() => setIsOpen(false)}

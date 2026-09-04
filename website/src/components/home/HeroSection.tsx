@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { MessageCircle, ShieldCheck, Heart, Sparkles, Award } from "lucide-react";
-import { WHATSAPP_SUBHAM, WHATSAPP_RUCHIKA, CONSULTATION_FEE } from "@/lib/constants";
+import { WHATSAPP_SUBHAM, WHATSAPP_RUCHIKA } from "@/lib/constants";
 
 export default function HeroSection() {
   return (
@@ -71,10 +71,6 @@ export default function HeroSection() {
               <div className="flex items-center gap-1.5">
                 <ShieldCheck className="w-4 h-4 text-[#10B981]" />
                 <span>Cashless Insurance Tie-up</span>
-              </div>
-              <div className="flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-[#2FB2EA]"></span>
-                <span>Standard OPD Fee: <strong>{CONSULTATION_FEE}</strong></span>
               </div>
             </div>
           </div>
