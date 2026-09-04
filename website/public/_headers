@@ -1,0 +1,17 @@
+# Static Next.js JavaScript & CSS chunks (immutable content hashes)
+/_next/static/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Images & Media Assets
+/images/*
+  Cache-Control: public, max-age=2592000, stale-while-revalidate=86400
+
+/videos/*
+  Cache-Control: public, max-age=2592000
+
+# Security Headers across all routes
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()

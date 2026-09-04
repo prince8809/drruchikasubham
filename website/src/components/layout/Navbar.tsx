@@ -137,7 +137,7 @@ export default function Navbar() {
                 >
                   <div className="relative w-12 h-14 rounded-xl overflow-hidden bg-pink-50 border border-pink-200 shrink-0 shadow-2xs">
                     <Image
-                      src="/images/doctors/dr-ruchika-headshot.jpg"
+                      src="/images/doctors/dr-ruchika-headshot.webp"
                       alt="Dr. Ruchika Agarwal"
                       fill
                       sizes="60px"
@@ -167,7 +167,7 @@ export default function Navbar() {
                 >
                   <div className="relative w-12 h-14 rounded-xl overflow-hidden bg-sky-50 border border-sky-200 shrink-0 shadow-2xs">
                     <Image
-                      src="/images/doctors/dr-subham-headshot.png"
+                      src="/images/doctors/dr-subham-headshot.webp"
                       alt="Dr. Subham Agarwal"
                       fill
                       sizes="60px"
@@ -280,7 +280,7 @@ export default function Navbar() {
                   >
                     <div className="relative w-9 h-11 rounded-lg overflow-hidden bg-white shrink-0 border border-pink-200">
                       <Image
-                        src="/images/doctors/dr-ruchika-headshot.jpg"
+                        src="/images/doctors/dr-ruchika-headshot.webp"
                         alt="Dr. Ruchika"
                         fill
                         sizes="40px"
@@ -304,7 +304,7 @@ export default function Navbar() {
                   >
                     <div className="relative w-9 h-11 rounded-lg overflow-hidden bg-white shrink-0 border border-sky-200">
                       <Image
-                        src="/images/doctors/dr-subham-headshot.png"
+                        src="/images/doctors/dr-subham-headshot.webp"
                         alt="Dr. Subham"
                         fill
                         sizes="40px"

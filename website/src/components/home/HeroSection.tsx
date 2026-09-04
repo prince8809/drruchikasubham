@@ -41,6 +41,9 @@ export default function HeroSection() {
               </span>{" "}
               <br className="hidden sm:inline" />
               Expertly Cared For.
+              <span className="block text-xs sm:text-sm font-semibold tracking-normal text-[#64748B] mt-2.5 font-sans">
+                Dr. Ruchika &amp; Dr. Subham Agarwal &bull; Obstetricians, Gynaecologists &amp; Laparoscopic Surgeons in Siliguri
+              </span>
             </h1>
 
             {/* Subtitle */}
@@ -107,7 +110,7 @@ export default function HeroSection() {
                 >
                   <div className="relative w-full aspect-[4/4.8] rounded-xl sm:rounded-2xl overflow-hidden mb-2 sm:mb-2.5 bg-[#FFF5F7]">
                     <Image
-                      src="/images/doctors/dr-ruchika-headshot.jpg"
+                      src="/images/doctors/dr-ruchika-headshot.webp"
                       alt="Dr. Ruchika Agarwal"
                       fill
                       sizes="(max-width: 768px) 50vw, 250px"
@@ -138,7 +141,7 @@ export default function HeroSection() {
                 >
                   <div className="relative w-full aspect-[4/4.8] rounded-xl sm:rounded-2xl overflow-hidden mb-2 sm:mb-2.5 bg-[#F2FAFE]">
                     <Image
-                      src="/images/doctors/dr-subham-headshot.png"
+                      src="/images/doctors/dr-subham-headshot.webp"
                       alt="Dr. Subham Agarwal"
                       fill
                       sizes="(max-width: 768px) 50vw, 250px"

@@ -1,0 +1,9 @@
+# https://drruchikasubham.com/robots.txt
+User-agent: *
+Allow: /
+
+# Host
+Host: https://drruchikasubham.com
+
+# Sitemaps
+Sitemap: https://drruchikasubham.com/sitemap.xml

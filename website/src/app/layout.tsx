@@ -3,19 +3,54 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://drruchikasubham.com"),
-  title: "Dr. Ruchika & Dr. Subham Agarwal | Gynaecologist & Obstetrician in Siliguri",
+  title: {
+    default: "Dr. Ruchika & Dr. Subham Agarwal | Gynaecologists & Obstetricians in Siliguri",
+    template: "%s | Dr. Ruchika & Dr. Subham Agarwal",
+  },
   description:
-    "Complete women's healthcare by husband-wife specialist duo. High-risk pregnancy, normal & cesarean delivery, IVF, PCOS treatment, laparoscopic surgery in Siliguri.",
+    "Complete women's healthcare by husband-wife specialist duo in Siliguri. High-risk pregnancy, normal & cesarean delivery, IVF, PCOS treatment, & laparoscopic surgery.",
   keywords: [
     "gynaecologist siliguri",
     "obstetrician siliguri",
-    "IVF siliguri",
-    "PCOS doctor siliguri",
-    "pregnancy care siliguri",
+    "lady gynaecologist siliguri",
+    "laparoscopic surgeon siliguri",
     "Dr Ruchika Agarwal",
     "Dr Subham Agarwal",
     "manipal hospital siliguri",
+    "zivah fertility siliguri",
+    "IVF siliguri",
+    "PCOS doctor siliguri",
+    "pregnancy doctor siliguri",
+    "normal delivery siliguri",
+    "cesarean delivery siliguri",
   ],
+  alternates: {
+    canonical: "https://drruchikasubham.com",
+  },
+  openGraph: {
+    title: "Dr. Ruchika & Dr. Subham Agarwal | Gynaecologists & Obstetricians in Siliguri",
+    description:
+      "Complete women's healthcare by husband-wife specialist duo in Siliguri. High-risk pregnancy, normal delivery, IVF, PCOS, and advanced laparoscopic surgery.",
+    url: "https://drruchikasubham.com",
+    siteName: "Dr. Ruchika & Dr. Subham Agarwal",
+    locale: "en_IN",
+    type: "website",
+    images: [
+      {
+        url: "/images/brand/logo.png",
+        width: 800,
+        height: 800,
+        alt: "Dr. Ruchika & Dr. Subham Agarwal Emblem",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Dr. Ruchika & Dr. Subham Agarwal | Gynaecologists in Siliguri",
+    description:
+      "Empathetic maternity, fertility & minimally invasive laparoscopic surgical care in Siliguri at Manipal Hospital & Zivah Centre.",
+    images: ["/images/brand/logo.png"],
+  },
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },

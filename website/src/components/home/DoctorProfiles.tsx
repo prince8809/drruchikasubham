@@ -3,7 +3,11 @@ import Link from "next/link";
 import { MessageCircle, MapPin, Clock, ArrowRight } from "lucide-react";
 import { doctors } from "@/data/doctors";
 
-export default function DoctorProfiles() {
+interface DoctorProfilesProps {
+  isPageHeading?: boolean;
+}
+
+export default function DoctorProfiles({ isPageHeading = false }: DoctorProfilesProps = {}) {
   return (
     <section id="doctors" className="py-10 sm:py-14 bg-white border-t border-[#F1E5E8]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -11,9 +15,15 @@ export default function DoctorProfiles() {
         {/* Section Heading - Compact & High Impact */}
         <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-10">
           <span className="badge-accent mb-2">Dual Specialist Excellence</span>
-          <h2 className="text-2xl sm:text-3xl font-bold text-[#1A2229]">
-            Meet Your Consulting Doctors
-          </h2>
+          {isPageHeading ? (
+            <h1 className="text-2xl sm:text-4xl font-extrabold text-[#1A2229] tracking-tight">
+              Consulting Gynaecologists &amp; Obstetricians in Siliguri
+            </h1>
+          ) : (
+            <h2 className="text-2xl sm:text-3xl font-bold text-[#1A2229]">
+              Meet Your Consulting Doctors
+            </h2>
+          )}
           <p className="text-xs sm:text-sm text-[#475569] mt-2">
             Siliguri&apos;s husband-and-wife specialist team. Select a doctor to view their full credentials, clinical philosophy, and OPD timings.
           </p>
