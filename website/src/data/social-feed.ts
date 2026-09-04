@@ -21,8 +21,7 @@ export const socialPosts: SocialPost[] = [
     url: INSTAGRAM_URL,
     duration: "1:15",
     views: "12.4K",
-    // Sample high-quality educational maternity/care video for immediate in-page preview
-    videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+    videoUrl: "/videos/sample-reel-1.mp4",
   },
   {
     id: "reel-2",
@@ -31,7 +30,7 @@ export const socialPosts: SocialPost[] = [
     url: INSTAGRAM_URL,
     duration: "0:58",
     views: "28.1K",
-    videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
+    videoUrl: "/videos/sample-reel-2.mp4",
   },
   {
     id: "reel-3",
@@ -40,7 +39,7 @@ export const socialPosts: SocialPost[] = [
     url: INSTAGRAM_URL,
     duration: "1:42",
     views: "19.5K",
-    videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
+    videoUrl: "/videos/sample-reel-3.mp4",
   },
   {
     id: "reel-4",
@@ -49,6 +48,6 @@ export const socialPosts: SocialPost[] = [
     url: INSTAGRAM_URL,
     duration: "1:05",
     views: "15.8K",
-    videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyBlazes.mp4",
+    videoUrl: "/videos/sample-reel-4.mp4",
   }
 ];

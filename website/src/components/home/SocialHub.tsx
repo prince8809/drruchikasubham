@@ -1,12 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Image from "next/image";
 import {
   Play,
   X,
   Maximize2,
   Volume2,
+  VolumeX,
   ExternalLink,
   MessageCircle,
   Sparkles,
@@ -17,18 +18,20 @@ import { socialPosts, SocialPost } from "@/data/social-feed";
 import { INSTAGRAM_URL, FACEBOOK_URL, WHATSAPP_SUBHAM } from "@/lib/constants";
 
 export default function SocialHub() {
-  // Track which card is playing inline
-  const [inlinePlayingId, setInlinePlayingId] = useState<string | null>(null);
-  // Track theater modal video
+  // Currently playing card ID
+  const [activeVideoId, setActiveVideoId] = useState<string | null>(null);
+  // Full-screen / theater modal video
   const [theaterVideo, setTheaterVideo] = useState<SocialPost | null>(null);
+  // Audio state
+  const [isMuted, setIsMuted] = useState(false);
 
-  const handlePlayInline = (postId: string) => {
-    setInlinePlayingId(postId);
+  const handlePlayCard = (postId: string) => {
+    setActiveVideoId(postId);
   };
 
-  const handleStopInline = (e: React.MouseEvent) => {
+  const handleStopCard = (e: React.MouseEvent) => {
     e.stopPropagation();
-    setInlinePlayingId(null);
+    setActiveVideoId(null);
   };
 
   const handleOpenTheater = (post: SocialPost, e: React.MouseEvent) => {
@@ -55,7 +58,7 @@ export default function SocialHub() {
             </p>
           </div>
 
-          {/* Social Follow Links */}
+          {/* Social Follow Actions */}
           <div className="flex items-center gap-3 shrink-0">
             <a
               href={INSTAGRAM_URL}
@@ -78,42 +81,59 @@ export default function SocialHub() {
           </div>
         </div>
 
-        {/* Video Cards Grid */}
+        {/* 4 Video Cards Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {socialPosts.map((post) => {
-            const isPlayingInline = inlinePlayingId === post.id;
+            const isPlaying = activeVideoId === post.id;
 
             return (
               <div
                 key={post.id}
                 className="bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl hover:border-pink-200 transition-all duration-300 flex flex-col justify-between"
               >
-                {/* Media Container: Thumbnail vs In-Page Video Player */}
-                <div className="relative aspect-[9/13] bg-black overflow-hidden flex flex-col justify-between">
+                {/* Visual / Player Area */}
+                <div className="relative aspect-[9/14] bg-neutral-950 overflow-hidden flex flex-col justify-between">
                   
-                  {isPlayingInline ? (
-                    /* IN-PAGE VIDEO PLAYER (Loaded ONLY when user clicks play) */
-                    <div className="relative w-full h-full bg-black flex flex-col justify-between">
-                      {/* Video Player Header Overlay */}
-                      <div className="absolute top-0 inset-x-0 z-30 p-2.5 bg-gradient-to-b from-black/80 via-black/40 to-transparent flex items-center justify-between text-white">
-                        <div className="flex items-center gap-1.5 text-[11px] font-bold text-emerald-400">
+                  {isPlaying ? (
+                    /* IN-PAGE VIDEO PLAYER (Loaded ONLY when user requests play) */
+                    <div className="relative w-full h-full bg-black flex flex-col justify-center">
+                      
+                      {/* Top Floating Control Strip */}
+                      <div className="absolute top-0 inset-x-0 z-30 p-3 bg-gradient-to-b from-black/80 via-black/40 to-transparent flex items-center justify-between text-white">
+                        <div className="flex items-center gap-2 text-[11px] font-bold text-emerald-400 bg-black/50 backdrop-blur-xs px-2.5 py-1 rounded-full border border-emerald-500/30">
                           <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                          <span>Playing on page</span>
+                          <span>Playing on Page</span>
                         </div>
 
-                        <div className="flex items-center gap-1">
+                        <div className="flex items-center gap-1.5">
+                          {/* Mute / Unmute Button */}
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setIsMuted(!isMuted);
+                            }}
+                            className="p-1.5 rounded-full bg-white/20 hover:bg-white/40 text-white transition-colors"
+                            title={isMuted ? "Unmute" : "Mute"}
+                            aria-label="Toggle mute"
+                          >
+                            {isMuted ? <VolumeX className="w-3.5 h-3.5" /> : <Volume2 className="w-3.5 h-3.5" />}
+                          </button>
+
+                          {/* Theater view */}
                           <button
                             onClick={(e) => handleOpenTheater(post, e)}
                             className="p-1.5 rounded-full bg-white/20 hover:bg-white/40 text-white transition-colors"
-                            title="Expand to Theater View"
+                            title="Open Theater Mode"
                             aria-label="Expand video"
                           >
                             <Maximize2 className="w-3.5 h-3.5" />
                           </button>
+
+                          {/* Close Player */}
                           <button
-                            onClick={handleStopInline}
-                            className="p-1.5 rounded-full bg-white/20 hover:bg-red-600 text-white transition-colors"
-                            title="Close video"
+                            onClick={handleStopCard}
+                            className="p-1.5 rounded-full bg-red-600/80 hover:bg-red-600 text-white transition-colors"
+                            title="Close Video"
                             aria-label="Stop video"
                           >
                             <X className="w-3.5 h-3.5" />
@@ -121,17 +141,18 @@ export default function SocialHub() {
                         </div>
                       </div>
 
-                      {/* Video Element */}
+                      {/* Video Stream */}
                       {post.videoUrl ? (
                         <video
+                          key={post.videoUrl}
                           src={post.videoUrl}
                           controls
                           autoPlay
                           playsInline
-                          className="w-full h-full object-cover my-auto"
+                          muted={isMuted}
+                          className="w-full h-full object-contain bg-black"
                         />
                       ) : (
-                        /* If an Instagram embed URL is provided */
                         <iframe
                           src={`https://www.instagram.com/reel/${post.instagramId || ""}/embed/`}
                           className="w-full h-full border-0"
@@ -140,14 +161,14 @@ export default function SocialHub() {
                       )}
                     </div>
                   ) : (
-                    /* FACADE CARD (0KB video weight until clicked) */
+                    /* FACADE CARD (Zero weight / Fast page load) */
                     <div
-                      onClick={() => handlePlayInline(post.id)}
-                      className="relative w-full h-full bg-gradient-to-tr from-[#FFF5F7] via-[#F2FAFE] to-[#FFE9ED] flex flex-col justify-between p-5 cursor-pointer group"
+                      onClick={() => handlePlayCard(post.id)}
+                      className="relative w-full h-full bg-gradient-to-tr from-[#FFF5F7] via-[#F2FAFE] to-[#FFE9ED] flex flex-col justify-between p-5 cursor-pointer group select-none"
                     >
-                      {/* Top Badges */}
+                      {/* Top Badge */}
                       <div className="flex justify-between items-center z-10">
-                        <span className="text-[10px] font-bold uppercase tracking-wider bg-white/90 backdrop-blur-xs text-[#1A2229] px-2.5 py-1 rounded-full shadow-2xs">
+                        <span className="text-[10px] font-bold uppercase tracking-wider bg-white/90 backdrop-blur-xs text-[#1A2229] px-2.5 py-1 rounded-full shadow-2xs border border-gray-100">
                           {post.category}
                         </span>
                         <div className="w-7 h-7 rounded-full bg-white/90 backdrop-blur-xs flex items-center justify-center text-[#E1306C] shadow-2xs">
@@ -155,31 +176,31 @@ export default function SocialHub() {
                         </div>
                       </div>
 
-                      {/* Center Play Button with Pulse */}
+                      {/* Center Play Button */}
                       <div className="flex flex-col items-center justify-center my-auto z-10 text-center">
                         <div className="relative">
-                          <span className="absolute -inset-2 rounded-full bg-[#FB5A7C]/20 animate-ping"></span>
-                          <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center text-[#FB5A7C] shadow-xl group-hover:scale-110 group-hover:bg-[#FB5A7C] group-hover:text-white transition-all duration-300 relative">
+                          <span className="absolute -inset-2.5 rounded-full bg-[#FB5A7C]/25 animate-ping"></span>
+                          <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center text-[#FB5A7C] shadow-xl group-hover:scale-110 group-hover:bg-[#FB5A7C] group-hover:text-white transition-all duration-300 relative border border-pink-100">
                             <Play className="w-7 h-7 fill-current ml-0.5" />
                           </div>
                         </div>
 
-                        <span className="mt-3 text-xs font-bold text-[#1A2229] bg-white/90 backdrop-blur-xs px-3 py-1 rounded-full shadow-xs border border-pink-100 group-hover:bg-[#FB5A7C] group-hover:text-white group-hover:border-transparent transition-all">
+                        <span className="mt-3 text-xs font-bold text-[#1A2229] bg-white/95 backdrop-blur-xs px-3.5 py-1.5 rounded-full shadow-sm border border-pink-100 group-hover:bg-[#FB5A7C] group-hover:text-white group-hover:border-transparent transition-all">
                           ▶ Play on this page
                         </span>
                       </div>
 
                       {/* Bottom Info Strip */}
-                      <div className="flex justify-between items-center z-10 text-[11px] font-medium text-gray-600 bg-white/85 backdrop-blur-xs px-3 py-1 rounded-xl">
-                        <span>{post.duration || "Short Reel"}</span>
+                      <div className="flex justify-between items-center z-10 text-[11px] font-medium text-gray-600 bg-white/90 backdrop-blur-xs px-3 py-1 rounded-xl border border-gray-100">
+                        <span>{post.duration || "Video"}</span>
                         <span>{post.views || "10K+ views"}</span>
                       </div>
 
-                      {/* Subtle Brand Logo Watermark */}
+                      {/* Watermark Logo */}
                       <div className="absolute inset-0 flex items-center justify-center opacity-10 pointer-events-none group-hover:opacity-15 transition-opacity">
                         <Image
                           src="/images/brand/logo.png"
-                          alt="Watermark"
+                          alt="Brand Watermark"
                           width={160}
                           height={160}
                           className="object-contain"
@@ -190,19 +211,19 @@ export default function SocialHub() {
 
                 </div>
 
-                {/* Card Bottom: Title & Action Options */}
+                {/* Card Information & Action Links */}
                 <div className="p-4 space-y-3 bg-white">
                   <h4 className="font-bold text-sm text-[#1A2229] leading-snug line-clamp-2">
                     {post.title}
                   </h4>
 
                   <div className="flex items-center justify-between text-xs pt-2 border-t border-gray-100">
-                    {/* Play in-page or Restart */}
+                    {/* Inline Play Trigger */}
                     <button
-                      onClick={() => handlePlayInline(post.id)}
+                      onClick={() => handlePlayCard(post.id)}
                       className="font-bold text-[#FB5A7C] hover:text-[#E54366] flex items-center gap-1 transition-colors"
                     >
-                      {isPlayingInline ? (
+                      {isPlaying ? (
                         <>
                           <RotateCcw className="w-3.5 h-3.5" />
                           <span>Replay</span>
@@ -215,7 +236,7 @@ export default function SocialHub() {
                       )}
                     </button>
 
-                    {/* External Instagram Link Option */}
+                    {/* Instagram External Link */}
                     <a
                       href={post.url}
                       target="_blank"
@@ -234,11 +255,16 @@ export default function SocialHub() {
           })}
         </div>
 
-        {/* THEATER MODAL (Expanded in-page view when user clicks expand) */}
+        {/* THEATER MODAL VIEW */}
         {theaterVideo && (
-          <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 animate-in fade-in duration-200">
-            <div className="bg-[#1A2229] text-white rounded-3xl overflow-hidden max-w-lg w-full shadow-2xl border border-gray-700 flex flex-col">
-              
+          <div
+            onClick={() => setTheaterVideo(null)}
+            className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 animate-in fade-in duration-200"
+          >
+            <div
+              onClick={(e) => e.stopPropagation()}
+              className="bg-[#1A2229] text-white rounded-3xl overflow-hidden max-w-lg w-full shadow-2xl border border-gray-700 flex flex-col"
+            >
               {/* Modal Header */}
               <div className="p-4 bg-gray-900 flex items-center justify-between border-b border-gray-800">
                 <div className="flex items-center gap-2">
@@ -257,12 +283,14 @@ export default function SocialHub() {
               </div>
 
               {/* Modal Video Player */}
-              <div className="relative aspect-[9/14] sm:aspect-[9/12] bg-black w-full flex items-center justify-center">
+              <div className="relative aspect-[9/13] sm:aspect-[9/12] bg-black w-full flex items-center justify-center">
                 {theaterVideo.videoUrl ? (
                   <video
+                    key={theaterVideo.videoUrl}
                     src={theaterVideo.videoUrl}
                     controls
                     autoPlay
+                    playsInline
                     className="w-full h-full object-contain"
                   />
                 ) : (
@@ -274,7 +302,7 @@ export default function SocialHub() {
                 )}
               </div>
 
-              {/* Modal Footer with Actions */}
+              {/* Modal Footer */}
               <div className="p-5 space-y-3 bg-[#1A2229]">
                 <h3 className="font-bold text-base text-white leading-snug">
                   {theaterVideo.title}
