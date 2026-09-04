@@ -26,9 +26,9 @@ export default function Navbar() {
   };
 
   const otherNavLinks = [
-    { label: "Specialties", href: "/#services" },
-    { label: "Couple Advantage", href: "/#couple-advantage" },
     { label: "Reviews", href: "/#reviews" },
+    { label: "Couple Advantage", href: "/#couple-advantage" },
+    { label: "Specialties", href: "/#services" },
     { label: "Videos", href: "/#social-hub" },
     { label: "Timings & Clinics", href: "/#locations" },
   ];

@@ -25,17 +25,17 @@ export default function Home() {
       {/* 4. Verified Clinical & Surgical Milestones */}
       <StatsCounter />
 
-      {/* 5. The Couple Doctor Advantage USP Section */}
+      {/* 5. Patient Success Stories & 5-Star Reviews */}
+      <ReviewsSection />
+
+      {/* 6. The Couple Doctor Advantage USP Section */}
       <CoupleAdvantage />
 
-      {/* 6. Comprehensive 7-Specialty Grid + Second Opinion */}
+      {/* 7. Comprehensive 7-Specialty Grid + Second Opinion */}
       <ServicesGrid />
 
-      {/* 7. Live Social Hub (Instagram Reels Click-to-Play) */}
+      {/* 8. Live Social Hub (Instagram Reels Click-to-Play) */}
       <SocialHub />
-
-      {/* 8. Patient Success Stories & 5-Star Reviews */}
-      <ReviewsSection />
 
       {/* 9. Interactive Quick Booking Section */}
       <BookingStrip />
