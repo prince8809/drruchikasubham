@@ -1,0 +1,277 @@
+================================================================================
+          DR. SUBHAM AGARWAL & DR. RUCHIKA AGARWAL - SOURCE OF TRUTH
+                         ADVANCED WOMEN'S & MATERNITY CARE
+================================================================================
+Generated From: Maternity & Gyno Website Data Gathering.csv
+Last Updated: 2026-09-04
+Location: Siliguri, West Bengal
+
+--------------------------------------------------------------------------------
+1. BRAND IDENTITY & WEBSITE HEADER
+--------------------------------------------------------------------------------
+Website Header Branding:
+  "Dr. Subham & Dr. Ruchika - Advanced Women's Care"
+  (Alternative: "Dr. Subham Agarwal & Dr. Ruchika Agarwal - Advanced Women's Care")
+
+Homepage Main Headline / Core Taglines:
+  "Complete Care by Husband-Wife Duo"
+  "Your Health. Your Fertility. Your Pregnancy. Expertly Cared For."
+  "Complete Women’s Healthcare — From Periods & PCOS to Pregnancy, Fertility, Surgery & Menopause."
+
+Brand Concept & Unique Selling Proposition (USP):
+  The Couple Doctor Advantage — "A family caring for your family"
+  Providing unmatched comfort, clinical synergy, and comprehensive care for 
+  female patients and their partners throughout their healthcare journey.
+
+--------------------------------------------------------------------------------
+2. BRAND COLOR PALETTE & DESIGN SYSTEM (WARM & REASSURING)
+--------------------------------------------------------------------------------
+Design Principle:
+  "Warm & Reassuring" — Designed around empathy, motherhood, clinical trust, 
+  and approachability, intentionally replacing cold, sterile, hospital blues/greens 
+  with gentle warmth on crisp white surfaces.
+
+A. PRIMARY BRAND COLOR: CORAL PINK (#FB5A7C)
+   Symbolism: Maternal warmth, feminine wellness, empathy, and vitality.
+   • Primary 500 (Base Brand):       #FB5A7C  (Hero CTAs, key accents, main buttons)
+   • Primary 600 (Hover / Active):   #E54366  (Button hover/active interactions)
+   • Primary 700 (Deep Coral/Rose):  #C4274C  (High-contrast text on light pink, active tabs)
+   • Primary 200 (Soft Border):      #FFCCD6  (Feminine card borders, divider accents)
+   • Primary 100 (Blush Wash):       #FFE9ED  (Badge fills, pill tags, notification highlights)
+   • Primary 50  (Subtle Tint):      #FFF5F7  (Card backgrounds, featured callout cards)
+
+B. SECONDARY ACCENT COLOR: SKY BLUE (#2FB2EA)
+   Symbolism: Clinical calm, reassuring clarity, dual-doctor balance, and partner/father inclusivity.
+   • Accent 500 (Base Accent):       #2FB2EA  (Secondary buttons, trust badges, quiz progress)
+   • Accent 600 (Hover / Active):    #189AD0  (Accent hover states)
+   • Accent 700 (Deep Ocean Blue):   #0B75A1  (Accent text, informative icons)
+   • Accent 200 (Soft Border):       #BCE6F9  (Secondary card borders)
+   • Accent 100 (Pale Sky Tint):     #E3F4FC  (Quiz card badges, category chips)
+   • Accent 50  (Sky Wash):          #F2FAFE  ("The Father's Corner" card background)
+
+C. BACKGROUNDS & SURFACES (ANTI-STERILE CANVAS)
+   • Pure Crisp White (Base):        #FFFFFF  (Main card surfaces, modal sheets, form inputs)
+   • Warm Alabaster (Page Canvas):   #FAFAF9  (Comforting, soft off-white global background)
+   • Gentle Rose Wash (Alt Section): #FFF8F9  (Warm alternate section backgrounds)
+   • Calming Sky Wash (Alt Section): #F4FAFD  (Educational/tracker section backgrounds)
+
+D. TYPOGRAPHY & NEUTRAL SHADES
+   • Heading Dark Slate:             #1A2229  (Warm rich charcoal, soft on eyes, avoids harsh #000)
+   • Body Text Gray:                 #475569  (Comfortable high-legibility slate for paragraphs)
+   • Muted / Subtitle Gray:          #64748B  (Timestamps, hospital addresses, metadata)
+   • Border Neutral:                 #EAEFF4  (Subtle dividers and card outlines)
+
+E. FUNCTIONAL & ACTION TOKENS
+   • WhatsApp Conversion Green:      #25D366  (Hover: #1EBE5D | Floating & booking buttons)
+   • Emergency Obstetric Banner:     #DC2626  (Light Wash: #FEF2F2 | 24/7 emergency bar)
+   • Verification & Insurance Badge: #10B981  (Light Wash: #ECFDF5 | Cashless/TPA badges)
+
+F. TAILWIND / CSS VARIABLE CONFIGURATION
+   :root {
+     --color-primary: #FB5A7C;
+     --color-primary-hover: #E54366;
+     --color-primary-dark: #C4274C;
+     --color-primary-light: #FFE9ED;
+     --color-primary-wash: #FFF5F7;
+     --color-accent: #2FB2EA;
+     --color-accent-hover: #189AD0;
+     --color-accent-dark: #0B75A1;
+     --color-accent-light: #E3F4FC;
+     --color-accent-wash: #F2FAFE;
+     --color-bg-base: #FAFAF9;
+     --color-bg-surface: #FFFFFF;
+     --color-text-main: #1A2229;
+     --color-text-body: #475569;
+     --color-text-muted: #64748B;
+     --color-border: #F1E5E8;
+     --color-whatsapp: #25D366;
+     --color-emergency: #DC2626;
+   }
+
+--------------------------------------------------------------------------------
+3. CLINICAL EXPERIENCE & SURGICAL MILESTONES
+--------------------------------------------------------------------------------
+Combined Clinical Milestones:
+  • 6+ Years of Experience
+  • 1,000+ Normal Vaginal Deliveries
+  • 1,000+ LUCS (Lower Uterine Cesarean Sections)
+  • 100+ Hysterectomies
+  • More than 100 Minimally Invasive Surgeries (Advanced Laparoscopic Surgery)
+  • More than 100 Gynaecological Procedures
+
+--------------------------------------------------------------------------------
+4. DOCTOR PROFILES & CONTACT DETAILS
+--------------------------------------------------------------------------------
+
+[DOCTOR 1: DR. SUBHAM AGARWAL]
+• Full Name: Dr. Subham Agarwal
+• Qualifications & Degrees: M.B.B.S, M.S, F.M.A.S, F.I.A.G
+• Associated Photos / Assets:
+  - Dr Subham Agarwal_Headshot.png (High-Res Portrait Cutout, 1686x2528)
+  - Dr Subham Agarwal_Headshot_extended.jpg (Extended Frame Portrait, 1856x2304)
+• Phone / WhatsApp Booking Number: +91-9883368764
+• Direct WhatsApp Booking Link:
+  https://wa.me/919883368764?text=Hey%20I%20want%20to%20Book%20an%20appointment
+• Consulting Hospital / Clinic:
+  MANIPAL HOSPITAL
+  Meghnad Saha Sarani, Ward 2, Pradhan Nagar, Siliguri, West Bengal 734003
+• Consulting Timings:
+  Monday to Friday: 10:00 AM – 6:00 PM
+• Languages Spoken:
+  English, Hindi, Bengali, Nepali
+• Core Focus Areas & Specialties:
+  - High-Risk Pregnancy
+  - Normal & Cesarean Delivery
+  - IVF & Infertility
+  - Advanced Laparoscopic Surgery
+  - Endometriosis
+  - PCOD / PCOS
+  - Menopause & Vaginal Discharge
+• Professional Bio:
+  Your Health. Your Fertility. Your Pregnancy. Expertly Cared For.
+  Complete Women’s Healthcare — From Periods & PCOS to Pregnancy, Fertility, 
+  Surgery & Menopause.
+  Providing comprehensive and personalised care for women at every stage of 
+  life, with expertise in pregnancy and antenatal care, normal vaginal and 
+  caesarean delivery, high-risk pregnancy, fertility and infertility management, 
+  PCOS and hormonal disorders, irregular, heavy and painful periods, abnormal 
+  vaginal discharge and infections, endometriosis, adenomyosis, fibroids, 
+  ovarian cysts, adolescent gynaecology, contraception and family planning, 
+  preconception counselling, menopause and perimenopause care, sexual and 
+  reproductive health, cervical cancer screening, postpartum care, and 
+  minimally invasive laparoscopic gynaecological surgery.
+
+--------------------------------------------------------------------------------
+
+[DOCTOR 2: DR. RUCHIKA AGARWAL]
+• Full Name: Dr. Ruchika Agarwal
+• Qualifications & Degrees: M.B.B.S, M.S
+• Associated Photos / Assets:
+  - Dr Ruchika Agarwal_headshot.jpg (High-Res Portrait, 1856x2304)
+• Phone / WhatsApp Booking Number: +91-7872969660
+• Direct WhatsApp Booking Link:
+  https://wa.me/917872969660?text=Hey%20I%20want%20to%20Book%20an%20appointment
+• Consulting Hospital / Clinic:
+  Zivah Fertility & Women's Wellness Centre
+  2nd Floor, The Crest, Meghnad Saha Sarani, Opposite Deokta Sangha, 
+  Pradhan Nagar, Siliguri - 734003, West Bengal
+• Consulting Timings:
+  Monday to Friday: 10:00 AM – 2:00 PM
+• Languages Spoken:
+  English, Hindi, Bengali, Nepali
+• Core Focus Areas & Specialties:
+  - High-Risk Pregnancy
+  - Normal & Cesarean Delivery
+  - IVF & Infertility
+  - Advanced Laparoscopic Surgery
+  - Endometriosis
+  - PCOD / PCOS
+• Professional Bio:
+  Providing comprehensive and personalised care for women at every stage of 
+  life, with expertise in pregnancy and antenatal care, normal vaginal and 
+  caesarean delivery, high-risk pregnancy, fertility and infertility management, 
+  PCOS and hormonal disorders, irregular, heavy and painful periods, abnormal 
+  vaginal discharge and infections, endometriosis, adenomyosis, fibroids, 
+  ovarian cysts, adolescent gynaecology, contraception and family planning, 
+  preconception counselling, menopause and perimenopause care, sexual and 
+  reproductive health, cervical cancer screening, postpartum care, and 
+  minimally invasive laparoscopic gynaecological surgery.
+
+--------------------------------------------------------------------------------
+5. CONSULTATION, HOSPITAL TIE-UPS & INSURANCE
+--------------------------------------------------------------------------------
+• Standard OPD Consultation Fee: ₹800
+• Hospital Tie-up for Deliveries & Surgeries:
+  MANIPAL HOSPITAL
+  Meghnad Saha Sarani, Ward 2, Pradhan Nagar, Siliguri, West Bengal 734003
+  Timings: Mon–Fri 10:00 AM – 6:00 PM
+• Insurance Support: Yes (Cashless & TPA claims supported for deliveries and surgeries)
+
+--------------------------------------------------------------------------------
+6. PATIENT BOOKING & ROUTING WORKFLOW
+--------------------------------------------------------------------------------
+• Direct WhatsApp Booking:
+  - Patient chooses Dr. Subham Agarwal or Dr. Ruchika Agarwal and initiates chat via wa.me link.
+  - Pre-filled message: "Hey I want to Book an appointment"
+• General Consultation Inquiries:
+  - Patients landing on site without a specific doctor preference are routed to a central booking number.
+• Joint Consultation Booking Option:
+  - Specific booking feature where patients can request to see both doctors together for complex cases or initial pregnancy planning.
+• Custom On-Site Booking Form:
+  - Embedded booking inquiry form on website capturing Name, Phone, Concern, Preferred Doctor, and Date.
+
+--------------------------------------------------------------------------------
+7. PLANNED WEBSITE FEATURES & INTERACTIVE TOOLS
+--------------------------------------------------------------------------------
+1. Sticky Floating "Book on WhatsApp" Button:
+   - High-conversion mobile sticky CTA floating at screen bottom.
+2. Emergency Contact Banner:
+   - Highly visible "Click to Call" banner for urgent obstetric / gynaecological emergencies.
+3. Interactive Health Quizzes:
+   - "Take the Fertility Readiness Quiz"
+   - "Is my period pain normal? Take the 1-minute assessment"
+   - Gathers patient responses and prompts booking for personalized assessment.
+4. High-Value Lead Magnets:
+   - Free downloadable resources (e.g., Clinical Diet Chart, PCOD Reversal Guide) in exchange for Name & WhatsApp number.
+5. "The Father's Corner" / Partner-to-Be Resources:
+   - Dedicated section/guide authored by Dr. Subham specifically for husbands and partners on supporting their wives through pregnancy, labor, and postpartum.
+6. "The Couple Doctor Advantage" Section:
+   - Highlight section emphasizing dual-specialist synergy and family-centered compassionate care.
+7. Period & Ovulation Tracker Tool:
+   - Digital interactive cycle tracking widget on site.
+8. Pregnancy Week-by-Week Guide:
+   - Educational resource walking expecting mothers through each gestational milestone.
+9. Second Opinion Portal:
+   - Dedicated pathway for patients seeking expert evaluation for complex surgical or fertility diagnoses.
+10. Health Blog & Knowledge Base:
+    - Clinically backed articles on women's reproductive health, fertility, and wellness.
+
+--------------------------------------------------------------------------------
+8. MEDIA & ASSETS INVENTORY (UPDATED)
+--------------------------------------------------------------------------------
+Verified Local Assets in Project Directory:
+
+1. Dr Ruchika Agarwal_headshot.jpg
+   • Type: High-Resolution Clinical Portrait
+   • Format: JPEG | Dimensions: 1856 x 2304 px | Size: 1.94 MB
+   • Usage: Dr. Ruchika Agarwal profile card, About section, Hero dual-feature, Booking card.
+
+2. Dr Subham Agarwal_Headshot.png
+   • Type: High-Resolution Studio Portrait
+   • Format: PNG | Dimensions: 1686 x 2528 px | Size: 6.98 MB
+   • Usage: Dr. Subham Agarwal profile card, About section, Hero banner portrait / cutout.
+
+3. Dr Subham Agarwal_Headshot_extended.jpg
+   • Type: High-Resolution Extended Portrait
+   • Format: JPEG | Dimensions: 1856 x 2304 px | Size: 2.10 MB
+   • Usage: Wide aspect ratio cards, responsive layouts, editorial/spotlight feature.
+
+4. prescription logo art.png
+   • Type: Medical Brand Mark / Insignia Artwork
+   • Format: PNG | Dimensions: 128 x 133 px | Size: 34.3 KB
+   • Usage: Website navigation logo, favicon, prescription pad graphic, clinic brand mark.
+
+5. pregnant couple art.png
+   • Type: Maternity & Partner Care Artwork / Icon
+   • Format: PNG | Dimensions: 112 x 155 px | Size: 39.5 KB
+   • Usage: "The Couple Doctor Advantage" section, "Father's Corner", Maternity milestone badges.
+
+6. Maternity & Gyno Website Data Gathering.csv
+   • Type: Data Intake Form Responses
+   • Format: CSV | Size: 6.05 KB
+   • Usage: Original source questionnaire data.
+
+7. sourceoftruth.txt
+   • Type: Project Master Specification File
+   • Usage: Central reference for copy, specs, contact info, and asset inventory.
+
+--------------------------------------------------------------------------------
+9. PENDING / DESIRED ASSETS (FOR FUTURE ENHANCEMENT)
+--------------------------------------------------------------------------------
+• Joint Professional Photos:
+  - High-quality photo of Dr. Subham and Dr. Ruchika together for the homepage hero section.
+• Facility & Clinical Photos:
+  - Waiting lounge, consultation rooms, labor room, and OT at Manipal Hospital and Zivah Centre.
+• Accreditation & Association Badges:
+  - Official vector/PNG logos for FOGSI, IMA, and Medical Council affiliations.
+================================================================================
