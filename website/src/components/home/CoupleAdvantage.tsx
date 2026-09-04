@@ -53,47 +53,35 @@ export default function CoupleAdvantage() {
           {/* Subtle decorative background glow */}
           <div className="absolute top-0 right-0 w-72 h-72 bg-[#FFE9ED] rounded-full filter blur-3xl opacity-30 pointer-events-none" />
 
-          {/* Top Row: Artwork + Title + Joint Booking CTA */}
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3.5">
-            <div className="flex items-center gap-3">
-              {/* Couple Emblem Art */}
-              <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-white p-1.5 shadow-2xs border border-pink-100 flex items-center justify-center shrink-0">
-                <Image
-                  src="/images/brand/couple-art.png"
-                  alt="The Couple Doctor Advantage"
-                  width={32}
-                  height={32}
-                  className="object-contain"
-                />
-              </div>
-
-              <div className="min-w-0">
-                <div className="flex items-center gap-2">
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-[#FB5A7C] bg-white px-2 py-0.5 rounded-full border border-pink-100 shadow-2xs">
-                    The Couple Advantage
-                  </span>
-                  <span className="text-xs text-gray-500 font-medium hidden md:inline">
-                    &bull; &ldquo;A family caring for your family&rdquo;
-                  </span>
-                </div>
-                <h2 className="text-sm sm:text-lg font-bold text-[#1A2229] mt-0.5 leading-tight truncate">
-                  Complete Care by Husband-Wife Specialist Duo
-                </h2>
-              </div>
+          {/* Top Row: Artwork + Title */}
+          <div className="flex items-center gap-3 pb-3">
+            {/* Couple Emblem Art */}
+            <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-white p-1.5 shadow-2xs border border-pink-100 flex items-center justify-center shrink-0">
+              <Image
+                src="/images/brand/couple-art.png"
+                alt="The Couple Doctor Advantage"
+                width={32}
+                height={32}
+                className="object-contain"
+              />
             </div>
 
-            {/* Quick Action Button */}
-            <button
-              type="button"
-              onClick={() => setModalOpen(true)}
-              className="btn-primary text-xs py-2 px-4 shadow-xs hover:shadow-md shrink-0 self-start sm:self-auto inline-flex items-center gap-1.5 cursor-pointer"
-            >
-              <Users className="w-3.5 h-3.5" />
-              <span>Inquire Joint Consultation</span>
-            </button>
+            <div className="min-w-0">
+              <div className="flex items-center gap-2">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-[#FB5A7C] bg-white px-2 py-0.5 rounded-full border border-pink-100 shadow-2xs">
+                  The Couple Advantage
+                </span>
+                <span className="text-xs text-gray-500 font-medium hidden sm:inline">
+                  &bull; &ldquo;A family caring for your family&rdquo;
+                </span>
+              </div>
+              <h2 className="text-sm sm:text-base md:text-lg font-bold text-[#1A2229] mt-0.5 leading-tight">
+                Complete Care by Husband-Wife Specialist Duo
+              </h2>
+            </div>
           </div>
 
-          {/* Bottom Row: Infinite Smooth Scrolling Marquee Ticker */}
+          {/* Middle Row: Infinite Smooth Scrolling Marquee Ticker */}
           <div className="relative w-full overflow-hidden group/marquee pt-3 border-t border-gray-100/90">
             {/* Left & Right Subtle Fade */}
             <div className="pointer-events-none absolute inset-y-0 left-0 w-8 sm:w-12 bg-gradient-to-r from-[#FFF8F9] via-[#FFF8F9]/80 to-transparent z-10" />
@@ -127,6 +115,18 @@ export default function CoupleAdvantage() {
                 );
               })}
             </div>
+          </div>
+
+          {/* End Row: Centered Action Button */}
+          <div className="pt-3.5 flex items-center justify-center">
+            <button
+              type="button"
+              onClick={() => setModalOpen(true)}
+              className="btn-primary text-xs py-2 px-5 shadow-xs hover:shadow-md inline-flex items-center gap-2 cursor-pointer rounded-full"
+            >
+              <Users className="w-3.5 h-3.5" />
+              <span>Inquire Joint Consultation with Both Doctors &rarr;</span>
+            </button>
           </div>
 
         </div>
