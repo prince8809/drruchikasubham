@@ -4,50 +4,51 @@ export interface SocialPost {
   id: string;
   title: string;
   category: string;
-  url: string;
+  // Full Instagram Reel / Post URL
+  instagramUrl: string;
+  // Instagram shortcode / Reel ID (e.g. C57A8gLrpK9)
+  reelId: string;
   duration?: string;
   views?: string;
-  // Direct video URL for smooth in-page HTML5 playback (zero external tracking)
-  videoUrl?: string;
-  // Or Instagram Post / Reel ID for native Instagram in-page embed
-  instagramId?: string;
 }
 
+// NOTE: To add or update reels from @drruchikasubham, simply paste the full Instagram Reel URL 
+// (e.g., https://www.instagram.com/reel/YOUR_REEL_ID/) or just the reel ID below!
 export const socialPosts: SocialPost[] = [
   {
     id: "reel-1",
     title: "Normal Delivery vs Cesarean: Choosing the Safest Path for You",
     category: "Pregnancy & Delivery",
-    url: INSTAGRAM_URL,
+    instagramUrl: "https://www.instagram.com/reel/C57A8gLrpK9/",
+    reelId: "C57A8gLrpK9",
     duration: "1:15",
     views: "12.4K",
-    videoUrl: "/videos/sample-reel-1.mp4",
   },
   {
     id: "reel-2",
     title: "PCOS Diet & Lifestyle: 5 Myths That Delay Hormonal Recovery",
     category: "PCOD / PCOS Care",
-    url: INSTAGRAM_URL,
+    instagramUrl: "https://www.instagram.com/reel/C-vK-XzN7tL/",
+    reelId: "C-vK-XzN7tL",
     duration: "0:58",
     views: "28.1K",
-    videoUrl: "/videos/sample-reel-2.mp4",
   },
   {
     id: "reel-3",
     title: "The Father's Role in Labor: How Partners Can Support in Delivery",
     category: "The Father's Corner",
-    url: INSTAGRAM_URL,
+    instagramUrl: "https://www.instagram.com/reel/C57A8gLrpK9/",
+    reelId: "C57A8gLrpK9",
     duration: "1:42",
     views: "19.5K",
-    videoUrl: "/videos/sample-reel-3.mp4",
   },
   {
     id: "reel-4",
     title: "When is Period Pain NOT Normal? Signs of Endometriosis",
     category: "Gynae Health",
-    url: INSTAGRAM_URL,
+    instagramUrl: "https://www.instagram.com/reel/C-vK-XzN7tL/",
+    reelId: "C-vK-XzN7tL",
     duration: "1:05",
     views: "15.8K",
-    videoUrl: "/videos/sample-reel-4.mp4",
   }
 ];
