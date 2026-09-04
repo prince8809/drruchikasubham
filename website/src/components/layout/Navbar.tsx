@@ -27,9 +27,9 @@ export default function Navbar() {
 
   const otherNavLinks = [
     { label: "Specialties", href: "/#services" },
-    { label: "Experience", href: "/#experience" },
     { label: "Couple Advantage", href: "/#couple-advantage" },
-    { label: "Videos & Reels", href: "/#social-hub" },
+    { label: "Reviews", href: "/#reviews" },
+    { label: "Videos", href: "/#social-hub" },
     { label: "Timings & Clinics", href: "/#locations" },
   ];
 

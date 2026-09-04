@@ -5,6 +5,7 @@ import StatsCounter from "@/components/home/StatsCounter";
 import CoupleAdvantage from "@/components/home/CoupleAdvantage";
 import ServicesGrid from "@/components/home/ServicesGrid";
 import SocialHub from "@/components/home/SocialHub";
+import ReviewsSection from "@/components/home/ReviewsSection";
 import BookingStrip from "@/components/home/BookingStrip";
 import Footer from "@/components/layout/Footer";
 import WhatsAppFAB from "@/components/layout/WhatsAppFAB";
@@ -33,10 +34,13 @@ export default function Home() {
       {/* 7. Live Social Hub (Instagram Reels Click-to-Play) */}
       <SocialHub />
 
-      {/* 8. Interactive Quick Booking Section */}
+      {/* 8. Patient Success Stories & 5-Star Reviews */}
+      <ReviewsSection />
+
+      {/* 9. Interactive Quick Booking Section */}
       <BookingStrip />
 
-      {/* 9. Comprehensive Footer */}
+      {/* 10. Comprehensive Footer */}
       <Footer />
 
       {/* 10. Sticky Floating WhatsApp Assistant */}
