@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import {
   MessageCircle,
-  Phone,
   MapPin,
   Clock,
   ShieldCheck,
@@ -24,6 +23,7 @@ import Footer from "@/components/layout/Footer";
 import WhatsAppFAB from "@/components/layout/WhatsAppFAB";
 import DoctorSpecialtiesCarousel from "@/components/doctor/DoctorSpecialtiesCarousel";
 import DoctorFaqAccordion from "@/components/doctor/DoctorFaqAccordion";
+import ReviewsSection from "@/components/home/ReviewsSection";
 
 export function generateStaticParams() {
   return doctors.map((doc) => ({
@@ -470,32 +470,6 @@ export default async function DoctorProfilePage({ params }: { params: Promise<{ 
                     <Clock className="w-4 h-4 text-[#2FB2EA] shrink-0" />
                     <span className="font-semibold text-[#1A2229]">{doctor.timings}</span>
                   </div>
-
-                  <div className="flex items-center justify-between gap-3 pt-1 border-t border-gray-100">
-                    <div className="flex items-center gap-2.5">
-                      <div
-                        className={`w-7 h-7 rounded-full flex items-center justify-center shrink-0 ${
-                          isSubham ? "bg-[#2FB2EA]/15 text-[#0B75A1]" : "bg-[#FB5A7C]/15 text-[#C4274C]"
-                        }`}
-                      >
-                        <Phone className="w-3.5 h-3.5" />
-                      </div>
-                      <div>
-                        <span className="text-[10px] uppercase font-bold text-gray-400 block tracking-wider">
-                          Clinic Desk Phone (Inquiries &amp; Navigation)
-                        </span>
-                        <a
-                          href={`tel:${doctor.phone}`}
-                          className="font-bold text-[#1A2229] hover:underline text-xs sm:text-sm"
-                        >
-                          {doctor.phone}
-                        </a>
-                      </div>
-                    </div>
-                    <span className="text-[11px] font-semibold text-gray-500 bg-white px-2.5 py-1 rounded-full border border-gray-200">
-                      Reception Desk
-                    </span>
-                  </div>
                 </div>
 
                 <div className="pt-1">
@@ -618,7 +592,13 @@ export default async function DoctorProfilePage({ params }: { params: Promise<{ 
         </section>
       )}
 
-      {/* 10. Frequently Asked Questions - INTERACTIVE ACCORDION WITH GOOGLE FAQ SCHEMA */}
+      {/* 10. Patient Reviews & Recovery Stories */}
+      <ReviewsSection
+        doctorFilter={doctor.id as "subham" | "ruchika"}
+        doctorName={doctor.shortName}
+      />
+
+      {/* 11. Frequently Asked Questions - INTERACTIVE ACCORDION WITH GOOGLE FAQ SCHEMA */}
       <section className="py-8 sm:py-12 bg-white border-t border-[#F1E5E8]">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           

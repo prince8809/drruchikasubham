@@ -5,9 +5,35 @@ import { Star, ShieldCheck, Sparkles, Lock, X, MessageCircle } from "lucide-reac
 import { patientReviews, PatientReview } from "@/data/reviews";
 import { WHATSAPP_SUBHAM, WHATSAPP_RUCHIKA, WHATSAPP_JOINT } from "@/lib/constants";
 
-export default function ReviewsSection() {
+interface ReviewsSectionProps {
+  doctorFilter?: "subham" | "ruchika";
+  doctorName?: string;
+  heading?: string;
+  subheading?: string;
+}
+
+export default function ReviewsSection({
+  doctorFilter,
+  doctorName,
+  heading,
+  subheading,
+}: ReviewsSectionProps = {}) {
   const [selectedReview, setSelectedReview] = useState<PatientReview | null>(null);
-  const doubledReviews = [...patientReviews, ...patientReviews];
+
+  // Filter reviews if a specific doctor profile requested it
+  const filteredReviews = doctorFilter
+    ? patientReviews.filter((rev) => {
+        if (doctorFilter === "subham") {
+          return rev.doctor.includes("Subham") || rev.doctor.includes("Both");
+        }
+        if (doctorFilter === "ruchika") {
+          return rev.doctor.includes("Ruchika") || rev.doctor.includes("Both");
+        }
+        return true;
+      })
+    : patientReviews;
+
+  const doubledReviews = [...filteredReviews, ...filteredReviews];
 
   // Lock body scroll and handle Escape key for the review reading modal
   useEffect(() => {
@@ -26,10 +52,20 @@ export default function ReviewsSection() {
     };
   }, [selectedReview]);
 
+  const defaultHeading = doctorName
+    ? `Patient Stories & Feedback for ${doctorName}`
+    : "Trusted by Families Across North Bengal & Sikkim";
+
+  const defaultSubheading = doctorName
+    ? `Real recovery experiences and clinical feedback from patients and families in Siliguri. Tap any review to read full details.`
+    : "Real patient feedback for normal deliveries, high-risk care, and surgeries. Tap any review to expand.";
+
   return (
-    <section id="reviews" className="py-6 sm:py-8 bg-[#FAFAF9] border-t border-[#F1E5E8] relative overflow-hidden scroll-mt-24 sm:scroll-mt-28">
+    <section
+      id={doctorFilter ? "doctor-reviews" : "reviews"}
+      className="py-6 sm:py-8 bg-[#FAFAF9] border-t border-[#F1E5E8] relative overflow-hidden scroll-mt-24 sm:scroll-mt-28"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-3 sm:mb-4">
-        
         {/* Header with 4.9-Star Trust Badge */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 text-center sm:text-left">
           <div>
@@ -44,10 +80,10 @@ export default function ReviewsSection() {
               </span>
             </div>
             <h2 className="text-lg sm:text-2xl font-bold text-[#1A2229] leading-tight">
-              Trusted by Families Across North Bengal &amp; Sikkim
+              {heading || defaultHeading}
             </h2>
             <p className="text-xs text-[#64748B] mt-0.5 hidden sm:block">
-              Real patient feedback for normal deliveries, high-risk care, and surgeries. Tap any review to expand.
+              {subheading || defaultSubheading}
             </p>
           </div>
 
@@ -64,11 +100,13 @@ export default function ReviewsSection() {
               ))}
             </div>
             <span className="text-xs font-extrabold text-[#1A2229]">
-              4.9 / 5.0 <span className="font-normal text-gray-500 text-[11px]">(100+ Reviews)</span>
+              4.9 / 5.0{" "}
+              <span className="font-normal text-gray-500 text-[11px]">
+                ({doctorFilter ? "50+" : "100+"} Reviews)
+              </span>
             </span>
           </div>
         </div>
-
       </div>
 
       {/* Infinite Smooth Scrolling Testimonial Marquee */}
@@ -186,9 +224,14 @@ export default function ReviewsSection() {
             {/* Quick CTA */}
             <div className="mt-5 pt-3">
               {(() => {
-                const isJoint = selectedReview.doctor.includes("Both") || selectedReview.doctor.includes("Joint");
+                const isJoint =
+                  selectedReview.doctor.includes("Both") || selectedReview.doctor.includes("Joint");
                 const isRuchika = selectedReview.doctor.includes("Ruchika") && !isJoint;
-                const baseUrl = isJoint ? WHATSAPP_JOINT : isRuchika ? WHATSAPP_RUCHIKA : WHATSAPP_SUBHAM;
+                const baseUrl = isJoint
+                  ? WHATSAPP_JOINT
+                  : isRuchika
+                  ? WHATSAPP_RUCHIKA
+                  : WHATSAPP_SUBHAM;
                 const docText = isJoint
                   ? "a Joint Consultation with both Dr. Ruchika and Dr. Subham"
                   : isRuchika
