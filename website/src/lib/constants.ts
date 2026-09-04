@@ -7,3 +7,4 @@ export const INSTAGRAM_HANDLE = "@drruchikasubham";
 export const FACEBOOK_URL = "https://www.facebook.com/drruchikasubham";
 export const ADDRESS_MANIPAL = "Manipal Hospital, Meghnad Saha Sarani, Ward 2, Pradhan Nagar, Siliguri, West Bengal 734003";
 export const ADDRESS_ZIVAH = "Zivah Fertility & Women's Wellness Centre, 2nd Floor, The Crest, Meghnad Saha Sarani, Opposite Deokta Sangha, Pradhan Nagar, Siliguri - 734003";
+export const WHATSAPP_JOINT = "https://wa.me/919883368764?text=Hey%2C%20I%20would%20like%20to%20inquire%20about%20a%20Joint%20Consultation%20with%20both%20Dr.%20Subham%20Agarwal%20%26%20Dr.%20Ruchika%20Agarwal";
