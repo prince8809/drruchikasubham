@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import { MessageCircle, X, Users, Sparkles } from "lucide-react";
 import { WHATSAPP_SUBHAM, WHATSAPP_RUCHIKA } from "@/lib/constants";
 
@@ -20,6 +21,11 @@ export default function BookingModal({
   const [selectedDoctor, setSelectedDoctor] = useState<"subham" | "ruchika" | "joint">(initialDoctor);
   const [patientName, setPatientName] = useState("");
   const [concern, setConcern] = useState(initialConcern);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Sync state when modal opens or initialDoctor prop changes
   useEffect(() => {
@@ -48,7 +54,7 @@ export default function BookingModal({
     };
   }, [isOpen, onClose]);
 
-  if (!isOpen) return null;
+  if (!isOpen || !mounted) return null;
 
   const handleBookingSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -60,29 +66,29 @@ export default function BookingModal({
         ? "Dr. Ruchika Agarwal"
         : "Both Doctors (Joint Consultation - Dr. Subham & Dr. Ruchika)";
 
-    const message = `Hey, I want to book an appointment with ${docName}.\n\nPatient Name: ${
-      patientName.trim() || "Patient"
-    }\nPrimary Concern: ${concern || "General Consultation"}`;
+    const patient = patientName.trim() ? `\nPatient Name: ${patientName.trim()}` : "";
+    const reason = concern ? `\nPrimary Concern: ${concern}` : "";
+    const message = `Hello, I want to book an appointment with ${docName}.${patient}${reason}\n\nPlease let me know the available consultation slots.`;
 
     const targetUrl = selectedDoctor === "ruchika" ? WHATSAPP_RUCHIKA : WHATSAPP_SUBHAM;
     const finalUrl = `${targetUrl.split("?")[0]}?text=${encodeURIComponent(message)}`;
 
-    window.open(finalUrl, "_blank");
+    window.location.href = finalUrl;
     onClose();
   };
 
   const directWhatsAppUrl = selectedDoctor === "ruchika" ? WHATSAPP_RUCHIKA : WHATSAPP_SUBHAM;
 
-  return (
+  return createPortal(
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200"
+      className="fixed inset-0 z-[9999] flex items-center justify-center p-3 sm:p-4 bg-black/70 backdrop-blur-sm animate-in fade-in duration-200"
       onClick={onClose}
       role="dialog"
       aria-modal="true"
       aria-labelledby="booking-modal-title"
     >
       <div
-        className="relative w-full max-w-lg bg-white text-[#1A2229] rounded-3xl p-5 sm:p-7 shadow-2xl border border-pink-100 max-h-[92vh] overflow-y-auto"
+        className="relative w-full max-w-lg bg-white text-[#1A2229] rounded-3xl p-5 sm:p-7 shadow-2xl border border-pink-100 max-h-[90vh] overflow-y-auto"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
@@ -254,6 +260,7 @@ export default function BookingModal({
           </div>
         </form>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }
