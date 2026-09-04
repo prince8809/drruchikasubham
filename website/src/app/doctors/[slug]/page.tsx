@@ -182,21 +182,31 @@ export default async function DoctorDetailPage({
                 </div>
 
                 {/* Primary Quick CTA buttons */}
-                <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-2">
+                <div className="mt-3 grid grid-cols-2 gap-2">
                   <a
                     href={doctor.whatsapp}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn-whatsapp justify-center text-xs py-2.5 px-3 shadow-sm hover:shadow-md transition-all"
+                    className="btn-whatsapp justify-center text-xs py-2.5 px-3 rounded-full shadow-sm hover:shadow-md hover:scale-[1.02] active:scale-[0.98] transition-all font-bold"
                   >
-                    <MessageCircle className="w-4 h-4 fill-white" />
+                    <MessageCircle className="w-4 h-4 fill-white shrink-0" />
                     <span>WhatsApp</span>
                   </a>
                   <a
                     href={`tel:${doctor.phone}`}
-                    className="btn-secondary justify-center text-xs py-2.5 px-3 bg-white border border-gray-200 hover:bg-gray-50 transition-all text-[#1A2229] font-semibold"
+                    className={`inline-flex items-center justify-center gap-1.5 text-xs py-2.5 px-3 rounded-full font-bold transition-all shadow-sm hover:shadow-md hover:scale-[1.02] active:scale-[0.98] border ${
+                      isSubham
+                        ? "bg-[#F2FAFE] text-[#0B75A1] border-[#BCE6F9] hover:bg-[#E3F4FC]"
+                        : "bg-[#FFF5F7] text-[#C4274C] border-[#FFCCD6] hover:bg-[#FFE9ED]"
+                    }`}
                   >
-                    <Phone className="w-4 h-4" />
+                    <div
+                      className={`w-5 h-5 rounded-full flex items-center justify-center shrink-0 ${
+                        isSubham ? "bg-[#2FB2EA]/20 text-[#0B75A1]" : "bg-[#FB5A7C]/20 text-[#C4274C]"
+                      }`}
+                    >
+                      <Phone className="w-3 h-3" />
+                    </div>
                     <span>Call Clinic</span>
                   </a>
                 </div>
@@ -567,13 +577,37 @@ export default async function DoctorDetailPage({
                     <span className="font-semibold text-[#1A2229]">{doctor.timings}</span>
                   </div>
 
-                  <div className="flex items-center gap-3">
-                    <Phone className="w-5 h-5 text-[#FB5A7C] shrink-0" />
+                  <div className="flex items-center justify-between gap-3 pt-1 border-t border-gray-100">
+                    <div className="flex items-center gap-3">
+                      <div
+                        className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 ${
+                          isSubham ? "bg-[#2FB2EA]/15 text-[#0B75A1]" : "bg-[#FB5A7C]/15 text-[#C4274C]"
+                        }`}
+                      >
+                        <Phone className="w-4 h-4" />
+                      </div>
+                      <div>
+                        <span className="text-[10px] uppercase font-bold text-gray-400 block tracking-wider">
+                          Direct Clinic Phone
+                        </span>
+                        <a
+                          href={`tel:${doctor.phone}`}
+                          className="font-bold text-[#1A2229] hover:underline text-sm"
+                        >
+                          {doctor.phone}
+                        </a>
+                      </div>
+                    </div>
                     <a
                       href={`tel:${doctor.phone}`}
-                      className="font-bold text-[#1A2229] hover:underline"
+                      className={`inline-flex items-center gap-1.5 text-xs font-bold py-1.5 px-3.5 rounded-full shadow-2xs hover:shadow-xs transition-all ${
+                        isSubham
+                          ? "bg-[#F2FAFE] text-[#0B75A1] border border-[#BCE6F9] hover:bg-[#E3F4FC]"
+                          : "bg-[#FFF5F7] text-[#C4274C] border-[#FFCCD6] hover:bg-[#FFE9ED]"
+                      }`}
                     >
-                      {doctor.phone}
+                      <Phone className="w-3 h-3" />
+                      <span>Call Now</span>
                     </a>
                   </div>
                 </div>
@@ -755,14 +789,25 @@ export default async function DoctorDetailPage({
               href={doctor.whatsapp}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-whatsapp text-sm py-3 px-6 shadow-md hover:shadow-lg transition-all"
+              className="btn-whatsapp text-sm py-3 px-6 shadow-md hover:shadow-lg transition-all rounded-full"
             >
               <MessageCircle className="w-4 h-4 fill-white" />
               <span>Book on WhatsApp Now</span>
             </a>
+            <a
+              href={`tel:${doctor.phone}`}
+              className={`inline-flex items-center gap-2 text-sm py-3 px-6 rounded-full font-bold transition-all shadow-sm hover:shadow-md border ${
+                isSubham
+                  ? "bg-[#F2FAFE] text-[#0B75A1] border-[#BCE6F9] hover:bg-[#E3F4FC]"
+                  : "bg-[#FFF5F7] text-[#C4274C] border-[#FFCCD6] hover:bg-[#FFE9ED]"
+              }`}
+            >
+              <Phone className="w-4 h-4" />
+              <span>Call Clinic ({doctor.phone})</span>
+            </a>
             <Link
               href="/"
-              className="btn-secondary text-sm py-3 px-6 bg-white border border-gray-200 text-[#1A2229] hover:bg-gray-50 font-semibold"
+              className="inline-flex items-center gap-2 text-sm py-3 px-6 rounded-full bg-white border border-gray-200 text-[#1A2229] hover:bg-gray-50 font-semibold shadow-2xs transition-all"
             >
               Back to Homepage
             </Link>
