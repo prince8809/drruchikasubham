@@ -2,12 +2,12 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { MessageCircle, ShieldCheck, Heart, Sparkles, Award } from "lucide-react";
+import { MessageCircle, Heart, Sparkles } from "lucide-react";
 import { WHATSAPP_SUBHAM, WHATSAPP_RUCHIKA } from "@/lib/constants";
 
 export default function HeroSection() {
   return (
-    <section id="doctors" className="relative overflow-hidden bg-gradient-to-b from-[#FFF5F7] via-[#FFF8F9] to-white pt-8 pb-8 sm:pt-12 sm:pb-10 lg:pt-14 lg:pb-10">
+    <section id="doctors" className="relative overflow-hidden bg-gradient-to-b from-[#FFF5F7] via-[#FFF8F9] to-white pt-8 pb-6 sm:pt-12 sm:pb-8 lg:pt-14 lg:pb-8">
       {/* Gentle background accent glows */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-[#FFE9ED] rounded-full filter blur-3xl opacity-50 -z-10 pointer-events-none"></div>
       <div className="absolute bottom-6 left-0 w-96 h-96 bg-[#E3F4FC] rounded-full filter blur-3xl opacity-50 -z-10 pointer-events-none"></div>
@@ -60,18 +60,6 @@ export default function HeroSection() {
                 <Heart className="w-4 h-4 sm:w-5 sm:h-5" />
                 <span>Book with Dr. Ruchika</span>
               </a>
-            </div>
-
-            {/* Trust Badges */}
-            <div className="pt-3.5 border-t border-[#F1E5E8] flex flex-wrap items-center justify-center lg:justify-start gap-y-2 gap-x-6 text-xs sm:text-sm text-[#475569]">
-              <div className="flex items-center gap-1.5">
-                <Award className="w-4 h-4 text-[#FB5A7C]" />
-                <span className="font-semibold text-[#1A2229]">6+ Years Experience</span>
-              </div>
-              <div className="flex items-center gap-1.5">
-                <ShieldCheck className="w-4 h-4 text-[#10B981]" />
-                <span>Cashless Insurance Tie-up</span>
-              </div>
             </div>
           </div>
 
