@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://drruchikasubham.com"),
   title: "Dr. Subham & Dr. Ruchika | Gynaecologist & Obstetrician in Siliguri",
   description:
     "Complete women's healthcare by husband-wife specialist duo. High-risk pregnancy, normal & cesarean delivery, IVF, PCOS treatment, laparoscopic surgery in Siliguri.",
