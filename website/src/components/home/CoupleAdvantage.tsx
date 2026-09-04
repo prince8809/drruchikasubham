@@ -1,10 +1,12 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
-import { Users, HeartHandshake, ShieldCheck, Sparkles, MessageCircle, ArrowRight } from "lucide-react";
-import { WHATSAPP_SUBHAM } from "@/lib/constants";
+import { Users, HeartHandshake, ShieldCheck, Sparkles } from "lucide-react";
+import BookingModal from "@/components/shared/BookingModal";
 
 export default function CoupleAdvantage() {
+  const [modalOpen, setModalOpen] = useState(false);
   const advantages = [
     {
       icon: HeartHandshake,
@@ -79,15 +81,14 @@ export default function CoupleAdvantage() {
             </div>
 
             {/* Quick Action Button */}
-            <a
-              href={`${WHATSAPP_SUBHAM}&text=Hey%20I%20want%20to%20inquire%20about%20a%20Joint%20Consultation%20with%20both%20Dr.%20Subham%20and%20Dr.%20Ruchika`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-primary text-xs py-2.5 px-5 shadow-xs hover:shadow-md shrink-0 self-start lg:self-auto inline-flex items-center gap-2"
+            <button
+              type="button"
+              onClick={() => setModalOpen(true)}
+              className="btn-primary text-xs py-2.5 px-5 shadow-xs hover:shadow-md shrink-0 self-start lg:self-auto inline-flex items-center gap-2 cursor-pointer"
             >
               <Users className="w-4 h-4" />
               <span>Inquire Joint Consultation</span>
-            </a>
+            </button>
           </div>
 
           {/* Bottom Row: 4 Ultra-Compact Micro-Points */}
@@ -122,6 +123,14 @@ export default function CoupleAdvantage() {
         </div>
 
       </div>
+
+      {/* Joint Consultation Booking Modal */}
+      <BookingModal
+        isOpen={modalOpen}
+        onClose={() => setModalOpen(false)}
+        initialDoctor="joint"
+        initialConcern="Joint Couple Consultation (Pre-conception / Birthing)"
+      />
     </section>
   );
 }

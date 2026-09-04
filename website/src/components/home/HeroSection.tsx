@@ -1,11 +1,20 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { MessageCircle, Heart, Sparkles } from "lucide-react";
-import { WHATSAPP_SUBHAM, WHATSAPP_RUCHIKA } from "@/lib/constants";
+import BookingModal from "@/components/shared/BookingModal";
 
 export default function HeroSection() {
+  const [bookingModalOpen, setBookingModalOpen] = useState(false);
+  const [selectedDoctor, setSelectedDoctor] = useState<"subham" | "ruchika" | "joint">("subham");
+
+  const handleOpenBooking = (doctor: "subham" | "ruchika" | "joint") => {
+    setSelectedDoctor(doctor);
+    setBookingModalOpen(true);
+  };
+
   return (
     <section id="doctors" className="relative overflow-hidden bg-gradient-to-b from-[#FFF5F7] via-[#FFF8F9] to-white pt-8 pb-6 sm:pt-12 sm:pb-8 lg:pt-14 lg:pb-8">
       {/* Gentle background accent glows */}
@@ -41,25 +50,23 @@ export default function HeroSection() {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3.5 pt-1">
-              <a
-                href={WHATSAPP_SUBHAM}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-whatsapp w-full sm:w-auto text-sm sm:text-base py-3 px-6 sm:py-3.5 sm:px-7 shadow-md hover:shadow-lg hover:scale-105 active:scale-95 transition-all justify-center"
+              <button
+                type="button"
+                onClick={() => handleOpenBooking("subham")}
+                className="btn-whatsapp w-full sm:w-auto text-sm sm:text-base py-3 px-6 sm:py-3.5 sm:px-7 shadow-md hover:shadow-lg hover:scale-105 active:scale-95 transition-all justify-center cursor-pointer"
               >
                 <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5 fill-white" />
                 <span>Book Appointment (Dr. Subham)</span>
-              </a>
+              </button>
 
-              <a
-                href={WHATSAPP_RUCHIKA}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-primary w-full sm:w-auto text-sm sm:text-base py-3 px-6 sm:py-3.5 sm:px-7 shadow-md hover:shadow-lg hover:scale-105 active:scale-95 transition-all justify-center"
+              <button
+                type="button"
+                onClick={() => handleOpenBooking("ruchika")}
+                className="btn-primary w-full sm:w-auto text-sm sm:text-base py-3 px-6 sm:py-3.5 sm:px-7 shadow-md hover:shadow-lg hover:scale-105 active:scale-95 transition-all justify-center cursor-pointer"
               >
                 <Heart className="w-4 h-4 sm:w-5 sm:h-5" />
                 <span>Book with Dr. Ruchika</span>
-              </a>
+              </button>
             </div>
           </div>
 
@@ -167,6 +174,13 @@ export default function HeroSection() {
 
         </div>
       </div>
+
+      {/* Quick Booking Modal on WhatsApp */}
+      <BookingModal
+        isOpen={bookingModalOpen}
+        onClose={() => setBookingModalOpen(false)}
+        initialDoctor={selectedDoctor}
+      />
     </section>
   );
 }
