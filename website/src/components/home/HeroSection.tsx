@@ -7,7 +7,7 @@ import { WHATSAPP_SUBHAM, WHATSAPP_RUCHIKA, CONSULTATION_FEE } from "@/lib/const
 
 export default function HeroSection() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-[#FFF5F7] via-[#FFF8F9] to-white pt-12 pb-20 lg:pt-16 lg:pb-28">
+    <section id="doctors" className="relative overflow-hidden bg-gradient-to-b from-[#FFF5F7] via-[#FFF8F9] to-white pt-12 pb-20 lg:pt-16 lg:pb-28">
       {/* Gentle background accent glows */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-[#FFE9ED] rounded-full filter blur-3xl opacity-50 -z-10 pointer-events-none"></div>
       <div className="absolute bottom-10 left-0 w-96 h-96 bg-[#E3F4FC] rounded-full filter blur-3xl opacity-50 -z-10 pointer-events-none"></div>

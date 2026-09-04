@@ -4,7 +4,6 @@ import HeroSection from "@/components/home/HeroSection";
 import StatsCounter from "@/components/home/StatsCounter";
 import CoupleAdvantage from "@/components/home/CoupleAdvantage";
 import ServicesGrid from "@/components/home/ServicesGrid";
-import DoctorProfiles from "@/components/home/DoctorProfiles";
 import SocialHub from "@/components/home/SocialHub";
 import BookingStrip from "@/components/home/BookingStrip";
 import Footer from "@/components/layout/Footer";
@@ -31,19 +30,16 @@ export default function Home() {
       {/* 6. Comprehensive 7-Specialty Grid + Second Opinion */}
       <ServicesGrid />
 
-      {/* 7. Detailed Doctor Profiles & Hospital Timings */}
-      <DoctorProfiles />
-
-      {/* 8. Live Social Hub (Instagram Reels Click-to-Play) */}
+      {/* 7. Live Social Hub (Instagram Reels Click-to-Play) */}
       <SocialHub />
 
-      {/* 9. Interactive Quick Booking Section */}
+      {/* 8. Interactive Quick Booking Section */}
       <BookingStrip />
 
-      {/* 10. Comprehensive Footer */}
+      {/* 9. Comprehensive Footer */}
       <Footer />
 
-      {/* 11. Sticky Floating WhatsApp Assistant */}
+      {/* 10. Sticky Floating WhatsApp Assistant */}
       <WhatsAppFAB />
     </main>
   );
