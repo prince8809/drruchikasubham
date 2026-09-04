@@ -42,7 +42,7 @@ export default function Footer() {
               <div className="relative w-12 h-12 rounded-full overflow-hidden bg-white p-1 flex items-center justify-center shrink-0">
                 <Image
                   src="/images/brand/logo.png"
-                  alt="Dr. Subham & Dr. Ruchika Emblem"
+                  alt="Dr. Subham & Dr. Ruchika Agarwal Emblem"
                   width={44}
                   height={44}
                   className="w-auto h-auto object-contain"
@@ -50,7 +50,7 @@ export default function Footer() {
               </div>
               <div>
                 <h3 className="font-bold text-lg text-white leading-tight">
-                  Dr. Subham &amp; Dr. Ruchika
+                  Dr. Subham &amp; Dr. Ruchika Agarwal
                 </h3>
                 <p className="text-xs text-[#2FB2EA] font-medium">
                   Advanced Women&apos;s Care &bull; Siliguri

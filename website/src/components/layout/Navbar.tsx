@@ -78,7 +78,7 @@ export default function Navbar() {
           <div className="relative w-11 h-11 rounded-full overflow-hidden bg-[#FFF5F7] border-2 border-[#FB5A7C]/30 p-1 flex items-center justify-center shrink-0 shadow-sm group-hover:scale-105 transition-transform">
             <Image
               src="/images/brand/logo.png"
-              alt="Dr. Subham & Dr. Ruchika Emblem"
+              alt="Dr. Subham & Dr. Ruchika Agarwal Emblem"
               width={40}
               height={40}
               className="w-auto h-auto object-contain"
@@ -86,10 +86,10 @@ export default function Navbar() {
             />
           </div>
           <div className="flex flex-col">
-            <span className="text-base sm:text-lg font-bold text-[#1A2229] leading-tight group-hover:text-[#FB5A7C] transition-colors">
-              Dr. Subham &amp; Dr. Ruchika
+            <span className="text-sm sm:text-lg font-bold text-[#1A2229] leading-tight group-hover:text-[#FB5A7C] transition-colors">
+              Dr. Subham &amp; Dr. Ruchika Agarwal
             </span>
-            <span className="text-xs text-[#475569] font-medium tracking-wide">
+            <span className="text-[11px] sm:text-xs text-[#475569] font-medium tracking-wide">
               Advanced Women&apos;s Care &bull; Siliguri
             </span>
           </div>
