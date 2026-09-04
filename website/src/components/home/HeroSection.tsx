@@ -52,20 +52,20 @@ export default function HeroSection() {
             <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3.5 pt-1">
               <button
                 type="button"
-                onClick={() => handleOpenBooking("subham")}
-                className="btn-whatsapp w-full sm:w-auto text-sm sm:text-base py-3 px-6 sm:py-3.5 sm:px-7 shadow-md hover:shadow-lg hover:scale-105 active:scale-95 transition-all justify-center cursor-pointer"
-              >
-                <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5 fill-white" />
-                <span>Book Appointment (Dr. Subham)</span>
-              </button>
-
-              <button
-                type="button"
                 onClick={() => handleOpenBooking("ruchika")}
                 className="btn-primary w-full sm:w-auto text-sm sm:text-base py-3 px-6 sm:py-3.5 sm:px-7 shadow-md hover:shadow-lg hover:scale-105 active:scale-95 transition-all justify-center cursor-pointer"
               >
                 <Heart className="w-4 h-4 sm:w-5 sm:h-5" />
                 <span>Book with Dr. Ruchika</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => handleOpenBooking("subham")}
+                className="btn-whatsapp w-full sm:w-auto text-sm sm:text-base py-3 px-6 sm:py-3.5 sm:px-7 shadow-md hover:shadow-lg hover:scale-105 active:scale-95 transition-all justify-center cursor-pointer"
+              >
+                <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5 fill-white" />
+                <span>Book with Dr. Subham</span>
               </button>
             </div>
           </div>

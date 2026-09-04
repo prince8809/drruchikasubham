@@ -252,27 +252,7 @@ export default function ServicesGrid() {
 
               {/* Specialist Choices */}
               <div className="flex flex-col gap-3">
-                {/* 1. Dr. Subham Agarwal */}
-                <a
-                  href={`https://wa.me/919883368764?text=Hey%20I%20want%20to%20Book%20an%20appointment%20with%20Dr.%20Subham%20Agarwal%20for%20${encodeURIComponent(bookingService.title)}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-between p-3.5 rounded-2xl border border-sky-100 bg-[#F2FAFE] hover:bg-sky-100/80 hover:border-sky-300 transition-all group"
-                >
-                  <div className="flex flex-col text-left">
-                    <span className="text-sm font-bold text-[#0B75A1] group-hover:text-sky-900">
-                      Dr. Subham Agarwal
-                    </span>
-                    <span className="text-xs text-gray-600 mt-0.5">
-                      Manipal Hospital &bull; 10 AM – 6 PM
-                    </span>
-                  </div>
-                  <div className="w-8 h-8 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-xs shrink-0 group-hover:scale-105 transition-transform">
-                    <MessageCircle className="w-4 h-4 fill-white" />
-                  </div>
-                </a>
-
-                {/* 2. Dr. Ruchika Agarwal */}
+                {/* 1. Dr. Ruchika Agarwal */}
                 <a
                   href={`https://wa.me/917872969660?text=Hey%20I%20want%20to%20Book%20an%20appointment%20with%20Dr.%20Ruchika%20Agarwal%20for%20${encodeURIComponent(bookingService.title)}`}
                   target="_blank"
@@ -292,9 +272,29 @@ export default function ServicesGrid() {
                   </div>
                 </a>
 
+                {/* 2. Dr. Subham Agarwal */}
+                <a
+                  href={`https://wa.me/919883368764?text=Hey%20I%20want%20to%20Book%20an%20appointment%20with%20Dr.%20Subham%20Agarwal%20for%20${encodeURIComponent(bookingService.title)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-between p-3.5 rounded-2xl border border-sky-100 bg-[#F2FAFE] hover:bg-sky-100/80 hover:border-sky-300 transition-all group"
+                >
+                  <div className="flex flex-col text-left">
+                    <span className="text-sm font-bold text-[#0B75A1] group-hover:text-sky-900">
+                      Dr. Subham Agarwal
+                    </span>
+                    <span className="text-xs text-gray-600 mt-0.5">
+                      Manipal Hospital &bull; 10 AM – 6 PM
+                    </span>
+                  </div>
+                  <div className="w-8 h-8 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-xs shrink-0 group-hover:scale-105 transition-transform">
+                    <MessageCircle className="w-4 h-4 fill-white" />
+                  </div>
+                </a>
+
                 {/* 3. Joint Consultation (Both Doctors Together) */}
                 <a
-                  href={`https://wa.me/919883368764?text=Hey%20I%20want%20to%20Book%20a%20Joint%20Consultation%20with%20both%20Dr.%20Subham%20and%20Dr.%20Ruchika%20for%20${encodeURIComponent(bookingService.title)}`}
+                  href={`https://wa.me/919883368764?text=Hey%20I%20want%20to%20Book%20a%20Joint%20Consultation%20with%20both%20Dr.%20Ruchika%20and%20Dr.%20Subham%20for%20${encodeURIComponent(bookingService.title)}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center justify-between p-3.5 rounded-2xl border border-purple-100 bg-[#FAF5FF] hover:bg-purple-100/80 hover:border-purple-300 transition-all group"

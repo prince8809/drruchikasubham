@@ -39,24 +39,6 @@ export default function WhatsAppFAB() {
           </p>
 
           <div className="flex flex-col gap-2">
-            {/* Dr. Subham */}
-            <a
-              href={WHATSAPP_SUBHAM}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-between p-2.5 rounded-xl border border-sky-100 bg-[#F2FAFE] hover:bg-sky-100/70 hover:border-sky-300 transition-all group"
-            >
-              <div className="flex flex-col text-left">
-                <span className="text-sm font-bold text-[#0B75A1] group-hover:text-sky-900">
-                  Dr. Subham Agarwal
-                </span>
-                <span className="text-[11px] text-gray-600">
-                  Manipal Hospital &bull; 10 AM – 6 PM
-                </span>
-              </div>
-              <ExternalLink className="w-4 h-4 text-[#2FB2EA] shrink-0" />
-            </a>
-
             {/* Dr. Ruchika */}
             <a
               href={WHATSAPP_RUCHIKA}
@@ -73,6 +55,24 @@ export default function WhatsAppFAB() {
                 </span>
               </div>
               <ExternalLink className="w-4 h-4 text-[#FB5A7C] shrink-0" />
+            </a>
+
+            {/* Dr. Subham */}
+            <a
+              href={WHATSAPP_SUBHAM}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-between p-2.5 rounded-xl border border-sky-100 bg-[#F2FAFE] hover:bg-sky-100/70 hover:border-sky-300 transition-all group"
+            >
+              <div className="flex flex-col text-left">
+                <span className="text-sm font-bold text-[#0B75A1] group-hover:text-sky-900">
+                  Dr. Subham Agarwal
+                </span>
+                <span className="text-[11px] text-gray-600">
+                  Manipal Hospital &bull; 10 AM – 6 PM
+                </span>
+              </div>
+              <ExternalLink className="w-4 h-4 text-[#2FB2EA] shrink-0" />
             </a>
 
             {/* Joint Consultation */}

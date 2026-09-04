@@ -190,7 +190,7 @@ export default function ReviewsSection() {
                 const isRuchika = selectedReview.doctor.includes("Ruchika") && !isJoint;
                 const baseUrl = isJoint ? WHATSAPP_JOINT : isRuchika ? WHATSAPP_RUCHIKA : WHATSAPP_SUBHAM;
                 const docText = isJoint
-                  ? "a Joint Consultation with both Dr. Subham and Dr. Ruchika"
+                  ? "a Joint Consultation with both Dr. Ruchika and Dr. Subham"
                   : isRuchika
                   ? "an appointment with Dr. Ruchika Agarwal"
                   : "an appointment with Dr. Subham Agarwal";

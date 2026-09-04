@@ -12,10 +12,10 @@ export default function Navbar() {
   const [doctorsDropdownOpen, setDoctorsDropdownOpen] = useState(false);
   const [mobileDoctorsOpen, setMobileDoctorsOpen] = useState(true);
   const [bookingModalOpen, setBookingModalOpen] = useState(false);
-  const [selectedDoctorId, setSelectedDoctorId] = useState<"subham" | "ruchika" | "joint">("subham");
+  const [selectedDoctorId, setSelectedDoctorId] = useState<"subham" | "ruchika" | "joint">("ruchika");
   const dropdownTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-  const handleOpenBooking = (docId: "subham" | "ruchika" | "joint" = "subham") => {
+  const handleOpenBooking = (docId: "subham" | "ruchika" | "joint" = "ruchika") => {
     setSelectedDoctorId(docId);
     setBookingModalOpen(true);
     setMobileMenuOpen(false);
@@ -78,7 +78,7 @@ export default function Navbar() {
           <div className="relative w-11 h-11 rounded-full overflow-hidden bg-[#FFF5F7] border-2 border-[#FB5A7C]/30 p-1 flex items-center justify-center shrink-0 shadow-sm group-hover:scale-105 transition-transform">
             <Image
               src="/images/brand/logo.png"
-              alt="Dr. Subham & Dr. Ruchika Agarwal Emblem"
+              alt="Dr. Ruchika & Dr. Subham Agarwal Emblem"
               width={40}
               height={40}
               className="w-auto h-auto object-contain"
@@ -87,7 +87,7 @@ export default function Navbar() {
           </div>
           <div className="flex flex-col">
             <span className="text-sm sm:text-lg font-bold text-[#1A2229] leading-tight group-hover:text-[#FB5A7C] transition-colors">
-              Dr. Subham &amp; Dr. Ruchika Agarwal
+              Dr. Ruchika &amp; Dr. Subham Agarwal
             </span>
             <span className="text-[11px] sm:text-xs text-[#475569] font-medium tracking-wide">
               Advanced Women&apos;s Care &bull; Siliguri
@@ -129,41 +129,11 @@ export default function Navbar() {
                   Select Specialist Profile
                 </div>
 
-                {/* Dr. Subham Agarwal Item */}
-                <Link
-                  href="/doctors/dr-subham-agarwal"
-                  onClick={() => setDoctorsDropdownOpen(false)}
-                  className="flex items-center gap-3 p-2.5 rounded-2xl hover:bg-[#F2FAFE] transition-colors group/item"
-                >
-                  <div className="relative w-12 h-14 rounded-xl overflow-hidden bg-sky-50 border border-sky-200 shrink-0 shadow-2xs">
-                    <Image
-                      src="/images/doctors/dr-subham-headshot.png"
-                      alt="Dr. Subham Agarwal"
-                      fill
-                      sizes="60px"
-                      className="object-cover object-top group-hover/item:scale-105 transition-transform"
-                    />
-                  </div>
-                  <div className="min-w-0">
-                    <div className="font-bold text-sm text-[#1A2229] group-hover/item:text-[#0B75A1] transition-colors flex items-center gap-1">
-                      <span>Dr. Subham Agarwal</span>
-                    </div>
-                    <p className="text-[11px] text-gray-500 truncate">
-                      M.B.B.S, M.S, F.M.A.S, F.I.A.G
-                    </p>
-                    <div className="flex items-center gap-1.5 mt-0.5">
-                      <span className="text-[10px] font-semibold text-[#0B75A1] bg-sky-100/70 px-2 py-0.2 rounded-full">
-                        Manipal Hospital &bull; 10 AM – 6 PM
-                      </span>
-                    </div>
-                  </div>
-                </Link>
-
                 {/* Dr. Ruchika Agarwal Item */}
                 <Link
                   href="/doctors/dr-ruchika-agarwal"
                   onClick={() => setDoctorsDropdownOpen(false)}
-                  className="flex items-center gap-3 p-2.5 rounded-2xl hover:bg-[#FFF5F7] transition-colors group/item mt-1"
+                  className="flex items-center gap-3 p-2.5 rounded-2xl hover:bg-[#FFF5F7] transition-colors group/item"
                 >
                   <div className="relative w-12 h-14 rounded-xl overflow-hidden bg-pink-50 border border-pink-200 shrink-0 shadow-2xs">
                     <Image
@@ -184,6 +154,36 @@ export default function Navbar() {
                     <div className="flex items-center gap-1.5 mt-0.5">
                       <span className="text-[10px] font-semibold text-[#C4274C] bg-pink-100/70 px-2 py-0.2 rounded-full">
                         Zivah Wellness &bull; 10 AM – 2 PM
+                      </span>
+                    </div>
+                  </div>
+                </Link>
+
+                {/* Dr. Subham Agarwal Item */}
+                <Link
+                  href="/doctors/dr-subham-agarwal"
+                  onClick={() => setDoctorsDropdownOpen(false)}
+                  className="flex items-center gap-3 p-2.5 rounded-2xl hover:bg-[#F2FAFE] transition-colors group/item mt-1"
+                >
+                  <div className="relative w-12 h-14 rounded-xl overflow-hidden bg-sky-50 border border-sky-200 shrink-0 shadow-2xs">
+                    <Image
+                      src="/images/doctors/dr-subham-headshot.png"
+                      alt="Dr. Subham Agarwal"
+                      fill
+                      sizes="60px"
+                      className="object-cover object-top group-hover/item:scale-105 transition-transform"
+                    />
+                  </div>
+                  <div className="min-w-0">
+                    <div className="font-bold text-sm text-[#1A2229] group-hover/item:text-[#0B75A1] transition-colors flex items-center gap-1">
+                      <span>Dr. Subham Agarwal</span>
+                    </div>
+                    <p className="text-[11px] text-gray-500 truncate">
+                      M.B.B.S, M.S, F.M.A.S, F.I.A.G
+                    </p>
+                    <div className="flex items-center gap-1.5 mt-0.5">
+                      <span className="text-[10px] font-semibold text-[#0B75A1] bg-sky-100/70 px-2 py-0.2 rounded-full">
+                        Manipal Hospital &bull; 10 AM – 6 PM
                       </span>
                     </div>
                   </div>
@@ -224,7 +224,7 @@ export default function Navbar() {
         <div className="hidden sm:flex items-center gap-3">
           <button
             type="button"
-            onClick={() => handleOpenBooking("subham")}
+            onClick={() => handleOpenBooking("ruchika")}
             className="btn-whatsapp text-sm py-2.5 px-5 shadow-sm hover:shadow-md hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer flex items-center gap-2"
           >
             <MessageCircle className="w-4 h-4 fill-white" />
@@ -236,7 +236,7 @@ export default function Navbar() {
         <div className="flex sm:hidden items-center gap-2">
           <button
             type="button"
-            onClick={() => handleOpenBooking("subham")}
+            onClick={() => handleOpenBooking("ruchika")}
             className="bg-[#25D366] text-white p-2 rounded-full shadow-sm hover:scale-105 active:scale-95 transition-transform cursor-pointer flex items-center justify-center"
             aria-label="Book appointment on WhatsApp"
           >
@@ -274,30 +274,6 @@ export default function Navbar() {
               {mobileDoctorsOpen && (
                 <div className="pl-2 pt-1 pb-2 space-y-2">
                   <Link
-                    href="/doctors/dr-subham-agarwal"
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="flex items-center gap-3 p-2 rounded-xl bg-[#F2FAFE] border border-sky-100 text-[#1A2229]"
-                  >
-                    <div className="relative w-9 h-11 rounded-lg overflow-hidden bg-white shrink-0 border border-sky-200">
-                      <Image
-                        src="/images/doctors/dr-subham-headshot.png"
-                        alt="Dr. Subham"
-                        fill
-                        sizes="40px"
-                        className="object-cover object-top"
-                      />
-                    </div>
-                    <div className="min-w-0">
-                      <div className="font-bold text-xs text-[#1A2229]">
-                        Dr. Subham Agarwal
-                      </div>
-                      <div className="text-[10px] text-gray-500">
-                        Manipal Hospital &bull; Laparoscopic Surgeon
-                      </div>
-                    </div>
-                  </Link>
-
-                  <Link
                     href="/doctors/dr-ruchika-agarwal"
                     onClick={() => setMobileMenuOpen(false)}
                     className="flex items-center gap-3 p-2 rounded-xl bg-[#FFF5F7] border border-pink-100 text-[#1A2229]"
@@ -317,6 +293,30 @@ export default function Navbar() {
                       </div>
                       <div className="text-[10px] text-gray-500">
                         Zivah Wellness &bull; Fertility Specialist
+                      </div>
+                    </div>
+                  </Link>
+
+                  <Link
+                    href="/doctors/dr-subham-agarwal"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="flex items-center gap-3 p-2 rounded-xl bg-[#F2FAFE] border border-sky-100 text-[#1A2229]"
+                  >
+                    <div className="relative w-9 h-11 rounded-lg overflow-hidden bg-white shrink-0 border border-sky-200">
+                      <Image
+                        src="/images/doctors/dr-subham-headshot.png"
+                        alt="Dr. Subham"
+                        fill
+                        sizes="40px"
+                        className="object-cover object-top"
+                      />
+                    </div>
+                    <div className="min-w-0">
+                      <div className="font-bold text-xs text-[#1A2229]">
+                        Dr. Subham Agarwal
+                      </div>
+                      <div className="text-[10px] text-gray-500">
+                        Manipal Hospital &bull; Laparoscopic Surgeon
                       </div>
                     </div>
                   </Link>
@@ -341,7 +341,7 @@ export default function Navbar() {
             <div className="pt-3 flex flex-col gap-2">
               <button
                 type="button"
-                onClick={() => handleOpenBooking("subham")}
+                onClick={() => handleOpenBooking("ruchika")}
                 className="btn-whatsapp text-center justify-center text-sm py-3 cursor-pointer w-full flex items-center gap-2"
               >
                 <MessageCircle className="w-4 h-4 fill-white" />

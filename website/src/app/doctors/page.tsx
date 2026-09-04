@@ -5,9 +5,9 @@ import WhatsAppFAB from "@/components/layout/WhatsAppFAB";
 import DoctorProfiles from "@/components/home/DoctorProfiles";
 
 export const metadata: Metadata = {
-  title: "Our Specialist Doctors | Dr. Subham Agarwal & Dr. Ruchika Agarwal",
+  title: "Our Specialist Doctors | Dr. Ruchika Agarwal & Dr. Subham Agarwal",
   description:
-    "Meet Dr. Subham Agarwal and Dr. Ruchika Agarwal — Siliguri's husband-and-wife specialist team in obstetrics, gynaecology, fertility, and laparoscopic surgery.",
+    "Meet Dr. Ruchika Agarwal and Dr. Subham Agarwal — Siliguri's husband-and-wife specialist team in obstetrics, gynaecology, fertility, and laparoscopic surgery.",
 };
 
 export default function DoctorsIndexPage() {

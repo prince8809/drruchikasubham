@@ -15,7 +15,7 @@ export interface BookingModalProps {
 export default function BookingModal({
   isOpen,
   onClose,
-  initialDoctor = "subham",
+  initialDoctor = "ruchika",
   initialConcern = "",
 }: BookingModalProps) {
   const [selectedDoctor, setSelectedDoctor] = useState<"subham" | "ruchika" | "joint">(initialDoctor);
@@ -60,11 +60,11 @@ export default function BookingModal({
     e.preventDefault();
 
     const docName =
-      selectedDoctor === "subham"
-        ? "Dr. Subham Agarwal"
-        : selectedDoctor === "ruchika"
+      selectedDoctor === "ruchika"
         ? "Dr. Ruchika Agarwal"
-        : "Both Doctors (Joint Consultation - Dr. Subham & Dr. Ruchika)";
+        : selectedDoctor === "subham"
+        ? "Dr. Subham Agarwal"
+        : "Both Doctors (Joint Consultation - Dr. Ruchika & Dr. Subham)";
 
     const patient = patientName.trim() ? `\nPatient Name: ${patientName.trim()}` : "";
     const reason = concern ? `\nPrimary Concern: ${concern}` : "";
@@ -99,7 +99,7 @@ export default function BookingModal({
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 p-2 text-gray-400 hover:text-[#1A2229] hover:bg-gray-100 rounded-full transition-colors"
+          className="absolute top-4 right-4 p-2 text-gray-400 hover:text-[#1A2229] hover:bg-gray-100 rounded-full transition-colors cursor-pointer"
           aria-label="Close booking modal"
         >
           <X className="w-5 h-5" />
@@ -127,31 +127,11 @@ export default function BookingModal({
               Select Doctor / Consultation:
             </label>
             <div className="grid grid-cols-3 gap-2">
-              {/* Dr. Subham */}
-              <button
-                type="button"
-                onClick={() => setSelectedDoctor("subham")}
-                className={`p-2.5 sm:p-3 rounded-2xl text-xs font-bold border transition-all flex flex-col items-center justify-center gap-0.5 ${
-                  selectedDoctor === "subham"
-                    ? "bg-[#2FB2EA] text-white border-[#2FB2EA] shadow-md scale-[1.02]"
-                    : "bg-gray-50 text-gray-700 border-gray-200 hover:bg-gray-100"
-                }`}
-              >
-                <span className="font-extrabold text-[13px]">Dr. Subham</span>
-                <span
-                  className={`text-[10px] truncate max-w-full font-medium ${
-                    selectedDoctor === "subham" ? "text-sky-100" : "text-gray-500"
-                  }`}
-                >
-                  Obstetric & Laparoscopy
-                </span>
-              </button>
-
               {/* Dr. Ruchika */}
               <button
                 type="button"
                 onClick={() => setSelectedDoctor("ruchika")}
-                className={`p-2.5 sm:p-3 rounded-2xl text-xs font-bold border transition-all flex flex-col items-center justify-center gap-0.5 ${
+                className={`p-2.5 sm:p-3 rounded-2xl text-xs font-bold border transition-all flex flex-col items-center justify-center gap-0.5 cursor-pointer ${
                   selectedDoctor === "ruchika"
                     ? "bg-[#FB5A7C] text-white border-[#FB5A7C] shadow-md scale-[1.02]"
                     : "bg-gray-50 text-gray-700 border-gray-200 hover:bg-gray-100"
@@ -167,11 +147,31 @@ export default function BookingModal({
                 </span>
               </button>
 
+              {/* Dr. Subham */}
+              <button
+                type="button"
+                onClick={() => setSelectedDoctor("subham")}
+                className={`p-2.5 sm:p-3 rounded-2xl text-xs font-bold border transition-all flex flex-col items-center justify-center gap-0.5 cursor-pointer ${
+                  selectedDoctor === "subham"
+                    ? "bg-[#2FB2EA] text-white border-[#2FB2EA] shadow-md scale-[1.02]"
+                    : "bg-gray-50 text-gray-700 border-gray-200 hover:bg-gray-100"
+                }`}
+              >
+                <span className="font-extrabold text-[13px]">Dr. Subham</span>
+                <span
+                  className={`text-[10px] truncate max-w-full font-medium ${
+                    selectedDoctor === "subham" ? "text-sky-100" : "text-gray-500"
+                  }`}
+                >
+                  Obstetric & Laparoscopy
+                </span>
+              </button>
+
               {/* Joint Care */}
               <button
                 type="button"
                 onClick={() => setSelectedDoctor("joint")}
-                className={`p-2.5 sm:p-3 rounded-2xl text-xs font-bold border transition-all flex flex-col items-center justify-center gap-0.5 ${
+                className={`p-2.5 sm:p-3 rounded-2xl text-xs font-bold border transition-all flex flex-col items-center justify-center gap-0.5 cursor-pointer ${
                   selectedDoctor === "joint"
                     ? "bg-[#1A2229] text-white border-[#1A2229] shadow-md scale-[1.02]"
                     : "bg-gray-50 text-gray-700 border-gray-200 hover:bg-gray-100"

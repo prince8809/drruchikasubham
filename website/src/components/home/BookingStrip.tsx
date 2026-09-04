@@ -10,13 +10,18 @@ import {
 } from "@/lib/constants";
 
 export default function BookingStrip() {
-  const [selectedDoctor, setSelectedDoctor] = useState<"subham" | "ruchika" | "joint">("subham");
+  const [selectedDoctor, setSelectedDoctor] = useState<"subham" | "ruchika" | "joint">("ruchika");
   const [patientName, setPatientName] = useState("");
   const [concern, setConcern] = useState("");
 
   const handleBookingSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const docName = selectedDoctor === "subham" ? "Dr. Subham Agarwal" : selectedDoctor === "ruchika" ? "Dr. Ruchika Agarwal" : "Both Doctors (Joint Consultation)";
+    const docName =
+      selectedDoctor === "ruchika"
+        ? "Dr. Ruchika Agarwal"
+        : selectedDoctor === "subham"
+        ? "Dr. Subham Agarwal"
+        : "Both Doctors (Joint Consultation - Dr. Ruchika & Dr. Subham)";
     const message = `Hey I want to Book an appointment with ${docName}. Name: ${patientName || "Patient"}. Concern: ${concern || "General Consultation"}.`;
     const targetUrl = selectedDoctor === "ruchika" ? WHATSAPP_RUCHIKA : WHATSAPP_SUBHAM;
     const finalUrl = `${targetUrl.split("?")[0]}?text=${encodeURIComponent(message)}`;
@@ -52,16 +57,16 @@ export default function BookingStrip() {
               <div className="bg-white/10 backdrop-blur-sm p-3.5 rounded-xl border border-white/15 flex items-start gap-3">
                 <MapPin className="w-5 h-5 shrink-0 text-white mt-0.5" />
                 <div>
-                  <strong className="block text-white font-bold">Dr. Subham Agarwal &bull; Manipal Hospital Siliguri</strong>
-                  <span className="text-white/80 text-xs">Mon – Fri: 10:00 AM – 6:00 PM &bull; {ADDRESS_MANIPAL}</span>
+                  <strong className="block text-white font-bold">Dr. Ruchika Agarwal &bull; Zivah Wellness Centre</strong>
+                  <span className="text-white/80 text-xs">Mon – Fri: 10:00 AM – 2:00 PM &bull; {ADDRESS_ZIVAH}</span>
                 </div>
               </div>
 
               <div className="bg-white/10 backdrop-blur-sm p-3.5 rounded-xl border border-white/15 flex items-start gap-3">
                 <MapPin className="w-5 h-5 shrink-0 text-white mt-0.5" />
                 <div>
-                  <strong className="block text-white font-bold">Dr. Ruchika Agarwal &bull; Zivah Wellness Centre</strong>
-                  <span className="text-white/80 text-xs">Mon – Fri: 10:00 AM – 2:00 PM &bull; {ADDRESS_ZIVAH}</span>
+                  <strong className="block text-white font-bold">Dr. Subham Agarwal &bull; Manipal Hospital Siliguri</strong>
+                  <span className="text-white/80 text-xs">Mon – Fri: 10:00 AM – 6:00 PM &bull; {ADDRESS_MANIPAL}</span>
                 </div>
               </div>
             </div>
@@ -93,19 +98,8 @@ export default function BookingStrip() {
                   <div className="grid grid-cols-3 gap-2">
                     <button
                       type="button"
-                      onClick={() => setSelectedDoctor("subham")}
-                      className={`p-2.5 rounded-xl text-xs font-bold border transition-all text-center ${
-                        selectedDoctor === "subham"
-                          ? "bg-[#2FB2EA] text-white border-[#2FB2EA] shadow-sm"
-                          : "bg-gray-50 text-gray-700 border-gray-200 hover:bg-gray-100"
-                      }`}
-                    >
-                      Dr. Subham
-                    </button>
-                    <button
-                      type="button"
                       onClick={() => setSelectedDoctor("ruchika")}
-                      className={`p-2.5 rounded-xl text-xs font-bold border transition-all text-center ${
+                      className={`p-2.5 rounded-xl text-xs font-bold border transition-all text-center cursor-pointer ${
                         selectedDoctor === "ruchika"
                           ? "bg-[#FB5A7C] text-white border-[#FB5A7C] shadow-sm"
                           : "bg-gray-50 text-gray-700 border-gray-200 hover:bg-gray-100"
@@ -115,8 +109,19 @@ export default function BookingStrip() {
                     </button>
                     <button
                       type="button"
+                      onClick={() => setSelectedDoctor("subham")}
+                      className={`p-2.5 rounded-xl text-xs font-bold border transition-all text-center cursor-pointer ${
+                        selectedDoctor === "subham"
+                          ? "bg-[#2FB2EA] text-white border-[#2FB2EA] shadow-sm"
+                          : "bg-gray-50 text-gray-700 border-gray-200 hover:bg-gray-100"
+                      }`}
+                    >
+                      Dr. Subham
+                    </button>
+                    <button
+                      type="button"
                       onClick={() => setSelectedDoctor("joint")}
-                      className={`p-2.5 rounded-xl text-xs font-bold border transition-all text-center ${
+                      className={`p-2.5 rounded-xl text-xs font-bold border transition-all text-center cursor-pointer ${
                         selectedDoctor === "joint"
                           ? "bg-[#1A2229] text-white border-[#1A2229] shadow-sm"
                           : "bg-gray-50 text-gray-700 border-gray-200 hover:bg-gray-100"

@@ -51,6 +51,112 @@ export interface Doctor {
 
 export const doctors: Doctor[] = [
   {
+    id: "ruchika",
+    slug: "dr-ruchika-agarwal",
+    name: "Dr. Ruchika Agarwal",
+    shortName: "Dr. Ruchika",
+    degrees: "M.B.B.S, M.S",
+    role: "Consultant Obstetrician, Gynaecologist & Fertility Specialist",
+    tagline: "Empathetic, Complete Healthcare for Every Stage of Womanhood.",
+    bio: "Dedicated to compassionate women's wellness, fertility management, and respectful maternity care. Dr. Ruchika provides empathetic support for menstrual issues, PCOS, IVF counseling, and natural birth planning.",
+    fullBio: "Dr. Ruchika Agarwal is dedicated to providing warm, comprehensive, and compassionate women's healthcare. With specialized focus in adolescent gynaecology, fertility and infertility evaluations, PCOS reversal, gentle normal vaginal delivery, and perimenopause transitions, Dr. Ruchika creates an environment where women feel truly heard, respected, and expertly cared for.",
+    philosophyTitle: "Empathy, Listening & Evidence-Based Maternity Care",
+    philosophyDesc: "Every woman's body and reproductive journey is unique. Many women feel anxious or hesitant to discuss intimate hormonal, menstrual, or fertility challenges. My clinic is designed to be a safe, compassionate space where you can speak openly without feeling rushed or judged. From adolescent menstrual problems to joyful deliveries and menopausal wellbeing, I am here as your trusted partner.",
+    specialHighlightTitle: "Gentle Maternity & Adolescent Well-Woman Care",
+    specialHighlightDesc: "Dr. Ruchika prioritizes emotional comfort, continuous labor reassurance, and natural birth preparedness. She also provides gentle guidance for teenagers experiencing painful or irregular cycles, helping young women build long-term reproductive confidence.",
+    photo: "/images/doctors/dr-ruchika-headshot.jpg",
+    whatsapp: WHATSAPP_RUCHIKA,
+    phone: PHONE_RUCHIKA,
+    hospital: "Zivah Fertility & Women's Wellness Centre, 2nd Floor, The Crest, Meghnad Saha Sarani, Opposite Deokta Sangha, Pradhan Nagar, Siliguri - 734003",
+    hospitalShort: "Zivah Fertility & Wellness Centre",
+    timings: "Monday – Friday: 10:00 AM – 2:00 PM",
+    experience: "6+ Years",
+    languages: ["English", "Hindi", "Bengali", "Nepali"],
+    qualificationsList: [
+      "M.B.B.S — Bachelor of Medicine, Bachelor of Surgery",
+      "M.S (Obstetrics & Gynaecology) — Master of Surgery"
+    ],
+    specialties: [
+      "Fertility Evaluation & IVF Guidance",
+      "PCOD / PCOS & Hormonal Balance",
+      "Normal Vaginal Delivery",
+      "High-Risk Pregnancy Care",
+      "Adolescent Gynaecology & Period Health",
+      "Antenatal Nutrition & Wellness",
+      "Menopause & Perimenopause Care",
+      "Cervical Cancer Screening"
+    ],
+    specialtyDetails: [
+      {
+        title: "Fertility Evaluation & Conception Care",
+        desc: "Sensitive, structured workup for couples trying to conceive, including ovulation monitoring, hormonal profiling, semen analysis interpretation, and IVF counseling.",
+        icon: "Dna",
+        tags: ["Follicular Tracking", "Hormonal Panels", "Ovulation Induction", "IVF Counseling"]
+      },
+      {
+        title: "PCOD / PCOS Reversal & Hormonal Health",
+        desc: "Holistic, evidence-based management addressing irregular cycles, acne, weight struggles, and metabolic imbalances with compassionate long-term support.",
+        icon: "Pill",
+        tags: ["Cycle Regularity", "Lifestyle Interventions", "Fertility Restoration", "Insulin Health"]
+      },
+      {
+        title: "Normal Vaginal Delivery & Antenatal Care",
+        desc: "Continuous, patient-guided pregnancy monitoring with focus on maternal wellbeing, fetal development, nutrition, pelvic floor preparedness, and calm natural birth.",
+        icon: "Baby",
+        tags: ["Antenatal Visits", "Gentle Birth Planning", "Pelvic Floor Care", "Postpartum Recovery"]
+      },
+      {
+        title: "Adolescent Gynaecology & Menstrual Health",
+        desc: "Safe, supportive consultations for teenagers and young adults dealing with severe dysmenorrhea, heavy flow, irregular periods, and puberty concerns.",
+        icon: "Sparkles",
+        tags: ["Painful Periods", "Heavy Bleeding", "Puberty Health", "Compassionate Care"]
+      },
+      {
+        title: "High-Risk Pregnancy Surveillance",
+        desc: "Careful monitoring of maternal medical conditions, thyroid disorders, gestational hypertension, and previous pregnancy complications.",
+        icon: "HeartPulse",
+        tags: ["Thyroid in Pregnancy", "Hypertension", "Close Monitoring", "Safety Protocols"]
+      },
+      {
+        title: "Menopause & Perimenopause Transition",
+        desc: "Supportive care for hot flashes, night sweats, mood fluctuations, bone density loss, and vaginal dryness to keep your golden years vibrant and healthy.",
+        icon: "Thermometer",
+        tags: ["Hot Flashes", "Bone Health", "Hormone Therapy Guidance", "Well-Woman Screening"]
+      }
+    ],
+    milestones: [
+      "1,000+ Normal Deliveries Conducted",
+      "Hundreds of Successful Fertility & PCOS Journeys",
+      "6+ Years of Compassionate Women's Healthcare",
+      "Trusted by Families Across Siliguri, Sikkim & North Bengal"
+    ],
+    accentColor: "#FB5A7C",
+    accentBg: "bg-[#FFF5F7]",
+    accentBorder: "border-[#FFCCD6]",
+    accentText: "text-[#C4274C]",
+    partnerDoctorSlug: "dr-subham-agarwal",
+    partnerDoctorName: "Dr. Subham Agarwal",
+    partnerDoctorHospital: "Manipal Hospital, Siliguri",
+    faqs: [
+      {
+        question: "Where does Dr. Ruchika Agarwal consult?",
+        answer: "Dr. Ruchika consults at Zivah Fertility & Women's Wellness Centre, 2nd Floor, The Crest, Meghnad Saha Sarani (opposite Deokta Sangha), Pradhan Nagar, Siliguri from Monday to Friday between 10:00 AM and 2:00 PM."
+      },
+      {
+        question: "How do I book an OPD consultation with Dr. Ruchika?",
+        answer: "You can book your consultation directly on WhatsApp by clicking the 'Book on WhatsApp' button on this page, or by contacting the clinic desk."
+      },
+      {
+        question: "I have painful periods or PCOS. What happens during the first visit?",
+        answer: "Your initial consultation is completely unhurried. Dr. Ruchika will listen to your symptoms, menstrual history, and lifestyle factors, review any past ultrasound reports or blood tests, and prepare a personalized, step-by-step treatment plan."
+      },
+      {
+        question: "Where are deliveries and surgical procedures conducted?",
+        answer: "Hospital deliveries and advanced gynaecological procedures are conducted in collaboration with Dr. Subham Agarwal at Manipal Hospital, Siliguri with cashless/TPA insurance coverage and 24/7 neonatal/ICU backup."
+      }
+    ]
+  },
+  {
     id: "subham",
     slug: "dr-subham-agarwal",
     name: "Dr. Subham Agarwal",
@@ -155,114 +261,8 @@ export const doctors: Doctor[] = [
         answer: "Absolutely! Dr. Subham strongly believes in active partner participation. Husbands are warmly encouraged to attend consultations, ask questions, and learn how to best support their partner through pregnancy, labor, and postpartum care."
       },
       {
-        question: "Can I consult both Dr. Subham and Dr. Ruchika together?",
+        question: "Can I consult both Dr. Ruchika and Dr. Subham together?",
         answer: "Yes. Through the Couple Doctor Advantage, you can request a joint consultation where both specialists review your medical history and collaborate on your treatment or birth plan."
-      }
-    ]
-  },
-  {
-    id: "ruchika",
-    slug: "dr-ruchika-agarwal",
-    name: "Dr. Ruchika Agarwal",
-    shortName: "Dr. Ruchika",
-    degrees: "M.B.B.S, M.S",
-    role: "Consultant Obstetrician, Gynaecologist & Fertility Specialist",
-    tagline: "Empathetic, Complete Healthcare for Every Stage of Womanhood.",
-    bio: "Dedicated to compassionate women's wellness, fertility management, and respectful maternity care. Dr. Ruchika provides empathetic support for menstrual issues, PCOS, IVF counseling, and natural birth planning.",
-    fullBio: "Dr. Ruchika Agarwal is dedicated to providing warm, comprehensive, and compassionate women's healthcare. With specialized focus in adolescent gynaecology, fertility and infertility evaluations, PCOS reversal, gentle normal vaginal delivery, and perimenopause transitions, Dr. Ruchika creates an environment where women feel truly heard, respected, and expertly cared for.",
-    philosophyTitle: "Empathy, Listening & Evidence-Based Maternity Care",
-    philosophyDesc: "Every woman's body and reproductive journey is unique. Many women feel anxious or hesitant to discuss intimate hormonal, menstrual, or fertility challenges. My clinic is designed to be a safe, compassionate space where you can speak openly without feeling rushed or judged. From adolescent menstrual problems to joyful deliveries and menopausal wellbeing, I am here as your trusted partner.",
-    specialHighlightTitle: "Gentle Maternity & Adolescent Well-Woman Care",
-    specialHighlightDesc: "Dr. Ruchika prioritizes emotional comfort, continuous labor reassurance, and natural birth preparedness. She also provides gentle guidance for teenagers experiencing painful or irregular cycles, helping young women build long-term reproductive confidence.",
-    photo: "/images/doctors/dr-ruchika-headshot.jpg",
-    whatsapp: WHATSAPP_RUCHIKA,
-    phone: PHONE_RUCHIKA,
-    hospital: "Zivah Fertility & Women's Wellness Centre, 2nd Floor, The Crest, Meghnad Saha Sarani, Opposite Deokta Sangha, Pradhan Nagar, Siliguri - 734003",
-    hospitalShort: "Zivah Fertility & Wellness Centre",
-    timings: "Monday – Friday: 10:00 AM – 2:00 PM",
-    experience: "6+ Years",
-    languages: ["English", "Hindi", "Bengali", "Nepali"],
-    qualificationsList: [
-      "M.B.B.S — Bachelor of Medicine, Bachelor of Surgery",
-      "M.S (Obstetrics & Gynaecology) — Master of Surgery"
-    ],
-    specialties: [
-      "Fertility Evaluation & IVF Guidance",
-      "PCOD / PCOS & Hormonal Balance",
-      "Normal Vaginal Delivery",
-      "High-Risk Pregnancy Care",
-      "Adolescent Gynaecology & Period Health",
-      "Antenatal Nutrition & Wellness",
-      "Menopause & Perimenopause Care",
-      "Cervical Cancer Screening"
-    ],
-    specialtyDetails: [
-      {
-        title: "Fertility Evaluation & Conception Care",
-        desc: "Sensitive, structured workup for couples trying to conceive, including ovulation monitoring, hormonal profiling, semen analysis interpretation, and IVF counseling.",
-        icon: "Dna",
-        tags: ["Follicular Tracking", "Hormonal Panels", "Ovulation Induction", "IVF Counseling"]
-      },
-      {
-        title: "PCOD / PCOS Reversal & Hormonal Health",
-        desc: "Holistic, evidence-based management addressing irregular cycles, acne, weight struggles, and metabolic imbalances with compassionate long-term support.",
-        icon: "Pill",
-        tags: ["Cycle Regularity", "Lifestyle Interventions", "Fertility Restoration", "Insulin Health"]
-      },
-      {
-        title: "Normal Vaginal Delivery & Antenatal Care",
-        desc: "Continuous, patient-guided pregnancy monitoring with focus on maternal wellbeing, fetal development, nutrition, pelvic floor preparedness, and calm natural birth.",
-        icon: "Baby",
-        tags: ["Antenatal Visits", "Gentle Birth Planning", "Pelvic Floor Care", "Postpartum Recovery"]
-      },
-      {
-        title: "Adolescent Gynaecology & Menstrual Health",
-        desc: "Safe, supportive consultations for teenagers and young adults dealing with severe dysmenorrhea, heavy flow, irregular periods, and puberty concerns.",
-        icon: "Sparkles",
-        tags: ["Painful Periods", "Heavy Bleeding", "Puberty Health", "Compassionate Care"]
-      },
-      {
-        title: "High-Risk Pregnancy Surveillance",
-        desc: "Careful monitoring of maternal medical conditions, thyroid disorders, gestational hypertension, and previous pregnancy complications.",
-        icon: "HeartPulse",
-        tags: ["Thyroid in Pregnancy", "Hypertension", "Close Monitoring", "Safety Protocols"]
-      },
-      {
-        title: "Menopause & Perimenopause Transition",
-        desc: "Supportive care for hot flashes, night sweats, mood fluctuations, bone density loss, and vaginal dryness to keep your golden years vibrant and healthy.",
-        icon: "Thermometer",
-        tags: ["Hot Flashes", "Bone Health", "Hormone Therapy Guidance", "Well-Woman Screening"]
-      }
-    ],
-    milestones: [
-      "1,000+ Normal Deliveries Conducted",
-      "Hundreds of Successful Fertility & PCOS Journeys",
-      "6+ Years of Compassionate Women's Healthcare",
-      "Trusted by Families Across Siliguri, Sikkim & North Bengal"
-    ],
-    accentColor: "#FB5A7C",
-    accentBg: "bg-[#FFF5F7]",
-    accentBorder: "border-[#FFCCD6]",
-    accentText: "text-[#C4274C]",
-    partnerDoctorSlug: "dr-subham-agarwal",
-    partnerDoctorName: "Dr. Subham Agarwal",
-    partnerDoctorHospital: "Manipal Hospital, Siliguri",
-    faqs: [
-      {
-        question: "Where does Dr. Ruchika Agarwal consult?",
-        answer: "Dr. Ruchika consults at Zivah Fertility & Women's Wellness Centre, 2nd Floor, The Crest, Meghnad Saha Sarani (opposite Deokta Sangha), Pradhan Nagar, Siliguri from Monday to Friday between 10:00 AM and 2:00 PM."
-      },
-      {
-        question: "How do I book an OPD consultation with Dr. Ruchika?",
-        answer: "You can book your consultation directly on WhatsApp by clicking the 'Book on WhatsApp' button on this page, or by contacting the clinic desk."
-      },
-      {
-        question: "I have painful periods or PCOS. What happens during the first visit?",
-        answer: "Your initial consultation is completely unhurried. Dr. Ruchika will listen to your symptoms, menstrual history, and lifestyle factors, review any past ultrasound reports or blood tests, and prepare a personalized, step-by-step treatment plan."
-      },
-      {
-        question: "Where are deliveries and surgical procedures conducted?",
-        answer: "Hospital deliveries and advanced gynaecological procedures are conducted in collaboration with Dr. Subham Agarwal at Manipal Hospital, Siliguri with cashless/TPA insurance coverage and 24/7 neonatal/ICU backup."
       }
     ]
   },

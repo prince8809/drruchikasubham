@@ -566,7 +566,7 @@ export default async function DoctorProfilePage({ params }: { params: Promise<{ 
                   </h2>
 
                   <p className="text-xs text-[#475569] leading-relaxed">
-                    Dr. Subham and Dr. Ruchika work together as Siliguri&apos;s husband-and-wife specialist team. For complex pregnancies, difficult surgical decisions, or pre-pregnancy planning, both doctors collaborate so your care is double-reviewed.
+                    Dr. Ruchika and Dr. Subham work together as Siliguri&apos;s husband-and-wife specialist team. For complex pregnancies, difficult surgical decisions, or pre-pregnancy planning, both doctors collaborate so your care is double-reviewed.
                   </p>
 
                   <div className="pt-2 flex flex-wrap items-center gap-3">

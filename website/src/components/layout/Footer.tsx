@@ -84,50 +84,7 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Column 2: Dr. Subham Agarwal Clinic */}
-          <div className="space-y-3">
-            <Link
-              href="/doctors/dr-subham-agarwal"
-              className="inline-block text-xs font-bold uppercase tracking-wider text-[#2FB2EA] bg-[#2FB2EA]/10 hover:bg-[#2FB2EA]/20 px-2.5 py-1 rounded transition-colors"
-            >
-              Dr. Subham Agarwal &rarr;
-            </Link>
-            <h4 className="font-semibold text-base text-white">Manipal Hospital, Siliguri</h4>
-            <div className="space-y-2 text-xs text-gray-300">
-              <p className="flex items-start gap-2">
-                <MapPin className="w-4 h-4 shrink-0 text-[#2FB2EA] mt-0.5" />
-                <span>{ADDRESS_MANIPAL}</span>
-              </p>
-              <p className="flex items-center gap-2">
-                <Clock className="w-4 h-4 shrink-0 text-[#2FB2EA]" />
-                <span>Monday – Friday: 10:00 AM – 6:00 PM</span>
-              </p>
-              <p className="flex items-center gap-2">
-                <Phone className="w-4 h-4 shrink-0 text-[#2FB2EA]" />
-                <a href={`tel:${PHONE_SUBHAM}`} className="hover:text-white underline underline-offset-2">
-                  {PHONE_SUBHAM}
-                </a>
-              </p>
-            </div>
-            <div className="pt-1 flex flex-col gap-1.5 text-xs">
-              <Link
-                href="/doctors/dr-subham-agarwal"
-                className="text-[#2FB2EA] hover:underline font-semibold"
-              >
-                &rarr; View Dr. Subham&apos;s Full Profile
-              </Link>
-              <a
-                href={WHATSAPP_SUBHAM}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 font-semibold text-[#25D366] hover:underline"
-              >
-                &rarr; Book Dr. Subham on WhatsApp
-              </a>
-            </div>
-          </div>
-
-          {/* Column 3: Dr. Ruchika Agarwal Clinic */}
+          {/* Column 2: Dr. Ruchika Agarwal Clinic */}
           <div className="space-y-3">
             <Link
               href="/doctors/dr-ruchika-agarwal"
@@ -170,6 +127,49 @@ export default function Footer() {
             </div>
           </div>
 
+          {/* Column 3: Dr. Subham Agarwal Clinic */}
+          <div className="space-y-3">
+            <Link
+              href="/doctors/dr-subham-agarwal"
+              className="inline-block text-xs font-bold uppercase tracking-wider text-[#2FB2EA] bg-[#2FB2EA]/10 hover:bg-[#2FB2EA]/20 px-2.5 py-1 rounded transition-colors"
+            >
+              Dr. Subham Agarwal &rarr;
+            </Link>
+            <h4 className="font-semibold text-base text-white">Manipal Hospital, Siliguri</h4>
+            <div className="space-y-2 text-xs text-gray-300">
+              <p className="flex items-start gap-2">
+                <MapPin className="w-4 h-4 shrink-0 text-[#2FB2EA] mt-0.5" />
+                <span>{ADDRESS_MANIPAL}</span>
+              </p>
+              <p className="flex items-center gap-2">
+                <Clock className="w-4 h-4 shrink-0 text-[#2FB2EA]" />
+                <span>Monday – Friday: 10:00 AM – 6:00 PM</span>
+              </p>
+              <p className="flex items-center gap-2">
+                <Phone className="w-4 h-4 shrink-0 text-[#2FB2EA]" />
+                <a href={`tel:${PHONE_SUBHAM}`} className="hover:text-white underline underline-offset-2">
+                  {PHONE_SUBHAM}
+                </a>
+              </p>
+            </div>
+            <div className="pt-1 flex flex-col gap-1.5 text-xs">
+              <Link
+                href="/doctors/dr-subham-agarwal"
+                className="text-[#2FB2EA] hover:underline font-semibold"
+              >
+                &rarr; View Dr. Subham&apos;s Full Profile
+              </Link>
+              <a
+                href={WHATSAPP_SUBHAM}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 font-semibold text-[#25D366] hover:underline"
+              >
+                &rarr; Book Dr. Subham on WhatsApp
+              </a>
+            </div>
+          </div>
+
           {/* Column 4: Consultation & Insurance */}
           <div className="space-y-4">
             <h4 className="font-semibold text-base text-white">Insurance &amp; Coverage</h4>
@@ -193,7 +193,7 @@ export default function Footer() {
         {/* Bottom Strip */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-400 gap-4">
           <p>
-            &copy; {new Date().getFullYear()} Dr. Subham Agarwal &amp; Dr. Ruchika Agarwal. All rights reserved.
+            &copy; {new Date().getFullYear()} Dr. Ruchika Agarwal &amp; Dr. Subham Agarwal. All rights reserved.
           </p>
           <div className="flex items-center gap-1 text-gray-400">
             <span>A family caring for your family</span>
