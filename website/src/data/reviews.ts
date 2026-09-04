@@ -13,7 +13,7 @@ export interface PatientReview {
 export const patientReviews: PatientReview[] = [
   {
     id: "rev-1",
-    name: "Anita A. & Partner",
+    name: "First-Time Parents",
     location: "Sevoke Road, Siliguri",
     doctor: "Both Doctors (Joint Care)",
     treatment: "Normal Vaginal Delivery",
@@ -25,7 +25,7 @@ export const patientReviews: PatientReview[] = [
   },
   {
     id: "rev-2",
-    name: "Priyanka S. (Mother of Twins)",
+    name: "Mother of Twins (High-Risk)",
     location: "Jalpaiguri",
     doctor: "Dr. Subham Agarwal",
     treatment: "High-Risk Pregnancy Care",
@@ -37,10 +37,10 @@ export const patientReviews: PatientReview[] = [
   },
   {
     id: "rev-3",
-    name: "Sneha Sh.",
+    name: "Patient (PCOS & Fertility)",
     location: "Pradhan Nagar, Siliguri",
     doctor: "Dr. Ruchika Agarwal",
-    treatment: "PCOD & Natural Fertility Conception",
+    treatment: "PCOD & Natural Conception",
     rating: 5,
     comment:
       "Struggled with irregular periods and PCOS for 3 years. Dr. Ruchika at Zivah Centre never rushed to heavy treatments — she regulated my hormones step-by-step and we conceived naturally within 6 months!",
@@ -49,7 +49,7 @@ export const patientReviews: PatientReview[] = [
   },
   {
     id: "rev-4",
-    name: "Mrs. M. Sen",
+    name: "Patient (Keyhole Surgery)",
     location: "Hakimpara, Siliguri",
     doctor: "Dr. Subham Agarwal",
     treatment: "Laparoscopic Keyhole Surgery",
@@ -61,10 +61,10 @@ export const patientReviews: PatientReview[] = [
   },
   {
     id: "rev-5",
-    name: "Pooja & Amit G.",
+    name: "Expecting Couple",
     location: "Gangtok, Sikkim",
     doctor: "Both Doctors (Joint Care)",
-    treatment: "Pre-Conception & Couple Consultation",
+    treatment: "Pre-Conception & Joint Care",
     rating: 5,
     comment:
       "Traveled from Gangtok for a joint consultation. Having both a female gynaecologist and male specialist in the same practice made both me and my husband feel equally heard and supported.",
