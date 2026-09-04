@@ -2,7 +2,6 @@ import EmergencyBar from "@/components/layout/EmergencyBar";
 import Navbar from "@/components/layout/Navbar";
 import HeroSection from "@/components/home/HeroSection";
 import StatsCounter from "@/components/home/StatsCounter";
-import CoupleAdvantage from "@/components/home/CoupleAdvantage";
 import ServicesGrid from "@/components/home/ServicesGrid";
 import SocialHub from "@/components/home/SocialHub";
 import ReviewsSection from "@/components/home/ReviewsSection";
@@ -28,10 +27,7 @@ export default function Home() {
       {/* 5. Patient Success Stories & 5-Star Reviews */}
       <ReviewsSection />
 
-      {/* 6. The Couple Doctor Advantage USP Section */}
-      <CoupleAdvantage />
-
-      {/* 7. Comprehensive 7-Specialty Grid + Second Opinion */}
+      {/* 6. Comprehensive 7-Specialty Grid + Second Opinion */}
       <ServicesGrid />
 
       {/* 8. Live Social Hub (Instagram Reels Click-to-Play) */}

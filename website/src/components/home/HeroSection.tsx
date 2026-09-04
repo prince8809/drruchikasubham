@@ -76,9 +76,11 @@ export default function HeroSection() {
             {/* Visual Frame */}
             <div className="relative w-full max-w-sm sm:max-w-md">
               {/* Couple Advantage Floating Badge */}
-              <Link
-                href="/#couple-advantage"
-                className="absolute -top-3.5 -left-2 sm:-top-4 sm:-left-4 z-20 bg-white/95 backdrop-blur-sm rounded-2xl p-2.5 sm:p-3 shadow-lg border border-[#FFCCD6] flex items-center gap-2.5 sm:gap-3 hover:scale-105 transition-transform"
+              <button
+                type="button"
+                onClick={() => handleOpenBooking("joint")}
+                className="absolute -top-3.5 -left-2 sm:-top-4 sm:-left-4 z-20 bg-white/95 backdrop-blur-sm rounded-2xl p-2.5 sm:p-3 shadow-lg border border-[#FFCCD6] flex items-center gap-2.5 sm:gap-3 hover:scale-105 transition-transform text-left cursor-pointer"
+                title="Click to inquire about Joint Care"
               >
                 <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#FFF5F7] p-1.5 flex items-center justify-center shrink-0">
                   <Image
@@ -93,7 +95,7 @@ export default function HeroSection() {
                   <p className="text-[11px] sm:text-xs font-bold text-[#1A2229]">The Couple Advantage</p>
                   <p className="text-[10px] sm:text-[11px] text-[#FB5A7C] font-semibold">&ldquo;Family caring for your family&rdquo;</p>
                 </div>
-              </Link>
+              </button>
 
               {/* Grid of Two Portraits */}
               <div className="grid grid-cols-2 gap-3 sm:gap-4">

@@ -3,7 +3,7 @@
 import { useState, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { MessageCircle, Menu, X, Calendar, ChevronDown, Heart, ArrowRight } from "lucide-react";
+import { MessageCircle, Menu, X, Calendar, ChevronDown } from "lucide-react";
 import { WHATSAPP_SUBHAM } from "@/lib/constants";
 
 export default function Navbar() {
@@ -27,7 +27,6 @@ export default function Navbar() {
 
   const otherNavLinks = [
     { label: "Reviews", href: "/#reviews" },
-    { label: "Couple Advantage", href: "/#couple-advantage" },
     { label: "Specialties", href: "/#services" },
     { label: "Videos", href: "/#social-hub" },
     { label: "Timings & Clinics", href: "/#locations" },
@@ -155,32 +154,13 @@ export default function Navbar() {
                 {/* Divider */}
                 <div className="my-2 border-t border-gray-100" />
 
-                {/* Couple Doctor Advantage Link */}
-                <Link
-                  href="/#couple-advantage"
-                  onClick={() => setDoctorsDropdownOpen(false)}
-                  className="flex items-center gap-2.5 p-2 rounded-xl hover:bg-gray-50 text-xs text-gray-700 transition-colors"
-                >
-                  <div className="w-7 h-7 rounded-lg bg-[#FFE9ED] flex items-center justify-center shrink-0">
-                    <Heart className="w-3.5 h-3.5 text-[#FB5A7C]" />
-                  </div>
-                  <div className="min-w-0">
-                    <span className="font-bold text-[#1A2229] block leading-tight">
-                      The Couple Doctor Advantage
-                    </span>
-                    <span className="text-[10px] text-gray-500">
-                      Collaborative care &bull; Inquire Joint Consultation
-                    </span>
-                  </div>
-                </Link>
-
                 {/* View Both on Homepage Link */}
                 <Link
                   href="/#doctors"
                   onClick={() => setDoctorsDropdownOpen(false)}
-                  className="mt-1 block text-center text-[11px] font-bold text-[#FB5A7C] hover:text-[#E54366] py-1 transition-colors"
+                  className="block text-center text-xs font-semibold text-[#FB5A7C] hover:text-[#E54366] py-1.5 px-3 rounded-lg hover:bg-pink-50/50 transition-colors"
                 >
-                  View Both Profiles on Homepage &rarr;
+                  View Both Profiles &amp; Clinics &rarr;
                 </Link>
               </div>
             )}
