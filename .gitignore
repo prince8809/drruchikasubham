@@ -13,3 +13,11 @@ build/
 
 # Logs
 *.log
+
+# AGY / Agent workspace (plans, notes, scratch — never pushed)
+.agy/
+
+# Environment variables
+.env
+.env.local
+.env.production
