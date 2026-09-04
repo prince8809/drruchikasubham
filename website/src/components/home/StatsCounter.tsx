@@ -30,9 +30,9 @@ export default function StatsCounter() {
   return (
     <section
       id="experience"
-      className="py-8 sm:py-10 bg-white border-y border-[#F1E5E8] relative overflow-hidden"
+      className="py-5 sm:py-6 bg-white border-y border-[#F1E5E8] relative overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-3">
         {/* Crisp, Space-Saving Header */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-center sm:text-left">
           <div>
