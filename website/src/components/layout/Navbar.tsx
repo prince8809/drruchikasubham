@@ -5,12 +5,21 @@ import Image from "next/image";
 import Link from "next/link";
 import { MessageCircle, Menu, X, Calendar, ChevronDown } from "lucide-react";
 import { WHATSAPP_SUBHAM } from "@/lib/constants";
+import BookingModal from "@/components/shared/BookingModal";
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [doctorsDropdownOpen, setDoctorsDropdownOpen] = useState(false);
   const [mobileDoctorsOpen, setMobileDoctorsOpen] = useState(true);
+  const [bookingModalOpen, setBookingModalOpen] = useState(false);
+  const [selectedDoctorId, setSelectedDoctorId] = useState<"subham" | "ruchika" | "joint">("subham");
   const dropdownTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  const handleOpenBooking = (docId: "subham" | "ruchika" | "joint" = "subham") => {
+    setSelectedDoctorId(docId);
+    setBookingModalOpen(true);
+    setMobileMenuOpen(false);
+  };
 
   const handleMouseEnter = () => {
     if (dropdownTimeoutRef.current) {
@@ -213,28 +222,26 @@ export default function Navbar() {
 
         {/* Desktop CTA Action */}
         <div className="hidden sm:flex items-center gap-3">
-          <a
-            href={WHATSAPP_SUBHAM}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-whatsapp text-sm py-2.5 px-5 shadow-sm hover:shadow-md hover:scale-[1.02] active:scale-[0.98] transition-all"
+          <button
+            type="button"
+            onClick={() => handleOpenBooking("subham")}
+            className="btn-whatsapp text-sm py-2.5 px-5 shadow-sm hover:shadow-md hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer flex items-center gap-2"
           >
             <MessageCircle className="w-4 h-4 fill-white" />
             <span>Book on WhatsApp</span>
-          </a>
+          </button>
         </div>
 
-        {/* Mobile Menu Button */}
+        {/* Mobile Menu Button & Quick WhatsApp */}
         <div className="flex sm:hidden items-center gap-2">
-          <a
-            href={WHATSAPP_SUBHAM}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-[#25D366] text-white p-2 rounded-full shadow-sm"
-            aria-label="Quick WhatsApp"
+          <button
+            type="button"
+            onClick={() => handleOpenBooking("subham")}
+            className="bg-[#25D366] text-white p-2 rounded-full shadow-sm hover:scale-105 active:scale-95 transition-transform cursor-pointer flex items-center justify-center"
+            aria-label="Book appointment on WhatsApp"
           >
             <MessageCircle className="w-5 h-5 fill-white" />
-          </a>
+          </button>
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="p-2 text-[#1A2229] rounded-lg hover:bg-[#FFF5F7] transition-colors"
@@ -332,15 +339,14 @@ export default function Navbar() {
 
             {/* Mobile CTAs */}
             <div className="pt-3 flex flex-col gap-2">
-              <a
-                href={WHATSAPP_SUBHAM}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-whatsapp text-center justify-center text-sm py-3"
+              <button
+                type="button"
+                onClick={() => handleOpenBooking("subham")}
+                className="btn-whatsapp text-center justify-center text-sm py-3 cursor-pointer w-full flex items-center gap-2"
               >
                 <MessageCircle className="w-4 h-4 fill-white" />
                 <span>Book on WhatsApp</span>
-              </a>
+              </button>
               <Link
                 href="/#booking"
                 onClick={(e) => handleNavClick(e, "/#booking")}
@@ -353,6 +359,13 @@ export default function Navbar() {
           </nav>
         </div>
       )}
+
+      {/* Interactive WhatsApp Booking Modal */}
+      <BookingModal
+        isOpen={bookingModalOpen}
+        onClose={() => setBookingModalOpen(false)}
+        initialDoctor={selectedDoctorId}
+      />
     </header>
   );
 }
