@@ -18,6 +18,7 @@ import {
   Building2,
 } from "lucide-react";
 import { doctors } from "@/data/doctors";
+import { WHATSAPP_JOINT } from "@/lib/constants";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import WhatsAppFAB from "@/components/layout/WhatsAppFAB";
@@ -460,7 +461,7 @@ export default async function DoctorProfilePage({ params }: { params: Promise<{ 
       </section>
 
       {/* 8. Clinic Location, Timings & Consultation Details */}
-      <section id="location-timings" className="py-8 sm:py-12 bg-white border-t border-[#F1E5E8]">
+      <section id="location-timings" className="scroll-mt-24 py-8 sm:py-12 bg-white border-t border-[#F1E5E8]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="max-w-4xl mx-auto bg-white rounded-3xl p-5 sm:p-8 border-2 border-[#F1E5E8] shadow-md">
@@ -603,7 +604,7 @@ export default async function DoctorProfilePage({ params }: { params: Promise<{ 
                     </Link>
 
                     <a
-                      href={`${partnerDoctor.whatsapp}&text=Hey%20I%20want%20to%20inquire%20about%20a%20Joint%20Consultation%20with%20both%20Dr.%20Subham%20and%20Dr.%20Ruchika`}
+                      href={WHATSAPP_JOINT}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-xs font-bold text-[#0B75A1] hover:underline px-2 py-1"

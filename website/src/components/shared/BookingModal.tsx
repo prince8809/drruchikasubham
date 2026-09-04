@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { MessageCircle, X, Users, Sparkles } from "lucide-react";
-import { WHATSAPP_SUBHAM, WHATSAPP_RUCHIKA } from "@/lib/constants";
+import { WHATSAPP_SUBHAM, WHATSAPP_RUCHIKA, WHATSAPP_JOINT } from "@/lib/constants";
 
 export interface BookingModalProps {
   isOpen: boolean;
@@ -77,7 +77,12 @@ export default function BookingModal({
     onClose();
   };
 
-  const directWhatsAppUrl = selectedDoctor === "ruchika" ? WHATSAPP_RUCHIKA : WHATSAPP_SUBHAM;
+  const directWhatsAppUrl =
+    selectedDoctor === "ruchika"
+      ? WHATSAPP_RUCHIKA
+      : selectedDoctor === "joint"
+      ? WHATSAPP_JOINT
+      : WHATSAPP_SUBHAM;
 
   return createPortal(
     <div

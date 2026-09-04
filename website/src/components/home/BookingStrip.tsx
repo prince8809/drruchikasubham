@@ -20,7 +20,7 @@ export default function BookingStrip() {
     const message = `Hey I want to Book an appointment with ${docName}. Name: ${patientName || "Patient"}. Concern: ${concern || "General Consultation"}.`;
     const targetUrl = selectedDoctor === "ruchika" ? WHATSAPP_RUCHIKA : WHATSAPP_SUBHAM;
     const finalUrl = `${targetUrl.split("?")[0]}?text=${encodeURIComponent(message)}`;
-    window.open(finalUrl, "_blank");
+    window.location.href = finalUrl;
   };
 
   return (

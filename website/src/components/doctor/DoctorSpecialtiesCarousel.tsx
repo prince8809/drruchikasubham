@@ -175,10 +175,8 @@ export default function DoctorSpecialtiesCarousel({
 
               {/* Direct WhatsApp Inquiry Button */}
               <a
-                href={`${doctorWhatsapp}&text=Hey%20${encodeURIComponent(
-                  doctorShortName
-                )},%20I%20have%20an%20inquiry%20regarding%20${encodeURIComponent(
-                  item.title
+                href={`${doctorWhatsapp.split("?")[0]}?text=${encodeURIComponent(
+                  `Hey ${doctorShortName}, I have an inquiry regarding ${item.title}`
                 )}`}
                 target="_blank"
                 rel="noopener noreferrer"

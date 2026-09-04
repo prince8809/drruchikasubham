@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { Star, ShieldCheck, Sparkles, Lock, X, MessageCircle } from "lucide-react";
 import { patientReviews, PatientReview } from "@/data/reviews";
-import { WHATSAPP_SUBHAM, WHATSAPP_RUCHIKA } from "@/lib/constants";
+import { WHATSAPP_SUBHAM, WHATSAPP_RUCHIKA, WHATSAPP_JOINT } from "@/lib/constants";
 
 export default function ReviewsSection() {
   const [selectedReview, setSelectedReview] = useState<PatientReview | null>(null);
@@ -185,19 +185,31 @@ export default function ReviewsSection() {
 
             {/* Quick CTA */}
             <div className="mt-5 pt-3">
-              <a
-                href={
-                  selectedReview.doctor.includes("Ruchika")
-                    ? WHATSAPP_RUCHIKA
-                    : WHATSAPP_SUBHAM
-                }
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-whatsapp w-full justify-center text-xs py-2.5 rounded-full shadow-md font-bold"
-              >
-                <MessageCircle className="w-4 h-4 fill-white" />
-                <span>Book Consultation for this Condition</span>
-              </a>
+              {(() => {
+                const isJoint = selectedReview.doctor.includes("Both") || selectedReview.doctor.includes("Joint");
+                const isRuchika = selectedReview.doctor.includes("Ruchika") && !isJoint;
+                const baseUrl = isJoint ? WHATSAPP_JOINT : isRuchika ? WHATSAPP_RUCHIKA : WHATSAPP_SUBHAM;
+                const docText = isJoint
+                  ? "a Joint Consultation with both Dr. Subham and Dr. Ruchika"
+                  : isRuchika
+                  ? "an appointment with Dr. Ruchika Agarwal"
+                  : "an appointment with Dr. Subham Agarwal";
+                const reviewBookingUrl = `${baseUrl.split("?")[0]}?text=${encodeURIComponent(
+                  `Hey I want to book ${docText} regarding ${selectedReview.treatment}`
+                )}`;
+
+                return (
+                  <a
+                    href={reviewBookingUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-whatsapp w-full justify-center text-xs py-2.5 rounded-full shadow-md font-bold"
+                  >
+                    <MessageCircle className="w-4 h-4 fill-white" />
+                    <span>Book Consultation for this Condition</span>
+                  </a>
+                );
+              })()}
             </div>
           </div>
         </div>

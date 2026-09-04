@@ -57,6 +57,20 @@ export default function SocialHub() {
     return () => clearInterval(interval);
   }, [isInView, isAutoScrollPaused, activeSlideIndex, theaterPost]);
 
+  // 3. Escape key listener & body scroll lock for theater modal
+  useEffect(() => {
+    if (!theaterPost) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setTheaterPost(null);
+    };
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [theaterPost]);
+
   const scrollToSlide = (index: number) => {
     const safeIndex = (index + socialPosts.length) % socialPosts.length;
     setActiveSlideIndex(safeIndex);
@@ -308,7 +322,7 @@ export default function SocialHub() {
           >
             <div
               onClick={(e) => e.stopPropagation()}
-              className="bg-[#1A2229] text-white rounded-3xl overflow-hidden max-w-md w-full shadow-2xl border border-gray-700 flex flex-col max-h-[92vh]"
+              className="bg-[#1A2229] text-white rounded-3xl overflow-hidden max-w-md w-full shadow-2xl border border-gray-700 flex flex-col max-h-[92vh] overflow-y-auto"
             >
               {/* Modal Header */}
               <div className="p-4 bg-gray-900 flex items-center justify-between border-b border-gray-800 shrink-0">
@@ -320,7 +334,7 @@ export default function SocialHub() {
                 </div>
                 <button
                   onClick={() => setTheaterPost(null)}
-                  className="p-1.5 rounded-full bg-gray-800 hover:bg-gray-700 text-gray-300 hover:text-white transition-colors"
+                  className="p-1.5 rounded-full bg-gray-800 hover:bg-gray-700 text-gray-300 hover:text-white transition-colors cursor-pointer"
                   aria-label="Close modal"
                 >
                   <X className="w-5 h-5" />
@@ -328,7 +342,7 @@ export default function SocialHub() {
               </div>
 
               {/* Video Player */}
-              <div className="relative aspect-[9/14] bg-black w-full overflow-hidden shrink-0 flex items-center justify-center">
+              <div className="relative max-h-[58vh] aspect-[9/14] bg-black w-full overflow-hidden shrink-0 flex items-center justify-center mx-auto">
                 <video
                   src={theaterPost.videoSrc}
                   poster={theaterPost.thumbnailSrc}
@@ -350,7 +364,9 @@ export default function SocialHub() {
 
                 <div className="flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-gray-800">
                   <a
-                    href={`${WHATSAPP_SUBHAM}&text=Hey%20Dr%20I%20watched%20your%20reel%20on%20${encodeURIComponent(theaterPost.title)}%20and%20had%20a%20question.`}
+                    href={`${WHATSAPP_SUBHAM.split("?")[0]}?text=${encodeURIComponent(
+                      `Hey Dr., I watched your video on "${theaterPost.title}" and had a consultation question.`
+                    )}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="btn-whatsapp text-xs py-2.5 px-4 shadow-sm"
