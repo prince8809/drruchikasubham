@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef } from "react";
+import Image from "next/image";
 import {
   HeartPulse,
   Baby,
@@ -147,59 +148,78 @@ export default function ServicesGrid() {
             className="flex gap-4 overflow-x-auto scrollbar-none pb-4 pt-1 snap-x snap-mandatory scroll-smooth -mx-4 px-4 sm:mx-0 sm:px-0"
             style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
           >
-            {filteredServices.map((svc) => (
+            {filteredServices.map((svc, idx) => (
               <div
                 key={svc.slug}
-                className="w-[280px] sm:w-[310px] shrink-0 snap-start bg-white rounded-2xl p-5 border border-gray-100 hover:border-[#FFCCD6] shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group"
+                className="w-[285px] sm:w-[315px] shrink-0 snap-start bg-white rounded-2xl overflow-hidden border border-gray-100 hover:border-[#FFCCD6] shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group"
               >
-                <div>
-                  {/* Top Row: Icon + Both Doctors Badge */}
-                  <div className="flex items-center justify-between mb-3.5">
-                    <div
-                      className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform shadow-2xs"
-                      style={{ backgroundColor: `${svc.color}15` }}
-                    >
-                      {getIcon(svc.icon, svc.color)}
-                    </div>
+                {/* Top Media Header Banner */}
+                <div className="relative h-40 w-full overflow-hidden bg-gray-100 shrink-0">
+                  <Image
+                    src={svc.image}
+                    alt={svc.title}
+                    width={640}
+                    height={360}
+                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                    priority={idx < 2}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
 
-                    <span className="text-[10px] font-bold text-[#FB5A7C] bg-[#FFF5F7] border border-[#FFCCD6] px-2.5 py-0.5 rounded-full">
-                      Both Doctors Available
+                  {/* Top Right: Both Doctors Badge */}
+                  <div className="absolute top-2.5 right-2.5">
+                    <span className="text-[10px] font-bold text-[#FB5A7C] bg-white/95 backdrop-blur-md border border-[#FFCCD6] px-2.5 py-0.5 rounded-full shadow-xs">
+                      Both Doctors
                     </span>
                   </div>
 
-                  {/* Title */}
-                  <h3 className="font-bold text-base text-[#1A2229] group-hover:text-[#FB5A7C] transition-colors leading-snug line-clamp-1 mb-1.5">
-                    {svc.title}
-                  </h3>
-
-                  {/* Short Description */}
-                  <p className="text-xs text-[#475569] leading-relaxed line-clamp-2 mb-3">
-                    {svc.shortDesc}
-                  </p>
-
-                  {/* Details Bullet List */}
-                  <div className="space-y-1.5 pt-2.5 border-t border-gray-100 mb-4">
-                    {svc.details.map((detail) => (
-                      <div key={detail} className="flex items-center gap-1.5 text-[11px] text-[#64748B] line-clamp-1">
-                        <span
-                          className="w-1.5 h-1.5 rounded-full shrink-0"
-                          style={{ backgroundColor: svc.color }}
-                        ></span>
-                        <span className="truncate">{detail}</span>
-                      </div>
-                    ))}
+                  {/* Bottom Left: Category & Icon Pill */}
+                  <div className="absolute bottom-2.5 left-2.5 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/95 backdrop-blur-md shadow-xs border border-white/60">
+                    <div className="w-3.5 h-3.5 flex items-center justify-center shrink-0">
+                      {getIcon(svc.icon, svc.color)}
+                    </div>
+                    <span className="text-[10px] font-bold text-[#1A2229]">
+                      {svc.category}
+                    </span>
                   </div>
                 </div>
 
-                {/* Bottom Trigger: Opens Quick WhatsApp Booking Modal for Both Doctors */}
-                <button
-                  type="button"
-                  onClick={() => setBookingService(svc)}
-                  className="mt-auto flex items-center justify-center gap-1.5 w-full py-2.5 px-3 rounded-xl bg-[#25D366] hover:bg-[#1EBE5D] text-white text-xs font-bold transition-all duration-200 shadow-sm hover:shadow-md cursor-pointer"
-                >
-                  <MessageCircle className="w-3.5 h-3.5 fill-white" />
-                  <span>Book on WhatsApp</span>
-                </button>
+                {/* Card Content */}
+                <div className="p-4 sm:p-5 flex flex-col flex-1 justify-between">
+                  <div>
+                    {/* Title */}
+                    <h3 className="font-bold text-base text-[#1A2229] group-hover:text-[#FB5A7C] transition-colors leading-snug line-clamp-1 mb-1.5">
+                      {svc.title}
+                    </h3>
+
+                    {/* Short Description */}
+                    <p className="text-xs text-[#475569] leading-relaxed line-clamp-2 mb-3">
+                      {svc.shortDesc}
+                    </p>
+
+                    {/* Details Bullet List */}
+                    <div className="space-y-1.5 pt-2.5 border-t border-gray-100 mb-4">
+                      {svc.details.map((detail) => (
+                        <div key={detail} className="flex items-center gap-1.5 text-[11px] text-[#64748B] line-clamp-1">
+                          <span
+                            className="w-1.5 h-1.5 rounded-full shrink-0"
+                            style={{ backgroundColor: svc.color }}
+                          />
+                          <span className="truncate">{detail}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Bottom Trigger: Opens Quick WhatsApp Booking Modal for Both Doctors */}
+                  <button
+                    type="button"
+                    onClick={() => setBookingService(svc)}
+                    className="mt-auto flex items-center justify-center gap-1.5 w-full py-2.5 px-3 rounded-xl bg-[#25D366] hover:bg-[#1EBE5D] text-white text-xs font-bold transition-all duration-200 shadow-sm hover:shadow-md cursor-pointer"
+                  >
+                    <MessageCircle className="w-3.5 h-3.5 fill-white" />
+                    <span>Book on WhatsApp</span>
+                  </button>
+                </div>
               </div>
             ))}
           </div>
@@ -229,13 +249,24 @@ export default function ServicesGrid() {
               onClick={(e) => e.stopPropagation()}
               className="w-full max-w-md bg-white rounded-3xl shadow-2xl border border-[#F1E5E8] p-6 animate-in zoom-in-95 duration-200 text-[#1A2229]"
             >
-              {/* Modal Header */}
+              {/* Modal Header with Thumbnail */}
               <div className="flex items-start justify-between pb-3 border-b border-gray-100">
-                <div>
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-[#FB5A7C] bg-[#FFF5F7] px-2.5 py-0.5 rounded-full border border-pink-100 mb-1 inline-block">
-                    {bookingService.title}
-                  </span>
-                  <h4 className="font-bold text-[#1A2229] text-lg leading-tight">Quick WhatsApp Booking</h4>
+                <div className="flex items-center gap-3">
+                  <div className="relative w-12 h-12 rounded-xl overflow-hidden shrink-0 border border-gray-100 shadow-2xs">
+                    <Image
+                      src={bookingService.image}
+                      alt={bookingService.title}
+                      width={100}
+                      height={100}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div>
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-[#FB5A7C] bg-[#FFF5F7] px-2 py-0.5 rounded-full border border-pink-100 mb-1 inline-block">
+                      {bookingService.title}
+                    </span>
+                    <h4 className="font-bold text-[#1A2229] text-base sm:text-lg leading-tight">Quick WhatsApp Booking</h4>
+                  </div>
                 </div>
                 <button
                   onClick={() => setBookingService(null)}

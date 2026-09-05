@@ -22,6 +22,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import WhatsAppFAB from "@/components/layout/WhatsAppFAB";
 import DoctorSpecialtiesCarousel from "@/components/doctor/DoctorSpecialtiesCarousel";
+import DoctorPhilosophySection from "@/components/doctor/DoctorPhilosophySection";
 import DoctorFaqAccordion from "@/components/doctor/DoctorFaqAccordion";
 import ReviewsSection from "@/components/home/ReviewsSection";
 
@@ -335,102 +336,8 @@ export default async function DoctorProfilePage({ params }: { params: Promise<{ 
         </div>
       </section>
 
-      {/* 6. High-Impact Clinical Philosophy & Special Focus */}
+      {/* 6. Specialized Clinical Care - CONDITIONS TREATED & PROCEDURES PERFORMED */}
       <section className="py-8 sm:py-12 bg-white border-t border-[#F1E5E8]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
-            
-            {/* Philosophy Box */}
-            <div className="lg:col-span-7 bg-gradient-to-br from-[#FAFAF9] to-white rounded-3xl p-5 sm:p-7 border border-gray-200/80 shadow-xs flex flex-col justify-between">
-              <div>
-                <h3 className="text-lg sm:text-xl font-bold text-[#1A2229] mb-2 flex items-center gap-2">
-                  <Heart className="w-4 h-4 text-[#FB5A7C]" />
-                  {doctor.philosophyTitle}
-                </h3>
-                <p className="text-xs sm:text-sm text-[#475569] leading-relaxed mb-4">
-                  {doctor.philosophyDesc}
-                </p>
-                <div className="space-y-2">
-                  <div className="flex items-start gap-2.5 text-xs text-[#475569]">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-600 mt-0.5 shrink-0" />
-                    <span><strong className="text-[#1A2229]">Unhurried consultations:</strong> Detailed scan reviews and clear explanations.</span>
-                  </div>
-                  <div className="flex items-start gap-2.5 text-xs text-[#475569]">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-600 mt-0.5 shrink-0" />
-                    <span><strong className="text-[#1A2229]">Evidence-based safety:</strong> Supporting natural birth physiology with minimal medical interventions.</span>
-                  </div>
-                  <div className="flex items-start gap-2.5 text-xs text-[#475569]">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-600 mt-0.5 shrink-0" />
-                    <span><strong className="text-[#1A2229]">Multilingual:</strong> Fluent in English, Hindi, Bengali, and Nepali.</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-5 pt-3 border-t border-gray-100 flex items-center justify-between text-[11px] text-gray-500">
-                <span>Languages:</span>
-                <span className="font-semibold text-[#1A2229]">{doctor.languages.join(" • ")}</span>
-              </div>
-            </div>
-
-            {/* Special Highlight Box */}
-            <div
-              className={`lg:col-span-5 rounded-3xl p-5 sm:p-7 border-2 ${doctor.accentBorder} ${doctor.accentBg} flex flex-col justify-between shadow-xs`}
-            >
-              <div>
-                <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-white shadow-2xs mb-3">
-                  <Award className="w-3.5 h-3.5" style={{ color: doctor.accentColor }} />
-                  <span style={{ color: doctor.accentColor }}>Special Clinical Focus</span>
-                </div>
-
-                <h3 className="text-lg font-bold text-[#1A2229] mb-2">
-                  {doctor.specialHighlightTitle}
-                </h3>
-
-                <p className="text-xs text-[#475569] leading-relaxed mb-4">
-                  {doctor.specialHighlightDesc}
-                </p>
-
-                {isSubham ? (
-                  <div className="p-3 rounded-xl bg-white border border-sky-100 text-xs text-[#475569] space-y-1">
-                    <div className="font-bold text-[#0B75A1] text-xs">
-                      The Partner&apos;s Journey:
-                    </div>
-                    <p className="text-[11px] text-gray-600">
-                      Clear labor coaching, hospital readiness, and postpartum emotional support so fathers are active, supportive partners.
-                    </p>
-                  </div>
-                ) : (
-                  <div className="p-3 rounded-xl bg-white border border-pink-100 text-xs text-[#475569] space-y-1">
-                    <div className="font-bold text-[#C4274C] text-xs">
-                      Adolescent &amp; Gentle Maternity:
-                    </div>
-                    <p className="text-[11px] text-gray-600">
-                      Confidential period guidance, root-cause PCOS reversal, and calm natural birth preparation in a warm environment.
-                    </p>
-                  </div>
-                )}
-              </div>
-
-              <div className="mt-4 pt-3 border-t border-gray-200/60">
-                <a
-                  href={doctor.whatsapp}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-xs font-bold inline-flex items-center gap-1 hover:underline"
-                  style={{ color: doctor.accentColor }}
-                >
-                  <span>Discuss your health concerns with {doctor.shortName}</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </a>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      {/* 7. Specialized Clinical Care - SPACE-SAVING HORIZONTAL CAROUSEL */}
-      <section className="py-8 sm:py-12 bg-[#FAFAF9] border-t border-[#F1E5E8]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <DoctorSpecialtiesCarousel
             specialties={doctor.specialtyDetails}
@@ -439,6 +346,27 @@ export default async function DoctorProfilePage({ params }: { params: Promise<{ 
             doctorWhatsapp={doctor.whatsapp}
             accentColor={doctor.accentColor}
             accentBg={doctor.accentBg}
+          />
+        </div>
+      </section>
+
+      {/* 7. High-Impact Clinical Philosophy & Special Focus */}
+      <section className="py-8 sm:py-12 bg-[#FAFAF9] border-t border-[#F1E5E8]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <DoctorPhilosophySection
+            philosophyTitle={doctor.philosophyTitle}
+            philosophyDesc={doctor.philosophyDesc}
+            philosophyImage={doctor.philosophyImage}
+            specialHighlightTitle={doctor.specialHighlightTitle}
+            specialHighlightDesc={doctor.specialHighlightDesc}
+            specialHighlightImage={doctor.specialHighlightImage}
+            languages={doctor.languages}
+            doctorShortName={doctor.shortName}
+            doctorWhatsapp={doctor.whatsapp}
+            isSubham={isSubham}
+            accentColor={doctor.accentColor}
+            accentBg={doctor.accentBg}
+            accentBorder={doctor.accentBorder}
           />
         </div>
       </section>

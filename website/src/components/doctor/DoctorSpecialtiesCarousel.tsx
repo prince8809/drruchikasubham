@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState, useEffect } from "react";
+import Image from "next/image";
 import {
   ChevronLeft,
   ChevronRight,
@@ -134,59 +135,95 @@ export default function DoctorSpecialtiesCarousel({
           return (
             <div
               key={item.title}
-              className="w-[82vw] sm:w-[340px] md:w-[360px] shrink-0 snap-start bg-white rounded-3xl p-5 sm:p-6 border-2 border-gray-100 hover:border-[#FB5A7C] shadow-xs hover:shadow-lg transition-all duration-300 flex flex-col justify-between group"
+              className="w-[82vw] sm:w-[340px] md:w-[360px] shrink-0 snap-start bg-white rounded-3xl overflow-hidden border-2 border-gray-100 hover:border-[#FB5A7C] shadow-xs hover:shadow-lg transition-all duration-300 flex flex-col justify-between group"
             >
-              <div>
-                {/* Icon & Counter Row */}
-                <div className="flex items-center justify-between mb-4">
-                  <div
-                    className={`w-11 h-11 rounded-2xl ${accentBg} flex items-center justify-center group-hover:scale-105 transition-transform`}
-                    style={{ color: accentColor }}
-                  >
-                    <IconComp className="w-5 h-5" />
+              {/* Top Media Header Banner */}
+              {item.image && (
+                <div className="relative h-44 w-full overflow-hidden bg-gray-100 shrink-0">
+                  <Image
+                    src={item.image}
+                    alt={item.title}
+                    width={640}
+                    height={360}
+                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                    priority={idx < 2}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
+
+                  {/* Top Right: Counter Badge */}
+                  <div className="absolute top-2.5 right-2.5">
+                    <span className="text-[10px] font-bold text-gray-700 bg-white/95 backdrop-blur-md px-2.5 py-0.5 rounded-full shadow-xs border border-white/60">
+                      0{idx + 1}
+                    </span>
                   </div>
-                  <span className="text-[10px] font-bold text-gray-300 group-hover:text-gray-400 transition-colors">
-                    0{idx + 1}
-                  </span>
+
+                  {/* Bottom Left: Specialty Icon & Focus Pill */}
+                  <div className="absolute bottom-2.5 left-2.5 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/95 backdrop-blur-md shadow-xs border border-white/60">
+                    <div className="w-3.5 h-3.5 flex items-center justify-center shrink-0" style={{ color: accentColor }}>
+                      <IconComp className="w-3.5 h-3.5" />
+                    </div>
+                    <span className="text-[10px] font-bold text-[#1A2229]">
+                      {doctorShortName}&apos;s Focus
+                    </span>
+                  </div>
                 </div>
+              )}
 
-                <h3 className="text-base sm:text-lg font-bold text-[#1A2229] mb-2 group-hover:text-[#FB5A7C] transition-colors leading-snug">
-                  {item.title}
-                </h3>
-
-                <p className="text-xs text-[#475569] leading-relaxed mb-4 line-clamp-3">
-                  {item.desc}
-                </p>
-
-                {/* Tag Chips */}
-                {item.tags && (
-                  <div className="flex flex-wrap gap-1 mb-5">
-                    {item.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="text-[10px] bg-gray-50 border border-gray-100 text-gray-600 px-2 py-0.5 rounded-md font-medium"
+              {/* Card Body Content */}
+              <div className="p-5 sm:p-6 flex flex-col flex-1 justify-between">
+                <div>
+                  {!item.image && (
+                    <div className="flex items-center justify-between mb-4">
+                      <div
+                        className={`w-11 h-11 rounded-2xl ${accentBg} flex items-center justify-center group-hover:scale-105 transition-transform`}
+                        style={{ color: accentColor }}
                       >
-                        {tag}
+                        <IconComp className="w-5 h-5" />
+                      </div>
+                      <span className="text-[10px] font-bold text-gray-300 group-hover:text-gray-400 transition-colors">
+                        0{idx + 1}
                       </span>
-                    ))}
-                  </div>
-                )}
-              </div>
+                    </div>
+                  )}
 
-              {/* Direct WhatsApp Inquiry Button */}
-              <a
-                href={`${doctorWhatsapp.split("?")[0]}?text=${encodeURIComponent(
-                  `Hey ${doctorShortName}, I have an inquiry regarding ${item.title}`
-                )}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="pt-3 border-t border-gray-100 flex items-center justify-between text-xs font-bold text-[#FB5A7C] hover:text-[#E54366] transition-colors group/btn"
-              >
-                <span>Consult on this condition</span>
-                <div className="w-6 h-6 rounded-full bg-[#FFE9ED] flex items-center justify-center group-hover/btn:bg-[#FB5A7C] group-hover/btn:text-white transition-colors">
-                  <MessageCircle className="w-3.5 h-3.5" />
+                  <h3 className="text-base sm:text-lg font-bold text-[#1A2229] mb-2 group-hover:text-[#FB5A7C] transition-colors leading-snug">
+                    {item.title}
+                  </h3>
+
+                  <p className="text-xs text-[#475569] leading-relaxed mb-4 line-clamp-3">
+                    {item.desc}
+                  </p>
+
+                  {/* Tag Chips */}
+                  {item.tags && (
+                    <div className="flex flex-wrap gap-1 mb-5">
+                      {item.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="text-[10px] bg-gray-50 border border-gray-100 text-gray-600 px-2 py-0.5 rounded-md font-medium"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  )}
                 </div>
-              </a>
+
+                {/* Direct WhatsApp Inquiry Button */}
+                <a
+                  href={`${doctorWhatsapp.split("?")[0]}?text=${encodeURIComponent(
+                    `Hey ${doctorShortName}, I have an inquiry regarding ${item.title}`
+                  )}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="pt-3 border-t border-gray-100 flex items-center justify-between text-xs font-bold text-[#FB5A7C] hover:text-[#E54366] transition-colors group/btn"
+                >
+                  <span>Consult on this condition</span>
+                  <div className="w-6 h-6 rounded-full bg-[#FFE9ED] flex items-center justify-center group-hover/btn:bg-[#FB5A7C] group-hover/btn:text-white transition-colors">
+                    <MessageCircle className="w-3.5 h-3.5" />
+                  </div>
+                </a>
+              </div>
             </div>
           );
         })}

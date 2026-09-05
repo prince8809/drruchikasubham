@@ -4,6 +4,7 @@ export interface SpecialtyItem {
   title: string;
   desc: string;
   icon: string;
+  image?: string;
   tags?: string[];
 }
 
@@ -24,8 +25,10 @@ export interface Doctor {
   fullBio: string;
   philosophyTitle: string;
   philosophyDesc: string;
+  philosophyImage?: string;
   specialHighlightTitle?: string;
   specialHighlightDesc?: string;
+  specialHighlightImage?: string;
   photo: string;
   extendedPhoto?: string;
   whatsapp: string;
@@ -62,8 +65,10 @@ export const doctors: Doctor[] = [
     fullBio: "Dr. Ruchika Agarwal is dedicated to providing warm, comprehensive, and compassionate women's healthcare. With specialized focus in adolescent gynaecology, fertility and infertility evaluations, PCOS reversal, gentle normal vaginal delivery, and perimenopause transitions, Dr. Ruchika creates an environment where women feel truly heard, respected, and expertly cared for.",
     philosophyTitle: "Empathy, Listening & Evidence-Based Maternity Care",
     philosophyDesc: "Every woman's body and reproductive journey is unique. Many women feel anxious or hesitant to discuss intimate hormonal, menstrual, or fertility challenges. My clinic is designed to be a safe, compassionate space where you can speak openly without feeling rushed or judged. From adolescent menstrual problems to joyful deliveries and menopausal wellbeing, I am here as your trusted partner.",
+    philosophyImage: "/images/doctors/pillars/ruchika-philosophy.webp",
     specialHighlightTitle: "Gentle Maternity & Adolescent Well-Woman Care",
     specialHighlightDesc: "Dr. Ruchika prioritizes emotional comfort, continuous labor reassurance, and natural birth preparedness. She also provides gentle guidance for teenagers experiencing painful or irregular cycles, helping young women build long-term reproductive confidence.",
+    specialHighlightImage: "/images/doctors/pillars/ruchika-special-focus.webp",
     photo: "/images/doctors/dr-ruchika-headshot.webp",
     whatsapp: WHATSAPP_RUCHIKA,
     phone: PHONE_RUCHIKA,
@@ -91,36 +96,42 @@ export const doctors: Doctor[] = [
         title: "Fertility Evaluation & Conception Care",
         desc: "Sensitive, structured workup for couples trying to conceive, including ovulation monitoring, hormonal profiling, semen analysis interpretation, and IVF counseling.",
         icon: "Dna",
+        image: "/images/services/ivf-infertility.webp",
         tags: ["Follicular Tracking", "Hormonal Panels", "Ovulation Induction", "IVF Counseling"]
       },
       {
         title: "PCOD / PCOS Reversal & Hormonal Health",
         desc: "Holistic, evidence-based management addressing irregular cycles, acne, weight struggles, and metabolic imbalances with compassionate long-term support.",
         icon: "Pill",
+        image: "/images/services/pcod-pcos.webp",
         tags: ["Cycle Regularity", "Lifestyle Interventions", "Fertility Restoration", "Insulin Health"]
       },
       {
         title: "Normal Vaginal Delivery & Antenatal Care",
         desc: "Continuous, patient-guided pregnancy monitoring with focus on maternal wellbeing, fetal development, nutrition, pelvic floor preparedness, and calm natural birth.",
         icon: "Baby",
+        image: "/images/services/normal-cesarean-delivery.webp",
         tags: ["Antenatal Visits", "Gentle Birth Planning", "Pelvic Floor Care", "Postpartum Recovery"]
       },
       {
         title: "Adolescent Gynaecology & Menstrual Health",
         desc: "Safe, supportive consultations for teenagers and young adults dealing with severe dysmenorrhea, heavy flow, irregular periods, and puberty concerns.",
         icon: "Sparkles",
+        image: "/images/services/adolescent-gynaecology.webp",
         tags: ["Painful Periods", "Heavy Bleeding", "Puberty Health", "Compassionate Care"]
       },
       {
         title: "High-Risk Pregnancy Surveillance",
         desc: "Careful monitoring of maternal medical conditions, thyroid disorders, gestational hypertension, and previous pregnancy complications.",
         icon: "HeartPulse",
+        image: "/images/services/high-risk-pregnancy.webp",
         tags: ["Thyroid in Pregnancy", "Hypertension", "Close Monitoring", "Safety Protocols"]
       },
       {
         title: "Menopause & Perimenopause Transition",
         desc: "Supportive care for hot flashes, night sweats, mood fluctuations, bone density loss, and vaginal dryness to keep your golden years vibrant and healthy.",
         icon: "Thermometer",
+        image: "/images/services/menopause-care.webp",
         tags: ["Hot Flashes", "Bone Health", "Hormone Therapy Guidance", "Well-Woman Screening"]
       }
     ],
@@ -168,8 +179,10 @@ export const doctors: Doctor[] = [
     fullBio: "Dr. Subham Agarwal provides comprehensive and personalised care for women at every stage of life, with advanced clinical expertise in pregnancy and antenatal care, normal vaginal and caesarean delivery, high-risk pregnancy management, fertility evaluation, and minimally invasive laparoscopic gynaecological surgery. Committed to holistic family-centered obstetrics, Dr. Subham also actively guides and supports husbands and partners through labor and postpartum care.",
     philosophyTitle: "Surgical Precision & Reassuring Family-Centered Care",
     philosophyDesc: "Healthcare shouldn't feel hurried or intimidating. My approach combines evidence-based surgical precision with warm, unhurried bedside listening. Whether managing a complex high-risk pregnancy, performing keyhole surgery with minimal tissue disruption, or helping an anxious partner understand how to support their wife during labor, every patient deserves clarity, dignity, and unwavering clinical dedication.",
+    philosophyImage: "/images/doctors/pillars/subham-philosophy.webp",
     specialHighlightTitle: "The Father's Corner: Active Partner Inclusivity",
     specialHighlightDesc: "Pregnancy is a shared journey. Dr. Subham actively encourages husbands and partners to participate in prenatal consultations, ultrasound reviews, and labor preparation. He provides clear, practical advice on emotional support, warning signs, labor coaching, and postpartum recovery so fathers feel confident, informed, and engaged.",
+    specialHighlightImage: "/images/doctors/pillars/subham-fathers-corner.webp",
     photo: "/images/doctors/dr-subham-headshot.webp",
     extendedPhoto: "/images/doctors/dr-subham-extended.webp",
     whatsapp: WHATSAPP_SUBHAM,
@@ -200,36 +213,42 @@ export const doctors: Doctor[] = [
         title: "High-Risk Pregnancy Care",
         desc: "Specialized clinical surveillance for hypertension (preeclampsia), gestational diabetes, multiple gestation, previous cesareans, and intrauterine growth restriction.",
         icon: "HeartPulse",
+        image: "/images/services/high-risk-pregnancy.webp",
         tags: ["Preeclampsia", "Gestational Diabetes", "Twin Pregnancies", "Fetal Monitoring"]
       },
       {
         title: "Normal & Cesarean (LUCS) Delivery",
         desc: "Compassionate, patient-centered labor management promoting safe vaginal birth where possible, with expert surgical delivery at Manipal Hospital when medically necessary.",
         icon: "Baby",
+        image: "/images/services/normal-cesarean-delivery.webp",
         tags: ["Painless Normal Delivery", "Planned LUCS", "Emergency C-Section", "Labor Room Care"]
       },
       {
         title: "Advanced Laparoscopic Surgery",
         desc: "State-of-the-art keyhole procedures with minimal incisions, less post-op pain, reduced blood loss, and faster discharge back to your daily routine.",
         icon: "Microscope",
+        image: "/images/services/laparoscopic-surgery.webp",
         tags: ["TLH Hysterectomy", "Ovarian Cystectomy", "Myomectomy", "Ectopic Pregnancy"]
       },
       {
         title: "Endometriosis & Adenomyosis",
         desc: "Accurate diagnosis and targeted laparoscopic excision for deep pelvic endometriosis, severe dysmenorrhea, and chronic pelvic discomfort.",
         icon: "Activity",
+        image: "/images/services/endometriosis.webp",
         tags: ["Pelvic Pain", "Chocolate Cysts", "Excision Surgery", "Long-term Relief"]
       },
       {
         title: "PCOD / PCOS & Hormonal Balance",
         desc: "Personalized medical management targeting insulin resistance, irregular cycles, hyperandrogenism, and lifestyle-led ovulation induction.",
         icon: "Pill",
+        image: "/images/services/pcod-pcos.webp",
         tags: ["Cycle Regulation", "Metabolic Health", "Ovulation Induction", "Weight Support"]
       },
       {
         title: "Fertility Evaluation & IVF Guidance",
         desc: "Comprehensive male and female reproductive workup, tubal patency evaluation, follicular monitoring, and collaborative fertility planning.",
         icon: "Dna",
+        image: "/images/services/ivf-infertility.webp",
         tags: ["Follicular Scans", "Tubal Testing", "Sperm Analysis Guidance", "IVF Referrals"]
       }
     ],
