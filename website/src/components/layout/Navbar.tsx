@@ -244,8 +244,11 @@ export default function Navbar() {
             <MessageCircle className="w-5 h-5 fill-white" />
           </button>
           <button
+            id="mobile-menu-toggle"
+            type="button"
+            translate="no"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2 text-[#1A2229] rounded-lg hover:bg-[#FFF5F7] transition-colors"
+            className="p-2 text-[#1A2229] rounded-lg hover:bg-[#FFF5F7] transition-colors notranslate"
             aria-label="Toggle navigation menu"
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -258,7 +261,7 @@ export default function Navbar() {
         <div className="lg:hidden bg-white border-b border-[#F1E5E8] px-5 py-4 shadow-xl animate-in slide-in-from-top duration-200 max-h-[85vh] overflow-y-auto">
           <nav className="flex flex-col gap-2">
             {/* Mobile Language Switcher */}
-            <div className="pb-3 border-b border-gray-100">
+            <div className="pb-3 border-b border-gray-100 notranslate" translate="no">
               <LanguageSelector
                 variant="drawer"
                 onSelect={() => setMobileMenuOpen(false)}
