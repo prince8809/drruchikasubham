@@ -180,7 +180,7 @@ export default function HeroSection() {
                 src={slide.image}
                 alt={slide.alt}
                 fill
-                priority={idx === 0}
+                priority
                 sizes="100vw"
                 className={`w-full h-full object-cover object-center transition-transform duration-[8000ms] ease-out ${
                   isActive ? "scale-105" : "scale-100"
@@ -200,7 +200,7 @@ export default function HeroSection() {
         className="block sm:hidden absolute inset-0 z-10 pointer-events-none"
         style={{
           background:
-            "linear-gradient(180deg, rgba(255, 250, 251, 0.72) 0%, rgba(255, 250, 251, 0.58) 50%, rgba(255, 250, 251, 0.68) 100%)",
+            "linear-gradient(180deg, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0.05) 50%, rgba(255, 255, 255, 0.22) 100%)",
         }}
       />
       <div
@@ -210,9 +210,9 @@ export default function HeroSection() {
             "linear-gradient(90deg, #FFF8F9 0%, rgba(255, 250, 251, 0.98) 40%, rgba(255, 250, 251, 0.88) 56%, rgba(255, 255, 255, 0.45) 75%, rgba(255, 255, 255, 0.15) 100%)",
         }}
       />
-      {/* Top & bottom subtle boundary tints */}
+      {/* Top & bottom subtle boundary tints (desktop only) */}
       <div
-        className="absolute inset-0 z-10 pointer-events-none"
+        className="hidden sm:block absolute inset-0 z-10 pointer-events-none"
         style={{
           background:
             "linear-gradient(180deg, rgba(255, 248, 249, 0.5) 0%, transparent 12%, transparent 88%, rgba(255, 248, 249, 0.75) 100%)",
