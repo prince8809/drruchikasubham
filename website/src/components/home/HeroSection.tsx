@@ -77,13 +77,13 @@ const HERO_SLIDES: HeroSlide[] = [
     titleLine2: "Keyhole Laparoscopy.",
     titleAccent: "Rapid 24h Recovery.",
     doctorCredentials:
-      "Led by Dr. Subham Agarwal • MBBS, MS, FMAS, FIAG • Specialist Laparoscopic Surgeon",
+      "Led by Dr. Subham Agarwal & Dr. Ruchika Agarwal • Specialist Laparoscopic Surgeons",
     description:
       "Advanced keyhole surgery for ovarian cysts, uterine fibroids, severe endometriosis, ectopic pregnancy, and laparoscopic hysterectomy with minimal discomfort, tiny incisions, and fast discharge.",
     image: "/images/hero/slide-laparoscopy.jpg",
     alt: "State of the art 4K laparoscopic surgical operating suite",
     primaryBtn: {
-      label: "Consult Dr. Subham (Surgeon)",
+      label: "Consult Dr. Subham",
       doctor: "subham",
       icon: "activity",
       className:
@@ -103,13 +103,13 @@ const HERO_SLIDES: HeroSlide[] = [
     titleLine2: "Safe, Joyous Births.",
     titleAccent: "Dedicated Fetal Care.",
     doctorCredentials:
-      "Led by Dr. Ruchika Agarwal • MBBS, MS (OBGYN) • Consultant Obstetrician & Infertility Specialist",
+      "Led by Dr. Ruchika Agarwal & Dr. Subham Agarwal • Consultant Obstetricians & Infertility Specialists",
     description:
       "Compassionate prenatal care, normal delivery advocacy, high-risk pregnancy fetal ultrasound monitoring, and unhurried consultation from conception to birth in modern birthing suites.",
     image: "/images/hero/slide-maternity.jpg",
     alt: "Modern luxury private maternity birthing suite and recovery room",
     primaryBtn: {
-      label: "Consult Dr. Ruchika (Maternity)",
+      label: "Consult Dr. Ruchika",
       doctor: "ruchika",
       icon: "heart",
       className: "btn-primary",
