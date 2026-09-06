@@ -202,6 +202,73 @@
     0% { width: 0%; }
     100% { width: 100%; }
   }
+
+  /* Decorative Concentric Pulse Rings (Luxury Medical Motif) */
+  .dynamic-pulse-ring {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 1;
+    border: 1.5px solid currentColor;
+  }
+
+  .dynamic-pulse-ring::before,
+  .dynamic-pulse-ring::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 1.5px solid currentColor;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .dynamic-pulse-ring::before {
+    animation: ringWavePulse 6.5s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+  }
+
+  .dynamic-pulse-ring::after {
+    animation: ringWavePulse 6.5s cubic-bezier(0.2, 0.8, 0.2, 1) infinite 3.25s;
+  }
+
+  @keyframes ringWavePulse {
+    0% {
+      transform: scale(0.84);
+      opacity: 0;
+      box-shadow: 0 0 0 0 currentColor;
+    }
+    18% {
+      opacity: 0.65;
+      box-shadow: 0 0 20px 2px currentColor;
+    }
+    60% {
+      opacity: 0.18;
+    }
+    100% {
+      transform: scale(1.48);
+      opacity: 0;
+      box-shadow: 0 0 0 0 currentColor;
+    }
+  }
+
+  @keyframes ringBreathe {
+    0%, 100% {
+      transform: scale(1);
+      opacity: 0.85;
+    }
+    50% {
+      transform: scale(1.06);
+      opacity: 1;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .dynamic-pulse-ring::before,
+    .dynamic-pulse-ring::after {
+      animation: none;
+      opacity: 0;
+    }
+  }
 }
 
 /* Headless Google Translate Clean Integration - Hide Banner, Tooltips & Popups */

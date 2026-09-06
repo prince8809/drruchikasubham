@@ -42,6 +42,10 @@ interface HeroSlide {
     label: string;
     doctor: "ruchika" | "subham" | "joint";
   };
+  desktopOverlay: string;
+  mobileOverlay: string;
+  ringColor: string;
+  ringShadow: string;
 }
 
 const HERO_SLIDES: HeroSlide[] = [
@@ -73,6 +77,13 @@ const HERO_SLIDES: HeroSlide[] = [
       label: "Book with Dr. Subham",
       doctor: "subham",
     },
+    desktopOverlay:
+      "radial-gradient(ellipse at 85% 25%, rgba(224, 158, 92, 0.20) 0%, rgba(245, 123, 148, 0.14) 40%, transparent 70%), linear-gradient(90deg, rgba(255, 252, 252, 0.88) 0%, rgba(255, 248, 249, 0.72) 42%, rgba(255, 248, 249, 0.25) 70%, transparent 100%)",
+    mobileOverlay:
+      "radial-gradient(ellipse at 50% 10%, rgba(224, 158, 92, 0.18) 0%, transparent 60%), linear-gradient(180deg, rgba(255, 250, 251, 0.90) 0%, rgba(255, 248, 249, 0.70) 50%, rgba(255, 248, 249, 0.35) 80%, rgba(255, 250, 251, 0.60) 100%)",
+    ringColor: "rgba(224, 158, 92, 0.40)",
+    ringShadow:
+      "inset 0 0 0 55px transparent, inset 0 0 0 56px rgba(245, 123, 148, 0.18), inset 0 0 0 120px transparent, inset 0 0 0 121px rgba(224, 158, 92, 0.14)",
   },
   {
     id: "laparoscopy",
@@ -103,6 +114,13 @@ const HERO_SLIDES: HeroSlide[] = [
       label: "Book with Dr. Ruchika",
       doctor: "ruchika",
     },
+    desktopOverlay:
+      "radial-gradient(ellipse at 80% 30%, rgba(67, 132, 198, 0.24) 0%, rgba(11, 117, 161, 0.14) 45%, transparent 70%), linear-gradient(90deg, rgba(248, 251, 255, 0.88) 0%, rgba(240, 246, 254, 0.70) 42%, rgba(240, 246, 254, 0.20) 70%, transparent 100%)",
+    mobileOverlay:
+      "radial-gradient(ellipse at 50% 10%, rgba(67, 132, 198, 0.20) 0%, transparent 60%), linear-gradient(180deg, rgba(246, 250, 254, 0.90) 0%, rgba(240, 246, 254, 0.68) 50%, rgba(240, 246, 254, 0.30) 80%, rgba(246, 250, 254, 0.55) 100%)",
+    ringColor: "rgba(67, 132, 198, 0.45)",
+    ringShadow:
+      "inset 0 0 0 55px transparent, inset 0 0 0 56px rgba(11, 117, 161, 0.20), inset 0 0 0 120px transparent, inset 0 0 0 121px rgba(67, 132, 198, 0.14)",
   },
   {
     id: "maternity",
@@ -132,6 +150,13 @@ const HERO_SLIDES: HeroSlide[] = [
       label: "Book with Dr. Subham",
       doctor: "subham",
     },
+    desktopOverlay:
+      "radial-gradient(ellipse at 85% 25%, rgba(245, 123, 148, 0.22) 0%, rgba(251, 175, 120, 0.16) 45%, transparent 70%), linear-gradient(90deg, rgba(255, 250, 251, 0.88) 0%, rgba(255, 243, 245, 0.72) 42%, rgba(255, 243, 245, 0.22) 70%, transparent 100%)",
+    mobileOverlay:
+      "radial-gradient(ellipse at 50% 10%, rgba(245, 123, 148, 0.18) 0%, transparent 60%), linear-gradient(180deg, rgba(255, 248, 249, 0.90) 0%, rgba(255, 243, 245, 0.70) 50%, rgba(255, 243, 245, 0.32) 80%, rgba(255, 248, 249, 0.58) 100%)",
+    ringColor: "rgba(245, 123, 148, 0.45)",
+    ringShadow:
+      "inset 0 0 0 55px transparent, inset 0 0 0 56px rgba(251, 175, 120, 0.20), inset 0 0 0 120px transparent, inset 0 0 0 121px rgba(245, 123, 148, 0.14)",
   },
 ];
 
@@ -210,24 +235,44 @@ export default function HeroSection() {
       </div>
 
       {/* =========================================================================
-          2. DIRECTIONAL LUMINOUS READABILITY SHIELD (Layer z-10)
-             Mobile: Luminous 80%->60% airy wash so all 3 slides feel equally bright & clear
-             Desktop: Left 68%->50% soft reading wash, tapering to 0% so clinical suites shine
+          2. BESPOKE CHROMATIC READABILITY SHIELD & DYNAMIC PULSE RING (Layer z-10)
+             Seamlessly crossfades alongside background slides with specialty-tailored
+             atmospheric chromatic blooms, concentric life-pulse rings & luminous readability scrims.
           ========================================================================= */}
-      <div
-        className="block sm:hidden absolute inset-0 z-10 pointer-events-none backdrop-blur-[1px]"
-        style={{
-          background:
-            "linear-gradient(180deg, rgba(255, 255, 255, 0.80) 0%, rgba(255, 255, 255, 0.60) 45%, rgba(255, 255, 255, 0.22) 75%, rgba(255, 255, 255, 0.38) 100%)",
-        }}
-      />
-      <div
-        className="hidden sm:block absolute inset-0 z-10 pointer-events-none backdrop-blur-[1px]"
-        style={{
-          background:
-            "linear-gradient(90deg, rgba(255, 255, 255, 0.78) 0%, rgba(255, 255, 255, 0.60) 40%, rgba(255, 255, 255, 0.22) 65%, transparent 100%)",
-        }}
-      />
+      <div className="absolute inset-0 z-10 pointer-events-none overflow-hidden">
+        {HERO_SLIDES.map((slide, idx) => {
+          const isActive = idx === activeSlide;
+          return (
+            <div
+              key={`overlay-${slide.id}`}
+              className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+                isActive ? "opacity-100" : "opacity-0 pointer-events-none"
+              }`}
+            >
+              {/* Mobile Viewport Overlay (Vertical Luminance + Header Halo) */}
+              <div
+                className="block sm:hidden absolute inset-0 backdrop-blur-[0.5px]"
+                style={{ background: slide.mobileOverlay }}
+              />
+              {/* Desktop Viewport Overlay (Horizontal Reading Scrim + Ambient Bloom) */}
+              <div
+                className="hidden sm:block absolute inset-0 backdrop-blur-[0.5px]"
+                style={{ background: slide.desktopOverlay }}
+              />
+
+              {/* Decorative Concentric Life-Pulse Ring (Acoustic Wave / Vitality Ripple Motif) */}
+              <div
+                className="dynamic-pulse-ring -top-16 -right-16 w-60 h-60 sm:-top-24 sm:-right-20 sm:w-96 sm:h-96 lg:-top-32 lg:-right-16 lg:w-[460px] lg:h-[460px] transition-colors duration-1000"
+                style={{
+                  color: slide.ringColor,
+                  boxShadow: slide.ringShadow,
+                }}
+                aria-hidden="true"
+              />
+            </div>
+          );
+        })}
+      </div>
 
       {/* =========================================================================
           3. MANUAL NAVIGATION ARROWS (Layer z-30)
