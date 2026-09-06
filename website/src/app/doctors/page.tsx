@@ -20,9 +20,9 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/images/brand/logo.png",
-        width: 800,
-        height: 800,
+        url: "/images/brand/brand-logo-v2.png",
+        width: 886,
+        height: 1228,
         alt: "Dr. Ruchika & Dr. Subham Agarwal",
       },
     ],
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Our Specialist Doctors | Dr. Ruchika & Dr. Subham Agarwal",
     description: "Consulting Obstetricians, Gynaecologists & Laparoscopic Surgeons in Siliguri.",
-    images: ["/images/brand/logo.png"],
+    images: ["/images/brand/brand-logo-v2.png"],
   },
 };
 

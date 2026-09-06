@@ -193,21 +193,21 @@ export default function HeroSection() {
 
       {/* =========================================================================
           2. DIRECTIONAL LUMINOUS READABILITY SHIELD (Layer z-10)
-             Mobile: 96% protective vertical wash so typography is 100% crisp
-             Desktop: Left 52% high-contrast wash, right 48% luminous so clinical suites shine
+             Mobile: 98% protective vertical wash so typography is 100% crisp without any box
+             Desktop: Left 52% soft luxury wash (#FFF8F9 98%), right 48% open so clinical suites shine
           ========================================================================= */}
       <div
         className="block sm:hidden absolute inset-0 z-10 pointer-events-none"
         style={{
           background:
-            "linear-gradient(180deg, rgba(255, 250, 251, 0.97) 0%, rgba(255, 250, 251, 0.93) 65%, rgba(255, 255, 255, 0.82) 100%)",
+            "linear-gradient(180deg, rgba(255, 250, 251, 0.98) 0%, rgba(255, 250, 251, 0.95) 60%, rgba(255, 255, 255, 0.88) 100%)",
         }}
       />
       <div
         className="hidden sm:block absolute inset-0 z-10 pointer-events-none"
         style={{
           background:
-            "linear-gradient(90deg, rgba(255, 248, 249, 0.98) 0%, rgba(255, 250, 251, 0.94) 48%, rgba(255, 255, 255, 0.65) 70%, rgba(255, 255, 255, 0.20) 100%)",
+            "linear-gradient(90deg, #FFF8F9 0%, rgba(255, 250, 251, 0.98) 40%, rgba(255, 250, 251, 0.88) 56%, rgba(255, 255, 255, 0.45) 75%, rgba(255, 255, 255, 0.15) 100%)",
         }}
       />
       {/* Top & bottom subtle boundary tints */}
@@ -215,7 +215,7 @@ export default function HeroSection() {
         className="absolute inset-0 z-10 pointer-events-none"
         style={{
           background:
-            "linear-gradient(180deg, rgba(255, 248, 249, 0.6) 0%, transparent 12%, transparent 88%, rgba(255, 248, 249, 0.85) 100%)",
+            "linear-gradient(180deg, rgba(255, 248, 249, 0.5) 0%, transparent 12%, transparent 88%, rgba(255, 248, 249, 0.75) 100%)",
         }}
       />
 
@@ -272,20 +272,22 @@ export default function HeroSection() {
               >
                 {currentSlide.titleAccent}
               </span>
-              <span className="block mt-3">
-                <span className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold tracking-normal text-[#1A2229] py-1.5 px-3.5 sm:px-4 rounded-full bg-white/90 backdrop-blur-md border border-pink-100/90 shadow-xs font-sans text-left">
-                  <span className="w-2 h-2 rounded-full bg-emerald-500 shrink-0 animate-pulse" />
-                  <span>{currentSlide.doctorCredentials}</span>
-                </span>
-              </span>
             </h1>
 
-            {/* Subtitle / Description */}
-            <div className="max-w-2xl mx-auto lg:mx-0 p-3.5 sm:p-4 rounded-2xl bg-white/80 backdrop-blur-md border border-white/90 shadow-xs">
-              <p className="text-sm sm:text-base lg:text-lg text-[#1A2229] font-medium leading-relaxed">
-                {currentSlide.description}
-              </p>
-            </div>
+            {/* Doctor Credentials Subline — Sleek & Integrated */}
+            <p className="text-xs sm:text-sm font-bold text-[#334155] flex items-center justify-center lg:justify-start gap-2">
+              <span className="w-2 h-2 rounded-full bg-emerald-500 shrink-0 animate-pulse" />
+              <span>{currentSlide.doctorCredentials}</span>
+            </p>
+
+            {/* Subtitle / Description — Clean Editorial Accent Style (NO White Box!) */}
+            <p
+              className={`text-base sm:text-lg text-[#1A2229] font-medium leading-relaxed max-w-2xl mx-auto lg:mx-0 border-l-3 ${
+                currentSlide.id === "laparoscopy" ? "border-l-[#4384C6]" : "border-l-[#F57B94]"
+              } pl-3.5 sm:pl-4 text-left`}
+            >
+              {currentSlide.description}
+            </p>
 
             {/* CTA Buttons: Dr. Ruchika = Rose Pink (#F57B94), Dr. Subham = Azure Blue (#4384C6) */}
             <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3.5 pt-1">
@@ -383,7 +385,7 @@ export default function HeroSection() {
                 >
                   <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#FFF0F3] p-1.5 flex items-center justify-center shrink-0">
                     <Image
-                      src="/images/brand/couple-art.png"
+                      src="/images/brand/couple-art-v2.png"
                       alt="Couple Care"
                       width={32}
                       height={32}

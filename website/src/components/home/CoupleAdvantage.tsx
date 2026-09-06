@@ -58,11 +58,11 @@ export default function CoupleAdvantage() {
             {/* Couple Emblem Art */}
             <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-white p-1.5 shadow-2xs border border-pink-100 flex items-center justify-center shrink-0">
               <Image
-                src="/images/brand/couple-art.png"
+                src="/images/brand/couple-art-v2.png"
                 alt="The Couple Doctor Advantage"
-                width={32}
-                height={32}
-                className="object-contain"
+                width={36}
+                height={36}
+                className="w-full h-full object-contain"
               />
             </div>
 

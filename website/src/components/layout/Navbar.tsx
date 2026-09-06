@@ -74,13 +74,13 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
         {/* Brand Logo & Name */}
         <Link href="/" className="flex items-center gap-3 group">
-          <div className="relative w-11 h-11 rounded-full overflow-hidden bg-[#FFF5F7] border-2 border-[#FB5A7C]/30 p-1 flex items-center justify-center shrink-0 shadow-sm group-hover:scale-105 transition-transform">
+          <div className="relative w-12 h-12 rounded-2xl overflow-hidden bg-gradient-to-b from-[#FFF0F3] to-white border border-[#FFD3DC] p-1.5 flex items-center justify-center shrink-0 shadow-2xs group-hover:scale-105 transition-transform">
             <Image
-              src="/images/brand/logo.png"
+              src="/images/brand/brand-logo-v2.png"
               alt="Dr. Ruchika & Dr. Subham Agarwal Emblem"
-              width={40}
-              height={40}
-              className="w-auto h-auto object-contain"
+              width={48}
+              height={48}
+              className="w-full h-full object-contain"
               priority
             />
           </div>

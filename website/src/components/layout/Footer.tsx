@@ -39,13 +39,13 @@ export default function Footer() {
           {/* Column 1: Brand & USP */}
           <div className="space-y-4">
             <div className="flex items-center gap-3">
-              <div className="relative w-12 h-12 rounded-2xl overflow-hidden bg-white border border-[#FFCCD6] p-1.5 flex items-center justify-center shrink-0 shadow-2xs">
+              <div className="relative w-12 h-12 rounded-2xl overflow-hidden bg-gradient-to-b from-[#FFF0F3] to-white border border-[#FFCCD6] p-1.5 flex items-center justify-center shrink-0 shadow-2xs">
                 <Image
-                  src="/images/brand/logo.png"
+                  src="/images/brand/brand-logo-v2.png"
                   alt="Dr. Ruchika & Dr. Subham Agarwal Emblem"
-                  width={44}
-                  height={44}
-                  className="w-auto h-auto object-contain"
+                  width={48}
+                  height={48}
+                  className="w-full h-full object-contain"
                 />
               </div>
               <div>

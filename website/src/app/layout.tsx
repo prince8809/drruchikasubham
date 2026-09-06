@@ -37,9 +37,9 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/images/brand/logo.png",
-        width: 800,
-        height: 800,
+        url: "/images/brand/brand-logo-v2.png",
+        width: 886,
+        height: 1228,
         alt: "Dr. Ruchika & Dr. Subham Agarwal Emblem",
       },
     ],
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     title: "Dr. Ruchika & Dr. Subham Agarwal | Gynaecologists in Siliguri",
     description:
       "Empathetic maternity, fertility & minimally invasive laparoscopic surgical care in Siliguri at Manipal Hospital & Zivah Centre.",
-    images: ["/images/brand/logo.png"],
+    images: ["/images/brand/brand-logo-v2.png"],
   },
   icons: {
     icon: [

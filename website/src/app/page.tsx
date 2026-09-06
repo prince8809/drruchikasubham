@@ -13,8 +13,8 @@ const clinicSchema = {
   "@type": "MedicalClinic",
   name: "Dr. Ruchika & Dr. Subham Agarwal — Advanced Women's Care",
   url: "https://drruchikasubham.com",
-  logo: "https://drruchikasubham.com/images/brand/logo.png",
-  image: "https://drruchikasubham.com/images/brand/logo.png",
+  logo: "https://drruchikasubham.com/images/brand/brand-logo-v2.png",
+  image: "https://drruchikasubham.com/images/brand/brand-logo-v2.png",
   description:
     "Comprehensive women's healthcare by husband-wife specialist duo in Siliguri. High-risk pregnancy care, normal & cesarean delivery, IVF counseling, PCOS management, and laparoscopic gynaecological surgery.",
   priceRange: "₹800",
