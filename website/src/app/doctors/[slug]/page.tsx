@@ -173,13 +173,13 @@ export default async function DoctorProfilePage({ params }: { params: Promise<{ 
 
         {/* Decorative Concentric Life-Pulse Ring */}
         <div
-          className={`dynamic-pulse-ring -top-20 -right-20 w-72 h-72 sm:-top-28 sm:-right-24 sm:w-[440px] sm:h-[440px] lg:-top-32 lg:-right-20 lg:w-[520px] lg:h-[520px] transition-colors duration-1000 ${
-            isSubham ? "text-[#4384C6]/30" : "text-[#F57B94]/30"
+          className={`dynamic-pulse-ring -top-14 -right-14 w-64 h-64 sm:-top-28 sm:-right-24 sm:w-[440px] sm:h-[440px] lg:-top-32 lg:-right-20 lg:w-[520px] lg:h-[520px] transition-colors duration-1000 ${
+            isSubham ? "text-[#4384C6]/45" : "text-[#F57B94]/45"
           }`}
           style={{
             boxShadow: isSubham
-              ? "inset 0 0 0 55px transparent, inset 0 0 0 56px rgba(67, 132, 198, 0.16), inset 0 0 0 120px transparent, inset 0 0 0 121px rgba(67, 132, 198, 0.10)"
-              : "inset 0 0 0 55px transparent, inset 0 0 0 56px rgba(245, 123, 148, 0.18), inset 0 0 0 120px transparent, inset 0 0 0 121px rgba(224, 158, 92, 0.12)",
+              ? "inset 0 0 0 55px transparent, inset 0 0 0 56px rgba(67, 132, 198, 0.30), inset 0 0 0 120px transparent, inset 0 0 0 121px rgba(67, 132, 198, 0.18)"
+              : "inset 0 0 0 55px transparent, inset 0 0 0 56px rgba(245, 123, 148, 0.30), inset 0 0 0 120px transparent, inset 0 0 0 121px rgba(224, 158, 92, 0.20)",
           }}
           aria-hidden="true"
         />

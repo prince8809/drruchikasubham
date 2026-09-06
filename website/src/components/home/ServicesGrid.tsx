@@ -85,18 +85,18 @@ export default function ServicesGrid() {
     <section id="services" className="py-14 sm:py-16 bg-[#FAFAF9] border-t border-[#F1E5E8] relative overflow-hidden scroll-mt-24 sm:scroll-mt-28">
       {/* Decorative Concentric Life-Pulse Rings (Top-Right Sapphire & Bottom-Left Blush) */}
       <div
-        className="dynamic-pulse-ring -top-20 -right-20 w-72 h-72 sm:-top-32 sm:-right-32 sm:w-[440px] sm:h-[440px] text-[#4384C6]/15 pointer-events-none"
+        className="dynamic-pulse-ring -top-14 -right-14 w-64 h-64 sm:-top-32 sm:-right-32 sm:w-[440px] sm:h-[440px] text-[#4384C6]/35 pointer-events-none"
         style={{
           boxShadow:
-            "inset 0 0 0 50px transparent, inset 0 0 0 51px rgba(67, 132, 198, 0.12), inset 0 0 0 110px transparent, inset 0 0 0 111px rgba(67, 132, 198, 0.08)",
+            "inset 0 0 0 50px transparent, inset 0 0 0 51px rgba(67, 132, 198, 0.25), inset 0 0 0 110px transparent, inset 0 0 0 111px rgba(67, 132, 198, 0.18)",
         }}
         aria-hidden="true"
       />
       <div
-        className="dynamic-pulse-ring -bottom-20 -left-20 w-72 h-72 sm:-bottom-32 sm:-left-32 sm:w-[440px] sm:h-[440px] text-[#F57B94]/15 pointer-events-none"
+        className="dynamic-pulse-ring -bottom-14 -left-14 w-64 h-64 sm:-bottom-32 sm:-left-32 sm:w-[440px] sm:h-[440px] text-[#F57B94]/35 pointer-events-none"
         style={{
           boxShadow:
-            "inset 0 0 0 50px transparent, inset 0 0 0 51px rgba(245, 123, 148, 0.12), inset 0 0 0 110px transparent, inset 0 0 0 111px rgba(245, 123, 148, 0.08)",
+            "inset 0 0 0 50px transparent, inset 0 0 0 51px rgba(245, 123, 148, 0.25), inset 0 0 0 110px transparent, inset 0 0 0 111px rgba(245, 123, 148, 0.18)",
         }}
         aria-hidden="true"
       />

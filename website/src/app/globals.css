@@ -210,63 +210,72 @@
     pointer-events: none;
     z-index: 1;
     border: 1.5px solid currentColor;
+    animation: dynamicRingBreathe 4.2s ease-in-out infinite;
+    transform-origin: center center;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    will-change: transform, opacity;
   }
 
   .dynamic-pulse-ring::before,
   .dynamic-pulse-ring::after {
     content: '';
     position: absolute;
-    inset: 0;
+    inset: -1px;
     border-radius: 50%;
     border: 1.5px solid currentColor;
+    box-shadow: inherit;
     opacity: 0;
     pointer-events: none;
+    transform-origin: center center;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    will-change: transform, opacity;
   }
 
   .dynamic-pulse-ring::before {
-    animation: ringWavePulse 6.5s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+    animation: dynamicRingWave 3.6s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
   }
 
   .dynamic-pulse-ring::after {
-    animation: ringWavePulse 6.5s cubic-bezier(0.2, 0.8, 0.2, 1) infinite 3.25s;
+    animation: dynamicRingWave 3.6s cubic-bezier(0.2, 0.8, 0.2, 1) infinite 1.8s;
   }
 
-  @keyframes ringWavePulse {
-    0% {
-      transform: scale(0.84);
-      opacity: 0;
-      box-shadow: 0 0 0 0 currentColor;
-    }
-    18% {
-      opacity: 0.65;
-      box-shadow: 0 0 20px 2px currentColor;
-    }
-    60% {
-      opacity: 0.18;
-    }
-    100% {
-      transform: scale(1.48);
-      opacity: 0;
-      box-shadow: 0 0 0 0 currentColor;
-    }
-  }
-
-  @keyframes ringBreathe {
+  @keyframes dynamicRingBreathe {
     0%, 100% {
-      transform: scale(1);
+      transform: scale(0.96) translateZ(0);
       opacity: 0.85;
     }
     50% {
-      transform: scale(1.06);
+      transform: scale(1.06) translateZ(0);
       opacity: 1;
     }
   }
 
+  @keyframes dynamicRingWave {
+    0% {
+      transform: scale(0.96) translateZ(0);
+      opacity: 0.85;
+    }
+    40% {
+      opacity: 0.45;
+    }
+    100% {
+      transform: scale(1.50) translateZ(0);
+      opacity: 0;
+    }
+  }
+
   @media (prefers-reduced-motion: reduce) {
+    .dynamic-pulse-ring {
+      animation: dynamicRingBreathe 9s ease-in-out infinite;
+    }
     .dynamic-pulse-ring::before,
     .dynamic-pulse-ring::after {
-      animation: none;
-      opacity: 0;
+      animation: dynamicRingWave 9s ease-in-out infinite;
+      opacity: 0.35;
     }
   }
 }

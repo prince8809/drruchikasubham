@@ -35,10 +35,10 @@ export default function BookingStrip() {
 
       {/* Decorative Concentric Life-Pulse Ring */}
       <div
-        className="dynamic-pulse-ring -top-16 -right-16 w-64 h-64 sm:-top-24 sm:-right-24 sm:w-[420px] sm:h-[420px] text-white/20 pointer-events-none"
+        className="dynamic-pulse-ring -top-12 -right-12 w-64 h-64 sm:-top-24 sm:-right-24 sm:w-[420px] sm:h-[420px] text-white/40 pointer-events-none"
         style={{
           boxShadow:
-            "inset 0 0 0 45px transparent, inset 0 0 0 46px rgba(255, 255, 255, 0.15), inset 0 0 0 100px transparent, inset 0 0 0 101px rgba(255, 255, 255, 0.10)",
+            "inset 0 0 0 45px transparent, inset 0 0 0 46px rgba(255, 255, 255, 0.30), inset 0 0 0 100px transparent, inset 0 0 0 101px rgba(255, 255, 255, 0.20)",
         }}
         aria-hidden="true"
       />

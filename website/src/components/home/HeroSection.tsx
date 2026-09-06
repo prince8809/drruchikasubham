@@ -81,9 +81,9 @@ const HERO_SLIDES: HeroSlide[] = [
       "radial-gradient(ellipse at 85% 25%, rgba(224, 158, 92, 0.20) 0%, rgba(245, 123, 148, 0.14) 40%, transparent 70%), linear-gradient(90deg, rgba(255, 252, 252, 0.88) 0%, rgba(255, 248, 249, 0.72) 42%, rgba(255, 248, 249, 0.25) 70%, transparent 100%)",
     mobileOverlay:
       "radial-gradient(ellipse at 50% 10%, rgba(224, 158, 92, 0.18) 0%, transparent 60%), linear-gradient(180deg, rgba(255, 250, 251, 0.90) 0%, rgba(255, 248, 249, 0.70) 50%, rgba(255, 248, 249, 0.35) 80%, rgba(255, 250, 251, 0.60) 100%)",
-    ringColor: "rgba(224, 158, 92, 0.40)",
+    ringColor: "rgba(224, 158, 92, 0.55)",
     ringShadow:
-      "inset 0 0 0 55px transparent, inset 0 0 0 56px rgba(245, 123, 148, 0.18), inset 0 0 0 120px transparent, inset 0 0 0 121px rgba(224, 158, 92, 0.14)",
+      "inset 0 0 0 55px transparent, inset 0 0 0 56px rgba(245, 123, 148, 0.28), inset 0 0 0 120px transparent, inset 0 0 0 121px rgba(224, 158, 92, 0.22)",
   },
   {
     id: "laparoscopy",
@@ -118,9 +118,9 @@ const HERO_SLIDES: HeroSlide[] = [
       "radial-gradient(ellipse at 80% 30%, rgba(67, 132, 198, 0.24) 0%, rgba(11, 117, 161, 0.14) 45%, transparent 70%), linear-gradient(90deg, rgba(248, 251, 255, 0.88) 0%, rgba(240, 246, 254, 0.70) 42%, rgba(240, 246, 254, 0.20) 70%, transparent 100%)",
     mobileOverlay:
       "radial-gradient(ellipse at 50% 10%, rgba(67, 132, 198, 0.20) 0%, transparent 60%), linear-gradient(180deg, rgba(246, 250, 254, 0.90) 0%, rgba(240, 246, 254, 0.68) 50%, rgba(240, 246, 254, 0.30) 80%, rgba(246, 250, 254, 0.55) 100%)",
-    ringColor: "rgba(67, 132, 198, 0.45)",
+    ringColor: "rgba(67, 132, 198, 0.55)",
     ringShadow:
-      "inset 0 0 0 55px transparent, inset 0 0 0 56px rgba(11, 117, 161, 0.20), inset 0 0 0 120px transparent, inset 0 0 0 121px rgba(67, 132, 198, 0.14)",
+      "inset 0 0 0 55px transparent, inset 0 0 0 56px rgba(11, 117, 161, 0.30), inset 0 0 0 120px transparent, inset 0 0 0 121px rgba(67, 132, 198, 0.22)",
   },
   {
     id: "maternity",
@@ -154,9 +154,9 @@ const HERO_SLIDES: HeroSlide[] = [
       "radial-gradient(ellipse at 85% 25%, rgba(245, 123, 148, 0.22) 0%, rgba(251, 175, 120, 0.16) 45%, transparent 70%), linear-gradient(90deg, rgba(255, 250, 251, 0.88) 0%, rgba(255, 243, 245, 0.72) 42%, rgba(255, 243, 245, 0.22) 70%, transparent 100%)",
     mobileOverlay:
       "radial-gradient(ellipse at 50% 10%, rgba(245, 123, 148, 0.18) 0%, transparent 60%), linear-gradient(180deg, rgba(255, 248, 249, 0.90) 0%, rgba(255, 243, 245, 0.70) 50%, rgba(255, 243, 245, 0.32) 80%, rgba(255, 248, 249, 0.58) 100%)",
-    ringColor: "rgba(245, 123, 148, 0.45)",
+    ringColor: "rgba(245, 123, 148, 0.55)",
     ringShadow:
-      "inset 0 0 0 55px transparent, inset 0 0 0 56px rgba(251, 175, 120, 0.20), inset 0 0 0 120px transparent, inset 0 0 0 121px rgba(245, 123, 148, 0.14)",
+      "inset 0 0 0 55px transparent, inset 0 0 0 56px rgba(251, 175, 120, 0.30), inset 0 0 0 120px transparent, inset 0 0 0 121px rgba(245, 123, 148, 0.22)",
   },
 ];
 
@@ -262,7 +262,7 @@ export default function HeroSection() {
 
               {/* Decorative Concentric Life-Pulse Ring (Acoustic Wave / Vitality Ripple Motif) */}
               <div
-                className="dynamic-pulse-ring -top-16 -right-16 w-60 h-60 sm:-top-24 sm:-right-20 sm:w-96 sm:h-96 lg:-top-32 lg:-right-16 lg:w-[460px] lg:h-[460px] transition-colors duration-1000"
+                className="dynamic-pulse-ring -top-10 -right-10 w-64 h-64 sm:-top-24 sm:-right-20 sm:w-96 sm:h-96 lg:-top-32 lg:-right-16 lg:w-[460px] lg:h-[460px] transition-colors duration-1000"
                 style={{
                   color: slide.ringColor,
                   boxShadow: slide.ringShadow,

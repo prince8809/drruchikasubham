@@ -50,13 +50,13 @@ export default function DoctorProfiles({ isPageHeading = false }: DoctorProfiles
               >
                 {/* Decorative Subtle Concentric Pulse Ring */}
                 <div
-                  className={`dynamic-pulse-ring -bottom-10 -right-10 w-36 h-36 sm:-bottom-14 sm:-right-14 sm:w-48 sm:h-48 transition-colors duration-1000 ${
-                    isSubham ? "text-[#4384C6]/20" : "text-[#F57B94]/20"
+                  className={`dynamic-pulse-ring -bottom-8 -right-8 w-36 h-36 sm:-bottom-12 sm:-right-12 sm:w-48 sm:h-48 transition-colors duration-1000 ${
+                    isSubham ? "text-[#4384C6]/40" : "text-[#F57B94]/40"
                   }`}
                   style={{
                     boxShadow: isSubham
-                      ? "inset 0 0 0 25px transparent, inset 0 0 0 26px rgba(67, 132, 198, 0.12)"
-                      : "inset 0 0 0 25px transparent, inset 0 0 0 26px rgba(245, 123, 148, 0.14)",
+                      ? "inset 0 0 0 24px transparent, inset 0 0 0 25px rgba(67, 132, 198, 0.28), inset 0 0 0 54px transparent, inset 0 0 0 55px rgba(67, 132, 198, 0.16)"
+                      : "inset 0 0 0 24px transparent, inset 0 0 0 25px rgba(245, 123, 148, 0.28), inset 0 0 0 54px transparent, inset 0 0 0 55px rgba(245, 123, 148, 0.16)",
                   }}
                   aria-hidden="true"
                 />
