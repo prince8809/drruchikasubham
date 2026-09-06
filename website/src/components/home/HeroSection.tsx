@@ -27,7 +27,9 @@ interface HeroSlide {
   titleLine2: string;
   titleAccent: string;
   doctorCredentials: string;
+  doctorCredentialsMobile?: string;
   description: string;
+  mobileDescription?: string;
   image: string;
   alt: string;
   primaryBtn: {
@@ -53,8 +55,12 @@ const HERO_SLIDES: HeroSlide[] = [
     titleAccent: "Expertly\u00A0Cared\u00A0For.",
     doctorCredentials:
       "Dr. Ruchika & Dr. Subham Agarwal • Obstetricians, Gynaecologists & Laparoscopic Surgeons in Siliguri",
+    doctorCredentialsMobile:
+      "Dr. Ruchika & Dr. Subham Agarwal • Siliguri Gynaecologists & Surgeons",
     description:
       "Complete women's healthcare in Siliguri — from periods, PCOS & fertility evaluations to gentle normal delivery, high-risk pregnancy management, and advanced laparoscopic surgery.",
+    mobileDescription:
+      "Complete women's healthcare in Siliguri — fertility evaluations, gentle normal delivery, high-risk care & keyhole surgery.",
     image: "/images/hero/slide-consultation.jpg",
     alt: "Warm clinical consultation and patient lounge with Dr. Ruchika and Dr. Subham Agarwal",
     primaryBtn: {
@@ -78,8 +84,12 @@ const HERO_SLIDES: HeroSlide[] = [
     titleAccent: "Rapid 24h Recovery.",
     doctorCredentials:
       "Led by Dr. Subham Agarwal & Dr. Ruchika Agarwal • Specialist Laparoscopic Surgeons",
+    doctorCredentialsMobile:
+      "Dr. Subham & Dr. Ruchika Agarwal • Specialist Laparoscopic Surgeons",
     description:
       "Advanced keyhole surgery for ovarian cysts, uterine fibroids, severe endometriosis, ectopic pregnancy, and laparoscopic hysterectomy with minimal discomfort, tiny incisions, and fast discharge.",
+    mobileDescription:
+      "Advanced keyhole surgery for ovarian cysts, fibroids, endometriosis & hysterectomy with tiny 5mm incisions & fast recovery.",
     image: "/images/hero/slide-laparoscopy.jpg",
     alt: "State of the art 4K laparoscopic surgical operating suite",
     primaryBtn: {
@@ -104,8 +114,12 @@ const HERO_SLIDES: HeroSlide[] = [
     titleAccent: "Dedicated Fetal Care.",
     doctorCredentials:
       "Led by Dr. Ruchika Agarwal & Dr. Subham Agarwal • Consultant Obstetricians & Infertility Specialists",
+    doctorCredentialsMobile:
+      "Dr. Ruchika & Dr. Subham Agarwal • Obstetricians & Infertility Specialists",
     description:
       "Compassionate prenatal care, normal delivery advocacy, high-risk pregnancy fetal ultrasound monitoring, and unhurried consultation from conception to birth in modern birthing suites.",
+    mobileDescription:
+      "Compassionate prenatal care, normal delivery advocacy & high-risk pregnancy monitoring in modern birthing suites.",
     image: "/images/hero/slide-maternity-v2.jpg",
     alt: "Modern private hospital maternity birthing suite with neonatal infant warmer and fetal ultrasound monitor",
     primaryBtn: {
@@ -200,14 +214,14 @@ export default function HeroSection() {
         className="block sm:hidden absolute inset-0 z-10 pointer-events-none backdrop-blur-[1px]"
         style={{
           background:
-            "linear-gradient(180deg, rgba(255, 255, 255, 0.62) 0%, rgba(255, 255, 255, 0.42) 50%, rgba(255, 255, 255, 0.15) 75%, rgba(255, 255, 255, 0.30) 100%)",
+            "linear-gradient(180deg, rgba(255, 255, 255, 0.76) 0%, rgba(255, 255, 255, 0.56) 45%, rgba(255, 255, 255, 0.18) 75%, rgba(255, 255, 255, 0.35) 100%)",
         }}
       />
       <div
         className="hidden sm:block absolute inset-0 z-10 pointer-events-none backdrop-blur-[1px]"
         style={{
           background:
-            "linear-gradient(90deg, rgba(255, 255, 255, 0.68) 0%, rgba(255, 255, 255, 0.50) 40%, rgba(255, 255, 255, 0.18) 65%, transparent 100%)",
+            "linear-gradient(90deg, rgba(255, 255, 255, 0.78) 0%, rgba(255, 255, 255, 0.60) 40%, rgba(255, 255, 255, 0.22) 65%, transparent 100%)",
         }}
       />
 
@@ -258,9 +272,9 @@ export default function HeroSection() {
               <span
                 className={`inline-block whitespace-nowrap bg-gradient-to-r ${
                   currentSlide.id === "laparoscopy"
-                    ? "from-[#4384C6] to-[#3271B2]"
-                    : "from-[#F57B94] to-[#E6627E]"
-                } bg-clip-text text-transparent`}
+                    ? "from-[#1D70B8] via-[#1565C0] to-[#0D47A1]"
+                    : "from-[#E02958] via-[#D81B60] to-[#AD1457]"
+                } bg-clip-text text-transparent filter drop-shadow-[0_1px_1px_rgba(255,255,255,0.95)]`}
               >
                 {currentSlide.titleAccent}
               </span>
@@ -269,19 +283,25 @@ export default function HeroSection() {
             {/* Doctor Credentials Subline — Sleek & Integrated */}
             <p className="text-xs sm:text-sm font-bold text-[#111827] flex items-center justify-center lg:justify-start gap-2 [text-shadow:_0_1px_3px_rgba(255,255,255,0.9)]">
               <span className="w-2 h-2 rounded-full bg-emerald-500 shrink-0 animate-pulse" />
-              <span>{currentSlide.doctorCredentials}</span>
+              <span className="hidden sm:inline">{currentSlide.doctorCredentials}</span>
+              <span className="sm:hidden">{currentSlide.doctorCredentialsMobile || currentSlide.doctorCredentials}</span>
             </p>
 
             {/* Subtitle / Description — Translucent Sheer Glass Ribbon (Readable & Breathable) */}
-            <p
-              className={`text-base sm:text-lg text-[#0F172A] font-medium leading-relaxed max-w-2xl mx-auto lg:mx-0 border-l-4 ${
+            <div
+              className={`max-w-2xl mx-auto lg:mx-0 border-l-4 ${
                 currentSlide.id === "laparoscopy"
-                  ? "border-l-[#4384C6] bg-sky-50/40"
-                  : "border-l-[#F57B94] bg-pink-50/40"
-              } py-2.5 px-3.5 sm:py-3 sm:px-4 rounded-xl sm:rounded-2xl backdrop-blur-xs text-left shadow-2xs [text-shadow:_0_1px_2px_rgba(255,255,255,0.8)]`}
+                  ? "border-l-[#1E6BB8] bg-white/70"
+                  : "border-l-[#E02958] bg-white/70"
+              } py-2 px-3 sm:py-3 sm:px-4 rounded-xl sm:rounded-2xl backdrop-blur-xs text-left shadow-2xs`}
             >
-              {currentSlide.description}
-            </p>
+              <p className="hidden sm:block text-base sm:text-lg text-[#0F172A] font-medium leading-relaxed [text-shadow:_0_1px_2px_rgba(255,255,255,0.8)]">
+                {currentSlide.description}
+              </p>
+              <p className="block sm:hidden text-xs sm:text-sm text-[#0F172A] font-medium leading-relaxed [text-shadow:_0_1px_2px_rgba(255,255,255,0.8)]">
+                {currentSlide.mobileDescription || currentSlide.description}
+              </p>
+            </div>
 
             {/* CTA Buttons: Dr. Ruchika = Rose Pink (#F57B94), Dr. Subham = Azure Blue (#4384C6) */}
             <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3.5 pt-1">
