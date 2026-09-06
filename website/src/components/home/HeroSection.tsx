@@ -200,7 +200,7 @@ export default function HeroSection() {
         className="block sm:hidden absolute inset-0 z-10 pointer-events-none"
         style={{
           background:
-            "linear-gradient(180deg, rgba(255, 250, 251, 0.98) 0%, rgba(255, 250, 251, 0.95) 60%, rgba(255, 255, 255, 0.88) 100%)",
+            "linear-gradient(180deg, rgba(255, 250, 251, 0.72) 0%, rgba(255, 250, 251, 0.58) 50%, rgba(255, 250, 251, 0.68) 100%)",
         }}
       />
       <div
@@ -226,20 +226,20 @@ export default function HeroSection() {
         type="button"
         onClick={handlePrevSlide}
         aria-label="Previous slide"
-        className="hidden md:flex absolute left-3 sm:left-5 top-1/2 -translate-y-1/2 z-30 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white/85 hover:bg-white text-gray-700 hover:text-[#FB5A7C] items-center justify-center shadow-lg hover:shadow-xl border border-pink-100 backdrop-blur-sm transition-all hover:scale-110 active:scale-95 cursor-pointer"
+        className="hidden 2xl:flex absolute left-4 top-1/2 -translate-y-1/2 z-30 w-11 h-11 rounded-full bg-white/85 hover:bg-white text-gray-700 hover:text-[#FB5A7C] items-center justify-center shadow-lg hover:shadow-xl border border-pink-100 backdrop-blur-sm transition-all hover:scale-110 active:scale-95 cursor-pointer"
         title="Previous slide"
       >
-        <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
+        <ChevronLeft className="w-6 h-6" />
       </button>
 
       <button
         type="button"
         onClick={handleNextSlide}
         aria-label="Next slide"
-        className="hidden md:flex absolute right-3 sm:right-5 top-1/2 -translate-y-1/2 z-30 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white/85 hover:bg-white text-gray-700 hover:text-[#FB5A7C] items-center justify-center shadow-lg hover:shadow-xl border border-pink-100 backdrop-blur-sm transition-all hover:scale-110 active:scale-95 cursor-pointer"
+        className="hidden 2xl:flex absolute right-4 top-1/2 -translate-y-1/2 z-30 w-11 h-11 rounded-full bg-white/85 hover:bg-white text-gray-700 hover:text-[#FB5A7C] items-center justify-center shadow-lg hover:shadow-xl border border-pink-100 backdrop-blur-sm transition-all hover:scale-110 active:scale-95 cursor-pointer"
         title="Next slide"
       >
-        <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
+        <ChevronRight className="w-6 h-6" />
       </button>
 
       {/* =========================================================================
@@ -275,16 +275,16 @@ export default function HeroSection() {
             </h1>
 
             {/* Doctor Credentials Subline — Sleek & Integrated */}
-            <p className="text-xs sm:text-sm font-bold text-[#334155] flex items-center justify-center lg:justify-start gap-2">
+            <p className="text-xs sm:text-sm font-bold text-[#111827] flex items-center justify-center lg:justify-start gap-2 [text-shadow:_0_1px_3px_rgba(255,255,255,0.9)]">
               <span className="w-2 h-2 rounded-full bg-emerald-500 shrink-0 animate-pulse" />
               <span>{currentSlide.doctorCredentials}</span>
             </p>
 
             {/* Subtitle / Description — Clean Editorial Accent Style (NO White Box!) */}
             <p
-              className={`text-base sm:text-lg text-[#1A2229] font-medium leading-relaxed max-w-2xl mx-auto lg:mx-0 border-l-3 ${
+              className={`text-base sm:text-lg text-[#0F172A] font-semibold leading-relaxed max-w-2xl mx-auto lg:mx-0 border-l-3 ${
                 currentSlide.id === "laparoscopy" ? "border-l-[#4384C6]" : "border-l-[#F57B94]"
-              } pl-3.5 sm:pl-4 text-left`}
+              } pl-3.5 sm:pl-4 text-left [text-shadow:_0_1px_3px_rgba(255,255,255,0.9)]`}
             >
               {currentSlide.description}
             </p>
