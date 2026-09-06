@@ -12,18 +12,18 @@ export default function EmergencyBar() {
   return (
     <div className="bg-[#DC2626] text-white text-xs sm:text-sm font-medium py-2 px-4 shadow-sm relative z-50">
       <div className="max-w-7xl mx-auto flex items-center justify-between gap-3">
-        <div className="flex items-center gap-2 mx-auto sm:mx-0">
+        <div className="flex flex-wrap items-center justify-center sm:justify-start gap-1 sm:gap-2 mx-auto sm:mx-0 text-center sm:text-left">
           <span className="flex h-2 w-2 relative">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
             <span className="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
           </span>
           <AlertCircle className="w-4 h-4 shrink-0 text-white" />
           <span>
-            <strong>Obstetric or Gynaecological Emergency?</strong> 24/7 Delivery & Surgical Support at Manipal Hospital Siliguri:
+            <strong>Obstetric or Gynaecological Emergency?</strong> 24/7 Delivery &amp; Surgical Support at <span className="notranslate">Manipal Hospital Siliguri</span>:
           </span>
           <a
             href={`tel:${PHONE_SUBHAM}`}
-            className="underline underline-offset-2 font-bold hover:text-red-100 inline-flex items-center gap-1 ml-1"
+            className="underline underline-offset-2 font-bold hover:text-red-100 inline-flex items-center gap-1 ml-1 notranslate whitespace-nowrap"
           >
             <PhoneCall className="w-3.5 h-3.5" />
             {PHONE_SUBHAM}

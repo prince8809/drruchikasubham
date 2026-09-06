@@ -49,7 +49,7 @@ export default function Footer() {
                 />
               </div>
               <div>
-                <h3 className="font-bold text-lg text-[#1A2229] leading-tight">
+                <h3 className="font-bold text-lg text-[#1A2229] leading-tight notranslate">
                   Dr. Ruchika &amp; Dr. Subham Agarwal
                 </h3>
                 <p className="text-xs text-[#0B75A1] font-semibold">
@@ -108,7 +108,7 @@ export default function Footer() {
                 </p>
                 <p className="flex items-center gap-2">
                   <Phone className="w-4 h-4 shrink-0 text-[#FB5A7C]" />
-                  <a href={`tel:${PHONE_RUCHIKA}`} className="text-[#1A2229] font-medium hover:text-[#FB5A7C] underline underline-offset-2">
+                  <a href={`tel:${PHONE_RUCHIKA}`} className="text-[#1A2229] font-medium hover:text-[#FB5A7C] underline underline-offset-2 notranslate whitespace-nowrap">
                     {PHONE_RUCHIKA}
                   </a>
                 </p>
@@ -156,7 +156,7 @@ export default function Footer() {
                 </p>
                 <p className="flex items-center gap-2">
                   <Phone className="w-4 h-4 shrink-0 text-[#2FB2EA]" />
-                  <a href={`tel:${PHONE_SUBHAM}`} className="text-[#1A2229] font-medium hover:text-[#0B75A1] underline underline-offset-2">
+                  <a href={`tel:${PHONE_SUBHAM}`} className="text-[#1A2229] font-medium hover:text-[#0B75A1] underline underline-offset-2 notranslate whitespace-nowrap">
                     {PHONE_SUBHAM}
                   </a>
                 </p>

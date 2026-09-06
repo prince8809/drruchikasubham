@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { MessageCircle, Menu, X, Calendar, ChevronDown } from "lucide-react";
 import BookingModal from "@/components/shared/BookingModal";
+import LanguageSelector from "@/components/layout/LanguageSelector";
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -70,11 +71,11 @@ export default function Navbar() {
   ];
 
   return (
-    <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-[#F1E5E8] transition-all">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+    <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-[#F1E5E8] transition-all w-full">
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
         {/* Brand Logo & Name */}
-        <Link href="/" className="flex items-center gap-3 group">
-          <div className="relative w-12 h-12 rounded-2xl overflow-hidden bg-gradient-to-b from-[#FFF0F3] to-white border border-[#FFD3DC] p-1.5 flex items-center justify-center shrink-0 shadow-2xs group-hover:scale-105 transition-transform">
+        <Link href="/" className="flex items-center gap-2 sm:gap-3 group min-w-0 flex-1 sm:flex-initial overflow-hidden pr-2">
+          <div className="relative w-10 h-10 sm:w-12 sm:h-12 rounded-2xl overflow-hidden bg-gradient-to-b from-[#FFF0F3] to-white border border-[#FFD3DC] p-1 sm:p-1.5 flex items-center justify-center shrink-0 shadow-2xs group-hover:scale-105 transition-transform">
             <Image
               src="/images/brand/brand-logo-v2.png"
               alt="Dr. Ruchika & Dr. Subham Agarwal Emblem"
@@ -84,11 +85,11 @@ export default function Navbar() {
               priority
             />
           </div>
-          <div className="flex flex-col">
-            <span className="text-sm sm:text-lg font-bold text-[#1A2229] leading-tight group-hover:text-[#FB5A7C] transition-colors">
+          <div className="flex flex-col min-w-0">
+            <span className="text-xs sm:text-base lg:text-lg font-bold text-[#1A2229] leading-tight group-hover:text-[#FB5A7C] transition-colors notranslate truncate">
               Dr. Ruchika &amp; Dr. Subham Agarwal
             </span>
-            <span className="text-[11px] sm:text-xs text-[#475569] font-medium tracking-wide">
+            <span className="text-[10px] sm:text-xs text-[#475569] font-medium tracking-wide truncate">
               Advanced Women&apos;s Care &bull; Siliguri
             </span>
           </div>
@@ -219,8 +220,9 @@ export default function Navbar() {
           ))}
         </nav>
 
-        {/* Desktop CTA Action */}
-        <div className="hidden sm:flex items-center gap-3">
+        {/* Desktop CTA Action & Language Selector */}
+        <div className="hidden sm:flex items-center gap-2.5">
+          <LanguageSelector variant="navbar" />
           <button
             type="button"
             onClick={() => handleOpenBooking("ruchika")}
@@ -232,7 +234,7 @@ export default function Navbar() {
         </div>
 
         {/* Mobile Menu Button & Quick WhatsApp */}
-        <div className="flex sm:hidden items-center gap-2">
+        <div className="flex sm:hidden items-center gap-2 shrink-0">
           <button
             type="button"
             onClick={() => handleOpenBooking("ruchika")}
@@ -255,7 +257,14 @@ export default function Navbar() {
       {mobileMenuOpen && (
         <div className="lg:hidden bg-white border-b border-[#F1E5E8] px-5 py-4 shadow-xl animate-in slide-in-from-top duration-200 max-h-[85vh] overflow-y-auto">
           <nav className="flex flex-col gap-2">
-            
+            {/* Mobile Language Switcher */}
+            <div className="pb-3 border-b border-gray-100">
+              <LanguageSelector
+                variant="drawer"
+                onSelect={() => setMobileMenuOpen(false)}
+              />
+            </div>
+
             {/* Mobile Accordion for "Our Doctors" */}
             <div className="border-b border-gray-100 pb-2">
               <button
@@ -337,7 +346,7 @@ export default function Navbar() {
             ))}
 
             {/* Mobile CTAs */}
-            <div className="pt-3 flex flex-col gap-2">
+            <div className="pt-2 flex flex-col gap-2">
               <button
                 type="button"
                 onClick={() => handleOpenBooking("ruchika")}

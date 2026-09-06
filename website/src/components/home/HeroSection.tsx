@@ -270,7 +270,7 @@ export default function HeroSection() {
               <span className="block sm:inline">{currentSlide.titleLine1}</span>{" "}
               <span className="block sm:inline">{currentSlide.titleLine2}</span>{" "}
               <span
-                className={`inline-block whitespace-nowrap bg-gradient-to-r ${
+                className={`inline-block bg-gradient-to-r ${
                   currentSlide.id === "laparoscopy"
                     ? "from-[#1D70B8] via-[#1565C0] to-[#0D47A1]"
                     : "from-[#E02958] via-[#D81B60] to-[#AD1457]"

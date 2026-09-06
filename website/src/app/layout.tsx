@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import GoogleTranslateProvider from "@/components/layout/GoogleTranslateProvider";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -71,7 +72,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" data-scroll-behavior="smooth">
-      <body className="antialiased">{children}</body>
+      <head>
+        <link rel="preconnect" href="https://translate.google.com" />
+        <link rel="preconnect" href="https://translate.googleapis.com" />
+      </head>
+      <body className="antialiased">
+        <GoogleTranslateProvider />
+        {children}
+      </body>
     </html>
   );
 }
