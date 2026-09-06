@@ -106,8 +106,8 @@ const HERO_SLIDES: HeroSlide[] = [
       "Led by Dr. Ruchika Agarwal & Dr. Subham Agarwal • Consultant Obstetricians & Infertility Specialists",
     description:
       "Compassionate prenatal care, normal delivery advocacy, high-risk pregnancy fetal ultrasound monitoring, and unhurried consultation from conception to birth in modern birthing suites.",
-    image: "/images/hero/slide-maternity.jpg",
-    alt: "Modern luxury private maternity birthing suite and recovery room",
+    image: "/images/hero/slide-maternity-v2.jpg",
+    alt: "Modern private hospital maternity birthing suite with neonatal infant warmer and fetal ultrasound monitor",
     primaryBtn: {
       label: "Consult Dr. Ruchika",
       doctor: "ruchika",
@@ -193,21 +193,21 @@ export default function HeroSection() {
 
       {/* =========================================================================
           2. DIRECTIONAL LUMINOUS READABILITY SHIELD (Layer z-10)
-             Mobile: 98% protective vertical wash so typography is 100% crisp without any box
-             Desktop: Left 52% soft luxury wash (#FFF8F9 98%), right 48% open so clinical suites shine
+             Mobile: Balanced 62%->42% translucent wash so imagery is rich & text is effortless
+             Desktop: Left 68%->50% soft reading wash, tapering to 0% so clinical suites shine
           ========================================================================= */}
       <div
-        className="block sm:hidden absolute inset-0 z-10 pointer-events-none"
+        className="block sm:hidden absolute inset-0 z-10 pointer-events-none backdrop-blur-[1px]"
         style={{
           background:
-            "linear-gradient(180deg, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0.05) 50%, rgba(255, 255, 255, 0.22) 100%)",
+            "linear-gradient(180deg, rgba(255, 255, 255, 0.62) 0%, rgba(255, 255, 255, 0.42) 50%, rgba(255, 255, 255, 0.15) 75%, rgba(255, 255, 255, 0.30) 100%)",
         }}
       />
       <div
-        className="hidden sm:block absolute inset-0 z-10 pointer-events-none"
+        className="hidden sm:block absolute inset-0 z-10 pointer-events-none backdrop-blur-[1px]"
         style={{
           background:
-            "linear-gradient(90deg, rgba(255, 255, 255, 0.40) 0%, rgba(255, 255, 255, 0.22) 45%, rgba(255, 255, 255, 0.05) 75%, transparent 100%)",
+            "linear-gradient(90deg, rgba(255, 255, 255, 0.68) 0%, rgba(255, 255, 255, 0.50) 40%, rgba(255, 255, 255, 0.18) 65%, transparent 100%)",
         }}
       />
 
@@ -272,11 +272,13 @@ export default function HeroSection() {
               <span>{currentSlide.doctorCredentials}</span>
             </p>
 
-            {/* Subtitle / Description — Clean Editorial Accent Style (NO White Box!) */}
+            {/* Subtitle / Description — Translucent Sheer Glass Ribbon (Readable & Breathable) */}
             <p
-              className={`text-base sm:text-lg text-[#0F172A] font-semibold leading-relaxed max-w-2xl mx-auto lg:mx-0 border-l-3 ${
-                currentSlide.id === "laparoscopy" ? "border-l-[#4384C6]" : "border-l-[#F57B94]"
-              } pl-3.5 sm:pl-4 text-left [text-shadow:_0_1px_3px_rgba(255,255,255,0.9)]`}
+              className={`text-base sm:text-lg text-[#0F172A] font-medium leading-relaxed max-w-2xl mx-auto lg:mx-0 border-l-4 ${
+                currentSlide.id === "laparoscopy"
+                  ? "border-l-[#4384C6] bg-sky-50/40"
+                  : "border-l-[#F57B94] bg-pink-50/40"
+              } py-2.5 px-3.5 sm:py-3 sm:px-4 rounded-xl sm:rounded-2xl backdrop-blur-xs text-left shadow-2xs [text-shadow:_0_1px_2px_rgba(255,255,255,0.8)]`}
             >
               {currentSlide.description}
             </p>
