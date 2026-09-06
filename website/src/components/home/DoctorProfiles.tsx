@@ -46,10 +46,23 @@ export default function DoctorProfiles({ isPageHeading = false }: DoctorProfiles
             return (
               <div
                 key={doc.id}
-                className={`bg-white rounded-3xl p-4 sm:p-5 border-2 ${borderClass} shadow-md hover:shadow-xl transition-all duration-300 flex flex-col justify-between`}
+                className={`relative overflow-hidden bg-white rounded-3xl p-4 sm:p-5 border-2 ${borderClass} shadow-md hover:shadow-xl transition-all duration-300 flex flex-col justify-between`}
               >
+                {/* Decorative Subtle Concentric Pulse Ring */}
+                <div
+                  className={`dynamic-pulse-ring -bottom-10 -right-10 w-36 h-36 sm:-bottom-14 sm:-right-14 sm:w-48 sm:h-48 transition-colors duration-1000 ${
+                    isSubham ? "text-[#4384C6]/20" : "text-[#F57B94]/20"
+                  }`}
+                  style={{
+                    boxShadow: isSubham
+                      ? "inset 0 0 0 25px transparent, inset 0 0 0 26px rgba(67, 132, 198, 0.12)"
+                      : "inset 0 0 0 25px transparent, inset 0 0 0 26px rgba(245, 123, 148, 0.14)",
+                  }}
+                  aria-hidden="true"
+                />
+
                 {/* Horizontal Card Content */}
-                <div className="flex flex-row items-start gap-3.5 sm:gap-5">
+                <div className="relative z-10 flex flex-row items-start gap-3.5 sm:gap-5">
                   {/* Portrait Thumbnail */}
                   <Link
                     href={`/doctors/${doc.slug}`}
@@ -111,7 +124,7 @@ export default function DoctorProfiles({ isPageHeading = false }: DoctorProfiles
                 </div>
 
                 {/* Bottom Action Buttons */}
-                <div className="mt-4 pt-3 border-t border-gray-100 grid grid-cols-2 gap-2.5">
+                <div className="relative z-10 mt-4 pt-3 border-t border-gray-100 grid grid-cols-2 gap-2.5">
                   <a
                     href={doc.whatsapp}
                     target="_blank"

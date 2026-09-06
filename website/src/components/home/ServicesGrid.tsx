@@ -83,7 +83,25 @@ export default function ServicesGrid() {
 
   return (
     <section id="services" className="py-14 sm:py-16 bg-[#FAFAF9] border-t border-[#F1E5E8] relative overflow-hidden scroll-mt-24 sm:scroll-mt-28">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Decorative Concentric Life-Pulse Rings (Top-Right Sapphire & Bottom-Left Blush) */}
+      <div
+        className="dynamic-pulse-ring -top-20 -right-20 w-72 h-72 sm:-top-32 sm:-right-32 sm:w-[440px] sm:h-[440px] text-[#4384C6]/15 pointer-events-none"
+        style={{
+          boxShadow:
+            "inset 0 0 0 50px transparent, inset 0 0 0 51px rgba(67, 132, 198, 0.12), inset 0 0 0 110px transparent, inset 0 0 0 111px rgba(67, 132, 198, 0.08)",
+        }}
+        aria-hidden="true"
+      />
+      <div
+        className="dynamic-pulse-ring -bottom-20 -left-20 w-72 h-72 sm:-bottom-32 sm:-left-32 sm:w-[440px] sm:h-[440px] text-[#F57B94]/15 pointer-events-none"
+        style={{
+          boxShadow:
+            "inset 0 0 0 50px transparent, inset 0 0 0 51px rgba(245, 123, 148, 0.12), inset 0 0 0 110px transparent, inset 0 0 0 111px rgba(245, 123, 148, 0.08)",
+        }}
+        aria-hidden="true"
+      />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header (Compact & High Impact) */}
         <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-4 mb-8">

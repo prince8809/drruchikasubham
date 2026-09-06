@@ -58,9 +58,9 @@ const HERO_SLIDES: HeroSlide[] = [
     titleLine2: "Your Pregnancy.",
     titleAccent: "Expertly\u00A0Cared\u00A0For.",
     doctorCredentials:
-      "Dr. Ruchika & Dr. Subham Agarwal • Obstetricians, Gynaecologists & Laparoscopic Surgeons in Siliguri",
+      "Dr. Ruchika & Dr. Subham Agarwal • Consultant Obstetrician and Laparoscopic Surgeon",
     doctorCredentialsMobile:
-      "Dr. Ruchika & Dr. Subham Agarwal • Siliguri Gynaecologists & Surgeons",
+      "Dr. Ruchika & Dr. Subham Agarwal • Consultant Obstetrician and Laparoscopic Surgeon",
     description:
       "Complete women's healthcare in Siliguri — from periods, PCOS & fertility evaluations to gentle normal delivery, high-risk pregnancy management, and advanced laparoscopic surgery.",
     mobileDescription:
@@ -94,9 +94,9 @@ const HERO_SLIDES: HeroSlide[] = [
     titleLine2: "Keyhole Laparoscopy.",
     titleAccent: "Rapid 24h Recovery.",
     doctorCredentials:
-      "Led by Dr. Subham Agarwal & Dr. Ruchika Agarwal • Specialist Laparoscopic Surgeons",
+      "Led by Dr. Subham Agarwal & Dr. Ruchika Agarwal • Consultant Obstetrician and Laparoscopic Surgeon",
     doctorCredentialsMobile:
-      "Dr. Subham & Dr. Ruchika Agarwal • Specialist Laparoscopic Surgeons",
+      "Dr. Subham & Dr. Ruchika Agarwal • Consultant Obstetrician and Laparoscopic Surgeon",
     description:
       "Advanced keyhole surgery for ovarian cysts, uterine fibroids, severe endometriosis, ectopic pregnancy, and laparoscopic hysterectomy with minimal discomfort, tiny incisions, and fast discharge.",
     mobileDescription:

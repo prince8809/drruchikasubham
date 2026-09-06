@@ -33,6 +33,16 @@ export default function BookingStrip() {
       <div className="absolute -top-10 -right-10 w-80 h-80 bg-white/10 rounded-full blur-2xl pointer-events-none"></div>
       <div className="absolute -bottom-10 -left-10 w-80 h-80 bg-black/10 rounded-full blur-2xl pointer-events-none"></div>
 
+      {/* Decorative Concentric Life-Pulse Ring */}
+      <div
+        className="dynamic-pulse-ring -top-16 -right-16 w-64 h-64 sm:-top-24 sm:-right-24 sm:w-[420px] sm:h-[420px] text-white/20 pointer-events-none"
+        style={{
+          boxShadow:
+            "inset 0 0 0 45px transparent, inset 0 0 0 46px rgba(255, 255, 255, 0.15), inset 0 0 0 100px transparent, inset 0 0 0 101px rgba(255, 255, 255, 0.10)",
+        }}
+        aria-hidden="true"
+      />
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
