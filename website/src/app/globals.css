@@ -204,7 +204,7 @@
   }
 }
 
-/* Headless Google Translate Clean Integration */
+/* Headless Google Translate Clean Integration - Hide Banner, Tooltips & Popups */
 .VIpgJd-ZVi9od-ORHb-OEVmcd,
 .VIpgJd-ZVi9od-ORHb,
 .VIpgJd-ZVi9od-xl07Ob-OEVmcd,
@@ -212,12 +212,32 @@
 .goog-te-banner-frame.skiptranslate,
 iframe.goog-te-banner-frame,
 iframe[id=":1.container"],
-iframe.skiptranslate {
+iframe.skiptranslate,
+#goog-gt-tt,
+#goog-gt-vt,
+.goog-te-balloon-frame,
+.goog-tooltip,
+.goog-tooltip:hover,
+.VIpgJd-yAWNEb-L7lbkb,
+.VIpgJd-yAWNEb-hvhgNd,
+.VIpgJd-yAWNEb-rBEGl-OWXEXe-LayoutInflater,
+.VIpgJd-yAWNEb-VIpgJd-fmcmS-sn54Q,
+.VIpgJd-ZVi9od-aZ2wEe-wOHMyf,
+.VIpgJd-ZVi9od-aZ2wEe-OiiCO,
+.VIpgJd-ZVi9od-aZ2wEe,
+.VIpgJd-ZVi9od-v2Yvd-bN97ce,
+[id^="goog-gt-"],
+[class*="VIpgJd-yAWNEb"],
+[class*="VIpgJd-ZVi9od"] {
   display: none !important;
   visibility: hidden !important;
-  height: 0 !important;
-  width: 0 !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  height: 0px !important;
+  width: 0px !important;
+  overflow: hidden !important;
   border: none !important;
+  box-shadow: none !important;
 }
 
 body {
@@ -238,16 +258,16 @@ html {
   overflow: hidden !important;
 }
 
-#goog-gt-tt,
-.goog-te-balloon-frame,
-.goog-tooltip,
-.goog-tooltip:hover {
-  display: none !important;
-  visibility: hidden !important;
-}
-
 .goog-text-highlight {
-  background: none !important;
+  background: transparent !important;
+  border: none !important;
   box-shadow: none !important;
 }
+
+/* Prevent Google font tags from intercepting hover or applying background highlights */
+font[style] {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
 

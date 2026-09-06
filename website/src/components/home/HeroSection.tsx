@@ -196,9 +196,13 @@ export default function HeroSection() {
                 fill
                 priority
                 sizes="100vw"
-                className={`w-full h-full object-cover object-center transition-transform duration-[8000ms] ease-out ${
-                  isActive ? "scale-105" : "scale-100"
-                }`}
+                className={`w-full h-full object-cover transition-transform duration-[8000ms] ease-out ${
+                  slide.id === "duo-care"
+                    ? "object-[72%_center] sm:object-center brightness-[1.18] sm:brightness-[1.06] contrast-[0.98]"
+                    : slide.id === "laparoscopy"
+                    ? "object-center brightness-[1.18] sm:brightness-[1.06] contrast-[0.98]"
+                    : "object-center brightness-[1.02]"
+                } ${isActive ? "scale-105" : "scale-100"}`}
               />
             </div>
           );
@@ -207,14 +211,14 @@ export default function HeroSection() {
 
       {/* =========================================================================
           2. DIRECTIONAL LUMINOUS READABILITY SHIELD (Layer z-10)
-             Mobile: Balanced 62%->42% translucent wash so imagery is rich & text is effortless
+             Mobile: Luminous 80%->60% airy wash so all 3 slides feel equally bright & clear
              Desktop: Left 68%->50% soft reading wash, tapering to 0% so clinical suites shine
           ========================================================================= */}
       <div
         className="block sm:hidden absolute inset-0 z-10 pointer-events-none backdrop-blur-[1px]"
         style={{
           background:
-            "linear-gradient(180deg, rgba(255, 255, 255, 0.76) 0%, rgba(255, 255, 255, 0.56) 45%, rgba(255, 255, 255, 0.18) 75%, rgba(255, 255, 255, 0.35) 100%)",
+            "linear-gradient(180deg, rgba(255, 255, 255, 0.80) 0%, rgba(255, 255, 255, 0.60) 45%, rgba(255, 255, 255, 0.22) 75%, rgba(255, 255, 255, 0.38) 100%)",
         }}
       />
       <div

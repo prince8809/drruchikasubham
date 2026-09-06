@@ -78,16 +78,45 @@ export default function GoogleTranslateProvider() {
         banner.style.visibility = "hidden";
         banner.style.height = "0px";
       }
+
+      const tooltips = document.querySelectorAll<HTMLElement>(
+        "#goog-gt-tt, #goog-gt-vt, [class*='VIpgJd-yAWNEb'], [class*='VIpgJd-ZVi9od'], .goog-tooltip, .goog-te-balloon-frame"
+      );
+      tooltips.forEach((tt) => {
+        tt.style.setProperty("display", "none", "important");
+        tt.style.setProperty("visibility", "hidden", "important");
+        tt.style.setProperty("opacity", "0", "important");
+      });
     };
 
     const observer = new MutationObserver(fixBodyOffset);
     observer.observe(document.body, {
       attributes: true,
       attributeFilter: ["style", "class"],
+      childList: true,
     });
+
+    // 5. Intercept hover/mouseover on translated font tags to suppress popup balloon
+    const handleMouseOver = (e: MouseEvent) => {
+      const target = e.target as HTMLElement | null;
+      if (target) {
+        if (target.tagName === "FONT" || target.closest("font")) {
+          target.classList.remove("goog-text-highlight");
+        }
+      }
+      const tt = document.getElementById("goog-gt-tt");
+      if (tt) {
+        tt.style.setProperty("display", "none", "important");
+        tt.style.setProperty("visibility", "hidden", "important");
+        tt.style.setProperty("opacity", "0", "important");
+      }
+    };
+
+    document.addEventListener("mouseover", handleMouseOver, true);
 
     return () => {
       observer.disconnect();
+      document.removeEventListener("mouseover", handleMouseOver, true);
     };
   }, []);
 
