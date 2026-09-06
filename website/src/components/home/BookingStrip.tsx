@@ -5,8 +5,6 @@ import { MessageCircle, Calendar, ShieldCheck, MapPin } from "lucide-react";
 import {
   WHATSAPP_SUBHAM,
   WHATSAPP_RUCHIKA,
-  ADDRESS_MANIPAL,
-  ADDRESS_ZIVAH,
   PRIMARY_CONCERN_OPTIONS,
 } from "@/lib/constants";
 
@@ -54,34 +52,44 @@ export default function BookingStrip() {
               No long queues or complicated forms. Connect directly with our clinic desks on WhatsApp to select your preferred day, time, and doctor.
             </p>
 
-            {/* Quick Location Pills: Crisp White Cards for 100% Readability */}
-            <div className="space-y-3.5 pt-2 text-xs sm:text-sm text-left">
-              <div className="bg-white text-[#1A2229] p-4 rounded-2xl shadow-lg border border-pink-100 flex items-start gap-3.5 hover:shadow-xl transition-all">
-                <div className="w-10 h-10 rounded-xl bg-[#FFF0F3] border border-[#FFD3DC] flex items-center justify-center shrink-0 mt-0.5">
-                  <MapPin className="w-5 h-5 text-[#F57B94]" />
+            {/* Quick Consultation Facility Badges (Sleek & Compact Option 2) */}
+            <div className="space-y-2.5 pt-1 text-left">
+              <div className="bg-white/95 backdrop-blur-sm text-[#1A2229] py-3 px-4 rounded-2xl shadow-md border border-pink-100 flex items-center justify-between gap-3 hover:shadow-lg transition-all">
+                <div className="flex items-center gap-3 min-w-0">
+                  <div className="w-9 h-9 rounded-xl bg-[#FFF0F3] border border-[#FFD3DC] flex items-center justify-center shrink-0">
+                    <MapPin className="w-4 h-4 text-[#E02958]" />
+                  </div>
+                  <div className="truncate">
+                    <strong className="block text-[#1A2229] font-bold text-xs sm:text-sm truncate">
+                      Dr. Ruchika &bull; Zivah Wellness Centre
+                    </strong>
+                    <span className="text-[#64748B] text-[11px] sm:text-xs font-medium">
+                      Pradhan Nagar, Siliguri
+                    </span>
+                  </div>
                 </div>
-                <div>
-                  <strong className="block text-[#1A2229] font-bold text-sm">
-                    Dr. Ruchika Agarwal &bull; Zivah Wellness Centre
-                  </strong>
-                  <span className="text-[#475569] text-xs block mt-0.5 font-medium">
-                    Mon – Fri: 10:00 AM – 2:00 PM &bull; {ADDRESS_ZIVAH}
-                  </span>
-                </div>
+                <span className="shrink-0 text-[11px] sm:text-xs font-bold text-[#E02958] bg-[#FFF0F3] px-2.5 py-1 rounded-full border border-pink-100 whitespace-nowrap">
+                  Mon – Fri: 10 AM – 2 PM
+                </span>
               </div>
 
-              <div className="bg-white text-[#1A2229] p-4 rounded-2xl shadow-lg border border-sky-100 flex items-start gap-3.5 hover:shadow-xl transition-all">
-                <div className="w-10 h-10 rounded-xl bg-[#EBF4FC] border border-[#BCD7F5] flex items-center justify-center shrink-0 mt-0.5">
-                  <MapPin className="w-5 h-5 text-[#4384C6]" />
+              <div className="bg-white/95 backdrop-blur-sm text-[#1A2229] py-3 px-4 rounded-2xl shadow-md border border-sky-100 flex items-center justify-between gap-3 hover:shadow-lg transition-all">
+                <div className="flex items-center gap-3 min-w-0">
+                  <div className="w-9 h-9 rounded-xl bg-[#EBF4FC] border border-[#BCD7F5] flex items-center justify-center shrink-0">
+                    <MapPin className="w-4 h-4 text-[#1E6BB8]" />
+                  </div>
+                  <div className="truncate">
+                    <strong className="block text-[#1A2229] font-bold text-xs sm:text-sm truncate">
+                      Dr. Subham &bull; Manipal Hospital
+                    </strong>
+                    <span className="text-[#64748B] text-[11px] sm:text-xs font-medium">
+                      Ward 2, Siliguri
+                    </span>
+                  </div>
                 </div>
-                <div>
-                  <strong className="block text-[#1A2229] font-bold text-sm">
-                    Dr. Subham Agarwal &bull; Manipal Hospital Siliguri
-                  </strong>
-                  <span className="text-[#475569] text-xs block mt-0.5 font-medium">
-                    Mon – Fri: 10:00 AM – 6:00 PM &bull; {ADDRESS_MANIPAL}
-                  </span>
-                </div>
+                <span className="shrink-0 text-[11px] sm:text-xs font-bold text-[#1E6BB8] bg-[#EBF4FC] px-2.5 py-1 rounded-full border border-sky-100 whitespace-nowrap">
+                  Mon – Fri: 10 AM – 6 PM
+                </span>
               </div>
             </div>
 
