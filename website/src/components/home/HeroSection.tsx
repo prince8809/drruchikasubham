@@ -207,15 +207,7 @@ export default function HeroSection() {
         className="hidden sm:block absolute inset-0 z-10 pointer-events-none"
         style={{
           background:
-            "linear-gradient(90deg, #FFF8F9 0%, rgba(255, 250, 251, 0.98) 40%, rgba(255, 250, 251, 0.88) 56%, rgba(255, 255, 255, 0.45) 75%, rgba(255, 255, 255, 0.15) 100%)",
-        }}
-      />
-      {/* Top & bottom subtle boundary tints (desktop only) */}
-      <div
-        className="hidden sm:block absolute inset-0 z-10 pointer-events-none"
-        style={{
-          background:
-            "linear-gradient(180deg, rgba(255, 248, 249, 0.5) 0%, transparent 12%, transparent 88%, rgba(255, 248, 249, 0.75) 100%)",
+            "linear-gradient(90deg, rgba(255, 255, 255, 0.40) 0%, rgba(255, 255, 255, 0.22) 45%, rgba(255, 255, 255, 0.05) 75%, transparent 100%)",
         }}
       />
 
