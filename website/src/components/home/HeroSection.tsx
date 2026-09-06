@@ -487,7 +487,7 @@ export default function HeroSection() {
                       <p className="text-[10px] sm:text-[11px] font-semibold text-[#F57B94] mt-0.5">
                         MBBS, MS
                       </p>
-                      <p className="text-[9px] sm:text-[10px] text-gray-500 mt-0.5 sm:mt-1 truncate">
+                      <p className="text-[9px] sm:text-[10px] text-gray-500 mt-0.5 sm:mt-1 leading-tight min-h-[24px] sm:min-h-[28px] flex items-center justify-center">
                         Obstetrician &amp; Gynaecologist
                       </p>
                       <span className="inline-block text-[9px] sm:text-[10px] font-bold text-[#F57B94] mt-1 opacity-0 group-hover:opacity-100 transition-opacity">
@@ -518,8 +518,8 @@ export default function HeroSection() {
                       <p className="text-[10px] sm:text-[11px] font-semibold text-[#4384C6] mt-0.5">
                         MBBS, MS, FMAS, FIAG
                       </p>
-                      <p className="text-[9px] sm:text-[10px] text-gray-500 mt-0.5 sm:mt-1 truncate">
-                        Laparoscopic Surgeon
+                      <p className="text-[9px] sm:text-[10px] text-gray-500 mt-0.5 sm:mt-1 leading-tight min-h-[24px] sm:min-h-[28px] flex items-center justify-center line-clamp-2">
+                        Consultant Obstetrician and Laparoscopic Surgeon
                       </p>
                       <span className="inline-block text-[9px] sm:text-[10px] font-bold text-[#4384C6] mt-1 opacity-0 group-hover:opacity-100 transition-opacity">
                         View Profile &rarr;
@@ -559,7 +559,7 @@ export default function HeroSection() {
                       MBBS, MS, FMAS, FIAG
                     </p>
                     <p className="text-[11px] text-gray-500">
-                      Specialist Laparoscopic Surgeon
+                      Consultant Obstetrician and Laparoscopic Surgeon
                     </p>
                   </div>
                 </div>
