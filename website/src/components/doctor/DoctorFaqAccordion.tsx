@@ -54,9 +54,10 @@ export default function DoctorFaqAccordion({
               key={faq.question}
               className={`rounded-2xl border transition-all duration-200 overflow-hidden ${
                 isOpen
-                  ? "bg-white border-[#FB5A7C]/40 shadow-sm"
+                  ? "bg-white shadow-sm"
                   : "bg-white/80 border-gray-200 hover:border-gray-300"
               }`}
+              style={isOpen ? { borderColor: `${accentColor}55` } : {}}
             >
               <button
                 onClick={() => toggle(idx)}
@@ -65,16 +66,17 @@ export default function DoctorFaqAccordion({
               >
                 <div className="flex items-center gap-3 min-w-0">
                   <div
-                    className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 transition-colors ${
-                      isOpen ? "bg-[#FFE9ED] text-[#FB5A7C]" : "bg-gray-100 text-gray-400 group-hover:text-gray-600"
-                    }`}
+                    className="w-7 h-7 rounded-lg flex items-center justify-center shrink-0 transition-colors"
+                    style={
+                      isOpen
+                        ? { backgroundColor: `${accentColor}1A`, color: accentColor }
+                        : { backgroundColor: "#F3F4F6", color: "#9CA3AF" }
+                    }
                   >
                     <HelpCircle className="w-4 h-4" />
                   </div>
                   <span
-                    className={`text-sm sm:text-base font-bold transition-colors ${
-                      isOpen ? "text-[#1A2229]" : "text-[#1A2229] group-hover:text-[#FB5A7C]"
-                    }`}
+                    className="text-sm sm:text-base font-bold transition-colors text-[#1A2229]"
                   >
                     {faq.question}
                   </span>
@@ -82,8 +84,9 @@ export default function DoctorFaqAccordion({
 
                 <div
                   className={`w-6 h-6 rounded-full flex items-center justify-center shrink-0 transition-transform duration-200 ${
-                    isOpen ? "rotate-180 bg-gray-100 text-[#FB5A7C]" : "text-gray-400"
+                    isOpen ? "rotate-180 bg-gray-100" : "text-gray-400"
                   }`}
+                  style={isOpen ? { color: accentColor } : {}}
                 >
                   <ChevronDown className="w-4 h-4" />
                 </div>

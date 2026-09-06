@@ -222,9 +222,9 @@ export default function DoctorPhilosophySection({
 
               {/* Role-Specific Educational Callout */}
               {isSubham ? (
-                <div className="p-3.5 rounded-2xl bg-[#F2FAFE] border border-sky-100 text-xs text-[#475569] space-y-1">
-                  <div className="font-bold text-[#0B75A1] text-xs flex items-center gap-1.5">
-                    <Sparkles className="w-3.5 h-3.5 text-[#2FB2EA]" />
+                <div className="p-3.5 rounded-2xl bg-[#EBF4FC] border border-[#BCD7F5] text-xs text-[#475569] space-y-1">
+                  <div className="font-bold text-[#1E518A] text-xs flex items-center gap-1.5">
+                    <Sparkles className="w-3.5 h-3.5 text-[#4384C6]" />
                     <span>The Partner&apos;s Journey:</span>
                   </div>
                   <p className="text-[11px] text-gray-600 leading-relaxed">
@@ -232,9 +232,9 @@ export default function DoctorPhilosophySection({
                   </p>
                 </div>
               ) : (
-                <div className="p-3.5 rounded-2xl bg-[#FFF5F7] border border-pink-100 text-xs text-[#475569] space-y-1">
-                  <div className="font-bold text-[#C4274C] text-xs flex items-center gap-1.5">
-                    <Sparkles className="w-3.5 h-3.5 text-[#FB5A7C]" />
+                <div className="p-3.5 rounded-2xl bg-[#FFF0F3] border border-[#FFD3DC] text-xs text-[#475569] space-y-1">
+                  <div className="font-bold text-[#C73859] text-xs flex items-center gap-1.5">
+                    <Sparkles className="w-3.5 h-3.5 text-[#F57B94]" />
                     <span>Adolescent &amp; Gentle Maternity:</span>
                   </div>
                   <p className="text-[11px] text-gray-600 leading-relaxed">
@@ -271,15 +271,17 @@ export default function DoctorPhilosophySection({
         <button
           onClick={() => scrollToIndex(0)}
           className={`h-1.5 rounded-full transition-all duration-300 ${
-            activeSlide === 0 ? "w-6 bg-[#FB5A7C]" : "w-1.5 bg-gray-300"
+            activeSlide === 0 ? "w-6" : "w-1.5 bg-gray-300"
           }`}
+          style={activeSlide === 0 ? { backgroundColor: accentColor } : {}}
           aria-label="View Clinical Philosophy"
         />
         <button
           onClick={() => scrollToIndex(1)}
           className={`h-1.5 rounded-full transition-all duration-300 ${
-            activeSlide === 1 ? "w-6 bg-[#FB5A7C]" : "w-1.5 bg-gray-300"
+            activeSlide === 1 ? "w-6" : "w-1.5 bg-gray-300"
           }`}
+          style={activeSlide === 1 ? { backgroundColor: accentColor } : {}}
           aria-label="View Special Clinical Focus"
         />
       </div>

@@ -2,22 +2,22 @@
 
 @layer base {
   :root {
-    --color-primary: #FB5A7C;
-    --color-primary-hover: #E54366;
-    --color-primary-dark: #C4274C;
-    --color-primary-light: #FFE9ED;
-    --color-primary-wash: #FFF5F7;
-    --color-accent: #2FB2EA;
-    --color-accent-hover: #189AD0;
-    --color-accent-dark: #0B75A1;
-    --color-accent-light: #E3F4FC;
-    --color-accent-wash: #F2FAFE;
+    --color-primary: #F57B94;
+    --color-primary-hover: #E6627E;
+    --color-primary-dark: #C73859;
+    --color-primary-light: #FFE4E8;
+    --color-primary-wash: #FFF0F3;
+    --color-accent: #4384C6;
+    --color-accent-hover: #3271B2;
+    --color-accent-dark: #1E518A;
+    --color-accent-light: #E1EEFE;
+    --color-accent-wash: #EBF4FC;
     --color-bg-base: #FAFAF9;
     --color-bg-surface: #FFFFFF;
     --color-text-main: #1A2229;
     --color-text-body: #475569;
     --color-text-muted: #64748B;
-    --color-border: #F1E5E8;
+    --color-border: #F3E6E8;
     --color-whatsapp: #25D366;
     --color-emergency: #DC2626;
     --color-instagram: #E1306C;
@@ -38,24 +38,24 @@
 }
 
 @layer utilities {
-  .text-primary { color: #FB5A7C; }
-  .text-accent { color: #2FB2EA; }
-  .bg-primary { background-color: #FB5A7C; }
-  .bg-primary-light { background-color: #FFE9ED; }
-  .bg-primary-wash { background-color: #FFF5F7; }
-  .bg-accent { background-color: #2FB2EA; }
-  .bg-accent-light { background-color: #E3F4FC; }
-  .bg-accent-wash { background-color: #F2FAFE; }
+  .text-primary { color: #F57B94; }
+  .text-accent { color: #4384C6; }
+  .bg-primary { background-color: #F57B94; }
+  .bg-primary-light { background-color: #FFE4E8; }
+  .bg-primary-wash { background-color: #FFF0F3; }
+  .bg-accent { background-color: #4384C6; }
+  .bg-accent-light { background-color: #E1EEFE; }
+  .bg-accent-wash { background-color: #EBF4FC; }
   .bg-surface-rose { background-color: #FFF8F9; }
   .bg-surface-sky { background-color: #F4FAFD; }
-  .border-primary { border-color: #FFCCD6; }
-  .border-accent { border-color: #BCE6F9; }
+  .border-primary { border-color: #FFD3DC; }
+  .border-accent { border-color: #BCD7F5; }
   .text-main { color: #1A2229; }
   .text-body { color: #475569; }
   .text-muted { color: #64748B; }
 
   .btn-primary {
-    background-color: #FB5A7C;
+    background-color: #F57B94;
     color: white;
     border-radius: 9999px;
     padding: 0.75rem 1.75rem;
@@ -66,7 +66,21 @@
     align-items: center;
     gap: 0.5rem;
   }
-  .btn-primary:hover { background-color: #E54366; }
+  .btn-primary:hover { background-color: #E6627E; }
+
+  .btn-subham {
+    background-color: #4384C6;
+    color: white;
+    border-radius: 9999px;
+    padding: 0.75rem 1.75rem;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .btn-subham:hover { background-color: #3271B2; }
 
   .btn-whatsapp {
     background-color: #25D366;
@@ -83,9 +97,8 @@
   .btn-whatsapp:hover { background-color: #1EBE5D; }
 
   .btn-accent {
-    background-color: transparent;
-    color: #2FB2EA;
-    border: 2px solid #2FB2EA;
+    background-color: #4384C6;
+    color: white;
     border-radius: 9999px;
     padding: 0.75rem 1.75rem;
     font-weight: 600;
@@ -96,8 +109,7 @@
     gap: 0.5rem;
   }
   .btn-accent:hover {
-    background-color: #2FB2EA;
-    color: white;
+    background-color: #3271B2;
   }
 
   .btn-secondary {
@@ -180,5 +192,10 @@
 
   .animate-marquee:hover {
     animation-play-state: paused;
+  }
+
+  @keyframes heroProgress {
+    0% { width: 0%; }
+    100% { width: 100%; }
   }
 }

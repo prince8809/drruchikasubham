@@ -1,9 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useSyncExternalStore } from "react";
 import { createPortal } from "react-dom";
 import { MessageCircle, X, Users, Sparkles } from "lucide-react";
-import { WHATSAPP_SUBHAM, WHATSAPP_RUCHIKA, WHATSAPP_JOINT } from "@/lib/constants";
+import { WHATSAPP_SUBHAM, WHATSAPP_RUCHIKA, WHATSAPP_JOINT, PRIMARY_CONCERN_OPTIONS } from "@/lib/constants";
 
 export interface BookingModalProps {
   isOpen: boolean;
@@ -11,6 +11,8 @@ export interface BookingModalProps {
   initialDoctor?: "subham" | "ruchika" | "joint";
   initialConcern?: string;
 }
+
+const emptySubscribe = () => () => {};
 
 export default function BookingModal({
   isOpen,
@@ -21,21 +23,19 @@ export default function BookingModal({
   const [selectedDoctor, setSelectedDoctor] = useState<"subham" | "ruchika" | "joint">(initialDoctor);
   const [patientName, setPatientName] = useState("");
   const [concern, setConcern] = useState(initialConcern);
-  const [mounted, setMounted] = useState(false);
+  const mounted = useSyncExternalStore(emptySubscribe, () => true, () => false);
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  // Sync state when modal opens or initialDoctor prop changes
-  useEffect(() => {
-    if (isOpen) {
-      setSelectedDoctor(initialDoctor);
-      if (initialConcern) {
-        setConcern(initialConcern);
-      }
+  // Sync state when modal opens
+  const [prevIsOpen, setPrevIsOpen] = useState(false);
+  if (isOpen && !prevIsOpen) {
+    setPrevIsOpen(true);
+    setSelectedDoctor(initialDoctor);
+    if (initialConcern) {
+      setConcern(initialConcern);
     }
-  }, [isOpen, initialDoctor, initialConcern]);
+  } else if (!isOpen && prevIsOpen) {
+    setPrevIsOpen(false);
+  }
 
   // Lock body scroll and handle Escape key
   useEffect(() => {
@@ -133,7 +133,7 @@ export default function BookingModal({
                 onClick={() => setSelectedDoctor("ruchika")}
                 className={`p-2.5 sm:p-3 rounded-2xl text-xs font-bold border transition-all flex flex-col items-center justify-center gap-0.5 cursor-pointer ${
                   selectedDoctor === "ruchika"
-                    ? "bg-[#FB5A7C] text-white border-[#FB5A7C] shadow-md scale-[1.02]"
+                    ? "bg-[#F57B94] text-white border-[#F57B94] shadow-md scale-[1.02]"
                     : "bg-gray-50 text-gray-700 border-gray-200 hover:bg-gray-100"
                 }`}
               >
@@ -153,7 +153,7 @@ export default function BookingModal({
                 onClick={() => setSelectedDoctor("subham")}
                 className={`p-2.5 sm:p-3 rounded-2xl text-xs font-bold border transition-all flex flex-col items-center justify-center gap-0.5 cursor-pointer ${
                   selectedDoctor === "subham"
-                    ? "bg-[#2FB2EA] text-white border-[#2FB2EA] shadow-md scale-[1.02]"
+                    ? "bg-[#4384C6] text-white border-[#4384C6] shadow-md scale-[1.02]"
                     : "bg-gray-50 text-gray-700 border-gray-200 hover:bg-gray-100"
                 }`}
               >
@@ -173,7 +173,7 @@ export default function BookingModal({
                 onClick={() => setSelectedDoctor("joint")}
                 className={`p-2.5 sm:p-3 rounded-2xl text-xs font-bold border transition-all flex flex-col items-center justify-center gap-0.5 cursor-pointer ${
                   selectedDoctor === "joint"
-                    ? "bg-[#1A2229] text-white border-[#1A2229] shadow-md scale-[1.02]"
+                    ? "bg-gradient-to-r from-[#F57B94] to-[#4384C6] text-white border-transparent shadow-md scale-[1.02]"
                     : "bg-gray-50 text-gray-700 border-gray-200 hover:bg-gray-100"
                 }`}
               >
@@ -220,19 +220,11 @@ export default function BookingModal({
               className="w-full text-sm px-3.5 py-2.5 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#FB5A7C] transition-all bg-white"
             >
               <option value="">Choose a condition / general visit</option>
-              <option value="Pregnancy & Antenatal Checkup">Pregnancy & Antenatal Checkup</option>
-              <option value="Normal / C-Section Delivery Planning">Normal / C-Section Delivery Planning</option>
-              <option value="High-Risk Pregnancy Consultation">High-Risk Pregnancy Consultation</option>
-              <option value="Fertility & IVF Planning">Fertility & IVF Planning</option>
-              <option value="PCOD / PCOS & Irregular Periods">PCOD / PCOS & Irregular Periods</option>
-              <option value="Advanced Laparoscopic Surgery (Fibroid, Cyst, etc.)">
-                Advanced Laparoscopic Surgery (Fibroid, Cyst, etc.)
-              </option>
-              <option value="Second Opinion on Surgery / Delivery">Second Opinion on Surgery / Delivery</option>
-              <option value="Joint Couple Consultation (Pre-conception / Birthing)">
-                Joint Couple Consultation (Pre-conception / Birthing)
-              </option>
-              <option value="Menopause & General Well-Woman Visit">Menopause & General Well-Woman Visit</option>
+              {PRIMARY_CONCERN_OPTIONS.map((opt) => (
+                <option key={opt} value={opt}>
+                  {opt}
+                </option>
+              ))}
             </select>
           </div>
 

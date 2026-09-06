@@ -34,11 +34,11 @@ export default function DoctorProfiles({ isPageHeading = false }: DoctorProfiles
           {doctors.map((doc) => {
             const isSubham = doc.id === "subham";
             const borderClass = isSubham
-              ? "border-[#BCE6F9] hover:border-[#2FB2EA]"
-              : "border-[#FFCCD6] hover:border-[#FB5A7C]";
+              ? "border-[#BCD7F5] hover:border-[#4384C6]"
+              : "border-[#FFD3DC] hover:border-[#F57B94]";
             const badgeBg = isSubham
-              ? "bg-[#E3F4FC] text-[#0B75A1]"
-              : "bg-[#FFE9ED] text-[#C4274C]";
+              ? "bg-[#EBF4FC] text-[#1E518A]"
+              : "bg-[#FFF0F3] text-[#C73859]";
             const topSpecialties = isSubham
               ? ["High-Risk Pregnancy", "Normal & LUCS Delivery", "Laparoscopic Surgery"]
               : ["Fertility & Conception", "PCOS / Hormonal Balance", "Normal Delivery"];
@@ -73,7 +73,9 @@ export default function DoctorProfiles({ isPageHeading = false }: DoctorProfiles
                     </div>
 
                     <Link href={`/doctors/${doc.slug}`} className="block group/name">
-                      <h3 className="text-base sm:text-xl font-bold text-[#1A2229] group-hover/name:text-[#FB5A7C] transition-colors leading-tight">
+                      <h3 className={`text-base sm:text-xl font-bold text-[#1A2229] ${
+                        isSubham ? "group-hover/name:text-[#4384C6]" : "group-hover/name:text-[#F57B94]"
+                      } transition-colors leading-tight`}>
                         {doc.name}
                       </h3>
                     </Link>
@@ -85,11 +87,11 @@ export default function DoctorProfiles({ isPageHeading = false }: DoctorProfiles
                     {/* Hospital & Hours Pill */}
                     <div className="pt-0.5 flex flex-wrap items-center gap-1.5 text-[11px] text-gray-600">
                       <span className="inline-flex items-center gap-1 bg-gray-100 px-2 py-0.5 rounded-md font-semibold text-gray-700">
-                        <MapPin className="w-3 h-3 text-[#FB5A7C]" />
+                        <MapPin className="w-3 h-3" style={{ color: doc.accentColor }} />
                         {doc.hospitalShort}
                       </span>
                       <span className="hidden sm:inline-flex items-center gap-1 text-gray-500">
-                        <Clock className="w-3 h-3 text-[#2FB2EA]" />
+                        <Clock className="w-3 h-3" style={{ color: doc.accentColor }} />
                         {doc.timings.replace("Monday – Friday: ", "Mon-Fri ")}
                       </span>
                     </div>
@@ -114,15 +116,21 @@ export default function DoctorProfiles({ isPageHeading = false }: DoctorProfiles
                     href={doc.whatsapp}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn-whatsapp justify-center text-xs py-2.5 px-3 shadow-xs hover:shadow-md transition-all truncate"
+                    className={`justify-center text-xs py-2.5 px-3 rounded-xl font-bold shadow-xs hover:shadow-md hover:scale-[1.02] active:scale-[0.98] transition-all truncate flex items-center gap-1.5 text-white ${
+                      isSubham
+                        ? "bg-[#4384C6] hover:bg-[#3271B2]"
+                        : "bg-[#F57B94] hover:bg-[#E6627E]"
+                    }`}
                   >
                     <MessageCircle className="w-3.5 h-3.5 fill-white shrink-0" />
-                    <span className="truncate">Book WhatsApp</span>
+                    <span className="truncate">Book with {doc.shortName}</span>
                   </a>
 
                   <Link
                     href={`/doctors/${doc.slug}`}
-                    className="justify-center text-xs font-bold text-[#1A2229] hover:text-[#FB5A7C] py-2.5 px-3 rounded-xl bg-gray-50 hover:bg-gray-100 border border-gray-200 transition-all flex items-center gap-1 text-center"
+                    className={`justify-center text-xs font-bold text-[#1A2229] ${
+                      isSubham ? "hover:text-[#4384C6]" : "hover:text-[#F57B94]"
+                    } py-2.5 px-3 rounded-xl bg-gray-50 hover:bg-gray-100 border border-gray-200 transition-all flex items-center gap-1 text-center`}
                   >
                     <span>View Profile</span>
                     <ArrowRight className="w-3 h-3 shrink-0" />

@@ -1,179 +1,585 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { MessageCircle, Heart, Sparkles } from "lucide-react";
+import {
+  MessageCircle,
+  Heart,
+  Sparkles,
+  Activity,
+  Baby,
+  ChevronLeft,
+  ChevronRight,
+  ShieldCheck,
+  Clock,
+  CheckCircle2,
+  ArrowRight,
+} from "lucide-react";
 import BookingModal from "@/components/shared/BookingModal";
+
+interface HeroSlide {
+  id: string;
+  tabLabel: string;
+  badge: string;
+  badgeIcon: "sparkles" | "activity" | "baby";
+  titleLine1: string;
+  titleLine2: string;
+  titleAccent: string;
+  doctorCredentials: string;
+  description: string;
+  image: string;
+  alt: string;
+  primaryBtn: {
+    label: string;
+    doctor: "ruchika" | "subham" | "joint";
+    icon: "heart" | "activity";
+    className: string;
+  };
+  secondaryBtn: {
+    label: string;
+    doctor: "ruchika" | "subham" | "joint";
+  };
+}
+
+const HERO_SLIDES: HeroSlide[] = [
+  {
+    id: "duo-care",
+    tabLabel: "Duo Care",
+    badge: "Husband-Wife Specialist Duo",
+    badgeIcon: "sparkles",
+    titleLine1: "Your Health. Your Fertility.",
+    titleLine2: "Your Pregnancy.",
+    titleAccent: "Expertly Cared For.",
+    doctorCredentials:
+      "Dr. Ruchika & Dr. Subham Agarwal • Obstetricians, Gynaecologists & Laparoscopic Surgeons in Siliguri",
+    description:
+      "Complete women's healthcare in Siliguri — from periods, PCOS & fertility evaluations to gentle normal delivery, high-risk pregnancy management, and advanced laparoscopic surgery.",
+    image: "/images/hero/slide-consultation.jpg",
+    alt: "Warm clinical consultation and patient lounge with Dr. Ruchika and Dr. Subham Agarwal",
+    primaryBtn: {
+      label: "Book with Dr. Ruchika",
+      doctor: "ruchika",
+      icon: "heart",
+      className: "btn-primary",
+    },
+    secondaryBtn: {
+      label: "Book with Dr. Subham",
+      doctor: "subham",
+    },
+  },
+  {
+    id: "laparoscopy",
+    tabLabel: "Surgical OT",
+    badge: "Advanced Surgical Precision",
+    badgeIcon: "activity",
+    titleLine1: "Minimally Invasive Care.",
+    titleLine2: "Keyhole Laparoscopy.",
+    titleAccent: "Rapid 24h Recovery.",
+    doctorCredentials:
+      "Led by Dr. Subham Agarwal • MBBS, MS, FMAS, FIAG • Specialist Laparoscopic Surgeon",
+    description:
+      "Advanced keyhole surgery for ovarian cysts, uterine fibroids, severe endometriosis, ectopic pregnancy, and laparoscopic hysterectomy with minimal discomfort, tiny incisions, and fast discharge.",
+    image: "/images/hero/slide-laparoscopy.jpg",
+    alt: "State of the art 4K laparoscopic surgical operating suite",
+    primaryBtn: {
+      label: "Consult Dr. Subham (Surgeon)",
+      doctor: "subham",
+      icon: "activity",
+      className:
+        "bg-[#0B75A1] hover:bg-[#095C7F] text-white rounded-full shadow-md hover:shadow-lg hover:scale-105 active:scale-95 transition-all",
+    },
+    secondaryBtn: {
+      label: "Book with Dr. Ruchika",
+      doctor: "ruchika",
+    },
+  },
+  {
+    id: "maternity",
+    tabLabel: "Maternity Suite",
+    badge: "Evidence-Based Obstetrics",
+    badgeIcon: "baby",
+    titleLine1: "Gentle Maternity Care.",
+    titleLine2: "Safe, Joyous Births.",
+    titleAccent: "Dedicated Fetal Care.",
+    doctorCredentials:
+      "Led by Dr. Ruchika Agarwal • MBBS, MS (OBGYN) • Consultant Obstetrician & Infertility Specialist",
+    description:
+      "Compassionate prenatal care, normal delivery advocacy, high-risk pregnancy fetal ultrasound monitoring, and unhurried consultation from conception to birth in modern birthing suites.",
+    image: "/images/hero/slide-maternity.jpg",
+    alt: "Modern luxury private maternity birthing suite and recovery room",
+    primaryBtn: {
+      label: "Consult Dr. Ruchika (Maternity)",
+      doctor: "ruchika",
+      icon: "heart",
+      className: "btn-primary",
+    },
+    secondaryBtn: {
+      label: "Book with Dr. Subham",
+      doctor: "subham",
+    },
+  },
+];
 
 export default function HeroSection() {
   const [bookingModalOpen, setBookingModalOpen] = useState(false);
   const [selectedDoctor, setSelectedDoctor] = useState<"subham" | "ruchika" | "joint">("subham");
+  const [activeSlide, setActiveSlide] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
 
   const handleOpenBooking = (doctor: "subham" | "ruchika" | "joint") => {
     setSelectedDoctor(doctor);
     setBookingModalOpen(true);
   };
 
-  return (
-    <section id="doctors" className="relative overflow-hidden bg-gradient-to-b from-[#FFF5F7] via-[#FFF8F9] to-white pt-8 pb-6 sm:pt-12 sm:pb-8 lg:pt-14 lg:pb-8">
-      {/* Gentle background accent glows */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-[#FFE9ED] rounded-full filter blur-3xl opacity-50 -z-10 pointer-events-none"></div>
-      <div className="absolute bottom-6 left-0 w-96 h-96 bg-[#E3F4FC] rounded-full filter blur-3xl opacity-50 -z-10 pointer-events-none"></div>
+  const handlePrevSlide = () => {
+    setActiveSlide((prev) => (prev - 1 + HERO_SLIDES.length) % HERO_SLIDES.length);
+  };
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
+  const handleNextSlide = () => {
+    setActiveSlide((prev) => (prev + 1) % HERO_SLIDES.length);
+  };
+
+  // Auto-scroll every 3.8 seconds (pauses on hover or modal)
+  useEffect(() => {
+    if (isPaused || bookingModalOpen) return;
+
+    const interval = setInterval(() => {
+      setActiveSlide((prev) => (prev + 1) % HERO_SLIDES.length);
+    }, 3800);
+
+    return () => clearInterval(interval);
+  }, [isPaused, bookingModalOpen]);
+
+  const currentSlide = HERO_SLIDES[activeSlide];
+
+  return (
+    <section
+      id="doctors"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+      onTouchStart={() => setIsPaused(true)}
+      onTouchEnd={() => setIsPaused(false)}
+      className="relative overflow-hidden min-h-[620px] sm:min-h-[660px] lg:min-h-[700px] flex items-center bg-slate-900 pt-8 pb-10 sm:pt-12 sm:pb-12"
+    >
+      {/* =========================================================================
+          1. 3-SLIDE CINEMATIC HERO BACKGROUND IMAGES (Layer z-0)
+          ========================================================================= */}
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+        {HERO_SLIDES.map((slide, idx) => {
+          const isActive = idx === activeSlide;
+
+          return (
+            <div
+              key={slide.id}
+              className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+                isActive ? "opacity-100" : "opacity-0 pointer-events-none"
+              }`}
+            >
+              <Image
+                src={slide.image}
+                alt={slide.alt}
+                fill
+                priority={idx === 0}
+                sizes="100vw"
+                className={`w-full h-full object-cover object-center transition-transform duration-[8000ms] ease-out ${
+                  isActive ? "scale-105" : "scale-100"
+                }`}
+              />
+            </div>
+          );
+        })}
+      </div>
+
+      {/* =========================================================================
+          2. DIRECTIONAL LUMINOUS READABILITY SHIELD (Layer z-10)
+             Left 42%: High contrast white/pink wash for 100% crisp typography
+             Right 58%: 80% transparent so clinical OT, birthing & clinic suites shine
+          ========================================================================= */}
+      <div
+        className="absolute inset-0 z-10 pointer-events-none"
+        style={{
+          background:
+            "linear-gradient(90deg, rgba(255, 248, 249, 0.95) 0%, rgba(255, 250, 251, 0.90) 38%, rgba(255, 255, 255, 0.50) 68%, rgba(255, 255, 255, 0.22) 100%)",
+        }}
+      />
+      {/* Top & bottom subtle boundary tints */}
+      <div
+        className="absolute inset-0 z-10 pointer-events-none"
+        style={{
+          background:
+            "linear-gradient(180deg, rgba(255, 248, 249, 0.5) 0%, transparent 12%, transparent 88%, rgba(255, 248, 249, 0.75) 100%)",
+        }}
+      />
+
+      {/* =========================================================================
+          3. MANUAL NAVIGATION ARROWS (Layer z-30)
+          ========================================================================= */}
+      <button
+        type="button"
+        onClick={handlePrevSlide}
+        aria-label="Previous slide"
+        className="hidden md:flex absolute left-3 sm:left-5 top-1/2 -translate-y-1/2 z-30 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white/85 hover:bg-white text-gray-700 hover:text-[#FB5A7C] items-center justify-center shadow-lg hover:shadow-xl border border-pink-100 backdrop-blur-sm transition-all hover:scale-110 active:scale-95 cursor-pointer"
+        title="Previous slide"
+      >
+        <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
+      </button>
+
+      <button
+        type="button"
+        onClick={handleNextSlide}
+        aria-label="Next slide"
+        className="hidden md:flex absolute right-3 sm:right-5 top-1/2 -translate-y-1/2 z-30 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white/85 hover:bg-white text-gray-700 hover:text-[#FB5A7C] items-center justify-center shadow-lg hover:shadow-xl border border-pink-100 backdrop-blur-sm transition-all hover:scale-110 active:scale-95 cursor-pointer"
+        title="Next slide"
+      >
+        <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
+      </button>
+
+      {/* =========================================================================
+          4. FOREGROUND CONTENT: HEADLINE, CTAs, AND DYNAMIC SHOWCASE (Layer z-20)
+          ========================================================================= */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20 w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
           
-          {/* Left Column: Headlines & CTAs */}
+          {/* Left Column: Dynamic Slide Headlines & 1-Tap CTAs */}
           <div className="lg:col-span-7 space-y-4 sm:space-y-5 text-center lg:text-left">
-            {/* Tag / Pill */}
-            <div className="inline-flex items-center gap-2 bg-[#FFE9ED] border border-[#FFCCD6] px-4 py-1.5 rounded-full text-xs sm:text-sm font-semibold text-[#C4274C] shadow-sm">
-              <Sparkles className="w-3.5 h-3.5 text-[#FB5A7C]" />
-              <span>Complete Care by Husband-Wife Specialist Duo</span>
+            
+            {/* Slide Category Pill */}
+            <div className="inline-flex items-center gap-2 bg-[#FFF0F3] backdrop-blur-xs border border-[#FFD3DC] px-4 py-1.5 rounded-full text-xs sm:text-sm font-semibold text-[#C73859] shadow-2xs">
+              {currentSlide.badgeIcon === "sparkles" && <Sparkles className="w-3.5 h-3.5 text-[#F57B94]" />}
+              {currentSlide.badgeIcon === "activity" && <Activity className="w-3.5 h-3.5 text-[#4384C6]" />}
+              {currentSlide.badgeIcon === "baby" && <Baby className="w-3.5 h-3.5 text-[#F57B94]" />}
+              <span>{currentSlide.badge}</span>
             </div>
 
-            {/* Main Headline */}
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-[#1A2229] tracking-tight leading-[1.15]">
-              Your Health. <br className="hidden sm:inline" />
-              Your Fertility. <br className="hidden sm:inline" />
-              <span className="bg-gradient-to-r from-[#FB5A7C] to-[#E54366] bg-clip-text text-transparent">
-                Your Pregnancy.
-              </span>{" "}
-              <br className="hidden sm:inline" />
-              Expertly Cared For.
+            {/* Dynamic Main Headline */}
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-[#1A2229] tracking-tight leading-[1.15] transition-all duration-300">
+              {currentSlide.titleLine1} <br className="hidden sm:inline" />
+              {currentSlide.titleLine2} <br className="hidden sm:inline" />
+              <span className="bg-gradient-to-r from-[#F57B94] to-[#E6627E] bg-clip-text text-transparent">
+                {currentSlide.titleAccent}
+              </span>
               <span className="block text-xs sm:text-sm font-semibold tracking-normal text-[#64748B] mt-2.5 font-sans">
-                Dr. Ruchika &amp; Dr. Subham Agarwal &bull; Obstetricians, Gynaecologists &amp; Laparoscopic Surgeons in Siliguri
+                {currentSlide.doctorCredentials}
               </span>
             </h1>
 
-            {/* Subtitle */}
+            {/* Subtitle / Description */}
             <p className="text-base sm:text-lg text-[#475569] leading-relaxed max-w-2xl mx-auto lg:mx-0">
-              Complete women&apos;s healthcare in Siliguri — from periods, PCOS &amp; fertility evaluations to gentle normal delivery, high-risk pregnancy management, and advanced laparoscopic surgery.
+              {currentSlide.description}
             </p>
 
-            {/* CTA Buttons */}
+            {/* CTA Buttons: Dr. Ruchika = Rose Pink (#F57B94), Dr. Subham = Azure Blue (#4384C6) */}
             <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3.5 pt-1">
               <button
                 type="button"
-                onClick={() => handleOpenBooking("ruchika")}
-                className="btn-primary w-full sm:w-auto text-sm sm:text-base py-3 px-6 sm:py-3.5 sm:px-7 shadow-md hover:shadow-lg hover:scale-105 active:scale-95 transition-all justify-center cursor-pointer"
+                onClick={() => handleOpenBooking(currentSlide.primaryBtn.doctor)}
+                className={`w-full sm:w-auto text-sm sm:text-base py-3 px-6 sm:py-3.5 sm:px-7 rounded-full font-bold shadow-md hover:shadow-lg hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-2 cursor-pointer ${
+                  currentSlide.primaryBtn.doctor === "ruchika"
+                    ? "bg-[#F57B94] hover:bg-[#E6627E] text-white"
+                    : "bg-[#4384C6] hover:bg-[#3271B2] text-white"
+                }`}
               >
-                <Heart className="w-4 h-4 sm:w-5 sm:h-5" />
-                <span>Book with Dr. Ruchika</span>
+                {currentSlide.primaryBtn.doctor === "ruchika" ? (
+                  <Heart className="w-4 h-4 sm:w-5 sm:h-5 fill-white" />
+                ) : (
+                  <Activity className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
+                )}
+                <span>{currentSlide.primaryBtn.label}</span>
               </button>
 
               <button
                 type="button"
-                onClick={() => handleOpenBooking("subham")}
-                className="btn-whatsapp w-full sm:w-auto text-sm sm:text-base py-3 px-6 sm:py-3.5 sm:px-7 shadow-md hover:shadow-lg hover:scale-105 active:scale-95 transition-all justify-center cursor-pointer"
+                onClick={() => handleOpenBooking(currentSlide.secondaryBtn.doctor)}
+                className={`w-full sm:w-auto text-sm sm:text-base py-3 px-6 sm:py-3.5 sm:px-7 rounded-full font-bold shadow-md hover:shadow-lg hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-2 cursor-pointer ${
+                  currentSlide.secondaryBtn.doctor === "ruchika"
+                    ? "bg-[#F57B94] hover:bg-[#E6627E] text-white"
+                    : "bg-[#4384C6] hover:bg-[#3271B2] text-white"
+                }`}
               >
-                <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5 fill-white" />
-                <span>Book with Dr. Subham</span>
+                {currentSlide.secondaryBtn.doctor === "ruchika" ? (
+                  <Heart className="w-4 h-4 sm:w-5 sm:h-5 fill-white" />
+                ) : (
+                  <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5 fill-white" />
+                )}
+                <span>{currentSlide.secondaryBtn.label}</span>
               </button>
             </div>
+
+            {/* 3-Tab Slide Ticker with Live 6s Animated Progress Bar */}
+            <div className="pt-3 flex flex-wrap items-center justify-center lg:justify-start gap-2.5 sm:gap-3">
+              {HERO_SLIDES.map((slide, i) => {
+                const isCurrent = activeSlide === i;
+                return (
+                  <button
+                    key={slide.id}
+                    type="button"
+                    onClick={() => setActiveSlide(i)}
+                    className={`relative overflow-hidden group flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all duration-300 cursor-pointer ${
+                      isCurrent
+                        ? "bg-white text-[#1A2229] shadow-md border border-[#F57B94]/40 scale-105"
+                        : "bg-white/70 hover:bg-white text-gray-600 hover:text-gray-900 border border-white/80"
+                    }`}
+                    title={`Go to ${slide.tabLabel}`}
+                  >
+                    <span
+                      className={`w-2 h-2 rounded-full ${
+                        isCurrent ? "bg-[#F57B94] animate-pulse" : "bg-gray-300"
+                      }`}
+                    />
+                    <span>
+                      0{i + 1} {slide.tabLabel}
+                    </span>
+
+                    {/* Live Progress Bar Underline */}
+                    {isCurrent && !isPaused && (
+                      <div
+                        key={`progress-${activeSlide}`}
+                        className="absolute bottom-0 left-0 h-0.5 bg-[#F57B94]"
+                        style={{
+                          animation: "heroProgress 3800ms linear forwards",
+                        }}
+                      />
+                    )}
+                  </button>
+                );
+              })}
+            </div>
+
           </div>
 
-          {/* Right Column: Dual Doctor Portraits Showcase */}
+          {/* Right Column: Dynamic Visual Showcase Frame */}
           <div className="lg:col-span-5 relative flex justify-center">
             
-            {/* Visual Frame */}
-            <div className="relative w-full max-w-sm sm:max-w-md">
-              {/* Couple Advantage Floating Badge */}
-              <button
-                type="button"
-                onClick={() => handleOpenBooking("joint")}
-                className="absolute -top-3.5 -left-2 sm:-top-4 sm:-left-4 z-20 bg-white/95 backdrop-blur-sm rounded-2xl p-2.5 sm:p-3 shadow-lg border border-[#FFCCD6] flex items-center gap-2.5 sm:gap-3 hover:scale-105 transition-transform text-left cursor-pointer"
-                title="Click to inquire about Joint Care"
-              >
-                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#FFF5F7] p-1.5 flex items-center justify-center shrink-0">
-                  <Image
-                    src="/images/brand/couple-art.png"
-                    alt="Couple Care"
-                    width={32}
-                    height={32}
-                    className="object-contain"
-                  />
-                </div>
-                <div>
-                  <p className="text-[11px] sm:text-xs font-bold text-[#1A2229]">The Couple Advantage</p>
-                  <p className="text-[10px] sm:text-[11px] text-[#FB5A7C] font-semibold">&ldquo;Family caring for your family&rdquo;</p>
-                </div>
-              </button>
-
-              {/* Grid of Two Portraits */}
-              <div className="grid grid-cols-2 gap-3 sm:gap-4">
-                
-                {/* Dr. Ruchika Card */}
-                <Link
-                  href="/doctors/dr-ruchika-agarwal"
-                  className="group bg-white rounded-2xl sm:rounded-3xl p-2.5 sm:p-3 pb-3 sm:pb-4 shadow-md border-2 border-[#FFCCD6] hover:border-[#FB5A7C] hover:shadow-xl transition-all duration-300 block"
+            {/* ===============================================================
+                SLIDE 0: DUAL DOCTOR CARDS ("THE COUPLE ADVANTAGE")
+                =============================================================== */}
+            {activeSlide === 0 && (
+              <div className="relative w-full max-w-sm sm:max-w-md animate-fadeIn">
+                {/* Couple Advantage Floating Badge */}
+                <button
+                  type="button"
+                  onClick={() => handleOpenBooking("joint")}
+                  className="absolute -top-3.5 -left-2 sm:-top-4 sm:-left-4 z-20 bg-white/95 backdrop-blur-sm rounded-2xl p-2.5 sm:p-3 shadow-lg border border-[#FFD3DC] flex items-center gap-2.5 sm:gap-3 hover:scale-105 transition-transform text-left cursor-pointer"
+                  title="Click to inquire about Joint Care"
                 >
-                  <div className="relative w-full aspect-[4/4.8] rounded-xl sm:rounded-2xl overflow-hidden mb-2 sm:mb-2.5 bg-[#FFF5F7]">
+                  <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#FFF0F3] p-1.5 flex items-center justify-center shrink-0">
                     <Image
-                      src="/images/doctors/dr-ruchika-headshot.webp"
-                      alt="Dr. Ruchika Agarwal"
-                      fill
-                      sizes="(max-width: 768px) 50vw, 250px"
-                      className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
-                      priority
+                      src="/images/brand/couple-art.png"
+                      alt="Couple Care"
+                      width={32}
+                      height={32}
+                      className="object-contain"
                     />
                   </div>
-                  <div className="text-center">
-                    <h2 className="font-bold text-[#1A2229] group-hover:text-[#FB5A7C] transition-colors text-xs sm:text-base leading-tight">
-                      Dr. Ruchika Agarwal
-                    </h2>
-                    <p className="text-[10px] sm:text-[11px] font-semibold text-[#FB5A7C] mt-0.5">
-                      MBBS, MS
+                  <div>
+                    <p className="text-[11px] sm:text-xs font-bold text-[#1A2229]">The Couple Advantage</p>
+                    <p className="text-[10px] sm:text-[11px] text-[#F57B94] font-semibold">
+                      &ldquo;Family caring for your family&rdquo;
                     </p>
-                    <p className="text-[9px] sm:text-[10px] text-gray-500 mt-0.5 sm:mt-1 truncate">
-                      Zivah Wellness Centre
-                    </p>
-                    <span className="inline-block text-[9px] sm:text-[10px] font-bold text-[#FB5A7C] mt-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                      View Profile &rarr;
-                    </span>
                   </div>
-                </Link>
+                </button>
 
-                {/* Dr. Subham Card */}
-                <Link
-                  href="/doctors/dr-subham-agarwal"
-                  className="group bg-white rounded-2xl sm:rounded-3xl p-2.5 sm:p-3 pb-3 sm:pb-4 shadow-md border-2 border-[#BCE6F9] hover:border-[#2FB2EA] hover:shadow-xl transition-all duration-300 sm:translate-y-2 block"
-                >
-                  <div className="relative w-full aspect-[4/4.8] rounded-xl sm:rounded-2xl overflow-hidden mb-2 sm:mb-2.5 bg-[#F2FAFE]">
+                {/* Grid of Two Portraits */}
+                <div className="grid grid-cols-2 gap-3 sm:gap-4">
+                  {/* Dr. Ruchika Card */}
+                  <Link
+                    href="/doctors/dr-ruchika-agarwal"
+                    className="group bg-white/95 backdrop-blur-xs rounded-2xl sm:rounded-3xl p-2.5 sm:p-3 pb-3 sm:pb-4 shadow-md border-2 border-[#FFD3DC] hover:border-[#F57B94] hover:shadow-xl transition-all duration-300 block"
+                  >
+                    <div className="relative w-full aspect-[4/4.8] rounded-xl sm:rounded-2xl overflow-hidden mb-2 sm:mb-2.5 bg-[#FFF0F3]">
+                      <Image
+                        src="/images/doctors/dr-ruchika-headshot.webp"
+                        alt="Dr. Ruchika Agarwal"
+                        fill
+                        sizes="(max-width: 768px) 50vw, 250px"
+                        className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                        priority
+                      />
+                    </div>
+                    <div className="text-center">
+                      <h2 className="font-bold text-[#1A2229] group-hover:text-[#F57B94] transition-colors text-xs sm:text-base leading-tight">
+                        Dr. Ruchika Agarwal
+                      </h2>
+                      <p className="text-[10px] sm:text-[11px] font-semibold text-[#F57B94] mt-0.5">
+                        MBBS, MS
+                      </p>
+                      <p className="text-[9px] sm:text-[10px] text-gray-500 mt-0.5 sm:mt-1 truncate">
+                        Obstetrician &amp; Gynaecologist
+                      </p>
+                      <span className="inline-block text-[9px] sm:text-[10px] font-bold text-[#F57B94] mt-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                        View Profile &rarr;
+                      </span>
+                    </div>
+                  </Link>
+
+                  {/* Dr. Subham Card */}
+                  <Link
+                    href="/doctors/dr-subham-agarwal"
+                    className="group bg-white/95 backdrop-blur-xs rounded-2xl sm:rounded-3xl p-2.5 sm:p-3 pb-3 sm:pb-4 shadow-md border-2 border-[#BCD7F5] hover:border-[#4384C6] hover:shadow-xl transition-all duration-300 sm:translate-y-2 block"
+                  >
+                    <div className="relative w-full aspect-[4/4.8] rounded-xl sm:rounded-2xl overflow-hidden mb-2 sm:mb-2.5 bg-[#EBF4FC]">
+                      <Image
+                        src="/images/doctors/dr-subham-headshot.webp"
+                        alt="Dr. Subham Agarwal"
+                        fill
+                        sizes="(max-width: 768px) 50vw, 250px"
+                        className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                        priority
+                      />
+                    </div>
+                    <div className="text-center">
+                      <h2 className="font-bold text-[#1A2229] group-hover:text-[#4384C6] transition-colors text-xs sm:text-base leading-tight">
+                        Dr. Subham Agarwal
+                      </h2>
+                      <p className="text-[10px] sm:text-[11px] font-semibold text-[#4384C6] mt-0.5">
+                        MBBS, MS, FMAS, FIAG
+                      </p>
+                      <p className="text-[9px] sm:text-[10px] text-gray-500 mt-0.5 sm:mt-1 truncate">
+                        Laparoscopic Surgeon
+                      </p>
+                      <span className="inline-block text-[9px] sm:text-[10px] font-bold text-[#4384C6] mt-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                        View Profile &rarr;
+                      </span>
+                    </div>
+                  </Link>
+                </div>
+
+                {/* Verified Stat Pill */}
+                <div className="absolute -bottom-2.5 right-2 z-20 bg-white/95 backdrop-blur-sm rounded-xl py-1.5 px-2.5 sm:py-2 sm:px-3 shadow-md border border-pink-100 flex items-center gap-1.5 sm:gap-2">
+                  <span className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-[#10B981]"></span>
+                  <span className="text-[10px] sm:text-xs font-bold text-[#1A2229]">1,000+ Normal Deliveries</span>
+                </div>
+              </div>
+            )}
+
+            {/* ===============================================================
+                SLIDE 1: SURGICAL EXCELLENCE CARD (DR. SUBHAM LAPAROSCOPY)
+                =============================================================== */}
+            {activeSlide === 1 && (
+              <div className="relative w-full max-w-sm sm:max-w-md bg-white/95 backdrop-blur-md rounded-3xl p-5 sm:p-6 shadow-xl border-2 border-[#BCD7F5] animate-fadeIn">
+                {/* Header with Dr. Subham Avatar */}
+                <div className="flex items-center gap-3.5 pb-4 border-b border-sky-100">
+                  <div className="relative w-14 h-14 rounded-2xl overflow-hidden shrink-0 border-2 border-[#4384C6] bg-[#EBF4FC] shadow-sm">
                     <Image
                       src="/images/doctors/dr-subham-headshot.webp"
                       alt="Dr. Subham Agarwal"
                       fill
-                      sizes="(max-width: 768px) 50vw, 250px"
-                      className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
-                      priority
+                      className="object-cover object-top"
                     />
                   </div>
-                  <div className="text-center">
-                    <h2 className="font-bold text-[#1A2229] group-hover:text-[#0B75A1] transition-colors text-xs sm:text-base leading-tight">
+                  <div>
+                    <h3 className="font-bold text-[#1A2229] text-base leading-tight">
                       Dr. Subham Agarwal
-                    </h2>
-                    <p className="text-[10px] sm:text-[11px] font-semibold text-[#0B75A1] mt-0.5">
+                    </h3>
+                    <p className="text-xs font-semibold text-[#4384C6]">
                       MBBS, MS, FMAS, FIAG
                     </p>
-                    <p className="text-[9px] sm:text-[10px] text-gray-500 mt-0.5 sm:mt-1 truncate">
-                      Manipal Hospital Siliguri
+                    <p className="text-[11px] text-gray-500">
+                      Specialist Laparoscopic Surgeon
                     </p>
-                    <span className="inline-block text-[9px] sm:text-[10px] font-bold text-[#0B75A1] mt-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                      View Profile &rarr;
-                    </span>
                   </div>
-                </Link>
+                </div>
 
+                {/* 4 Surgical Highlights */}
+                <div className="py-4 space-y-2.5">
+                  <div className="flex items-center gap-2.5 text-xs text-[#1A2229] font-medium bg-[#EBF4FC]/80 p-2.5 rounded-xl border border-sky-100/60">
+                    <CheckCircle2 className="w-4 h-4 text-[#4384C6] shrink-0" />
+                    <span>4K Ultra-HD Video Laparoscopy</span>
+                  </div>
+                  <div className="flex items-center gap-2.5 text-xs text-[#1A2229] font-medium bg-[#EBF4FC]/80 p-2.5 rounded-xl border border-sky-100/60">
+                    <CheckCircle2 className="w-4 h-4 text-[#4384C6] shrink-0" />
+                    <span>Tiny 5mm Keyhole Incisions &amp; Minimal Pain</span>
+                  </div>
+                  <div className="flex items-center gap-2.5 text-xs text-[#1A2229] font-medium bg-[#EBF4FC]/80 p-2.5 rounded-xl border border-sky-100/60">
+                    <Clock className="w-4 h-4 text-[#4384C6] shrink-0" />
+                    <span>Rapid 24-Hour Hospital Recovery</span>
+                  </div>
+                  <div className="flex items-center gap-2.5 text-xs text-[#1A2229] font-medium bg-[#EBF4FC]/80 p-2.5 rounded-xl border border-sky-100/60">
+                    <ShieldCheck className="w-4 h-4 text-[#4384C6] shrink-0" />
+                    <span>Cashless TPA Health Insurance Supported</span>
+                  </div>
+                </div>
+
+                {/* Bottom Action Link */}
+                <div className="pt-2 flex items-center justify-between border-t border-sky-100 text-xs">
+                  <Link
+                    href="/doctors/dr-subham-agarwal"
+                    className="font-bold text-[#4384C6] hover:underline inline-flex items-center gap-1"
+                  >
+                    <span>View Surgical Credentials</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
+                  <span className="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
+                    99.4% Safety Rate
+                  </span>
+                </div>
               </div>
+            )}
 
-              {/* Verified Clinical Stat Pill */}
-              <div className="absolute -bottom-2.5 right-2 z-20 bg-white/95 backdrop-blur-sm rounded-xl py-1.5 px-2.5 sm:py-2 sm:px-3 shadow-md border border-sky-100 flex items-center gap-1.5 sm:gap-2">
-                <span className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-[#10B981]"></span>
-                <span className="text-[10px] sm:text-xs font-bold text-[#1A2229]">1,000+ Normal Deliveries</span>
+            {/* ===============================================================
+                SLIDE 2: GENTLE MATERNITY CARD (DR. RUCHIKA OBSTETRICS)
+                =============================================================== */}
+            {activeSlide === 2 && (
+              <div className="relative w-full max-w-sm sm:max-w-md bg-white/95 backdrop-blur-md rounded-3xl p-5 sm:p-6 shadow-xl border-2 border-[#FFD3DC] animate-fadeIn">
+                {/* Header with Dr. Ruchika Avatar */}
+                <div className="flex items-center gap-3.5 pb-4 border-b border-pink-100">
+                  <div className="relative w-14 h-14 rounded-2xl overflow-hidden shrink-0 border-2 border-[#F57B94] bg-[#FFF0F3] shadow-sm">
+                    <Image
+                      src="/images/doctors/dr-ruchika-headshot.webp"
+                      alt="Dr. Ruchika Agarwal"
+                      fill
+                      className="object-cover object-top"
+                    />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-[#1A2229] text-base leading-tight">
+                      Dr. Ruchika Agarwal
+                    </h3>
+                    <p className="text-xs font-semibold text-[#F57B94]">
+                      MBBS, MS (OBGYN)
+                    </p>
+                    <p className="text-[11px] text-gray-500">
+                      Consultant Obstetrician &amp; Infertility
+                    </p>
+                  </div>
+                </div>
+
+                {/* 4 Maternity Highlights */}
+                <div className="py-4 space-y-2.5">
+                  <div className="flex items-center gap-2.5 text-xs text-[#1A2229] font-medium bg-[#FFF0F3]/80 p-2.5 rounded-xl border border-pink-100/60">
+                    <CheckCircle2 className="w-4 h-4 text-[#F57B94] shrink-0" />
+                    <span>1,000+ Normal &amp; Safe Deliveries</span>
+                  </div>
+                  <div className="flex items-center gap-2.5 text-xs text-[#1A2229] font-medium bg-[#FFF0F3]/80 p-2.5 rounded-xl border border-pink-100/60">
+                    <CheckCircle2 className="w-4 h-4 text-[#F57B94] shrink-0" />
+                    <span>High-Risk Pregnancy &amp; Fetal Ultrasound</span>
+                  </div>
+                  <div className="flex items-center gap-2.5 text-xs text-[#1A2229] font-medium bg-[#FFF0F3]/80 p-2.5 rounded-xl border border-pink-100/60">
+                    <Heart className="w-4 h-4 text-[#F57B94] shrink-0 fill-[#F57B94]" />
+                    <span>Painless Labor &amp; VBAC Support</span>
+                  </div>
+                  <div className="flex items-center gap-2.5 text-xs text-[#1A2229] font-medium bg-[#FFF0F3]/80 p-2.5 rounded-xl border border-pink-100/60">
+                    <Sparkles className="w-4 h-4 text-[#F57B94] shrink-0" />
+                    <span>Unhurried, Family-Centered Consultations</span>
+                  </div>
+                </div>
+
+                {/* Bottom Action Link */}
+                <div className="pt-2 flex items-center justify-between border-t border-pink-100 text-xs">
+                  <Link
+                    href="/doctors/dr-ruchika-agarwal"
+                    className="font-bold text-[#F57B94] hover:underline inline-flex items-center gap-1"
+                  >
+                    <span>View Maternity Profile</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
+                  <span className="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
+                    100% Empathetic
+                  </span>
+                </div>
               </div>
-
-            </div>
+            )}
 
           </div>
 

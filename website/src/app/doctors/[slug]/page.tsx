@@ -8,7 +8,6 @@ import {
   Clock,
   ShieldCheck,
   Award,
-  Heart,
   Sparkles,
   ChevronRight,
   CheckCircle2,
@@ -24,6 +23,7 @@ import WhatsAppFAB from "@/components/layout/WhatsAppFAB";
 import DoctorSpecialtiesCarousel from "@/components/doctor/DoctorSpecialtiesCarousel";
 import DoctorPhilosophySection from "@/components/doctor/DoctorPhilosophySection";
 import DoctorFaqAccordion from "@/components/doctor/DoctorFaqAccordion";
+import DoctorVideoReelsSection from "@/components/doctor/DoctorVideoReelsSection";
 import ReviewsSection from "@/components/home/ReviewsSection";
 
 export function generateStaticParams() {
@@ -96,6 +96,9 @@ export default async function DoctorProfilePage({ params }: { params: Promise<{ 
 
   const partnerDoctor = doctors.find((d) => d.slug === doctor.partnerDoctorSlug);
   const isSubham = doctor.id === "subham";
+  const doctorBtnClass = isSubham
+    ? "bg-[#4384C6] hover:bg-[#3271B2] text-white"
+    : "bg-[#F57B94] hover:bg-[#E6627E] text-white";
 
   // Google Physician / Medical Schema (JSON-LD) for Local Healthcare SEO
   const physicianSchema = {
@@ -215,7 +218,7 @@ export default async function DoctorProfilePage({ params }: { params: Promise<{ 
                     href={doctor.whatsapp}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn-whatsapp w-full justify-center text-xs py-2.5 px-4 rounded-full shadow-sm hover:shadow-md hover:scale-[1.02] active:scale-[0.98] transition-all font-bold flex items-center gap-2"
+                    className={`w-full justify-center text-xs py-2.5 px-4 rounded-full shadow-sm hover:shadow-md hover:scale-[1.02] active:scale-[0.98] transition-all font-bold flex items-center gap-2 ${doctorBtnClass}`}
                   >
                     <MessageCircle className="w-4 h-4 fill-white shrink-0" />
                     <span>Book on WhatsApp</span>
@@ -243,7 +246,11 @@ export default async function DoctorProfilePage({ params }: { params: Promise<{ 
               </div>
 
               {/* Tagline Quote */}
-              <blockquote className="p-3.5 rounded-2xl bg-white border-l-4 border-l-[#FB5A7C] border-gray-100 shadow-xs text-xs sm:text-sm font-medium text-[#1A2229] italic">
+              <blockquote
+                className={`p-3.5 rounded-2xl bg-white border-l-4 ${
+                  isSubham ? "border-l-[#4384C6]" : "border-l-[#F57B94]"
+                } border-gray-100 shadow-xs text-xs sm:text-sm font-medium text-[#1A2229] italic`}
+              >
                 &ldquo;{doctor.tagline}&rdquo;
               </blockquote>
 
@@ -301,7 +308,7 @@ export default async function DoctorProfilePage({ params }: { params: Promise<{ 
                   href={doctor.whatsapp}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-whatsapp w-full sm:w-auto text-xs sm:text-sm py-2.5 px-6 shadow-md hover:shadow-lg transition-all justify-center"
+                  className={`w-full sm:w-auto text-xs sm:text-sm py-2.5 px-6 rounded-full font-semibold shadow-md hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] transition-all justify-center inline-flex items-center gap-2 ${doctorBtnClass}`}
                 >
                   <MessageCircle className="w-4 h-4 fill-white" />
                   <span>Book with {doctor.shortName} on WhatsApp</span>
@@ -328,7 +335,7 @@ export default async function DoctorProfilePage({ params }: { params: Promise<{ 
         <div className="flex gap-8 animate-marquee whitespace-nowrap items-center text-xs sm:text-sm font-semibold">
           {[...doctor.milestones, ...doctor.milestones].map((m, i) => (
             <div key={i} className="flex items-center gap-2 shrink-0">
-              <Award className="w-4 h-4 text-[#2FB2EA] shrink-0" />
+              <Award className="w-4 h-4 shrink-0" style={{ color: doctor.accentColor }} />
               <span className="text-gray-200">{m}</span>
               <span className="text-gray-600 mx-2">&bull;</span>
             </div>
@@ -371,43 +378,60 @@ export default async function DoctorProfilePage({ params }: { params: Promise<{ 
         </div>
       </section>
 
-      {/* 8. Clinic Location, Timings & Consultation Details */}
+      {/* 8. Doctor Video Guidance & Instagram Reels */}
+      <DoctorVideoReelsSection
+        doctorId={doctor.id as "ruchika" | "subham"}
+        doctorName={doctor.name}
+        doctorShortName={doctor.shortName}
+        accentColor={doctor.accentColor}
+        accentBg={doctor.accentBg}
+        accentBorder={doctor.accentBorder}
+        accentText={doctor.accentText}
+        instagramUrl={doctor.instagram}
+        instagramHandle={doctor.instagramHandle}
+        whatsappUrl={doctor.whatsapp}
+      />
+
+      {/* 8B & 9. Outpatient Consultation Facility & Meet Your Co-Consultant (Side-by-Side) */}
       <section id="location-timings" className="scroll-mt-24 py-8 sm:py-12 bg-white border-t border-[#F1E5E8]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
-          <div className="max-w-4xl mx-auto bg-white rounded-3xl p-5 sm:p-8 border-2 border-[#F1E5E8] shadow-md">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
-              
-              <div className="space-y-3">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch">
+            
+            {/* Left: Outpatient Consultation Facility */}
+            <div className="bg-white rounded-3xl p-5 sm:p-7 border-2 border-[#F1E5E8] shadow-sm flex flex-col justify-between">
+              <div className="space-y-3.5">
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold text-[#1A2229] bg-gray-100">
-                  <Building2 className="w-3.5 h-3.5 text-[#FB5A7C]" />
+                  <Building2 className="w-3.5 h-3.5" style={{ color: doctor.accentColor }} />
                   <span>Outpatient Consultation Facility</span>
                 </div>
 
-                <h3 className="text-xl sm:text-2xl font-bold text-[#1A2229]">
-                  {doctor.hospitalShort}
-                </h3>
+                <div>
+                  <h3 className="text-xl sm:text-2xl font-bold text-[#1A2229]">
+                    {doctor.hospitalShort}
+                  </h3>
+                </div>
 
                 <div className="space-y-2.5 text-xs sm:text-sm text-[#475569]">
                   <div className="flex items-start gap-2.5">
-                    <MapPin className="w-4 h-4 text-[#FB5A7C] shrink-0 mt-0.5" />
-                    <span>{doctor.hospital}</span>
+                    <MapPin className="w-4 h-4 shrink-0 mt-0.5" style={{ color: doctor.accentColor }} />
+                    <span className="leading-snug">{doctor.hospital}</span>
                   </div>
 
                   <div className="flex items-center gap-2.5">
-                    <Clock className="w-4 h-4 text-[#2FB2EA] shrink-0" />
+                    <Clock className="w-4 h-4 shrink-0" style={{ color: doctor.accentColor }} />
                     <span className="font-semibold text-[#1A2229]">{doctor.timings}</span>
                   </div>
                 </div>
 
-                <div className="pt-1">
+                <div className="pt-0.5">
                   <a
                     href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
                       doctor.hospital
                     )}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0B75A1] hover:underline"
+                    className="inline-flex items-center gap-1.5 text-xs font-bold hover:underline"
+                    style={{ color: doctor.accentText }}
                   >
                     <ExternalLink className="w-3.5 h-3.5" />
                     <span>Open in Google Maps Directions</span>
@@ -415,110 +439,121 @@ export default async function DoctorProfilePage({ params }: { params: Promise<{ 
                 </div>
               </div>
 
-              {/* Insurance & Quick Appointment Booking Box */}
-              <div className="bg-[#FAFAF9] rounded-2xl p-4 sm:p-5 border border-gray-200 space-y-3">
-                <div className="space-y-1.5">
-                  <div className="flex items-center gap-2 text-xs font-semibold text-emerald-800 bg-emerald-50 border border-emerald-200 px-3 py-2 rounded-xl">
+              {/* Insurance & Quick WhatsApp Booking */}
+              <div className="mt-5 pt-4 border-t border-gray-100 space-y-3">
+                <div className="bg-[#FAFAF9] rounded-2xl p-3 border border-gray-100 space-y-1">
+                  <div className="flex items-center gap-2 text-xs font-semibold text-emerald-800">
                     <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0" />
                     <span>Cashless &amp; TPA Insurance Supported</span>
                   </div>
                   <p className="text-[11px] text-gray-500 leading-relaxed">
-                    Supported for normal deliveries, cesarean sections, and laparoscopic surgeries at Manipal Hospital.
+                    {doctor.id === "subham"
+                      ? "Supported for normal deliveries, cesarean sections, and laparoscopic surgeries at Manipal Hospital."
+                      : "Supported for specialized fertility evaluations, operative gynaecology, and day-care procedures at affiliated centres."}
                   </p>
                 </div>
 
-                <div className="pt-1">
-                  <a
-                    href={doctor.whatsapp}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn-whatsapp w-full justify-center text-xs py-2.5 shadow-sm hover:shadow-md transition-all rounded-full"
-                  >
-                    <MessageCircle className="w-4 h-4 fill-white" />
-                    <span>Book Appointment on WhatsApp</span>
-                  </a>
-                </div>
+                <a
+                  href={doctor.whatsapp}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`w-full justify-center text-xs py-2.5 px-4 shadow-sm hover:shadow-md hover:scale-[1.01] active:scale-[0.99] transition-all rounded-full font-bold flex items-center gap-2 ${doctorBtnClass}`}
+                >
+                  <MessageCircle className="w-4 h-4 fill-white" />
+                  <span>Book Appointment on WhatsApp</span>
+                </a>
               </div>
-
             </div>
-          </div>
 
-        </div>
-      </section>
-
-      {/* 9. Meet Your Co-Consultant / Couple Advantage Cross-Link */}
-      {partnerDoctor && (
-        <section className="py-8 sm:py-10 bg-[#FAFAF9] border-t border-[#F1E5E8]">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="bg-gradient-to-br from-[#FFF5F7] via-white to-[#F2FAFE] rounded-3xl p-5 sm:p-8 border border-[#FFCCD6] shadow-xs">
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
-                
-                <div className="lg:col-span-8 space-y-2.5">
-                  <div className="flex items-center gap-2">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-[#FB5A7C] bg-white px-2.5 py-0.5 rounded-full border border-pink-100 shadow-2xs">
+            {/* Right: Meet Your Co-Consultant (The Couple Advantage) */}
+            {partnerDoctor && (
+              <div className="bg-gradient-to-br from-[#FFF5F7] via-white to-[#F2FAFE] rounded-3xl p-5 sm:p-7 border-2 border-[#FFD3DC] shadow-sm flex flex-col justify-between">
+                <div className="space-y-3.5">
+                  <div className="flex items-center justify-between gap-2 flex-wrap">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-[#FB5A7C] bg-white px-2.5 py-1 rounded-full border border-pink-100 shadow-2xs">
                       The Couple Advantage
                     </span>
-                    <span className="text-xs text-gray-500 font-medium hidden sm:inline">
-                      &bull; &ldquo;A family caring for your family&rdquo;
+                    <span className="text-[11px] text-gray-500 font-medium">
+                      &ldquo;A family caring for your family&rdquo;
                     </span>
                   </div>
 
-                  <h2 className="text-xl sm:text-2xl font-bold text-[#1A2229]">
-                    Meet Your Co-Consultant: {partnerDoctor.name}
-                  </h2>
+                  <div>
+                    <h3 className="text-xl sm:text-2xl font-bold text-[#1A2229]">
+                      Meet Your Co-Consultant
+                    </h3>
+                  </div>
 
-                  <p className="text-xs text-[#475569] leading-relaxed">
-                    Dr. Ruchika and Dr. Subham work together as Siliguri&apos;s husband-and-wife specialist team. For complex pregnancies, difficult surgical decisions, or pre-pregnancy planning, both doctors collaborate so your care is double-reviewed.
-                  </p>
-
-                  <div className="pt-2 flex flex-wrap items-center gap-3">
+                  {/* Partner Doctor Mini Profile */}
+                  <div className="bg-white/90 backdrop-blur-xs rounded-2xl p-3 sm:p-3.5 border border-gray-100 shadow-2xs flex items-center gap-3.5">
                     <Link
                       href={`/doctors/${partnerDoctor.slug}`}
-                      className="btn-primary text-xs py-2 px-4 shadow-xs inline-flex items-center gap-1.5"
+                      className="relative w-16 h-20 sm:w-20 sm:h-24 rounded-xl overflow-hidden shadow-xs shrink-0 border border-gray-100 bg-gray-50 group block"
                     >
-                      <span>View {partnerDoctor.shortName}&apos;s Profile</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
-                    </Link>
-
-                    <a
-                      href={WHATSAPP_JOINT}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-xs font-bold text-[#0B75A1] hover:underline px-2 py-1"
-                    >
-                      Inquire Joint Consultation &rarr;
-                    </a>
-                  </div>
-                </div>
-
-                <div className="lg:col-span-4 flex justify-center">
-                  <Link
-                    href={`/doctors/${partnerDoctor.slug}`}
-                    className="group bg-white rounded-2xl p-2.5 border border-gray-200 hover:border-[#FB5A7C] shadow-2xs hover:shadow-md transition-all text-center flex flex-col items-center w-48"
-                  >
-                    <div className="relative w-32 h-38 rounded-xl overflow-hidden mb-2 bg-gray-50">
                       <Image
                         src={partnerDoctor.photo}
                         alt={partnerDoctor.name}
                         fill
-                        sizes="140px"
+                        sizes="96px"
                         className="object-cover object-top group-hover:scale-105 transition-transform duration-300"
                       />
+                    </Link>
+                    <div className="min-w-0 flex-1 space-y-1">
+                      <Link
+                        href={`/doctors/${partnerDoctor.slug}`}
+                        className="block group/link"
+                      >
+                        <h4 className="text-sm sm:text-base font-bold text-[#1A2229] group-hover/link:text-[#FB5A7C] transition-colors leading-tight">
+                          {partnerDoctor.name}
+                        </h4>
+                      </Link>
+                      <p className="text-[11px] font-semibold text-gray-500 line-clamp-1">
+                        {partnerDoctor.degrees}
+                      </p>
+                      <p className="text-[11px] text-[#475569] line-clamp-1">
+                        {partnerDoctor.role}
+                      </p>
+                      <div className="flex items-center gap-1 text-[11px] text-gray-600 pt-0.5">
+                        <MapPin className="w-3 h-3 text-gray-400 shrink-0" />
+                        <span className="truncate">{partnerDoctor.hospitalShort}</span>
+                      </div>
                     </div>
-                    <span className="text-xs font-bold text-[#1A2229] group-hover:text-[#FB5A7C] transition-colors">
-                      {partnerDoctor.name}
-                    </span>
-                    <span className="text-[10px] text-gray-500 font-medium">
-                      {partnerDoctor.hospitalShort}
-                    </span>
-                  </Link>
+                  </div>
+
+                  <p className="text-xs text-[#475569] leading-relaxed">
+                    Dr. Ruchika and Dr. Subham collaborate closely on complex pregnancies, high-risk birth plans, and surgical decisions so your care is comprehensively double-reviewed.
+                  </p>
                 </div>
 
+                {/* Bottom Actions */}
+                <div className="mt-5 pt-4 border-t border-gray-100 flex flex-col sm:flex-row items-center gap-2.5">
+                  <Link
+                    href={`/doctors/${partnerDoctor.slug}`}
+                    className={`w-full sm:w-auto flex-1 text-xs py-2.5 px-4 shadow-sm hover:shadow-md hover:scale-[1.01] active:scale-[0.99] transition-all rounded-full font-bold inline-flex items-center justify-center gap-1.5 ${
+                      partnerDoctor.id === "subham"
+                        ? "bg-[#4384C6] hover:bg-[#3271B2] text-white"
+                        : "bg-[#F57B94] hover:bg-[#E6627E] text-white"
+                    }`}
+                  >
+                    <span>View {partnerDoctor.shortName}&apos;s Profile</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
+
+                  <a
+                    href={WHATSAPP_JOINT}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full sm:w-auto text-xs font-bold text-[#0B75A1] hover:underline px-3 py-2 text-center"
+                  >
+                    Inquire Joint Care &rarr;
+                  </a>
+                </div>
               </div>
-            </div>
+            )}
+
           </div>
-        </section>
-      )}
+        </div>
+      </section>
 
       {/* 10. Patient Reviews & Recovery Stories */}
       <ReviewsSection
@@ -564,7 +599,7 @@ export default async function DoctorProfilePage({ params }: { params: Promise<{ 
               href={doctor.whatsapp}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-whatsapp text-xs sm:text-sm py-2.5 px-6 shadow-md hover:shadow-lg transition-all rounded-full"
+              className={`text-xs sm:text-sm py-2.5 px-6 shadow-md hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] transition-all rounded-full font-bold inline-flex items-center gap-2 ${doctorBtnClass}`}
             >
               <MessageCircle className="w-4 h-4 fill-white" />
               <span>Book on WhatsApp Now</span>

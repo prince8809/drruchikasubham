@@ -1,12 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import { MessageCircle, Calendar, ShieldCheck, MapPin, Clock } from "lucide-react";
+import { MessageCircle, Calendar, ShieldCheck, MapPin } from "lucide-react";
 import {
   WHATSAPP_SUBHAM,
   WHATSAPP_RUCHIKA,
   ADDRESS_MANIPAL,
-  ADDRESS_ZIVAH
+  ADDRESS_ZIVAH,
+  PRIMARY_CONCERN_OPTIONS,
 } from "@/lib/constants";
 
 export default function BookingStrip() {
@@ -29,7 +30,7 @@ export default function BookingStrip() {
   };
 
   return (
-    <section id="booking" className="py-20 bg-gradient-to-br from-[#FB5A7C] via-[#E54366] to-[#C4274C] text-white relative overflow-hidden scroll-mt-24 sm:scroll-mt-28">
+    <section id="booking" className="py-20 bg-gradient-to-br from-[#E24A6F] via-[#D13B60] to-[#B0264A] text-white relative overflow-hidden scroll-mt-24 sm:scroll-mt-28">
       {/* Decorative ambient bubbles */}
       <div className="absolute -top-10 -right-10 w-80 h-80 bg-white/10 rounded-full blur-2xl pointer-events-none"></div>
       <div className="absolute -bottom-10 -left-10 w-80 h-80 bg-black/10 rounded-full blur-2xl pointer-events-none"></div>
@@ -38,40 +39,53 @@ export default function BookingStrip() {
         
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           
-          {/* Left Column: Reassurance & Info */}
+          {/* Left Column: Reassurance & Info with High-Contrast Typography */}
           <div className="lg:col-span-6 space-y-6 text-center lg:text-left">
-            <span className="inline-block bg-white/20 backdrop-blur-md px-3.5 py-1 rounded-full text-xs font-semibold uppercase tracking-wider text-white">
-              Instant Appointment Confirmation
+            <span className="inline-flex items-center gap-1.5 bg-white text-[#C73859] px-4 py-1.5 rounded-full text-xs font-extrabold uppercase tracking-wider shadow-md">
+              <Calendar className="w-3.5 h-3.5 text-[#F57B94]" />
+              <span>Instant Appointment Confirmation</span>
             </span>
 
-            <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight leading-tight">
+            <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight leading-tight text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.30)]">
               Ready for Compassionate, Dedicated Care?
             </h2>
 
-            <p className="text-white/90 text-sm sm:text-base leading-relaxed max-w-xl mx-auto lg:mx-0">
+            <p className="text-white/95 text-sm sm:text-base leading-relaxed max-w-xl mx-auto lg:mx-0 font-medium drop-shadow-[0_1px_2px_rgba(0,0,0,0.25)]">
               No long queues or complicated forms. Connect directly with our clinic desks on WhatsApp to select your preferred day, time, and doctor.
             </p>
 
-            {/* Quick Location Pills */}
-            <div className="space-y-3 pt-2 text-xs sm:text-sm text-left">
-              <div className="bg-white/10 backdrop-blur-sm p-3.5 rounded-xl border border-white/15 flex items-start gap-3">
-                <MapPin className="w-5 h-5 shrink-0 text-white mt-0.5" />
+            {/* Quick Location Pills: Crisp White Cards for 100% Readability */}
+            <div className="space-y-3.5 pt-2 text-xs sm:text-sm text-left">
+              <div className="bg-white text-[#1A2229] p-4 rounded-2xl shadow-lg border border-pink-100 flex items-start gap-3.5 hover:shadow-xl transition-all">
+                <div className="w-10 h-10 rounded-xl bg-[#FFF0F3] border border-[#FFD3DC] flex items-center justify-center shrink-0 mt-0.5">
+                  <MapPin className="w-5 h-5 text-[#F57B94]" />
+                </div>
                 <div>
-                  <strong className="block text-white font-bold">Dr. Ruchika Agarwal &bull; Zivah Wellness Centre</strong>
-                  <span className="text-white/80 text-xs">Mon – Fri: 10:00 AM – 2:00 PM &bull; {ADDRESS_ZIVAH}</span>
+                  <strong className="block text-[#1A2229] font-bold text-sm">
+                    Dr. Ruchika Agarwal &bull; Zivah Wellness Centre
+                  </strong>
+                  <span className="text-[#475569] text-xs block mt-0.5 font-medium">
+                    Mon – Fri: 10:00 AM – 2:00 PM &bull; {ADDRESS_ZIVAH}
+                  </span>
                 </div>
               </div>
 
-              <div className="bg-white/10 backdrop-blur-sm p-3.5 rounded-xl border border-white/15 flex items-start gap-3">
-                <MapPin className="w-5 h-5 shrink-0 text-white mt-0.5" />
+              <div className="bg-white text-[#1A2229] p-4 rounded-2xl shadow-lg border border-sky-100 flex items-start gap-3.5 hover:shadow-xl transition-all">
+                <div className="w-10 h-10 rounded-xl bg-[#EBF4FC] border border-[#BCD7F5] flex items-center justify-center shrink-0 mt-0.5">
+                  <MapPin className="w-5 h-5 text-[#4384C6]" />
+                </div>
                 <div>
-                  <strong className="block text-white font-bold">Dr. Subham Agarwal &bull; Manipal Hospital Siliguri</strong>
-                  <span className="text-white/80 text-xs">Mon – Fri: 10:00 AM – 6:00 PM &bull; {ADDRESS_MANIPAL}</span>
+                  <strong className="block text-[#1A2229] font-bold text-sm">
+                    Dr. Subham Agarwal &bull; Manipal Hospital Siliguri
+                  </strong>
+                  <span className="text-[#475569] text-xs block mt-0.5 font-medium">
+                    Mon – Fri: 10:00 AM – 6:00 PM &bull; {ADDRESS_MANIPAL}
+                  </span>
                 </div>
               </div>
             </div>
 
-            <div className="flex items-center justify-center lg:justify-start gap-2 pt-2 text-xs text-white/90 font-medium">
+            <div className="flex items-center justify-center lg:justify-start gap-2 pt-2 text-xs text-white font-semibold drop-shadow-[0_1px_2px_rgba(0,0,0,0.25)]">
               <ShieldCheck className="w-4 h-4 text-emerald-300 shrink-0" />
               <span>Cashless &amp; TPA Insurance Accepted for Deliveries &amp; Surgeries</span>
             </div>
@@ -90,7 +104,7 @@ export default function BookingStrip() {
 
               <form onSubmit={handleBookingSubmit} className="space-y-4">
                 
-                {/* Doctor Selection */}
+                {/* Doctor Selection: Pink for Dr. Ruchika, Blue for Dr. Subham */}
                 <div>
                   <label className="block text-xs font-bold text-gray-700 mb-2">
                     Select Doctor / Consultation:
@@ -101,7 +115,7 @@ export default function BookingStrip() {
                       onClick={() => setSelectedDoctor("ruchika")}
                       className={`p-2.5 rounded-xl text-xs font-bold border transition-all text-center cursor-pointer ${
                         selectedDoctor === "ruchika"
-                          ? "bg-[#FB5A7C] text-white border-[#FB5A7C] shadow-sm"
+                          ? "bg-[#F57B94] text-white border-[#F57B94] shadow-sm"
                           : "bg-gray-50 text-gray-700 border-gray-200 hover:bg-gray-100"
                       }`}
                     >
@@ -112,7 +126,7 @@ export default function BookingStrip() {
                       onClick={() => setSelectedDoctor("subham")}
                       className={`p-2.5 rounded-xl text-xs font-bold border transition-all text-center cursor-pointer ${
                         selectedDoctor === "subham"
-                          ? "bg-[#2FB2EA] text-white border-[#2FB2EA] shadow-sm"
+                          ? "bg-[#4384C6] text-white border-[#4384C6] shadow-sm"
                           : "bg-gray-50 text-gray-700 border-gray-200 hover:bg-gray-100"
                       }`}
                     >
@@ -123,7 +137,7 @@ export default function BookingStrip() {
                       onClick={() => setSelectedDoctor("joint")}
                       className={`p-2.5 rounded-xl text-xs font-bold border transition-all text-center cursor-pointer ${
                         selectedDoctor === "joint"
-                          ? "bg-[#1A2229] text-white border-[#1A2229] shadow-sm"
+                          ? "bg-gradient-to-r from-[#F57B94] to-[#4384C6] text-white border-transparent shadow-sm"
                           : "bg-gray-50 text-gray-700 border-gray-200 hover:bg-gray-100"
                       }`}
                     >
@@ -160,14 +174,11 @@ export default function BookingStrip() {
                     className="w-full text-sm px-3.5 py-2.5 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#FB5A7C] transition-all bg-white"
                   >
                     <option value="">Choose a condition / general visit</option>
-                    <option value="Pregnancy & Antenatal Checkup">Pregnancy &amp; Antenatal Checkup</option>
-                    <option value="Normal / C-Section Delivery Planning">Normal / C-Section Delivery Planning</option>
-                    <option value="High-Risk Pregnancy Consultation">High-Risk Pregnancy Consultation</option>
-                    <option value="PCOD / PCOS & Irregular Periods">PCOD / PCOS &amp; Irregular Periods</option>
-                    <option value="Fertility & IVF Planning">Fertility &amp; IVF Planning</option>
-                    <option value="Laparoscopic Surgery / Fibroid / Cyst">Laparoscopic Surgery / Fibroid / Cyst</option>
-                    <option value="Second Opinion on Surgery">Second Opinion on Surgery</option>
-                    <option value="Menopause & General Gynae Care">Menopause &amp; General Gynae Care</option>
+                    {PRIMARY_CONCERN_OPTIONS.map((opt) => (
+                      <option key={opt} value={opt}>
+                        {opt}
+                      </option>
+                    ))}
                   </select>
                 </div>
 

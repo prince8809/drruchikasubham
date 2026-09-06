@@ -216,10 +216,14 @@ export default function DoctorSpecialtiesCarousel({
                   )}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="pt-3 border-t border-gray-100 flex items-center justify-between text-xs font-bold text-[#FB5A7C] hover:text-[#E54366] transition-colors group/btn"
+                  className="pt-3 border-t border-gray-100 flex items-center justify-between text-xs font-bold transition-colors group/btn hover:opacity-85"
+                  style={{ color: accentColor }}
                 >
                   <span>Consult on this condition</span>
-                  <div className="w-6 h-6 rounded-full bg-[#FFE9ED] flex items-center justify-center group-hover/btn:bg-[#FB5A7C] group-hover/btn:text-white transition-colors">
+                  <div
+                    className="w-6 h-6 rounded-full flex items-center justify-center transition-colors"
+                    style={{ backgroundColor: accentBg, color: accentColor }}
+                  >
                     <MessageCircle className="w-3.5 h-3.5" />
                   </div>
                 </a>
@@ -244,9 +248,10 @@ export default function DoctorSpecialtiesCarousel({
             }}
             className={`h-1.5 rounded-full transition-all duration-300 ${
               i === activeIndex
-                ? "w-6 bg-[#FB5A7C]"
+                ? "w-6"
                 : "w-1.5 bg-gray-200 hover:bg-gray-300"
             }`}
+            style={i === activeIndex ? { backgroundColor: accentColor } : {}}
             aria-label={`Go to specialty ${i + 1}`}
           />
         ))}

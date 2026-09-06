@@ -4,7 +4,6 @@ import { useState, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { MessageCircle, Menu, X, Calendar, ChevronDown } from "lucide-react";
-import { WHATSAPP_SUBHAM } from "@/lib/constants";
 import BookingModal from "@/components/shared/BookingModal";
 
 export default function Navbar() {

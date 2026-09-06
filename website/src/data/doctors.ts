@@ -49,6 +49,8 @@ export interface Doctor {
   partnerDoctorSlug: string;
   partnerDoctorName: string;
   partnerDoctorHospital: string;
+  instagram?: string;
+  instagramHandle?: string;
   faqs: DoctorFAQ[];
 }
 
@@ -70,6 +72,8 @@ export const doctors: Doctor[] = [
     specialHighlightDesc: "Dr. Ruchika prioritizes emotional comfort, continuous labor reassurance, and natural birth preparedness. She also provides gentle guidance for teenagers experiencing painful or irregular cycles, helping young women build long-term reproductive confidence.",
     specialHighlightImage: "/images/doctors/pillars/ruchika-special-focus.webp",
     photo: "/images/doctors/dr-ruchika-headshot.webp",
+    instagram: "https://www.instagram.com/dr.rhea_ag21/",
+    instagramHandle: "@dr.rhea_ag21",
     whatsapp: WHATSAPP_RUCHIKA,
     phone: PHONE_RUCHIKA,
     hospital: "Zivah Fertility & Women's Wellness Centre, 2nd Floor, The Crest, Meghnad Saha Sarani, Opposite Deokta Sangha, Pradhan Nagar, Siliguri - 734003",
@@ -141,10 +145,10 @@ export const doctors: Doctor[] = [
       "6+ Years of Compassionate Women's Healthcare",
       "Trusted by Families Across Siliguri, Sikkim & North Bengal"
     ],
-    accentColor: "#FB5A7C",
-    accentBg: "bg-[#FFF5F7]",
-    accentBorder: "border-[#FFCCD6]",
-    accentText: "text-[#C4274C]",
+    accentColor: "#F57B94",
+    accentBg: "bg-[#FFF0F3]",
+    accentBorder: "border-[#FFD3DC]",
+    accentText: "text-[#C73859]",
     partnerDoctorSlug: "dr-subham-agarwal",
     partnerDoctorName: "Dr. Subham Agarwal",
     partnerDoctorHospital: "Manipal Hospital, Siliguri",
@@ -185,6 +189,8 @@ export const doctors: Doctor[] = [
     specialHighlightImage: "/images/doctors/pillars/subham-fathers-corner.webp",
     photo: "/images/doctors/dr-subham-headshot.webp",
     extendedPhoto: "/images/doctors/dr-subham-extended.webp",
+    instagram: "https://www.instagram.com/drruchikasubham/",
+    instagramHandle: "@drruchikasubham",
     whatsapp: WHATSAPP_SUBHAM,
     phone: PHONE_SUBHAM,
     hospital: "Manipal Hospital, Meghnad Saha Sarani, Ward 2, Pradhan Nagar, Siliguri, West Bengal 734003",
@@ -196,7 +202,7 @@ export const doctors: Doctor[] = [
       "M.B.B.S — Bachelor of Medicine, Bachelor of Surgery",
       "M.S (Obstetrics & Gynaecology) — Master of Surgery",
       "F.M.A.S — Fellowship in Minimal Access Surgery",
-      "F.I.A.G — Fellowship of Indian Academy of Gynaecological Endoscopy"
+      "F.I.A.G — Fellowship in Aesthetic Gynaecology"
     ],
     specialties: [
       "High-Risk Pregnancy",
@@ -259,10 +265,10 @@ export const doctors: Doctor[] = [
       "100+ Laparoscopic Hysterectomies",
       "6+ Years of Proven Clinical Excellence"
     ],
-    accentColor: "#2FB2EA",
-    accentBg: "bg-[#F2FAFE]",
-    accentBorder: "border-[#BCE6F9]",
-    accentText: "text-[#0B75A1]",
+    accentColor: "#4384C6",
+    accentBg: "bg-[#EBF4FC]",
+    accentBorder: "border-[#BCD7F5]",
+    accentText: "text-[#1E518A]",
     partnerDoctorSlug: "dr-ruchika-agarwal",
     partnerDoctorName: "Dr. Ruchika Agarwal",
     partnerDoctorHospital: "Zivah Fertility & Women's Wellness Centre",
