@@ -178,7 +178,7 @@ export const doctors: Doctor[] = [
     shortName: "Dr. Subham",
     degrees: "M.B.B.S, M.S, F.M.A.S, F.I.A.G",
     role: "Consultant Obstetrician, Gynaecologist & Advanced Laparoscopic Surgeon",
-    tagline: "Your Health. Your Fertility. Your Pregnancy. Expertly Cared For.",
+    tagline: "Your Health. Your Fertility. Your Pregnancy. Expertly\u00A0Cared\u00A0For.",
     bio: "Specialising in high-risk pregnancies, minimally invasive laparoscopic surgery, and complex gynaecological care. Dr. Subham brings surgical precision and reassuring calm to every patient's birthing and surgical journey.",
     fullBio: "Dr. Subham Agarwal provides comprehensive and personalised care for women at every stage of life, with advanced clinical expertise in pregnancy and antenatal care, normal vaginal and caesarean delivery, high-risk pregnancy management, fertility evaluation, and minimally invasive laparoscopic gynaecological surgery. Committed to holistic family-centered obstetrics, Dr. Subham also actively guides and supports husbands and partners through labor and postpartum care.",
     philosophyTitle: "Surgical Precision & Reassuring Family-Centered Care",

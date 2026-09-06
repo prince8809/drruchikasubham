@@ -50,7 +50,7 @@ const HERO_SLIDES: HeroSlide[] = [
     badgeIcon: "sparkles",
     titleLine1: "Your Health. Your Fertility.",
     titleLine2: "Your Pregnancy.",
-    titleAccent: "Expertly Cared For.",
+    titleAccent: "Expertly\u00A0Cared\u00A0For.",
     doctorCredentials:
       "Dr. Ruchika & Dr. Subham Agarwal • Obstetricians, Gynaecologists & Laparoscopic Surgeons in Siliguri",
     description:
@@ -253,10 +253,16 @@ export default function HeroSection() {
             </div>
 
             {/* Dynamic Main Headline */}
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-[#1A2229] tracking-tight leading-[1.15] transition-all duration-300">
-              {currentSlide.titleLine1} <br className="hidden sm:inline" />
-              {currentSlide.titleLine2} <br className="hidden sm:inline" />
-              <span className="bg-gradient-to-r from-[#F57B94] to-[#E6627E] bg-clip-text text-transparent">
+            <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#1A2229] tracking-tight leading-[1.2] sm:leading-[1.15] transition-all duration-300">
+              <span className="block sm:inline">{currentSlide.titleLine1}</span>{" "}
+              <span className="block sm:inline">{currentSlide.titleLine2}</span>{" "}
+              <span
+                className={`inline-block whitespace-nowrap bg-gradient-to-r ${
+                  currentSlide.id === "laparoscopy"
+                    ? "from-[#4384C6] to-[#3271B2]"
+                    : "from-[#F57B94] to-[#E6627E]"
+                } bg-clip-text text-transparent`}
+              >
                 {currentSlide.titleAccent}
               </span>
               <span className="block text-xs sm:text-sm font-semibold tracking-normal text-[#64748B] mt-2.5 font-sans">

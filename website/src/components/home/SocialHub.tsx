@@ -13,11 +13,10 @@ import {
   ExternalLink,
   MessageCircle,
   Sparkles,
-  Pause
 } from "lucide-react";
-import { InstagramIcon, FacebookIcon } from "@/components/shared/Icons";
+import { InstagramIcon } from "@/components/shared/Icons";
 import { socialPosts, SocialPost } from "@/data/social-feed";
-import { INSTAGRAM_URL, FACEBOOK_URL, WHATSAPP_SUBHAM } from "@/lib/constants";
+import { INSTAGRAM_URL, WHATSAPP_SUBHAM } from "@/lib/constants";
 
 export default function SocialHub() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -392,23 +391,6 @@ export default function SocialHub() {
             </div>
           </div>
         )}
-
-        {/* Bottom Callout */}
-        <div className="mt-12 text-center bg-white border border-[#FFCCD6] rounded-2xl p-6 shadow-sm max-w-2xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="text-left">
-            <h4 className="font-bold text-sm text-[#1A2229]">Have questions on any of these topics?</h4>
-            <p className="text-xs text-[#475569] mt-0.5">Send a quick WhatsApp text to discuss your symptoms directly with our clinic.</p>
-          </div>
-          <a
-            href={WHATSAPP_SUBHAM}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-whatsapp text-xs py-2.5 px-5 shrink-0 shadow-sm"
-          >
-            <MessageCircle className="w-4 h-4 fill-white" />
-            <span>Ask on WhatsApp</span>
-          </a>
-        </div>
 
       </div>
     </section>
