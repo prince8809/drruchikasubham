@@ -73,6 +73,22 @@ export default function RootLayout({
   return (
     <html lang="en" data-scroll-behavior="smooth">
       <head>
+        <link
+          rel="preload"
+          as="image"
+          href="/images/hero/slide-consultation-mobile.webp"
+          media="(max-width: 640px)"
+          type="image/webp"
+          fetchPriority="high"
+        />
+        <link
+          rel="preload"
+          as="image"
+          href="/images/hero/slide-consultation.webp"
+          media="(min-width: 641px)"
+          type="image/webp"
+          fetchPriority="high"
+        />
         <link rel="preconnect" href="https://translate.google.com" />
         <link rel="preconnect" href="https://translate.googleapis.com" />
       </head>

@@ -77,7 +77,7 @@ export default function Navbar() {
         <Link href="/" className="flex items-center gap-2 sm:gap-3 group min-w-0 flex-1 sm:flex-initial overflow-hidden pr-2">
           <div className="relative w-10 h-10 sm:w-12 sm:h-12 rounded-2xl overflow-hidden bg-gradient-to-b from-[#FFF0F3] to-white border border-[#FFD3DC] p-1 sm:p-1.5 flex items-center justify-center shrink-0 shadow-2xs group-hover:scale-105 transition-transform">
             <Image
-              src="/images/brand/brand-logo-v2.png"
+              src="/images/brand/brand-logo-v2.webp"
               alt="Dr. Ruchika & Dr. Subham Agarwal Emblem"
               width={48}
               height={48}

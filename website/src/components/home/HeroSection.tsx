@@ -31,6 +31,7 @@ interface HeroSlide {
   description: string;
   mobileDescription?: string;
   image: string;
+  mobileImage: string;
   alt: string;
   primaryBtn: {
     label: string;
@@ -65,7 +66,8 @@ const HERO_SLIDES: HeroSlide[] = [
       "Complete women's healthcare in Siliguri — from periods, PCOS & fertility evaluations to gentle normal delivery, high-risk pregnancy management, and advanced laparoscopic surgery.",
     mobileDescription:
       "Complete women's healthcare in Siliguri — fertility evaluations, gentle normal delivery, high-risk care & keyhole surgery.",
-    image: "/images/hero/slide-consultation.jpg",
+    image: "/images/hero/slide-consultation.webp",
+    mobileImage: "/images/hero/slide-consultation-mobile.webp",
     alt: "Warm clinical consultation and patient lounge with Dr. Ruchika and Dr. Subham Agarwal",
     primaryBtn: {
       label: "Book with Dr. Ruchika",
@@ -101,7 +103,8 @@ const HERO_SLIDES: HeroSlide[] = [
       "Advanced keyhole surgery for ovarian cysts, uterine fibroids, severe endometriosis, ectopic pregnancy, and laparoscopic hysterectomy with minimal discomfort, tiny incisions, and fast discharge.",
     mobileDescription:
       "Advanced keyhole surgery for ovarian cysts, fibroids, endometriosis & hysterectomy with tiny 5mm incisions & fast recovery.",
-    image: "/images/hero/slide-laparoscopy.jpg",
+    image: "/images/hero/slide-laparoscopy.webp",
+    mobileImage: "/images/hero/slide-laparoscopy-mobile.webp",
     alt: "State of the art 4K laparoscopic surgical operating suite",
     primaryBtn: {
       label: "Consult Dr. Subham",
@@ -138,7 +141,8 @@ const HERO_SLIDES: HeroSlide[] = [
       "Compassionate prenatal care, normal delivery advocacy, high-risk pregnancy fetal ultrasound monitoring, and unhurried consultation from conception to birth in modern birthing suites.",
     mobileDescription:
       "Compassionate prenatal care, normal delivery advocacy & high-risk pregnancy monitoring in modern birthing suites.",
-    image: "/images/hero/slide-maternity-v2.jpg",
+    image: "/images/hero/slide-maternity-v2.webp",
+    mobileImage: "/images/hero/slide-maternity-mobile.webp",
     alt: "Modern private hospital maternity birthing suite with neonatal infant warmer and fetal ultrasound monitor",
     primaryBtn: {
       label: "Consult Dr. Ruchika",
@@ -215,20 +219,32 @@ export default function HeroSection() {
                 isActive ? "opacity-100" : "opacity-0 pointer-events-none"
               }`}
             >
-              <Image
-                src={slide.image}
-                alt={slide.alt}
-                fill
-                priority
-                sizes="100vw"
-                className={`w-full h-full object-cover transition-transform duration-[8000ms] ease-out ${
-                  slide.id === "duo-care"
-                    ? "object-[72%_center] sm:object-center brightness-[1.18] sm:brightness-[1.06] contrast-[0.98]"
-                    : slide.id === "laparoscopy"
-                    ? "object-center brightness-[1.18] sm:brightness-[1.06] contrast-[0.98]"
-                    : "object-center brightness-[1.02]"
-                } ${isActive ? "scale-105" : "scale-100"}`}
-              />
+              <picture className="absolute inset-0 w-full h-full">
+                <source
+                  media="(max-width: 640px)"
+                  srcSet={slide.mobileImage}
+                  type="image/webp"
+                />
+                <source
+                  media="(min-width: 641px)"
+                  srcSet={slide.image}
+                  type="image/webp"
+                />
+                <img
+                  src={slide.image}
+                  alt={slide.alt}
+                  loading={idx === 0 ? "eager" : "lazy"}
+                  fetchPriority={idx === 0 ? "high" : "low"}
+                  decoding={idx === 0 ? "sync" : "async"}
+                  className={`w-full h-full object-cover transition-transform duration-[8000ms] ease-out ${
+                    slide.id === "duo-care"
+                      ? "object-[72%_center] sm:object-center brightness-[1.18] sm:brightness-[1.06] contrast-[0.98]"
+                      : slide.id === "laparoscopy"
+                      ? "object-center brightness-[1.18] sm:brightness-[1.06] contrast-[0.98]"
+                      : "object-center brightness-[1.02]"
+                  } ${isActive ? "scale-105" : "scale-100"}`}
+                />
+              </picture>
             </div>
           );
         })}
@@ -448,7 +464,7 @@ export default function HeroSection() {
                 >
                   <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#FFF0F3] p-1.5 flex items-center justify-center shrink-0">
                     <Image
-                      src="/images/brand/couple-art-v2.png"
+                      src="/images/brand/couple-art-v2.webp"
                       alt="Couple Care"
                       width={32}
                       height={32}

@@ -51,15 +51,28 @@ export default function GoogleTranslateProvider() {
       }
     };
 
-    // 3. Inject Google Translate script if not already present
+    // 3. Inject Google Translate script during idle time to eliminate main-thread contention
     const SCRIPT_ID = "google-translate-script";
-    if (!document.getElementById(SCRIPT_ID)) {
-      const script = document.createElement("script");
-      script.id = SCRIPT_ID;
-      script.src =
-        "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
-      script.async = true;
-      document.body.appendChild(script);
+    const injectTranslateScript = () => {
+      if (!document.getElementById(SCRIPT_ID)) {
+        const script = document.createElement("script");
+        script.id = SCRIPT_ID;
+        script.src =
+          "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
+        script.async = true;
+        document.body.appendChild(script);
+      }
+    };
+
+    if (typeof window !== "undefined") {
+      if ("requestIdleCallback" in window) {
+        (window as unknown as { requestIdleCallback: (cb: () => void, opts?: { timeout: number }) => void }).requestIdleCallback(
+          injectTranslateScript,
+          { timeout: 2500 }
+        );
+      } else {
+        setTimeout(injectTranslateScript, 1200);
+      }
     }
 
     // 4. Suppress Google Translate body top offset & remove banner iframe

@@ -41,7 +41,7 @@ export default function Footer() {
             <div className="flex items-center gap-3">
               <div className="relative w-12 h-12 rounded-2xl overflow-hidden bg-gradient-to-b from-[#FFF0F3] to-white border border-[#FFCCD6] p-1.5 flex items-center justify-center shrink-0 shadow-2xs">
                 <Image
-                  src="/images/brand/brand-logo-v2.png"
+                  src="/images/brand/brand-logo-v2.webp"
                   alt="Dr. Ruchika & Dr. Subham Agarwal Emblem"
                   width={48}
                   height={48}
