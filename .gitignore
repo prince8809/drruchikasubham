@@ -25,3 +25,9 @@ export_*.json
 .env
 .env.local
 .env.production
+
+# Video master backups
+video_originals_backup/
+
+# Cloudflare Wrangler
+.wrangler/
